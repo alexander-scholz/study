@@ -61,7 +61,7 @@ def init():
 
 
 def getK(i, j):
-    return range(i, j+1)
+    return list(range(i, j+1))
 
 
 def getBasePairedValue(i, k):
