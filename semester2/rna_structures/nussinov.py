@@ -1,178 +1,88 @@
-from copy import deepcopy
+'''
+	Nussinov-Algorithmus
+	O(n³)
+'''
 
-###
-#   initialization:
-#       N(i,i) = 0
-#       N(i,j) = 0 ... i<j<=i+3
-#       N(i+1,j) = 0
-#
-#   calculation:
-#                     ---
-#                     | N(i+1,j) ...   i=unpaired
-#       N(i,j) = max <
-#                     |   max   N(i+1,k-1) + N(k+1,j) + F(i,k)
-#                     | i+3<k<=j
-#                     ---
-#
-#                 ---
-#                 | 1 if i,k in (AU,GC,GU)
-#   with F(i,k) = <
-#                 | 0 else
-#                 ---
+
+### Parameter ##
+seq = "GGGAAAUCC"
+threshold = 3
 ###
 
-class Nussinov():
 
-    # watson-crick and wobble base pairs
-    _allowed_base_pairs = ['AU', 'UA', 'GC', 'CG', 'GU', 'UG']
+def F(a, b):
+	a = a.upper()
+	b = b.upper()
+	pairMatrix = {
+		'A': {'A': 0, 'C': 0, 'G': 0, 'U': 1},
+		'C': {'A': 0, 'C': 0, 'G': 1, 'U': 0},
+		'G': {'A': 0, 'C': 1, 'G': 0, 'U': 1},
+		'U': {'A': 1, 'C': 0, 'G': 0, 'U': 0},
+	}
+	return pairMatrix[a][b]
 
-    _sequence = ''
-    _sequence_len = 0
-    _result_sequence = None
 
-    # minimal count of base between
-    _min_count = 3
+def printMatrix(A):
+	print()
+	for i in A:
+		print(i)
+	print()
 
-    # create empty matrix
-    _matrix = None
 
-    def __init__(self, sequence):
-        self._sequence = sequence
-        self._sequence_len = len(sequence)
-        self._result_sequence = [''] * self._sequence_len
-        self._matrix = [[''] * self._sequence_len for i in range(self._sequence_len)]
+def init(seq, threshold):
+	N = []
+	for j in range(len(seq)):
+		line = []
+		for i in range(len(seq)):
+			cell = ''
+			for x in range(-1, threshold + 1):
+				if i == j + x:
+					cell = 0
+			line.append(cell)
+		N.append(line)
+	return(N)
 
-    # initialization
-    def initiate(self):
 
-        # diagonal initialization, initialization of i<j<=i+3
-        i = 0
-        for row in self._matrix:
-            for n in range(self._min_count+1):
-                if (i+n) < self._sequence_len:
-                    row[i+n] = 0
-            i += 1
+def dynamicProgramming(seq, N, threshold):
+	for diagoOffset in range(threshold + 1, len(seq)):
+		i = 0
+		j = diagoOffset
+		while j < len(seq):
+			results = []
+			results.append(N[i+1][j]) # Fall: ungepaart
+			for k in range(i+1+threshold, j + 1):
+				if F(seq[i], seq[k]) > 0:
+					if(k + 1 < len(seq)):
+						exprTwo = N[k+1][j]
+					else:
+						exprTwo = 0
+					results.append(N[i+1][k-1] + exprTwo + F(seq[i], seq[k])) # Fälle (über k): gepaart
+			N[i][j] = max(results)
+			i = i+1
+			j = j+1
+	return(N)
 
-        # additional initialization of N(i+1,j)
-        for i in range(0, self._sequence_len):
-            if i < (self._sequence_len-1):
-                self._matrix[i+1][i] = 0
 
-    def _getK(self, i, j):
-        return list(range(i+1, j+1))
+def traceback(N):
+	i = 0
+	j = len(seq)-1
+	while j > i:
+		if N[i][j] == N[i+1][j]:
+			print(str(i) + ": ·" + seq[i] + "·")
+			i = i+1
+		else:
+			for k in range(i+1+threshold, j + 1):
+				if(k + 1 < len(seq)):
+					exprTwo = N[k+1][j]
+				else:
+					exprTwo = 0
+				if N[i][j] == N[i+1][k-1] + exprTwo + F(seq[i], seq[k]):
+					print(str(i) + ": " + seq[i] + " - " + seq[j] + " :" + str(j))
+					i = i+1
+					j = j-1
 
-    def _getBasePairedValue(self, i, k):
-        base_pair = self._sequence[i] + self._sequence[k]
-        return 1 if base_pair in self._allowed_base_pairs else 0
 
-    def calculate(self):
-        j_start = self._min_count + 1
-
-        s = 0
-        t = j_start
-        while t <= self._sequence_len:
-            i = 0
-            jn = j_start + s
-            for j in range(jn, self._sequence_len):
-                k_values = self._getK(i + self._min_count, j)
-                results = []
-                for k in k_values:
-                    trivial = self._matrix[i + 1][j]
-                    results.append(trivial)
-
-                    k_value = k + 1
-
-                    base_paired_value = self._getBasePairedValue(i, k)
-                    if k_value < self._sequence_len:
-                        calc = self._matrix[i+1][k-1] + self._matrix[k+1][j] +\
-                            base_paired_value
-                    else:
-                        calc = self._matrix[i+1][k-1] + 0 + base_paired_value
-                    results.append(calc)
-                self._matrix[i][j] = max(results)
-                i += 1
-            s += 1
-            t += 1
-
-    def output(self):   # pragma: no cover (excluded from coverage)
-
-        # copy matrix for output
-        output_matrix = deepcopy(self._matrix)
-
-        # insert sequence as headline and headcolumn for view
-        output_matrix.insert(0, list(sequence))
-
-        i = 0
-        for row in output_matrix:
-            if i == 0:
-                row.append('')
-            else:
-                row.append(sequence[i-1])
-            i += 1
-
-        # insert index numbers as headline and headcolumn for view
-        sequence_index = list(range(1, self._sequence_len + 1))
-        output_matrix.insert(0, sequence_index)
-
-        i = 0
-        for row in output_matrix:
-            if i < 2:
-                row.append('')
-            else:
-                row.append(i-1)
-            i += 1
-
-        # matrix output
-        for row in output_matrix:
-            print("\t".join(map(str, row)) + "\n")
-
-    def backTracking(self):
-
-        j = self._sequence_len-1
-        for i in range(0, self._sequence_len-1):
-            if i <= (self._sequence_len / 2):
-                n_value = self._matrix[i][j]
-
-                # unpaired case
-                result = self._matrix[i+1][j]
-
-                if n_value == result:
-                    self._result_sequence[i] = '.'
-                    if i > 0:
-                        self._result_sequence[j] = '.'
-                        j -= 1
-                    # output_matrix[i][j+2] = '[' + output_matrix[i][j+2] + ']'
-                    continue
-
-                # paired cases
-                k_values = self._getK(i, j)
-                for k in k_values:
-                    f_value = self._getBasePairedValue(i, k)
-                    if f_value == 0:
-                        continue
-
-                    inner_value = self._matrix[i+1][k-1]
-                    outer_value = 0 if (k+1 > self._sequence_len-1) else self._matrix[k+1][j]
-                    result = f_value + inner_value + outer_value
-
-                    if result != n_value:
-                        continue
-
-                    self._result_sequence[i] = '('
-                    self._result_sequence[j] = ')'
-                    j -= 1
-                    break
-        print(sequence)
-        print(''.join(self._result_sequence))
-
-if __name__ == "__main__":
-    # sequence = 'AGGCAAUGCC'
-    # sequence = 'GGGAAAUCC'
-    sequence = 'GGCAGACUAU'
-    # sequence = "GACUCCGUGGCGCAACGGUAGCGCGUC"\
-    # "CGACUCCAGAUCGGAAGGUUGCGUGUUCAAAUCACGUCGGGGUCA"
-    nussinov = Nussinov(sequence)
-    nussinov.initiate()
-    nussinov.calculate()
-    nussinov.output()
-    nussinov.backTracking()
+N = init(seq, threshold)
+dynamicProgramming(seq, N, threshold)
+printMatrix(N)
+traceback(N)
