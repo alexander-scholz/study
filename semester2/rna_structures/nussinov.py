@@ -61,13 +61,7 @@ def init():
 
 
 def getK(i, j):
-    k = list()
-
-    for s in range(i, j+1):
-        if (s > i) & (s <= j):
-            k.append(s)
-
-    return k
+    return list(range(i+1, j+1))
 
 
 def getBasePairedValue(i, k):
