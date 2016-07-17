@@ -5,23 +5,6 @@
 \item Sekundärstruktur und Tertiärstruktur
 \end{itemize}
 
-\subsection{objective function approach}
-\textbf{Hard constraints:} \\
-$\rightarrow$ 3 Aussagen möglich: | = gepaart; . = ungepaart; X = unbekannt \\
-\textbf{Soft constraints:} \\ 
-$\rightarrow$ Wahrscheinlichkeit ob Base an Position Y gepaart ist oder nicht 
-
-$\rightarrow$ Minimiere den Fehler F($\vec{E}$) \\
-\begin{equation}
-\vec{E} = \sum_{\mu} \dfrac{\varepsilon_{\mu}^{2}}{\tau^2} + \sum_{i = 0}^{n} \dfrac{1}{\sigma^2}(p_i(\vec{\varepsilon}) -q_i)^2
-\end{equation} 
-
-$\mu$ ... Strukturelemente
-$\varepsilon_{\mu}$ ... Betrag der Stör-Energie eines Strukturelements\\
-$\tau^2$ ... Varianz des Standardenergiemodells \\
-$\sigma^2$ ... Varianz der Probingdaten \\
-$p_i(\vec{\varepsilon})$ ... Wahrscheinlichkeit, dass i ungepaart ist unter Bedingung des Standardenergiemodells und der Störenergie
-
 \subsection{Inline-Probing}
 inline-nucleophilic-attack: Wie in der Abbildung zu sehen kommt es zu strukturellen Änderungen der chemischen Konformation des RNA-Strangs an der Phosphatgruppe. Grund hierfür ist die Instabilität der Einzelsträngigen RNA, die bei Bindung eines Liganden an das Molekül zum Bruch ("Cleavage") führt oder eine rein zufällige Konformationsänderung des RNA-Moleküls. \\
 \includegraphics[scale=0.25,angle=270]{lectures/160527/pix/inline.jpg}
@@ -40,23 +23,6 @@ RNA-modifizierende Chemikalien sind \textbf{struktursensitiv} [1] und \textbf{se
 \begin{itemize}
 \item[1] Es werden Chemikalien genutzt die entweder gepaarte oder ungepaarte Basen modifizieren
 \item[2] Mechanismus zur Detektion der Modifikation
-\end{itemize}
-
-\subsubsection{MACS (Model-based Analysis of ChIP-Seq)}
-\begin{itemize}
-\item Einteilen des Genoms in Bins
-\item[a] Windowsize: typisch 200 bp + offset (ungefähr 0,25 windowsize = 50 bp)
-\item[b] MACS empfiehlt Bin doppelt so groß wie Fragmente
-\item Zähle die Anzahl an hypothetischen Fragmenten pro Bin (=window)
-\item[$\rightarrow$] Fragmente können in mehr als ein Bin fallen
-\end{itemize}
-
-\subsubsection{CLIP: Cross-linking and immunoprecipitation protocol}
-\begin{itemize}
-\item Ultraviolettes Licht für cross linking
-\item UV cross linked nur RNA mit Proteinen
-\item induziert UV Mutation der RNA
-\item CIMS: cross-linking induced mutation sites
 \end{itemize}
 
 \subsubsection{SHAPE-Seq}
@@ -107,6 +73,23 @@ E^{'}_{ij} = E_{ij} + \Delta G_{Shape_i} + \Delta G_{Shape_j}
 \end{equation}
 
 $E_{ij}$ ... Standard Energiemodell
+
+\subsubsection{objective function approach}
+\textbf{Hard constraints:} \\
+$\rightarrow$ 3 Aussagen möglich: | = gepaart; . = ungepaart; X = unbekannt \\
+\textbf{Soft constraints:} \\ 
+$\rightarrow$ Wahrscheinlichkeit ob Base an Position Y gepaart ist oder nicht 
+
+$\rightarrow$ Minimiere den Fehler F($\vec{E}$) \\
+\begin{equation}
+\vec{E} = \sum_{\mu} \dfrac{\varepsilon_{\mu}^{2}}{\tau^2} + \sum_{i = 0}^{n} \dfrac{1}{\sigma^2}(p_i(\vec{\varepsilon}) -q_i)^2
+\end{equation} 
+
+$\mu$ ... Strukturelemente
+$\varepsilon_{\mu}$ ... Betrag der Stör-Energie eines Strukturelements\\
+$\tau^2$ ... Varianz des Standardenergiemodells \\
+$\sigma^2$ ... Varianz der Probingdaten \\
+$p_i(\vec{\varepsilon})$ ... Wahrscheinlichkeit, dass i ungepaart ist unter Bedingung des Standardenergiemodells und der Störenergie
 
 \subsubsection{Hydroxyl-Radikal Probing}
 Hydroxyl-Radikale führen zum Bruch der RNA-Sequenz,wenn keine 3-D Interaktion stattfindet und keine Bindung an ein Protein vorliegt.\\

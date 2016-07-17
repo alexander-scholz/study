@@ -1,85 +1,95 @@
 \section{Peak Calling}
-Sequenziertes Genom/RNA/DNA aus dem Experiment = viele, kurze Reads
-
-\hspace{10mm}$\rightarrow$ naiv: Jedes Nukleotid, dass von Reads bedeckt ist = Gebunden
-
+\textbf{Genom:}\\
 \includegraphics[scale=0.5]{lectures/160415/pix/Peak1.png}
+\\\\
+Ergebnis: Sequenziertes Genom/RNA/DNA aus dem Experiment = viele, kurze Reads\\\\
+\textbf{Frage:} Wo sind die Proteine gebunden?\\
 
-\hspace{15mm}$\rightarrow$ Problem: Viele FP, da kurze Reads mehrere Treffer haben können
-
-\hspace{20mm}$\rightarrow$ Lösung: Cutoff für Anzahl der Reads auf Nukleotid
-
-\hspace{25mm}$\rightarrow$ Problem: Manche Basen einfach zu binden = viele FP
-
-So geht das nicht!
-\newline\newline
-Lösung:
-
-\hspace{10mm} Enrichment: $log\frac{Expression}{Background}$
-
-\hspace{23mm} naiv: Wenn Enrichtment $>$ Cutoff $\rightarrow$ Peak!
+3 Ansätze:
+\begin{enumerate}
+	\item naiver Ansatz: Jedes Nukleotid, dass durch mind. Read bedeckt ist, war gebunden $\Rightarrow$ viele False Positives, da kurze Reads mehrere Treffer haben können
+	\item Cut off x: mind. x Reads müssen auf das Nukleotid gemappt sein $\Rightarrow$ Problem durch sequence bias: Manche Basen einfach zu binden = viele FP
+	\item enrichment: $log\frac{Expression}{Background}$
+\end{enumerate}
 
 \includegraphics[scale=0.5]{lectures/160415/pix/Peak3.png}
 
-\newpage
-\subsection{MACS}
-Model-based Analysis of ChIP-Seq (MACS)
-\newline\newline
-1. Einteilen des Genoms in Bins (Eimer)
-
-\hspace{10mm} Window: 200 BP und Offset von 1/4 der window size
-
-\hspace{10mm} In Bins werden Reads eingeordnet
-
-2. Zählen der Fragmente pro Bin, +/- Strang
-
-\hspace{10mm}$\rightarrow$ Poisson verteilt!
-\newline
-
-\hspace{10mm}$P(x>k,\lambda)=\sum_{i=k}^{\infty}P\lambda(i)=1-\sum_{i=0}^{k-1}P\lambda(i)=1-\sum_{n=0}^{k-1}\frac{\lambda^{n}}{n!}e^{-\lambda}$
-
-$\lambda$=Mittelwert der read counts aus Background, k=read counts aus Experiment
-
-\hspace{10mm}read count signifikant größer Mittelwert $\rightarrow$ Peak!
-
-\hspace{10mm}Mittelwert kann abhängig von Menge der reads in Window sein:
-
-\hspace{15mm} $\lambda$=max($\lambda$global, $\lambda$1000, $\lambda$5000, $\lambda$10000)
-
-\hspace{15mm} $\rightarrow$ Window jeweils zentriert an Bin
-
-3. p-Value Correction
-
-\hspace{10mm} Holm-Bonferroni
-
-\hspace{10mm} q-Value
-
-4. Peakmerging
-
-\hspace{10mm} Wenn Abstand zwischen Peaks $<$ Cutoff $\rightarrow$ Merge Peaks
-
-\hspace{15mm} (bei MACS 2xWindowSize)
+naiv: Wenn Enrichtment $>$ Cutoff $\rightarrow$ Peak!
 \\\\
-\textbf{Wo sind die Bindungsstellen?}
+\textbf{$\Rightarrow$ daher Entwicklung Peak Calling}\footnote{\url{https://en.wikipedia.org/wiki/Peak_calling}}
+ - häufig verwendete Software: MACS (Model-based Analysis of ChIP-Seq)\footnote{\url{http://liulab.dfci.harvard.edu/MACS/}}
 
-Protein $\rightarrow$ RNA - \textbf{ChIP}: Regionen, mit denen das Protein assoziert ist
 
-DNA $\rightarrow$ RNA - \textbf{ChIRP}: Match von RNA auf sequenzierter DNA
+\textbf{\underline{1. }}\\
+Einteilen des Genoms in Bins (Eimer), n Bins werden Reads eingeordnet\\
+Window: 200 BP und Offset von 1/4 der window size\\\\
+\begin{center}
+\includegraphics[scale=0.5]{lectures/160415/pix/sign.jpg}
+\end{center}
+\textbf{\underline{2. }}\\
+Zählen der hypothetischen Fragmente pro Bin, +/- Strang\\
+Ergebnis: Liste von Zahlen (Poisson verteilt!)
+\begin{center}
+\includegraphics[scale=0.5]{lectures/160415/pix/poisson.jpg}
+\end{center}
+$\lambda$ (reelwertig) = Mittelwert der readcounts aus der Hintergrundmessung (Signal aus Experiment nicht zufällig verteilt, daher wird Hintergrund genutzt)\\
+k= Anzahl der reads/fragments aus Experiment
 
-\hspace{47mm}Verfahren ähnlich zu CLIP
+$P(x \geq k|\lambda)=\sum \limits_{i=k}^{\infty}P\lambda(i)=\underbrace{1-\sum \limits_{i=0}^{k-1}P\lambda(i)}_{*}$
+\\\\
+es wird summiert statt integriert, da diskrete Verteilung\\
+* Berechnung der Gegenwahrscheinlichkeit, da $\sum \limits_{i=k}^{\infty}$ schwer zu berechnen
+\begin{equation}
+P(x \geq k|\lambda)=1-\sum \limits_{n=0}^{k-1}\frac{\lambda^{n}}{n!}e^{-\lambda}
+\end{equation}
 
-\hspace{47mm}$\rightarrow$RNA cross-linking(UV o. formalin)$\rightarrow$aufreinigen$\rightarrow$
+P ist global, benötigt wird aber lokal\\
+pro Bin werden 3 lokale + das globale verwendet (Vermeidung von lokalen Sequenzeffekten)
+\\\\
+$\lambda_{global}$ entspricht globalen Mittelwert
+\\\\
+$\lambda_{1k}, \lambda_{5k}, \lambda_{10k} \Rightarrow$ Mittel aller Bins in einem 1k, 5k oder 10k Window zentriert am entsprechenden Bin (K=1000)
+\begin{center}
+\includegraphics[scale=0.75]{lectures/160415/pix/lambdas.jpg}
+\end{center}
 
-\hspace{47mm}reverse cross-linking$\rightarrow$Read$\rightarrow$Match mit DNA
+$\lambda$=max($\lambda$global, $\lambda$1000, $\lambda$5000, $\lambda$10000)\\
+neues $\lambda$ verschiebt Mittelwert der Verteilung nach rechts $\rightarrow$ k bleibt gleich $\rightarrow$ Wahrscheinlichkeit sinkt (keine Bias-Unterschätzung) $\rightarrow$ Reduzierung der False Positives
+\\\\
+da viele p-Values $\rightarrow$ multiple test problem
+\\\\
+\textbf{\underline{3. p-Value correction}}\\
+ - bei MACS: Bonferroni-Holm (bleibt p-Value)\\
+ - andere Möglichkeit: q-Value (Storeq) $\rightarrow$ kontrolliert False Discovery Rate\\
+Ergebnis: Signifikanz pro Bin\\
+\begin{center}
+\includegraphics[scale=0.75]{lectures/160415/pix/sign2.jpg}
+\end{center}
+\textbf{\underline{4. Peakmerging}}\\
+\begin{enumerate}
+	\item bilden von Peaks über Bereiche von vielen signifikanten Bins
+	\item Peak-Lücken vermeiden $\Rightarrow$ post processing, wenn Abstand zwischen Peaks $<$ Cutoff $\rightarrow$ Merge Peaks (bei MACS: cut-off=$ 2 \cdot $Bin-size)
+\end{enumerate}
+\textbf{
+\underline{nächster Schritt: Vorhersage durch Motivs (Meme)}}\\
 
-\hspace{47mm}(Chromatin isolation by RNA purification)
+ - Wo sind die Bindungsstellen?
+\\\\
+\underline{CHIP-Seq:}\\
+ - Region mit denen das Protein assoziiert ist (nicht wo es gebunden ist!)
+\\\\
+\underline{$\Rightarrow$ beide Informationen werden benötigt} - es werden immer Antikörper benötigt
 
-Protein $\rightarrow$ RNA - \textbf{RIP}: RNA zu cDNA, hybridisieren mit Chip
+\begin{enumerate}
+	\item \textbf{Protein bekannt}, \textbf{gesucht ist RNA} welche vom Protein gebunden wird\\
+	RIP: \underline{R}NA \underline{i}mmunoprecipitation \underline{p}rotocol (RIP-seq), Antikörper gegen Protein
+	\item an welchen Stellen im Genom ist eine \textbf{RNA an eine DNA} gebunden?\\
+	Chromatin extrahieren (ChIRP - seq: \underline{ch}romatin \underline{i}solation by \underline{R}NA \underline{p}urification), Antikörper gegen RNA oder komplementäres Lesen, DNA sequenzieren
+\end{enumerate}
 
-\hspace{47mm}$\rightarrow$RNA cross-linking(UV o. formalin)$\rightarrow$aufreinigen$\rightarrow$
-
-\hspace{47mm}reverse cross-linking$\rightarrow$RNA in cDNA$\rightarrow$
-
-\hspace{47mm}Hybridisierung auf Chip
-
-\hspace{47mm}(RNA immunoprecipitation protocol)
+\underline{Problem:} nur Bereiche (Peaks) der Bindungen ermittelt, keine genauen Positionen
+\begin{center}
+\includegraphics[scale=0.75]{lectures/160415/pix/result.jpg}
+\end{center}
+Erwartung: Peak sehr nah um das Protein\\
+Mittelpunkt: e$_{+}$ und e$_{-}$ als Bindungstelle genommen
