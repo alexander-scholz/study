@@ -34,6 +34,34 @@ Wird der Zuker-Algorithmus auf diese verdoppelte Sequenz durchgef\"uhrt erh\"alt
 \item\textbf{Backtracking}:\\
 Stapel enth\"alt mehr Information als bei Zuker:  i, j, Typ, Stuktur und $\Delta\varepsilon$ (Energie, die noch verf\"ugbar ist)
 \end{enumerate}
+
+\paragraph{Wuchty-Backtrack von Nussinov-Matrizen}
+Beim Wuchty-Backtracking von Nussinov-Matrizen werden, im Gegensatz zum ``normalen''
+Backtrack, \emph{Refinements} aufgehoben und weiterverfolgt, die eine h\"ohere Anzahl von Basenpaaren 
+haben als vorher \"{u}ber einen Schwellenwert als Minimum festgelegt. 
+\begin{equation} \label{eq:wc}
+  P_{\mathcal{S}'} \geqslant P_{max}-\Delta_{Schwellenwert}
+\end{equation}
+Erf\"ullt nun das Refinement $\mathcal{S}$ mit seiner maximalen Anzahl Basenpaare $P$ \eqref{eq:wp} das 
+Kriterium f\"ur gew\"unschte Suboptimale Strukturen \eqref{eq:wc}, wird $\mathcal{S}'$ f\"ur weitere 
+\emph{Refinements} auf den \"ubergeordneten Stack $R$ geschoben. 
+\begin{equation} \label{eq:wp}
+	P_{\mathcal{S}'} = |\mathcal{P}| + 1 + P_{i+1,k-1} + P_{k+1,j} + \sum_{[a,b] \in \sigma} P_{a,b}
+\end{equation}
+\begin{description}
+	\item[Refinement] Beim optimalen Nussinov Backtracking wird \emph{ein} Tupel 
+		($\mathcal{S}$, bedeutet \emph{partielle Struktur}) aus einem Stack mit 
+		unaufgekl\"arten Sequenzintervallen ($\sigma$) und eine Menge von 
+		Basenpaaren ($\mathcal{P}$), $\mathcal{S}=(\sigma, \mathcal{P})$ bearbeitet. 
+		Am Ende des Backtrackings ist $\sigma$ leer und $\mathcal{P}$ m\"oglichst groß. 
+		\emph{Refinement} bezeichnet nun den Schritt, ein Sequenzintervall $[i,j]$ vom 
+		Stack $\sigma$ zu nehmen, in ein kleineres ($[i+1,j]$), bzw. zwei kleinere Intervalle 
+		($[i+1,k-1], [k+1,j]$) aufzuteilen, diese jeweils wieder auf den Stack zu 
+		schieben, $\mathcal{P}$ gegebenenfalls um ein Basenpaar zu erweitern 
+		($\mathcal{P} \cup \{i \cdotp k\}$) und damit zusammengefasst 
+		$\mathcal{S}$ zu $\mathcal{S}'$ zu ``refinen''.
+\end{description}
+
 \paragraph{Thermodynamik von Molek\"ulen}
 \begin{itemize}
 \item[]viele Zust\"ande m\"oglich
