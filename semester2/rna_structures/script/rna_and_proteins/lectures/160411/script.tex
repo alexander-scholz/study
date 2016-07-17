@@ -58,9 +58,25 @@ Kriterium f\"ur gew\"unschte Suboptimale Strukturen \eqref{eq:wc}, wird $\mathca
 		Stack $\sigma$ zu nehmen, in ein kleineres ($[i+1,j]$), bzw. zwei kleinere Intervalle 
 		($[i+1,k-1], [k+1,j]$) aufzuteilen, diese jeweils wieder auf den Stack zu 
 		schieben, $\mathcal{P}$ gegebenenfalls um ein Basenpaar zu erweitern 
-		($\mathcal{P} \cup \{i \cdotp k\}$) und damit zusammengefasst 
+		($\mathcal{P} \cup \{i \cdot k\}$) und damit zusammengefasst 
 		$\mathcal{S}$ zu $\mathcal{S}'$ zu ``refinen''.
 \end{description}
+
+\paragraph{Wuchty-Backtrack von MFE-Matrizen}
+Die partielle Struktur $\mathcal{S}$ wird hier mit der totalen 
+freien Energie aller Loops $E_{L\mathcal{S}}$ aus der partiellen Struktur erweitert 
+zu $\mathcal{S}=(\sigma,\mathcal{P}, E_{L\mathcal{S}})$.
+Außerdem wird der Stack $\sigma$ erweitert um den Typ der Matrix ($F, C, M, M^1$), 
+in der weitergearbeitet werden soll (z.B. $\sigma = \{[i,j]_{M}\}$). 
+\begin{equation} \label{eq:wmc}
+	E_{\mathcal{S}'} \leqslant E_{min} + \delta
+\end{equation}
+Wenn zum Beispiel (Zuker, Fall 1)
+$F_{i+1,j} + E_{L\mathcal{S}} + \sum_{[a,b] \in \sigma} E_{[k,l]} \leqslant E_{min} + \delta$ 
+gilt, also das vorher gew\"ahlte Kriterium f\"ur suboptimale Faltungen \eqref{eq:wmc} 
+erf\"ullt ist, 
+wird $\mathcal{S}' = (\{[i+1,j]_F\} \cup \sigma; \mathcal{P}; E_{L\mathcal{S}})$ auf den 
+Stack $R$ geschoben.
 
 \paragraph{Thermodynamik von Molek\"ulen}
 \begin{itemize}
