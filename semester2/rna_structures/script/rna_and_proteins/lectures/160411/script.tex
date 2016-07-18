@@ -12,7 +12,7 @@ Stapel unaufgekl\"arter Strukturen: $i$, $j$ und Typ
 			\end{itemize}
 		\item[] $else$:
 			\begin{itemize}
-				\item[] Suche $k,~mit~i+3 < k \le j$, sodass $F(i,j) = C(i,k) + F(k+1,j)$:
+				\item[] Suche $k$, mit $i < k \le j$, sodass $F(i,j) = C(i,k) + F(k+1,j)$:
 				\item[] $\rightarrow$ \textbf{push} $C(i, k)$ and $F(k+1, j)$ on stack
 			\end{itemize}
 		\item[]
@@ -20,14 +20,14 @@ Stapel unaufgekl\"arter Strukturen: $i$, $j$ und Typ
 			\begin{itemize}
 				\item[] $\rightarrow i,j$ als Basenpaar markieren
 			\end{itemize}
-		\item[] $else~if~\exists~k,l,~mit~i < k < l < j$, sodass $C(i,j) = \mathcal{I}(i,j,k, l) + C(k,l)$:
+		\item[] $else~if~\exists~k,l$, mit $i < k < l < j$, sodass $C(i,j) = \mathcal{I}(i,j,k, l) + C(k,l)$:
 			\begin{itemize}
 				\item[] $\rightarrow i,j$ als Basenpaar markieren
 				\item[] $\rightarrow$ \textbf{push} $C(k,l)$ on stack
 			\end{itemize}
 		\item[] $else$:
 			\begin{itemize}
-				\item[] Suche $u,~mit~i < u < j-5$, sodass $C(i,j) = a + M(i+1, u) + M^1(u+1, j-1)$
+				\item[] Suche $u$, mit $i < u < j$, sodass $C(i,j) = a + M(i+1, u) + M^1(u+1, j-1)$
 				\item[] $\rightarrow i,j$ als Basenpaar markieren
 				\item[] $\rightarrow$ \textbf{push} $M(i+1, u)$ and $M^1(u+1,j-1)$ on stack
 			\end{itemize}
@@ -36,13 +36,13 @@ Stapel unaufgekl\"arter Strukturen: $i$, $j$ und Typ
 			\begin{itemize}
 				\item[] $\rightarrow$ \textbf{push} $M(i, j-1)$ on stack
 			\end{itemize}
-		\item[] $else~if~\exists~k,~mit~i < k < j$, sodass $(k-i) \cdot c + b + C(k,j)$:
+		\item[] $else~if~\exists~k$, mit $i < k < j$, sodass $(k-i) \cdot c + b + C(k,j)$:
 			\begin{itemize}
 				\item[] $\rightarrow$ \textbf{push} $C(k,j)$ on stack
 			\end{itemize}
 		\item[] $else$:
 			\begin{itemize}
-				\item[] Suche $k$, mit $i < k < j-5$, sodass $M(i,j) = M(i, k-1) + b + C(k,j)$:
+				\item[] Suche $k$, mit $i < k < j$, sodass $M(i,j) = M(i, k-1) + b + C(k,j)$:
 				\item[] $\rightarrow$ \textbf{push} $M(i, k-1)$ and $C(k,j)$ on stack
 			\end{itemize}
 		\item[]

@@ -94,20 +94,20 @@ Die Energie eines Multi-Loops ist abh\"angig von:
 	\item[]$F(i,j)=min
 			\begin{cases}
                F(i+1, j)\\
-               \displaystyle\min_{i+3 < k \le j} \begin{cases} C(i,k) + F(k+1, j) \end{cases}\\
+               \displaystyle\min_{i < k \le j} \begin{cases} C(i,k) + F(k+1, j) \end{cases}\\
 			\end{cases}$
 
 	\item[] $C(i,j) = min
 		\begin{cases}
 			\mathcal{H}(i,j)\\
 			\displaystyle\min_{i < k < l < j} \begin{cases} \mathcal{I}(i,j,k,l) + C(k,l) \end{cases}\\
-			\displaystyle\min_{i < u < j-5} \begin{cases} a + M(i+1, u) + M^1(u+1, j-1) \end{cases}\\
+			\displaystyle\min_{i < u < j} \begin{cases} a + M(i+1, u) + M^1(u+1, j-1) \end{cases}\\
 		\end{cases}$
 	\item[] $M(i,j) = min
 		\begin{cases}
 			M(i,j-1) + c\\
 			\displaystyle\min_{i < k < j} \begin{cases} (k-i) \cdot c + b + C(k,j)\end{cases}\\
-			\displaystyle\min_{i < k < j-5} \begin{cases} M(i, k-1) + b + C(k,j)\end{cases}\\
+			\displaystyle\min_{i < k < j} \begin{cases} M(i, k-1) + b + C(k,j)\end{cases}\\
 		\end{cases}$
 	\item[]$M^1(i,j) = min
 		\begin{cases}
