@@ -17,7 +17,7 @@ mit $\beta= {1 \over {R \cdot T}}$, $E_{s}$= Energie der Struktur S (alle Strukt
 mit $Z^B=$Basenpaar zwischen i,k
 
 \begin{equation}
-Z^B(i,j)= \underbrace{\mathcal{H}(i,j)}_{Hairpin} + \underbrace{\sum\limits_{i < k < l < j} \mathcal{I}(i,j, k, l) \cdot Z^B(k,l)}_{Interior~loop} +  \underbrace{\sum\limits_{i < k < j} Z^M(i+1,u-1) \cdot Z^{M1}(u,j-1) \cdot e^{-\beta \cdot {a(i,j)}}}_{Multiloop}
+Z^B(i,j)= \underbrace{\mathcal{H}(i,j)}_{Hairpin} + \underbrace{\sum\limits_{i < k < l < j} \mathcal{I}(i,j, k, l) \cdot Z^B(k,l)}_{Interior~loop} +  \underbrace{\sum\limits_{i < k < j} e^{-\beta \cdot {a(i,j)}} \cdot Z^M(i+1,u) \cdot Z^{M1}(u+1,j-1)}_{Multiloop}
 \end{equation}
 
 $\mathcal{H}=$ $e^{-\beta \cdot Hairpin(i,j)}$\\
@@ -34,14 +34,16 @@ $Z^M=0; Z^{M1}=0; Z^B=0$
 $Z^M(i,j) =$ ungepaart + genau 1 Basenpaar + Erweiterung um 1 Basenpaar, also mindestens 2
 
 \begin{equation}
-	Z^M(i,j) = Z^M(i+1,j) \cdot e^{-\beta \cdot c} + \sum\limits_{i < k < j} Z^B(i,k) \cdot e^{-\beta \cdot b} \cdot e^{-\beta(j-k)c} + \sum\limits_{i < k < j} Z^B(i,k) \cdot e^{-\beta \cdot b} \cdot Z^M(k+1,j)
+	Z^M(i,j) = Z^M(i,j-1) \cdot e^{-\beta \cdot c} + \sum\limits_{i < k < j} e^{-\beta \cdot ((k-i) \cdot c)} \cdot e^{-\beta \cdot b} \cdot Z^B(k,j) + \sum\limits_{i < k < j} Z^M(i,k-1) \cdot e^{-\beta \cdot b} \cdot Z^B(k,j)
 \end{equation}
 
-mit b,c=Konstanten zum Schließen der gepaarten Basen
+\textbf{mit}\\
+$b$ = Energie für Basenpaar innerhalb eines Multiloops\\
+$c$ = Energie für ungepaarte Base innerhalb eines Multiloops
 \\\\
 $\rightarrow$ da $Z^M$ mit 0 initialisiert, kann zunächst $Z^B$ als einzelnes Basenpaar $"$aufgeschrieben$"$ werden, dann erst Erweiterung möglich
 \\\\
-$Z^{M1}(i,j)=Z^{M1}(i,j-1) \cdot e^{-\beta \cdot c} + Z^B(i,j) \cdot e^{-\beta \cdot b}$
+$Z^{M1}(i,j) = Z^{M1}(i, j-1) \cdot e^{-\beta \cdot c} + e^{-\beta \cdot b} \cdot Z^B(i,j) $
 \\\\
 Ergebnis= 4 Matrizen: $Z, Z^B, Z^M, Z^{M1} \rightarrow$ Backtracking
 \\\\
