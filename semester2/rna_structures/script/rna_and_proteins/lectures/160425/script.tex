@@ -1,11 +1,11 @@
-\subsection{Mc Caskill}
+\subsection{McCaskill}
 
 Summe über alle Strukturen 
 \begin{equation}
 	Z=\sum\limits_{S} e^{-\beta \cdot E_{S}}
 \end{equation}
 
-mit $\beta= {1 \over {R \cdot T}}$, $E_{s}$= Energie der Sturktur S (alle Strukturen),\\ R = Gaskonstante = $k \cdot N_{A}$, T = Temperatur
+mit $\beta= {1 \over {R \cdot T}}$, $E_{s}$= Energie der Struktur S (alle Strukturen),\\ R = Gaskonstante = $k \cdot N_{A}$, T = Temperatur, $k$ = Boltzmann-Konstante, $N_A$ = Avogadro-Konstante
 \\\\
 \textbf{Dynamic Programming Ansatz:}\\
  - Energie von einer Base = 1 $\rightarrow e^0=1$
@@ -17,11 +17,17 @@ mit $\beta= {1 \over {R \cdot T}}$, $E_{s}$= Energie der Sturktur S (alle Strukt
 mit $Z^B=$Basenpaar zwischen i,k
 
 \begin{equation}
-Z^B(i,j)= \underbrace{\mathcal{H}(i,j)}_{Hairpin} + \underbrace{\sum\limits_{i < k < l < j} \mathcal{I}(i,j, k, l) \cdot Z^B(k,l)}_{Interior} +  \underbrace{\sum\limits_{i < k < j} Z^M(i+1,u-1) \cdot Z^{M1}(u,j-1) \cdot e^{-\beta \cdot {a(i,j)}}}_{Multiloop}
+Z^B(i,j)= \underbrace{\mathcal{H}(i,j)}_{Hairpin} + \underbrace{\sum\limits_{i < k < l < j} \mathcal{I}(i,j, k, l) \cdot Z^B(k,l)}_{Interior~loop} +  \underbrace{\sum\limits_{i < k < j} Z^M(i+1,u-1) \cdot Z^{M1}(u,j-1) \cdot e^{-\beta \cdot {a(i,j)}}}_{Multiloop}
 \end{equation}
 
-mit a = Energie fürs Schließen des Multiloops
-\\\\
+$\mathcal{H}=$ $e^{-\beta \cdot Hairpin(i,j)}$\\
+$\mathcal{I}=$ $e^{-\beta \cdot Interior(i,j)}$\\
+\textbf{mit}\\
+$a$ = Energie fürs Schließen des Multiloops\\
+$Hairpin$ = Energie für Hairpin\\
+$Interior$ = Energie für Interior loop\\
+
+
 \underline{Initialisierung:}\\
 $Z^M=0; Z^{M1}=0; Z^B=0$
 \\\\

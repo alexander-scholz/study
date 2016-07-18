@@ -10,8 +10,8 @@ Der unspr\"ungliche Nussinov-Algorithmus bestimmt die maximal m\"ogliche Anzahl 
 \textbf{Berechnung:}
 \begin{itemize}
 	\item[]$Z(i,j)=+ \begin{cases}
-               Z(i+1, j)\ (i ungepaart)\\
-               \displaystyle\sum_{i+3<k \le j}\ Z(i+1, k-1) * Z(k+1, j) * 1 (i gepaart)\\
+               Z(i+1, j)\ (i~ungepaart)\\
+               \displaystyle\sum_{i+3<k \le j}\ Z(i+1, k-1) * Z(k+1, j) * 1 (i~ gepaart)\\
 \end{cases}$
 \end{itemize}
 
@@ -22,9 +22,7 @@ $\rightarrow$ schlechte Vorhersage (in Wahrheit Energieabhängig)\\
 \underline{Was stabilisiert RNA-Sruktur?} Interaktionen der aromatischen Ringe, die beim \textbf{Stapeln} auftreten
 
 \subsection{Zuker-Algorithmus}
-
-
-In der Praxis ist der Nussinov-Algorithmus unzureichend, da eine Maximierung von Baasenpaaren nicht zwangsl\"aufig mit einer Maximierung von Stabilit\"at einhergeht. RNA's werden vorallem duch Interaktionen zwischen den Aromaten ihrer Basen stabilisiert. Das bedeutet, dass m\"oglichst lange Abschnitte von gepaarten Basen besonders stabil sind. Der Nussinov-Algorithmus maximiert lediglich die Anzahl der Basenpaare, ber\"ucksichtigt jedoch nicht wie die Basenpaare im Molkül verteilt sind. 
+In der Praxis ist der Nussinov-Algorithmus unzureichend, da eine Maximierung von Basenpaaren nicht zwangsl\"aufig mit einer Maximierung von Stabilit\"at einhergeht. RNA's werden vorallem duch Interaktionen zwischen den Aromaten ihrer Basen stabilisiert. Das bedeutet, dass m\"oglichst lange Abschnitte von gepaarten Basen besonders stabil sind. Der Nussinov-Algorithmus maximiert lediglich die Anzahl der Basenpaare, ber\"ucksichtigt jedoch nicht wie die Basenpaare im Molekül verteilt sind. 
 \\
 Der Zuker-Algorithmus berechnet die optimale Sekundärstruktur einer RNA-Sequenz mit der minimalen freien Energie indem er thermodynamische Daten verwendet. Er geht davon aus, dass nicht die Struktur mit der maximalen Anzahl an Basenpaaren die stabilste Struktur darstellt, sondern jene mit der geringsten freien Energie. Dazu wird das RNA-Molek\"ul zunächst wie folgt nach dem Turner-Modell in einzelne Schleifen zerlegt.
 
@@ -93,36 +91,40 @@ Die Energie eines Multi-Loops ist abh\"angig von:
 \paragraph{}
 \textbf{Berechnung:}
 \begin{itemize}
-	\item[]$F(i,j)=min \begin{cases}
-               F(i+1, j)\ ($i$ ungepaart)\\
-               \displaystyle\min_{i+3<k \le j}\ C(i,k) + F(k+1, j)\\
+	\item[]$F(i,j)=min
+			\begin{cases}
+               F(i+1, j)\\
+               \displaystyle\min_{i < k \le j} \begin{cases} C(i,k) + F(k+1, j) \end{cases}\\
 			\end{cases}$
 
-	\item[] $C(i,j)= min \begin{cases}
-               \textit{H}(i,j)\\
-               \displaystyle\min_{i<k<l<j}\ \textit{I}(ij,kl) + C(k, l)\\
-                \displaystyle\min_{i<u<l-5}\ M(i+1,u-1) + M^1(u, j-1) + a\\
-                \end{cases}$
-	\item[] $M(i,j)= min \begin{cases}
-               M(i+1,j) + c\\
-               \displaystyle\min_{i<k \le j}\ C(i,k) + b + (j-k)*c\\
-                \displaystyle\min_{i<k<j-5}\ C(i,k) + b + M(k+1, j)\\
-			\end{cases}$
-	\item[]$M^1(i,j)= min \begin{cases}
-               M^1(i,j-1) + c\\
-              C(i,j) + b
-			\end{cases}$
+	\item[] $C(i,j) = min
+		\begin{cases}
+			\mathcal{H}(i,j)\\
+			\displaystyle\min_{i < k < l < j} \begin{cases} \mathcal{I}(i,j,k,l) + C(k,l) \end{cases}\\
+			\displaystyle\min_{i < u < j} \begin{cases} a + M(i+1, u) + M^1(u+1, j-1) \end{cases}\\
+		\end{cases}$
+	\item[] $M(i,j) = min
+		\begin{cases}
+			M(i,j-1) + c\\
+			\displaystyle\min_{i < k < j} \begin{cases} (k-i) \cdot c + b + C(k,j)\end{cases}\\
+			\displaystyle\min_{i < k < j} \begin{cases} M(i, k-1) + b + C(k,j)\end{cases}\\
+		\end{cases}$
+	\item[]$M^1(i,j) = min
+		\begin{cases}
+			M^1(i,j-1) + c\\
+			b + C(i,j)\\
+		\end{cases}$
 \end{itemize}
 \paragraph{}
 \begin{itemize}
-	\item[]$H$ und $I$ sind gegebene Energietabellen für Hairpin und Interior-Loops
-	\item[]$a$ - Strafe f\"ur schließen eines Multi-Loops
+	\item[]$\mathcal{H}$ und $\mathcal{I}$ sind gegebene Energietabellen für Hairpin und Interior-Loops
+	\item[]$a$ - Strafe f\"ur Schließen eines Multi-Loops
 	\item[]$b$ - Strafe f\"ur inneres Basenpaar in einem Multi-Loop
 	\item[]$c$ - Strafe f\"ur ungepaarte Base in einem Multi-Loop
 \end{itemize}
 \paragraph{}
  \textbf{Grafische Darstellung des Zuker-Algorithmus}\\\\
-\includegraphics[scale=0.55]{lectures/160404_2/pix/zuker_lorenz.png}\\
+\includegraphics[scale=0.2]{lectures/160404_2/pix/zuker-lorenz-mod.png}\\
 \paragraph{}
  \textbf{Komplexit\"at}
 \begin{itemize}

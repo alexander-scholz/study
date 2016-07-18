@@ -12,3 +12,4 @@ tmp.tex
 *.toc
 *.gz
 *.synctex.gz
+*tex.backup

@@ -1,20 +1,60 @@
 %Vorlesung 3- 11.04.2016
 \subsubsection{Backtracking von Zuker}
-Stapel unafgekl\"arter Strukturen: $i$, $j$ und Typ
+Stapel unaufgekl\"arter Strukturen: $i$, $j$ und Typ
 \begin{itemize}
-\item[]$F(1,n)$ on stack
-\item[]\textit{if} $F(i,j)=F(i+1, j)$ \textbf{push} F(i+1, j) on stack
-\item[]\textit{else} $j$ is paired
+	\item[] \textbf{push} $F(1,n)$ on stack
+	\item[] \textbf{Wiederhole, solange Stack nicht leer ist:}
 	\begin{itemize}
-	\item[]suche $F(i, j)=C(i,k) + F(k+1,j)$ $\rightarrow$ \textbf{push} $C(i, k)$ and $F(k+1, j)$ on stack
+		\item[] \textbf{pop}
+		\item[] \textit{if} $F(i,j)=F(i+1, j)$:
+			\begin{itemize}
+				\item[] $\rightarrow$ \textbf{push} $F(i+1, j)$ on stack
+			\end{itemize}
+		\item[] $else$:
+			\begin{itemize}
+				\item[] Suche $k$, mit $i < k \le j$, sodass $F(i,j) = C(i,k) + F(k+1,j)$:
+				\item[] $\rightarrow$ \textbf{push} $C(i, k)$ and $F(k+1, j)$ on stack
+			\end{itemize}
+		\item[]
+		\item[] $if~C(i,j) = \mathcal{H}(i,j)$:
+			\begin{itemize}
+				\item[] $\rightarrow i,j$ als Basenpaar markieren
+			\end{itemize}
+		\item[] $else~if~\exists~k,l$, mit $i < k < l < j$, sodass $C(i,j) = \mathcal{I}(i,j,k, l) + C(k,l)$:
+			\begin{itemize}
+				\item[] $\rightarrow i,j$ als Basenpaar markieren
+				\item[] $\rightarrow$ \textbf{push} $C(k,l)$ on stack
+			\end{itemize}
+		\item[] $else$:
+			\begin{itemize}
+				\item[] Suche $u$, mit $i < u < j$, sodass $C(i,j) = a + M(i+1, u) + M^1(u+1, j-1)$
+				\item[] $\rightarrow i,j$ als Basenpaar markieren
+				\item[] $\rightarrow$ \textbf{push} $M(i+1, u)$ and $M^1(u+1,j-1)$ on stack
+			\end{itemize}
+		\item[]
+		\item[] $if~M(i,j) = M(i,j-1) + c$:
+			\begin{itemize}
+				\item[] $\rightarrow$ \textbf{push} $M(i, j-1)$ on stack
+			\end{itemize}
+		\item[] $else~if~\exists~k$, mit $i < k < j$, sodass $(k-i) \cdot c + b + C(k,j)$:
+			\begin{itemize}
+				\item[] $\rightarrow$ \textbf{push} $C(k,j)$ on stack
+			\end{itemize}
+		\item[] $else$:
+			\begin{itemize}
+				\item[] Suche $k$, mit $i < k < j$, sodass $M(i,j) = M(i, k-1) + b + C(k,j)$:
+				\item[] $\rightarrow$ \textbf{push} $M(i, k-1)$ and $C(k,j)$ on stack
+			\end{itemize}
+		\item[]
+		\item[] $if M^1(i,j) = M^1(i,j-1) + c$:
+			\begin{itemize}
+				\item[] $\rightarrow$ \textbf{push} $M^1(i, j-1)$ on stack
+			\end{itemize}
+		\item[] $else$:
+			\begin{itemize}
+				\item[] $\rightarrow$ \textbf{push} $C(i, j)$ on stack
+			\end{itemize}
 	\end{itemize}
-\item[]$if C(i,j)=H(i,j) \rightarrow i, j$ sind Basenpaar $\rightarrow$ \textbf{pop}
-\item[]$else$ suche $k$ und $l$, sodass $C(i,j) = I(i,j,k, l) + C(k,l) \rightarrow  i, j$ sind Basenpaar \textbf{pop}, \textbf{push} $C(k,l)$ on stack
-\item[]$else$ suche $u$, sodass $C(i,j)=M(i+1,u-1)+M^1(u,j-1)+a  \rightarrow$ \textbf{pop}  $i, j$ als Basenpaar und $M(i+1,u-1)$
-\item[]$if M(i,j-1)=M(i,j) \rightarrow$ \textbf{push} $M(i,j-1)$ on stack
-\item[]$else$ suche $k$, sodass $M(i,j)=M(i, k-1)+C(k,j)+b \rightarrow$ \textbf{push} $C(k,j)$ and $M(i,k-1)$ on stack
-\item[]$if M^1(i,j) = C(i,j)+b \rightarrow$ \textbf{push} $C(i,j)$ on stack
-\item[]$if  M^1(i,j) = M^1(i,j-1)+c \rightarrow$ \textbf{push} $M^1(i,j-1)$ on stack
 \end{itemize}
 
 
