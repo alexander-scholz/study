@@ -75,13 +75,13 @@ mit $\widehat{Z}^B$: wie beim suboptimalen Falten (Zuker suboptimals) $\rightarr
 Achtung: Gleichung über mehrere Zeilen!
 \\\\
 \begin{tabular}{{cp{.5\linewidth}}}
-  $\widehat{Z}^B(i,j) = Z(1, i-1) \cdot Z(j+1, n) \textbf{+}$ & i,j nicht von einem Basenpaar eingeschlossen\tabularnewline
+  $\widehat{Z}^B(i,j) = Z(1, i-1) \cdot Z(j+1, n) \textbf{+}$ & $(i,j)$ nicht von einem anderen Basenpaar eingeschlossen\tabularnewline
   & \tabularnewline
-  $\sum\limits_{k < i < j < l} \mathcal{I}(i,j,k,l) \cdot \widehat{Z}^B(k,l) \textbf{+}$ & i,j von einem Basenpaar k,l eingeschlossen (innerstes Basenpaar), kann kein Hairpin sein da Basenpaar i,j innen vorhanden\tabularnewline
+  $\sum\limits_{k < i < j < l} \mathcal{I}(k,l,i,j) \cdot \widehat{Z}^B(k,l) \textbf{+}$ & $(i,j)$ von einem externen Basenpaar $(k,l)$ eingeschlossen. Zusammen bilden sie einen Interior loop (kann kein Hairpin sein, da Basenpaar $(i,j)$ innen vorhanden).\tabularnewline
   & \tabularnewline
-  $\sum\limits_{k < i < j < l} \widehat{Z}^B(k,l) \cdot e^{-\beta \cdot b} \cdot e^{-\beta \cdot a} \cdot\textbf{\{}$ & \tabularnewline
+  $\sum\limits_{k < i < j < l} \widehat{Z}^B(k,l) \cdot e^{-\beta \cdot a} \cdot e^{-\beta \cdot b} \cdot\textbf{\{}$ & $(k,l)$ schließt Multiloop ein. Strafenergie für Basenpaarung in Multiloops $b$ kann gleich hinzugefügt werden, da wir ja sicher $(i,j)$ paaren. \tabularnewline
   & \tabularnewline
-  $Z^M(k+1,i-1) \cdot Z^M(j+1,l-1)\textbf{+}$ & $(i,j)$ ist der mittlere Multiloop-Teil (Multiloop zwischen $(k, i)$ und $(j, l)$).\tabularnewline
+  $Z^M(k+1,i-1) \cdot Z^M(j+1,l-1)\textbf{+}$ & $(i,j)$ ist der mittlere Multiloop-Teil (Multiloop zwischen $(k,i)$ und $(j,l)$).\tabularnewline
   & \tabularnewline
   $Z^M(k+1,i-1) \cdot e^{-\beta \cdot ((l-j-1) \cdot c)}\textbf{+}$& $(i,j)$ ist der linke Multiloop-Teil (Multiloop zwischen $k$ und $i$).\tabularnewline
   & \tabularnewline
@@ -103,7 +103,7 @@ $Z^A(i,j)=\sum \limits_{j \leq k \leq n (=Ende)} \widehat{Z}^B(i,k) \cdot Z^M(j,
 \end{center}
 Ermittelt alle Zustandssummen, bei denen i mit n Multiloop schließt und innerhalb ein weiterer Multiloop existiert
 \\\\
-$Z^{A'}(i,j)=\sum \limits_{j \leq k \leq n} \widehat{Z}^B(i,k) \cdot e^{-\beta (k-j)}$
+$Z^{A'}(i,j)=\sum \limits_{j \leq k \leq n} \widehat{Z}^B(i,k) \cdot e^{-\beta \cdot (k-j)}$
 \\\\
 wie oben aber ohne inneren Multiloop
 \\\\
