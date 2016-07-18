@@ -49,21 +49,21 @@ Ergebnis= 4 Matrizen: $Z, Z^B, Z^M, Z^{M1} \rightarrow$ Backtracking
 \\\\
 \textbf{Wahrscheinlichkeit für Basenpaare:}
 \begin{equation}
-p(i,j)={Z(i,j) \over Z}
+	p(i,j) = {Z^{(i,j)} \over Z}
 \end{equation}
 \\\\
-mit Z(i,j) gegeben i,j
+mit $Z^{(i,j)}$ gegeben $i,j$
 \\\\
 \begin{equation}
-Z(i,j)=\underbrace{Z^B(i,j)}_{innen} \cdot \underbrace{\widehat{Z}^B(i,j)}_{außen}
+	Z^{(i,j)}=\underbrace{Z^B(i,j)}_{innen,~schon~bekannt} \cdot \underbrace{\widehat{Z}^B(i,j)}_{außen,~noch~unbekannt}
 \end{equation}
-mit $\widehat{Z}^B$: wie beim suboptimalen Falten (Zuker Suboptimals) $\rightarrow$ Verdoppelung der Sequenzen
+mit $\widehat{Z}^B$: wie beim suboptimalen Falten (Zuker suboptimals) $\rightarrow$ Verdoppelung der Sequenzen
 \\\\
 \begin{equation}
-\widehat{Z}^B(i,j)= Z^B(j,n-i)
+	\widehat{Z}^B(i,j)= Z^B(j, n+i)
 \end{equation}
 \begin{center}
-\includegraphics[width=0.4\textwidth]{lectures/160425/pix/1.jpg}
+	\includegraphics[width=0.4\textwidth]{lectures/160425/pix/1.jpg}
 \end{center}
 \textbf{teuer!}
 
@@ -75,17 +75,17 @@ mit $\widehat{Z}^B$: wie beim suboptimalen Falten (Zuker Suboptimals) $\rightarr
 Achtung: Gleichung über mehrere Zeilen!
 \\\\
 \begin{tabular}{{cp{.5\linewidth}}}
-  $\widehat{Z}^B(i,j)=Z(1,i-1) \cdot Z(j+1,n)\textbf{+}$ & i,j nicht von einem Basenpaar eingeschlossen\tabularnewline
+  $\widehat{Z}^B(i,j) = Z(1, i-1) \cdot Z(j+1, n) \textbf{+}$ & i,j nicht von einem Basenpaar eingeschlossen\tabularnewline
   & \tabularnewline
-  $\sum\limits_{k < i < j < l} \mathcal{I}(k,l,i,j) \cdot \widehat{Z}^B(k,l)\textbf{+}$ & i,j von einem Basenpaar k,l eingeschlossen (innerstes Basenpaar), kann kein Hairpin sein da Basenpaar i,j innen vorhanden\tabularnewline
+  $\sum\limits_{k < i < j < l} \mathcal{I}(i,j,k,l) \cdot \widehat{Z}^B(k,l) \textbf{+}$ & i,j von einem Basenpaar k,l eingeschlossen (innerstes Basenpaar), kann kein Hairpin sein da Basenpaar i,j innen vorhanden\tabularnewline
   & \tabularnewline
   $\sum\limits_{k < i < j < l} \widehat{Z}^B(k,l) \cdot e^{-\beta \cdot b} \cdot e^{-\beta \cdot a} \cdot\textbf{\{}$ & \tabularnewline
   & \tabularnewline
-  $Z^M(k+1,i-1) \cdot Z^M(j+1,l-1)\textbf{+}$ & Multiloop zwischen k und i \underline{und} j und l\tabularnewline
+  $Z^M(k+1,i-1) \cdot Z^M(j+1,l-1)\textbf{+}$ & $(i,j)$ ist der mittlere Multiloop-Teil (Multiloop zwischen $(k, i)$ und $(j, l)$).\tabularnewline
   & \tabularnewline
-  $Z^M(k+1,i-1) \cdot e^{-\beta (l-j-1) \cdot c}\textbf{+}$& Multiloop nur zwischen k und i\tabularnewline
+  $Z^M(k+1,i-1) \cdot e^{-\beta \cdot ((l-j-1) \cdot c)}\textbf{+}$& $(i,j)$ ist der linke Multiloop-Teil (Multiloop zwischen $k$ und $i$).\tabularnewline
   & \tabularnewline
-  $Z^M(j+1,l-1) \cdot e^{-\beta (j-k-1) \cdot c}\textbf{\}}$& Multiloop nur zwischen j und l\tabularnewline
+  $Z^M(j+1,l-1) \cdot e^{-\beta \cdot ((j-k-1) \cdot c)}\textbf{\}}$& $(i,j)$ ist der rechte Multiloop-Teil (Multiloop zwischen $j$ und $l$).\tabularnewline
 \end{tabular}
 \\\\
 \\\\
