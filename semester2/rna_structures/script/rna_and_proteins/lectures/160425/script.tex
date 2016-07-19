@@ -81,11 +81,11 @@ Achtung: Gleichung über mehrere Zeilen!
   & \tabularnewline
   $\sum\limits_{k < i < j < l} \widehat{Z}^B(k,l) \cdot e^{-\beta \cdot a} \cdot e^{-\beta \cdot b} \cdot\textbf{\{}$ & $(k,l)$ schließt Multiloop ein. Strafenergie für Basenpaarung in Multiloops $b$ kann gleich hinzugefügt werden, da wir ja sicher $(i,j)$ paaren. \tabularnewline
   & \tabularnewline
-  $Z^M(k+1,i-1) \cdot Z^M(j+1,l-1)\textbf{+}$ & $(i,j)$ ist der mittlere Multiloop-Teil (Multiloop zwischen $(k,i)$ und $(j,l)$).\tabularnewline
+  $Z^M(k+1,i-1) \cdot Z^M(j+1,l-1)\textbf{+}$ & $(i,j)$ schließt einen mittleren Multiloop-Teil (linke und rechte Multiloop-Dekompositionen zwischen $(k+1, i-1)$ und $(j+1, l-1)$).\tabularnewline
   & \tabularnewline
-  $Z^M(k+1,i-1) \cdot e^{-\beta \cdot ((l-j-1) \cdot c)}\textbf{+}$& $(i,j)$ ist der linke Multiloop-Teil (Multiloop zwischen $k$ und $i$).\tabularnewline
+  $Z^M(k+1,i-1) \cdot e^{-\beta \cdot ((l-j-1) \cdot c)}\textbf{+}$& $(i,j)$ schließt den linken Multiloop-Teil (Multiloop-Dekomposition zwischen $k+1$ und $i-1$).\tabularnewline
   & \tabularnewline
-  $Z^M(j+1,l-1) \cdot e^{-\beta \cdot ((j-k-1) \cdot c)}\textbf{\}}$& $(i,j)$ ist der rechte Multiloop-Teil (Multiloop zwischen $j$ und $l$).\tabularnewline
+  $Z^M(j+1,l-1) \cdot e^{-\beta \cdot ((j-k-1) \cdot c)}\textbf{\}}$& $(i,j)$ schließt den rechten Multiloop-Teil (Multiloop-Dekomposition zwischen $j+1$ und $l-1$).\tabularnewline
 \end{tabular}
 \\\\
 \\\\
@@ -121,16 +121,16 @@ wie oben aber ohne inneren Multiloop
 $\Rightarrow$ damit nur noch $\mathcal O(n^3)$\\
 $\Rightarrow$ Anwendung der Berechneten Daten in Dotplot
 \begin{itemize}
-	\item Größe der Zellen repräsentiert Wahrscheinlichkeit für jedes Basenpaar
+	\item Fläche der Zellen repräsentiert Wahrscheinlichkeit für jedes Basenpaar
 	\item Quadrat in Dotplot mit $\sqrt{p(i,j)}$ Seitenlänge
 	\item in unterer Dreiecksmatrix mfe-Struktur (minimal free energy aus Zuker)
 \end{itemize}
 
-\textbf{Weitere Visualsierungsmöglichkeiten:}
+\textbf{Weitere Visualisierungsmöglichkeiten:}
 \begin{itemize}
 	\item Centroid: die Struktur, die von allen am wenigsten entfernt ist; alle Basenpaare, die mindestens $p \geq 0,5$ haben
 	\item MEA-Struktur (maximum expected accuracy): z.B. Nussinov mit scores proportional zu p(i,j)
-	\item Strukturplot mit Färbung proportional zur Basenpaar wahrscheinlichkeit oder nicht Basenpaare; $p^n(i)=(1- \sum \limits_{i \neq j} p(i,j))$; $p^n=$ungepaart
+	\item Strukturplot mit Färbung proportional zur Basenpaarwahrscheinlichkeit oder Nicht-Basenpaare; $p^n(i)=(1- \sum \limits_{i \neq j} p(i,j))$; $p^n=$ungepaart
 	\item Positional entropy: $S(i)=\sum \limits_{i \neq j} p(i,j)ln(p(i,j))$
 	\item in Mountainplot: Z als Score der beschreibt, in 5' oder 3' Richtung gepaart zu sein: $Z(i)=\sum \limits_{i<j}p(i,j) - \sum \limits_{j-i}p(j,i)$
 \end{itemize}
@@ -138,7 +138,7 @@ $\Rightarrow$ Anwendung der Berechneten Daten in Dotplot
 \newpage
 
 \subsection{stochastisches Backtracking}
-Strukturen mit der Wahrscheinlichkeit, die im Ensemble vorhanden sind\\
+Strukturen mit Wahrscheinlichkeit, mit der sie im Ensemble vorhanden sind\\
 $\rightarrow$ millionenfache Durchläufe\\
 \underline{Ergebnis:} Set von Strukturen, die das Ensemble abbilden
  - genaue Berechnung (siehe Punkt vorher) oft nicht möglich da zu teuer, daher stochastischer Ansatz
