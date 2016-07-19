@@ -121,16 +121,16 @@ wie oben aber ohne inneren Multiloop
 $\Rightarrow$ damit nur noch $\mathcal O(n^3)$\\
 $\Rightarrow$ Anwendung der Berechneten Daten in Dotplot
 \begin{itemize}
-	\item Größe der Zellen repräsentiert Wahrscheinlichkeit für jedes Basenpaar
+	\item Fläche der Zellen repräsentiert Wahrscheinlichkeit für jedes Basenpaar
 	\item Quadrat in Dotplot mit $\sqrt{p(i,j)}$ Seitenlänge
 	\item in unterer Dreiecksmatrix mfe-Struktur (minimal free energy aus Zuker)
 \end{itemize}
 
-\textbf{Weitere Visualsierungsmöglichkeiten:}
+\textbf{Weitere Visualisierungsmöglichkeiten:}
 \begin{itemize}
 	\item Centroid: die Struktur, die von allen am wenigsten entfernt ist; alle Basenpaare, die mindestens $p \geq 0,5$ haben
 	\item MEA-Struktur (maximum expected accuracy): z.B. Nussinov mit scores proportional zu p(i,j)
-	\item Strukturplot mit Färbung proportional zur Basenpaar wahrscheinlichkeit oder nicht Basenpaare; $p^n(i)=(1- \sum \limits_{i \neq j} p(i,j))$; $p^n=$ungepaart
+	\item Strukturplot mit Färbung proportional zur Basenpaarwahrscheinlichkeit oder Nicht-Basenpaare; $p^n(i)=(1- \sum \limits_{i \neq j} p(i,j))$; $p^n=$ungepaart
 	\item Positional entropy: $S(i)=\sum \limits_{i \neq j} p(i,j)ln(p(i,j))$
 	\item in Mountainplot: Z als Score der beschreibt, in 5' oder 3' Richtung gepaart zu sein: $Z(i)=\sum \limits_{i<j}p(i,j) - \sum \limits_{j-i}p(j,i)$
 \end{itemize}
@@ -138,7 +138,7 @@ $\Rightarrow$ Anwendung der Berechneten Daten in Dotplot
 \newpage
 
 \subsection{stochastisches Backtracking}
-Strukturen mit der Wahrscheinlichkeit, die im Ensemble vorhanden sind\\
+Strukturen mit Wahrscheinlichkeit, mit der sie im Ensemble vorhanden sind\\
 $\rightarrow$ millionenfache Durchläufe\\
 \underline{Ergebnis:} Set von Strukturen, die das Ensemble abbilden
  - genaue Berechnung (siehe Punkt vorher) oft nicht möglich da zu teuer, daher stochastischer Ansatz

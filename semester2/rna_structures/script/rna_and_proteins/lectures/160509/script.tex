@@ -3,7 +3,7 @@ Im folgenden sind mehrere Faktoren aufgeführt, die zur Optimierung der Struktur
 
 \subsection{Energieparameter}
 Das Turner-Modell führte zur Erzeugung von fast 100 Parametern, die zur Ermittlung der thermodynamischen Energie eines RNA-Moleküls relevant ist zu bestimmen. \\
-Andronescu et al. (2007) \footnote{Andronescu,M; Condon,A; Hoos, H; Mathews, D; Murphy, KP(2007): Efficient parameter estimation for RNA secondary structure prediction. Bioinformatics. 2007;23(13):19-28.} entwickelten eine "Constraint Generation"-Methode bei der die Schätzung der Energieparameter auf Grundlage von bekannten thermodynamischen Datenbanken errechnet werden. \\
+Andronescu et al. (2007) \footnote{Andronescu,M; Condon,A; Hoos, H; Mathews, D; Murphy, KP(2007): Efficient parameter estimation for RNA secondary structure prediction. Bioinformatics. 2007;23(13):19-28.} entwickelten eine ``Constraint Generation''-Methode, bei der die Schätzung der Energieparameter auf Grundlage von bekannten thermodynamischen Datenbanken errechnet werden. \\
 Hierbei werden zunächst die Energiewerte zur Berechnung der besten Struktur genutzt und durch ein Optimierungsproblem über mehrere Iterationsschritte verbessert, so dass die Energie minimal wird.
 
 \subsection{Dangling ends}
@@ -28,10 +28,10 @@ Andronescu:
 
 \subsection{Constraint Folding}
 Man unterscheidet zwei Typen von Constraints (Beschränkungen):
-\begin{itemize}
+\begin{description}
 \item[Hard Constraints] Es darf keine Basenpaarung einer anderen widersprechen. Entweder eine Base i ist ungepaart oder ist nach links oder nach rechts mit einer anderen verbunden. 
 \item[Soft Constraints] Ergeben sich aus den Energiescorematrizen der Strukturvorhersage mit McCaskill (oder Zuker) und zeigen die Wahrscheinlichkeit einer bestimmten positionsabhängigen Basenpaarung an
-\end{itemize}
+\end{description}
 
 Experimentell kann durch Methoden, wie PARS (Hochdurchsatz-Sequenzierung) bestimmt werden an welchen Positionen Basenpaarung vorliegen. Hierfür wird ein bioenzymatischer Verdau durchgeführt bei dem entweder doppelsträngige Stellen oder einzelsträngige Stellen zersetzt werden.
 \\\\
@@ -41,7 +41,7 @@ Experimentell kann durch Methoden, wie PARS (Hochdurchsatz-Sequenzierung) bestim
 
 \begin{itemize}
 	\item konsistente Mutation: G-C $\rightarrow$ G-U
-	\item kompensatorische Mutation: Mutation an C zieht Mutation an G mitsich
+	\item kompensatorische Mutation: Mutation an C zieht Mutation an G mit sich
 \end{itemize}
 
 \underline{$\Rightarrow$ Ziel:} Zusätzliche Informationsebene durch auffinden von konsistenten und Kompensatorischen Mutationen
@@ -60,7 +60,7 @@ $\rightarrow$ prinzipiell: Alignments mit Sekundärstrukturvorhersage kombiniere
 
 In der Evolutionsbiologie geht man von einem Struktur-Funktions-Beziehung konservierter Merkmale aus. Das bedeutet: Funktional wichtige Sequenzbereiche sind in der DNA konserviert. \\
 Für die RNA-Strukturvorhersage ist jedoch zu beachten, dass auch sich unterscheidende Sequenzen strukturell ähneln können und somit deren Sekundärstruktur evolutionär konserviert ist. \\
-Betrachtet man nun einen Datensatz von RNA-Sequenzen kann über Alinierung der Sequenzen und/oder der Sekundärstrukturen die Ähnlichkeit dieser Sequenzen betrachtet werden. Es ist möglich, dass RNA-Moleküle mit ähnlicher bis gleicher Struktur miteinander verwandt sind. \\
+Betrachtet man nun einen Datensatz von RNA-Sequenzen, kann über Alignierung der Sequenzen und/oder der Sekundärstrukturen die Ähnlichkeit dieser Sequenzen betrachtet werden. Es ist möglich, dass RNA-Moleküle mit ähnlicher bis gleicher Struktur miteinander verwandt sind. \\
 $\rightarrow$ komparative Analyse:
 Es gibt drei Hauptmethoden, die zur Konsensusstrukturvorhersage genutzt werden: 
 \begin{itemize}
@@ -74,7 +74,7 @@ $\rightarrow$ multiples Sequenzalignment (z.B. Needleman-Wunsch) \\
 $\rightarrow$ generalisierte Bestimmung einer RNA-Struktur \\
 
 \textbf{- minimiere die mittlere Energie} \\
-Für RNAalifold ist ein multiples Alignment mit K Sequenzen der Länge m gegeben. Ziel ist es eine RNA-Struktur der Konsensussequenz zu finden, deren minimierte Energie sich aus der Summe aller freien Energien der K Sequenzen und dem Konservierungsgrad gleichbleibender Sequenzen zusammensetzt.\\
+Für RNAalifold ist ein multiples Alignment mit K Sequenzen der Länge m gegeben. Ziel ist es, eine RNA-Struktur der Konsensussequenz zu finden, deren minimierte Energie sich aus der Summe aller freien Energien der K Sequenzen und dem Konservierungsgrad gleichbleibender Sequenzen zusammensetzt.\\
 \\
 \textbf{- Unterscheidung von Mutationen} \\
 konsistente Mutationen (GC $\rightarrow$ GU) \\
@@ -84,36 +84,35 @@ Berechnung:
 \begin{equation}
 C(i,j)= max
 \begin{cases} 
-H(i,j)\\ 
-I\\ 
+\mathcal{H}(i,j)\\ 
+\mathcal{I}\\ 
 M\\
 \end{cases}
 \end{equation}
 
-$\rightarrow$  Rechne den Term, der die Konservierung beschreibt zu C(i,j) \\
+$\rightarrow$  Rechne den Term, der die Konservierung beschreibt zu C(i,j) dazu \\
 $\rightarrow$ Bestrafung von Verletzung der Komplementarität\\
-\begin{itemize}
-	\item[Fall1:] 
 	\begin{equation}
-	\gammaup(i,j)= \sum 
+	\gamma(i,j)= \sum_{s_1,s_2 \in \mathbb{A}(-lignment)\\} 
 	\begin{cases} 
-	h(s_{1i},s_{2i}) + h(s_{1j},s_{2j}) \ if\ s_{1i},s_{1j}) \epsilon\ Bp \ and \ s_{2i},s_{2j} \epsilon\ Bp \\
+	h(s_{1i},s_{2i}) + h(s_{1j},s_{2j}) \ if\ s_{1i},s_{1j} \in Bp \ and \ s_{2i},s_{2j} \in Bp \\
 	0 \ else\\
 	\end{cases} 
-	\end{equation}	
-	\item [Fall2:] 
-	\begin{equation} 
-	C(i,j)= y * \gammaup (i,j) + x * \delta (i,j)+ mean[C(i,j)]  
-	\end{equation} ;
-	\begin{equation}	 
-	\delta(i,j)= \sum_{S} 
-	\begin{cases} 
-	0 \ if\ (s_{i},s_{j}) \epsilon\ Bp \\
-	0,5 \ if\ s_{i},s_{j} \epsilon\ \{-\} \\ 
-	0 \ else\\
-	\end{cases}
 	\end{equation}
-\end{itemize}
+	\begin{equation}	 
+		\delta(i,j)= \sum_{s} 
+		\begin{cases} 
+			0 \ if\ (s_{i},s_{j}) \in Bp \\
+			0,5 \ if\ s_{i}, s_{j} \in \{\_\} \\ 
+			1 \ else\\
+		\end{cases}
+	\end{equation}
+	\begin{equation} 
+		C(i,j)= x \cdot \gamma (i,j) + y \cdot \delta (i,j)+ mean[C(i,j)]  
+	\end{equation}
+$h(i,j)$: Hamming-Distanz zwischen $i$ und $j$ \\
+$x,y$: Skalierungsfaktoren\\
+$\_$: Gap im Alignment\\
 
 Es können so auf Wissen basierte Matrizen mit bekannten konservierten RNA-Strukturen erzeugt werden
 $\rightarrow$ Ribosum: knowledge-based Score, für die Wahrscheinlichkeit in einem Basenpaar (i,j) für die Basen $s_{1i}, s_{1j}$ und $s_{2i}, s_{2j}$ \\
