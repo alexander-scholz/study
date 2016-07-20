@@ -202,16 +202,16 @@ Energie von Multiloops:
 \begin{equation}
 M(i,j;k,l) = min
 \begin{cases}
-M(i+1,j;k+1,l) + A(i,i+1;j,j+1) \\
-\displaystyle\min_{i<u<j \ k<x<l} \begin{cases} C(i,u;k,x) + A(u,j;x,l) \end{cases}\\
-\displaystyle\min_{i<u<j \ k<x<l} \begin{cases} C(i,u;k,x) + M(u+1,j;k+1,x) + A(u,u+1;x,x+1) \end{cases}
+M(i,j-1; k,l-1) + A(j,j-1; l,l-1) \\
+\displaystyle\min_{i<u<j \ k<x<l} \begin{cases} C(u,j; x,l) + A(u,j;x,l) \end{cases}\\
+\displaystyle\min_{i<u<j \ k<x<l} \begin{cases} M(i,u-1; k,x-1) + C(u,j-1; x,l-1) + A(u-1,u; x-1,x) \end{cases}
 \end{cases}
 \end{equation}
 \begin{equation}
 M^1(i,j;k,l) = min
 \begin{cases}
-C(i,j;k,l) \\
-M^1(i,j-1;k,l-1) + A(j-1,j;l-1,l)
+M^1(i,j-1; k,l-1) + A(j-1,j; l-1,l)\\
+C(i,j;k,l)
 \end{cases}
 \end{equation}
 $\rightarrow$ \textbf{Komplexität:} $\Omega(Zeit) = \Omega(n^6) \ ; \ \Omega(Memory) = \Omega(n^4)$ $\rightarrow$
