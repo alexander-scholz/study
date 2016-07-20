@@ -167,12 +167,12 @@ M(i,i;k,l) = M(i,j;k,k) = \infty
 Freie Energie der Sequenzen von i bis j, bzw. von k bis l:
 \begin{equation}
 F(i,j;k,l)= min \begin{cases}
-F(i+1,j,k+1,l) + A(i,j+1;k,l+1) \ (i,k \ ungepaart) \\
+F(i+1,j,k+1,l) + A(i,i+1; k,k+1) \ (i,k \ ungepaart) \\
 \\
 min_{u,v}\ 
 \begin{cases}
-C(i,u;k,v) + F(u+1,j,v+1,l) \\
-+ A(u,u+1;v,v+1) + A(i,i;j,j)) \\ 
+	C(i,u;k,v) + F(u+1,j,v+1,l) \\
+	+ A(u,u+1;v,v+1) + A(i,i; k,k)) \\ 
 \end{cases}
 \ (i,k \ gepaart \ mit \ k,v)\\
 \end{cases}
