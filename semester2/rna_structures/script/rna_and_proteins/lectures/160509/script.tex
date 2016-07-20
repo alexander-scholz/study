@@ -179,7 +179,7 @@ min_{u,v}\
 \end{equation}
 eingeschlossene Energie zwischen dem Basenpaar (i,j) bzw. (k,l)
 \begin{equation}
-	C(i,j;k,l) = min 
+	C(i,j; k,l) = min 
 	\begin{cases} 
 		H(i,j) + H(k,l) + A(i,j;k,l) \\ 
 		\\					
@@ -192,8 +192,8 @@ eingeschlossene Energie zwischen dem Basenpaar (i,j) bzw. (k,l)
 		\\
 		\displaystyle\min_{i<u<j \ k<x<l}\ 
 		\begin{cases}
-			M(i,u;k,x) + M^{1}(u+1,j-1;x+1,l-1) \\ 
-			+ A(u,u+1;x,x+1) + A(i,i+1;x,x+1) \\ 
+			M(i+1,u; k+1,x) + M^{1}(u+1,j-1;x+1,l-1) \\ 
+			+ A(u,u+1; x,x+1) + A(i,i+1; k,k+1) \\ 
 			+ A(j-1,j;l-1,l)\\ 
 		\end{cases}
 	\end{cases}
