@@ -35,13 +35,13 @@ Mechanismus zur Detektion von Modifikationen \\
 \item reverse Transkription: Die RNA wird mit DNA-Molekülen trankribiert. Die Transkription bricht an der NMIA-Bindestelle ab.
 \item die gewonnenen DNA-Fragmente werden sequenziert und als $Library^+$ gespeichert
 \item Da es auch zu zufälligen Abbruch bei der reversen Transkription kommen kann, wird als Kontrolle eine $Library^-$ aus einem NMIA-freien Ansatz erzeugt
-\item Alignment der Reads an Transkriptom der RNA ($X_ij$, wobei i = Basenposition, j = Library)
+\item Alignment der Reads an Transkriptom der RNA ($X_{ij}$, wobei i = Basenposition, j = Library)
 
 \item Maximum-Likelihood-Model:
 
 \begin{itemize}
-\item Positionsraten: $r_i = \dfrac{r_{i+}}{r_{i-}}$
-\item Abbruchrate: $Library^-$
+\item Positionsraten: $r_i = \dfrac{x_{i+}}{x_{i-}}$
+\item Abbruchrate: $\Theta$
 \item simulierte Daten: $m_i$ 
 \end{itemize}
 
@@ -49,11 +49,11 @@ Mechanismus zur Detektion von Modifikationen \\
 
 \item[$\rightarrow$] Ermittlung der pseudo-Free-Energy \\
 \begin{equation}
-\Delta G_{Shape_i} = m * ln(\gamma_i * 1,0) + b
+\Delta G_{Shape_i} = m * ln(\gamma_i * 1.0) + b
 \end{equation} \\
 
 m ... Anstieg des Bestrafungswertes \\
-1,0 ... Pseudocount \\
+1,0 ... Pseudocount (damit $\gamma$ auch = 0 sein darf)\\
 b ... negativer Bonus der freien Energie für gepaarte Basen \\
 
 \item Bestimmung der gewichteten freien Energie je Paar: \\
