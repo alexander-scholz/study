@@ -236,7 +236,7 @@ Nach welchen Kriterien wurde die scheinbar beste Faltung gewählt? $\rightarrow$
 
 \textbf{Tree-Alignment:} Erzeugung eines common Super-Trees
 
-\subsection{lokales Falten}
+\subsection{Lokales Falten}
 
 Vorhersagequalität nimmt mit Moleküllänge ab \\
 Viele Moleküle haben keine globale Struktur aufgrund der Interaktionen in der Zelle
@@ -279,7 +279,7 @@ RNAi dient der Gerüstbildung und Erzeugung von RNA-Enzymen:
 \end{itemize}
 Hierbei gibt es zwei Typen von kurzen mRNA-Sequenzen, die helfen virale mRNA in ihrer Weiterverarbeitung zu inhibieren (miRNA und sRNA) \\
 
-Zur Vorhersage der RNA-RNA-Interaktionsstruktur können verschiedene Abstraktionsstufen genutzt werden. Das vollständige Energiemodell (sequentielle Vorhersage: zwei Moleküle werden als ein Molekül betrachtet und gefalten) ist sehr komplex mit $O(n^6)$.
+Zur Vorhersage der RNA-RNA-Interaktionsstruktur können verschiedene Abstraktionsstufen genutzt werden. Das vollständige Energiemodell (sequentielle Vorhersage: zwei Moleküle werden als ein Molekül betrachtet und gefaltet) ist sehr komplex mit $O(n^6)$.
 \begin{itemize}
 \item beliebig viele Interaktionsstellen möglich
 \item Intermolekulare Basenpaare innerhalb von intramolekularen Loops \\ $\rightarrow$ zum Beispiel Kissing Hairpins 
@@ -289,7 +289,7 @@ Zur Vorhersage der RNA-RNA-Interaktionsstruktur können verschiedene Abstraktion
 \item intramolekulare Bp = interne Bp
 \item ancestrale Bp = interne Bp, die externe Bp einschließen
 \item Eltern-Bp = ancestrale Bp mit minimaler Distanz
-\item subsumierende Bp = ancestrale Bp von jeweiliger Sequenz A,B, wobei A alle externen Bp, wie B auch einschließt
+\item subsummierende Bp = ancestrale Bp von jeweiliger Sequenz A,B, wobei A alle externen Bp, wie B auch einschließt
 \end{itemize}
 
 Dadurch können geschlossene Strukturen definiert werden:
@@ -304,10 +304,10 @@ Dadurch können geschlossene Strukturen definiert werden:
 \end{itemize}
 $\rightarrow$ Damit kann die RNA-RNA-Interaktion in feste Bereiche vollständig zerlegt werden, die entweder geschlossene Strukturen sind oder aus rein intramolekulare Sequenzen bestehen (Reidys, Stadler, 2009) \\
 
-Die Komplexität kann auf $0(n^3)$ durch Zusammenfassen von Termen reduziert werden. Hierbei werden beim Forward- und beim Backward-McCaskill-Algorithmus zusätzliche Matritzen eingespeichert. Die Backward-Matrix dient der Bestimmung der Zugänglichkeit der interagierenden Moleküle.
+Die Komplexität kann auf $\mathcal{O}(n^3)$ durch Zusammenfassen von Termen reduziert werden. Hierbei werden beim Forward- und beim Backward-McCaskill-Algorithmus zusätzliche Matritzen eingespeichert. Die Backward-Matrix dient der Bestimmung der Zugänglichkeit der interagierenden Moleküle.
 \subsection{RNA miteinander falten und konkatenieren}
 
-Im Allgemeinen geht man wie folgt vor um solche RNAi zu bestimmen:
+Im Allgemeinen geht man wie folgt vor, um solche RNAi zu bestimmen:
 \begin{itemize}
 \item Ermittle die gemeinsame Struktur von zwei RNA-Molekülen
 \item Finde die Bindestellen von kleineren RNA-Fragmenten
