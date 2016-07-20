@@ -93,7 +93,7 @@ Multiloop\\
 $\rightarrow$  Rechne den Term, der die Konservierung beschreibt zu C(i,j) dazu \\
 $\rightarrow$ Bestrafung von Verletzung der Komplementarität\\
 	\begin{equation}
-	\gamma(i,j)= \sum_{s_1,s_2 \in \mathbb{A}(-lignment)\\} 
+	\gamma(i,j)= \sum_{s_1,s_2 \in \mathbb{A}} 
 	\begin{cases} 
 	h(s_{1i},s_{2i}) + h(s_{1j},s_{2j}) \ if\ s_{1i},s_{1j} \in Bp \ and \ s_{2i},s_{2j} \in Bp \\
 	0 \ else\\
@@ -110,9 +110,13 @@ $\rightarrow$ Bestrafung von Verletzung der Komplementarität\\
 	\begin{equation} 
 		C(i,j)= x \cdot \gamma (i,j) + y \cdot \delta (i,j)+ mean[C(i,j)]  
 	\end{equation}
-$h(i,j)$: Hamming-Distanz zwischen $i$ und $j$ \\
-$x,y$: Skalierungsfaktoren\\
-$\_$: Gap im Alignment\\
+\begin{itemize}
+ \item[] $\mathbb{A}$: Multiples Sequenzalignment (MSA)
+ \item[] $s_1, s_2$: Sequenzen
+ \item[] $h(i,j)$: Hamming-Distanz zwischen $i$ und $j$
+ \item[] $x,y$: Skalierungsfaktoren
+ \item[] $\_$: Gap im Alignment
+\end{itemize}
 
 Es können so auf Wissen basierte Matrizen mit bekannten konservierten RNA-Strukturen erzeugt werden
 $\rightarrow$ Ribosum: knowledge-based Score, für die Wahrscheinlichkeit in einem Basenpaar (i,j) für die Basen $s_{1i}, s_{1j}$ und $s_{2i}, s_{2j}$ \\
@@ -128,7 +132,7 @@ Somit nur sinnvoll, wenn zum einen ein Alignment möglich ist und wenn die Seque
 
 \textbf{Annahme:} Zwei Sequenzen sind sich ähnlich, wenn ihre RNA-Struktur einen stark äquivalenten Shape besitzen (len(A) = len(B) und pair(A) = pair(B)).\\
 
-\textbf{Idee:} Finde für äquivalente Strukturen die minimale Editierdistanz  bzw. mfe \\
+\textbf{Idee:} Finde für äquivalente Strukturen die minimale Editierdistanz  bzw. MFE \\
 
 \textbf{Vorgehen:} Sankoff = Zuker + Needleman-Wunsch
 \begin{itemize}
@@ -138,7 +142,7 @@ Somit nur sinnvoll, wenn zum einen ein Alignment möglich ist und wenn die Seque
 \item[4] Editiere Alignment und Faltungen um minimalen Score $min(E_A + E_B + Distanz_AB)$ zu finden
 \item[5] Consensussequenz und Sequenz C gegeben $\rightarrow$ gehe zu 2
 \end{itemize}
-\textbf{Distanzbestimmung:}
+\textbf{Distanzbestimmung (Needleman-Wunsch):}
 \begin{equation}
 A(i,j;k,l)= min \begin{cases} 
 A(i+1,j;k+1,l) + \sigma \\
@@ -148,7 +152,11 @@ A(i,j;k+1,l) + \sigma_{gap} \\
 \end{equation}
 \textbf{Initialisierung:}
 \begin{equation}
-A(i,i;k,k) = \begin{cases} \sigma \ if a_i != b_k \\ 0 \ else\end{cases}
+	A(i,i;k,k) =
+	\begin{cases}
+		\sigma \ if~a_i \ne b_k \\
+		0 \ else
+	\end{cases}
 \end{equation}
 \begin{equation}
 C(i,i;k,k) = \infty
@@ -156,47 +164,47 @@ C(i,i;k,k) = \infty
 \begin{equation}
 M(i,i;k,l) = M(i,j;k,k) = \infty
 \end{equation}
-Freie Energie der Sequenzen von i bis j bzw. von k bis l:
+Freie Energie der Sequenzen von i bis j, bzw. von k bis l:
 \begin{equation}
 F(i,j;k,l)= min \begin{cases}
 F(i+1,j,k+1,l) + A(i,j+1;k,l+1) \ (i,k \ ungepaart) \\
 \\
 min_{u,v}\ 
-\begin{split}
+\begin{cases}
 C(i,u;k,v) + F(u+1,j,v+1,l) \\
 + A(u,u+1;v,v+1) + A(i,i;j,j)) \\ 
-\end{split}
+\end{cases}
 \ (i,k \ gepaart \ mit \ k,v)\\
 \end{cases}
 \end{equation}
 eingeschlossene Energie zwischen dem Basenpaar (i,j) bzw. (k,l)
 \begin{equation}
-C(i,j;k,l)= min 
-\begin{cases} 
-H(i,j) + H(k,l) + A(i,j;k,l) \\ 
-\\					
-\displaystyle\min_{i < u < v < j \ k<x<y<l}\ 
-\begin{split}
-I(i,j;k,l;u,v;x,y) + C(u,v;x,y)  \\
-+ A(i,u;k,x) + A(v,j;y,l)\\ 
-\end{split}
-\\
-\\
-\displaystyle\min_{i<u<j \ k<x<l}\ 
-\begin{split}
-M(i,u;k,x) + M^{1}(u+1,j-1;x+1,l-1) \\ 
-+ A(u,u+1;x,x+1) + A(i,i+1;x,x+1) \\ 
-+ A(j-1,j;l-1,l)\\ 
-\end{split}
-\end{cases}
+	C(i,j;k,l) = min 
+	\begin{cases} 
+		H(i,j) + H(k,l) + A(i,j;k,l) \\ 
+		\\					
+		\displaystyle\min_{i < u < v < j \ k<x<y<l}\ 
+		\begin{cases}
+			I(i,j;k,l;u,v;x,y) + C(u,v;x,y)  \\
+			+ A(i,u;k,x) + A(v,j;y,l)\\ 
+		\end{cases}
+		\\
+		\\
+		\displaystyle\min_{i<u<j \ k<x<l}\ 
+		\begin{cases}
+			M(i,u;k,x) + M^{1}(u+1,j-1;x+1,l-1) \\ 
+			+ A(u,u+1;x,x+1) + A(i,i+1;x,x+1) \\ 
+			+ A(j-1,j;l-1,l)\\ 
+		\end{cases}
+	\end{cases}
 \end{equation}
-Energie von Mulitloops:
+Energie von Multiloops:
 \begin{equation}
 M(i,j;k,l) = min
 \begin{cases}
 M(i+1,j;k+1,l) + A(i,i+1;j,j+1) \\
-\displaystyle\min_{i<u<j \ k<x<l}\ C(i,u;k,x) + A(u,j;x,l) \\
-\displaystyle\min_{i<u<j \ k<x<l}\ C(i,u;k,x) + M(u+1,j;k+1,x) + A(u,u+1;x,x+1) 
+\displaystyle\min_{i<u<j \ k<x<l} \begin{cases} C(i,u;k,x) + A(u,j;x,l) \end{cases}\\
+\displaystyle\min_{i<u<j \ k<x<l} \begin{cases} C(i,u;k,x) + M(u+1,j;k+1,x) + A(u,u+1;x,x+1) \end{cases}
 \end{cases}
 \end{equation}
 \begin{equation}
