@@ -49,7 +49,7 @@ Mechanismus zur Detektion von Modifikationen \\
 
 \item[$\rightarrow$] Ermittlung der pseudo-Free-Energy \\
 \begin{equation}
-\Delta G_{Shape_i} = m * ln(\gamma_i * 1.0) + b
+\Delta G_{Shape_i} = m * ln(\gamma_i + 1.0) + b
 \end{equation} \\
 
 m ... Anstieg des Bestrafungswertes \\
@@ -115,19 +115,9 @@ NAIM ist eine Erweiterung des Interferenz-Mappings mit Triphosphorsäure-Substit
 Untersucht, welche Basen funktional sind. Vorgehensweise:
 \begin{itemize}
 \item Nukleotide sind prinzipiell ohne funktionelle Gruppe
-\item Nukleotide werden in vitro zufällig durch getaggede Analogika und getaggede normale Nukleotide während Transkription markiert
+\item Nukleotide werden in vitro zufällig durch getaggede Analogika\footnote{\url{https://de.wikipedia.org/wiki/Analogon_(Chemie)}} und getaggede normale Nukleotide während Transkription markiert
 \item Annahme: Jedes Transkript hat nur ein getaggedes Nukleotid/Analogon
-\item Auswahl der aktiven funktionalen RNAs und Erzeugung einer inaktiven Kontrollgruppe
-\item Cleavage (Beschneiden) hinter der getaggeden Struktur durch Iod
+\item Auswahl der aktiven funktionalen RNAs und Erzeugung einer inaktiven Kontrollgruppe (z.B. durch Bindungstest mit Proteinen)
+\item Cleavage (Beschneiden) hinter der getaggeden Struktur durch Iod (nur die mit Tag!)
 \item Gelelektrophoresebild $\rightarrow$ gibt Aussage darüber welche durch Selektion sichtbar werden und welche durch Nukleotid-Einbau sichtbar sind
 \end{itemize}
-
-\section{Proteinstrukturen}
-\textbf{Methoden}
-\begin{itemize}
-\item NMR-Spektroskopie (Protein in Lösung)
-\item Röntgen-Kristallographie (Protein als Kristall)
-\end{itemize}
-$\rightarrow$ Bestimmung der 3D-Atompositionen $\rightarrow$ Position-Database (PDP)\\
-
-Nachteil: sehr ungenau und starkes Hintergrundrauschen

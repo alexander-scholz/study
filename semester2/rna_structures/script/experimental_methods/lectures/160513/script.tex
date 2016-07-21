@@ -1,8 +1,6 @@
 \section{Tandem Affinity Purification (TAP)}\footnote{\url{https://en.wikipedia.org/wiki/Tandem_affinity_purification}}
-\textbf{DNA:}\\
-\includegraphics[width=0.5\textwidth]{lectures/160513/pix/dna_2_farb.jpg}
 
- - ähnlich auch bei Proteinen\\\\
+\textbf{Verwendung:} Welche Proteine interagieren untereinander? Suche nach einzelnen Proteinen und Proteinkomplexen\\
 
 \includegraphics[width=0.75\textwidth]{lectures/160513/pix/namenlos.png}
 
@@ -13,7 +11,7 @@
 \\\\
 CBP - Calmodulin binding peptide\footnote{\url{https://en.wikipedia.org/wiki/Calmodulin}}\\
 TEV - tabacco etch virus\footnote{\url{https://en.wikipedia.org/wiki/Tobacco_etch_virus}}\\
-IgG - unspezifischer Antikörper\footnote{\url{https://de.wikipedia.org/wiki/Immunglobulin_G}}
+IgG - unspezifischer Antikörper (Immunglobulin G)\footnote{\url{https://de.wikipedia.org/wiki/Immunglobulin_G}}
 \\\\
 \includegraphics[width=0.75\textwidth]{lectures/160513/pix/2.jpg}
 \\\\
@@ -29,6 +27,12 @@ IgG - unspezifischer Antikörper\footnote{\url{https://de.wikipedia.org/wiki/Imm
 \end{enumerate}
 
 \includegraphics[width=0.5\textwidth]{lectures/160513/pix/3.jpg}
+
+\textbf{Probleme:}
+\begin{itemize}
+	\item durch (häufige) Reinigung hohe Fehlerrate
+	\item durch Tag an Protein Faltung möglicherweise nicht mehr (wie ursprünglich) möglich
+\end{itemize}
 
 \underline{weitere Informationsquellen (indirekt)}\\\\
 Ziel: Reduzierung des False-Negatives
@@ -79,7 +83,7 @@ Solange wie noch Cliquen gemerged werden \& $\underbrace{\sum \limits_{n} \frac{
 $\rightarrow$ Verleich mit realen Proteinkomplexen hat gezeigt, das Cliquen keine gute Approximation ergeben
 
 \subsection{Clique Finding Algorithzm (CFA)}
-Annahme: Proteinkomplexe k-connected\\
+Annahme: Proteinkomplexe k-connected\footnote{\url{https://de.wikipedia.org/wiki/K-Zusammenhang}}\\
 graphs $\Rightarrow$ geringe Dichte möglich\\
 k-connected: $k \in \mathbb{N}$ $\forall V' \subset V, |V'| < k$, G zusammenhängend\\
 k $\rightarrow$ Anzahl der Knoten, die entfernt werden können, ohne das G auseinanderfällt\\

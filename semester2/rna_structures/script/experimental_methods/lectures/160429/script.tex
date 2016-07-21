@@ -1,13 +1,14 @@
 \section{CLIP}\footnote{\url{https://en.wikipedia.org/wiki/CLIP}}
 
+ - Protein an RNA
+
 \subsection{CLIP-Seq}
 \underline{c}ross-\underline{l}inking \& \underline{i}mmunoprecipitation \underline{p}rotocol (cross-linking immunoprecipitation-high-throughput sequencing)\footnote{\url{https://de.wikipedia.org/wiki/CLIP-Seq}}
-\begin{itemize}
-	\item Ultravioletes Licht für Cross-Linking
-	\item UV-Licht cross linked NUR RNA mit Proteinen
+\begin{enumerate}
+	\item Ultravioletes Licht für Cross-Linking, UV-Licht cross linked \textbf{NUR} RNA mit Proteinen
 	\item Induziert UV Mutation der RNA
 	\item CIMS: \underline{C}ross-\underline{l}inking \underline{i}nduced \underline{m}utation \underline{s}ite
-\end{itemize}
+\end{enumerate}
 
 \includegraphics[width=1\textwidth]{lectures/160429/pix/clip_seq.jpg}
 \\\\
@@ -38,7 +39,7 @@ Mutation ist Bindungsstelle:
 \underline{P}hoto\underline{a}ctivable \underline{R}ibonucleoside-enhanced CLIP\footnote{\url{https://de.wikipedia.org/wiki/PAR-CLIP}}
 
 \begin{itemize}
-	\item Photoaktive (reagieren auf UV-Licht) Ribonucleoside -> Diese lassen wir in DNA einbauen
+	\item Photoaktive (reagieren auf UV-Licht) Ribonucleoside $\rightarrow$ Diese lassen wir in RNA einbauen
 	\item UV-Licht für Cross Linking
 	\item Cytosin ist photoaktiv, wird durch UV-Licht zu Uracil (welches in DNA zu Thymin wird)
 	\item Antikörper um RNA Fragmente auszuwählen
@@ -50,10 +51,14 @@ Mutation ist Bindungsstelle:
 
 \textbf{\underline{Seeding:}} Transkription C$\rightarrow$T, Reads C$\rightarrow$T\\\\
 \textbf{\underline{Alignment:}} angepasste Kostenfunktion(C$\rightarrow$T wird nicht bestraft). Dadurch nicht symetrische Kostenfunktion
+\\\\
+\textbf{\underline{Vorteil:}} unterscheiden von verschiedenen Mutationen möglich
 
 \newpage
 
 \section{Protein-Protein-Interaktion}\footnote{\url{https://de.wikipedia.org/wiki/Protein-Protein-Interaktion}}
+
+\textbf{Voraussetzung: }beide Proteine bekannt, Wirkung aufeinander soll überprüft/festgestellt werden\\
 
 Yeast Two-Hybrid System\footnote{\url{https://de.wikipedia.org/wiki/Hefe-Zwei-Hybrid-System}}:\\
  - benötigt: Wirtsorganismus: Hefe\\
