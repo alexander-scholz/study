@@ -13,3 +13,4 @@ tmp.tex
 *.gz
 *.synctex.gz
 *tex.backup
+*.Rhistory
