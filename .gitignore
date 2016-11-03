@@ -14,5 +14,6 @@ tmp.tex
 *.synctex.gz
 *tex.backup
 *.Rhistory
+*.RData
 *.odg
 *.xcf
