@@ -1,7 +1,6 @@
 require(plotrix)
 
 Table = read.table("B3A3_ergometer.dat", header=TRUE, sep="\t", quote="", stringsAsFactor=FALSE)
-Table[1,]
 
 # a.) calc age and bmi (age in wich unit?)
 for (AgeData in 1:nrow(Table)) {
@@ -9,13 +8,14 @@ for (AgeData in 1:nrow(Table)) {
   Table[AgeData, 'Age'] = round(age)
   Table[AgeData, 'BMI'] = Table[AgeData, "weight"] / (Table[AgeData, "height"]^2)
 }
+rm(age)
 
 # b.) determine descriptive statistics for ergometer, lactatee, BMI, age seperated by gender
 # https://de.wikibooks.org/wiki/GNU_R:_Deskriptive_Statistik
 ergo_m = Table[Table[,'sex'] == 1,"ergometer"]
 ergo_f = Table[Table[,'sex'] == 2,"ergometer"]
-lactate_m = Table[Table[,'sex'] == 1, "lactatee"]
-lactate_f = Table[Table[,'sex'] == 2, "lactatee"]
+lactate_m = Table[Table[,'sex'] == 1, "lactate"]
+lactate_f = Table[Table[,'sex'] == 2, "lactate"]
 bmi_m = Table[Table[,'sex'] == 1, "BMI"]
 bmi_f = Table[Table[,'sex'] == 2, "BMI"]
 age_m = Table[Table[,'sex'] == 1, "Age"]
@@ -67,6 +67,24 @@ print_desc_data(age_f, 'female age data')
 multhist(list(age_m, age_f), main = 'age male vs. female', names = ref_names, col = ref_col)
 legend(15, 30, ref_names, lty = c(1,1), lwd=c(2.5,2.5), col=c('blue','red'))
 
-# c.) compare ergo between genders with adapted test
+# c.) compare ergo for genders with adapted test
+# two independent variables, distribution unknown -> wilcox-test
+# https://de.wikibooks.org/wiki/GNU_R:_wilcox_test
+gender = Table[,'sex']
+gender[gender==1] = 'm'
+gender[gender==2] = 'w'
+ergometer = Table[,'ergometer']
+ergo_data = data.frame(gender, ergometer)
+colnames(ergo_data) = c('gender', 'ergometer')
+wilcox.test(ergometer~gender, data = ergo_data)
 
 # d.) correlate ergo with lactate, bmi and age
+ergometer = Table[,'ergometer']
+lactate = Table[,'lactate']
+bmi = Table[,'BMI']
+age = Table[,'Age']
+data_set = data.frame(ergometer, lactate, bmi, age)
+
+library(corrplot)
+correlation_data = cor(data_set)
+corrplot(correlation_data, method="circle")
