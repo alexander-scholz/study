@@ -10,12 +10,12 @@ for (AgeData in 1:nrow(Table)) {
   Table[AgeData, 'BMI'] = Table[AgeData, "weight"] / (Table[AgeData, "height"]^2)
 }
 
-# b.) determine descriptive statistics for ergometer, lactate, BMI, age seperated by gender
+# b.) determine descriptive statistics for ergometer, lactatee, BMI, age seperated by gender
 # https://de.wikibooks.org/wiki/GNU_R:_Deskriptive_Statistik
 ergo_m = Table[Table[,'sex'] == 1,"ergometer"]
 ergo_f = Table[Table[,'sex'] == 2,"ergometer"]
-lactat_m = Table[Table[,'sex'] == 1, "lactate"]
-lactat_f = Table[Table[,'sex'] == 2, "lactate"]
+lactate_m = Table[Table[,'sex'] == 1, "lactatee"]
+lactate_f = Table[Table[,'sex'] == 2, "lactatee"]
 bmi_m = Table[Table[,'sex'] == 1, "BMI"]
 bmi_f = Table[Table[,'sex'] == 2, "BMI"]
 age_m = Table[Table[,'sex'] == 1, "Age"]
@@ -46,13 +46,27 @@ ref_col = col = c('blue', 'red')
 ### ergo data ###
 print_desc_data(ergo_m, 'male ergo data')
 print_desc_data(ergo_f, 'female ergo data')
-multhist(list(ergo_m, ergo_f), names = ref_names, col = ref_col)
+multhist(list(ergo_m, ergo_f), main = 'ergo male vs. female', names = ref_names, col = ref_col)
 legend(15, 30, ref_names, lty = c(1,1), lwd=c(2.5,2.5), col=c('blue','red'))
 
-### lactat data ###
-
+### lactate data ###
+print_desc_data(lactate_m, 'male lactate data')
+print_desc_data(lactate_f, 'female lactate data')
+multhist(list(lactate_m, lactate_f), main = 'lactate male vs. female', names = ref_names, col = ref_col)
+legend(15, 30, ref_names, lty = c(1,1), lwd=c(2.5,2.5), col=c('blue','red'))
 
 ### bmi ###
-
+print_desc_data(bmi_m, 'male bmi data')
+print_desc_data(bmi_f, 'female bmi data')
+multhist(list(bmi_m, bmi_f), main = 'bmi male vs. female', names = ref_names, col = ref_col)
+legend(15, 30, ref_names, lty = c(1,1), lwd=c(2.5,2.5), col=c('blue','red'))
 
 ### age ###
+print_desc_data(age_m, 'male age data')
+print_desc_data(age_f, 'female age data')
+multhist(list(age_m, age_f), main = 'age male vs. female', names = ref_names, col = ref_col)
+legend(15, 30, ref_names, lty = c(1,1), lwd=c(2.5,2.5), col=c('blue','red'))
+
+# c.) compare ergo between genders with adapted test
+
+# d.) correlate ergo with lactate, bmi and age
