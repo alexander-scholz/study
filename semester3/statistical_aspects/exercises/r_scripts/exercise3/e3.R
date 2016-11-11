@@ -78,6 +78,9 @@ ergo_data = data.frame(gender, ergometer)
 colnames(ergo_data) = c('gender', 'ergometer')
 wilcox.test(ergometer~gender, data = ergo_data)
 
+# Test auf Normalverteilung
+# shapiro.test()
+
 # d.) correlate ergo with lactate, bmi and age
 ergometer = Table[,'ergometer']
 lactate = Table[,'lactate']
@@ -88,3 +91,5 @@ data_set = data.frame(ergometer, lactate, bmi, age)
 library(corrplot)
 correlation_data = cor(data_set)
 corrplot(correlation_data, method="circle")
+
+# Ergebnis: BMI korreliert nicht mit Ergo, da schon normiert auf Gewicht
