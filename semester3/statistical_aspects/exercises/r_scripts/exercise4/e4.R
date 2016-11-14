@@ -38,7 +38,9 @@ nrow(data)
 # remove NA data rows
 data_cleaned = data[!is.na(data$WrHnd) | !is.na(data$NWHnd),]
 hist(data_cleaned$WrHnd, breaks = 30)
+range(data_cleaned$WrHnd)
 hist(data_cleaned$NWHnd, breaks = 30)
+range(data_cleaned$NWHnd)
 mean(data_cleaned$WrHnd)
 median(data_cleaned$WrHnd)
 mean(data_cleaned$NWHnd)
@@ -48,6 +50,7 @@ axis(1, at = c(1,2), labels = c('WrHnd', 'NWHnd'))
 box$stats
 
 # c.)
+# test for male and female/writing and nonwriting hand
 hl_male = c(data_cleaned[data_cleaned$sex==1,'WrHnd'], data_cleaned[data_cleaned$sex==1,'NWHnd'])
 hl_male = hl_male[!is.na(hl_male)]
 mean(hl_male)
@@ -58,6 +61,7 @@ wilcox.test(hl_male, hl_female, alternative = "two.sided")
 ks.test(hl_male, hl_female, alternative = 'two.sided')
 
 # d.)
+# test difference
 # male
 wilcox.test(data_cleaned[data_cleaned$sex==1,'WrHnd'], data_cleaned[data_cleaned$sex==1,'NWHnd'], alternative = 'two.sided')
 ks.test(data_cleaned[data_cleaned$sex==1,'WrHnd'], data_cleaned[data_cleaned$sex==1,'NWHnd'], alternative = 'two.sided')
@@ -71,5 +75,8 @@ library(corrplot)
 correlation_data = cor(data_e_cleaned)
 corrplot(correlation_data, method="circle")
 
+# f.)
+#fisher.test()
 
-  
+# g.) use results from correlation to create lm
+# if var a corr with var b, use only a OR b for lm

@@ -19,5 +19,5 @@ x = 176
 y = -150 + 1.25*176
 
 # 1d
-y = b0 - b1 * x1 + b2 * x2 + b3 * x3
+#y = b0 + b1 * Größe + b2 * Alter + b3 * Geschlecht + Fehler
 #lm1 = lm(data1$weight ~ data1$height + )

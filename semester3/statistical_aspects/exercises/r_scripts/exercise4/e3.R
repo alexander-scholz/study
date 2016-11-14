@@ -27,6 +27,7 @@ mylm_uc_coef = coef(mylm_uc)
 # for cx + b:
 names(mylm_uc_coef) = c('b', 'c')
 
+
 #############################
 # with corrections (x-1900) #
 #############################
@@ -34,6 +35,11 @@ corr_data = data
 corr_data$year = corr_data$year - 1900
 plot(log(corr_data$consumption) ~ log(corr_data$year))
 lines(log(corr_data$consumption) ~ log(corr_data$year))
+
+#### aus Musterlösung ###
+muster = lm(log(data$consumption) ~ corr_data$year)
+summary(muster)
+#########################
 
 mylm_c = lm(log(corr_data$consumption) ~ log(corr_data$year))
 abline(mylm_c, col = 'red')
@@ -50,7 +56,7 @@ get_value = function(mycoef, year) {
 # uncorrected
 res_uc = get_value(mylm_uc_coef, 2010)
 exp(res_uc)
-res_uc = get_value(mylm_uc_coef, 2010)
+res_uc = get_value(mylm_uc_coef, 2030)
 exp(res_uc)
 
 # corrected
