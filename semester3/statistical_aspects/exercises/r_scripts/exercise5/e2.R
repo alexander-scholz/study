@@ -54,3 +54,5 @@ polr(as.factor(g4) ~ sex, data = data1, method = "probit")
 polr(as.factor(g4) ~ SNP, data = data1, method = "probit")
 polr(as.factor(g4) ~ sex + SNP, data = data1, method = "probit")
 polr(as.factor(g4) ~ sex*SNP, data = data1, method = "probit")
+
+# e.) compared in file aics.csv
