@@ -17,9 +17,11 @@ data1 = rbind(trait1, trait2)
 # b.)
 lm_sex = glm(t ~ sex, data = data1, family = 'binomial')
 lm_snp = glm(t ~ SNP, data = data1, family = 'binomial')
+# snp hat eigentlich keinen Einfluss, vorher wurder nur die Korrelation gezeigt
 lm_multi = glm(t ~ sex + SNP, data = data1, family = 'binomial')
+lm_int = glm(t ~ sex*SNP, data = data1, family = 'binomial')
 
-step(lm_multi)
+step(lm_int)
 
 # c.)
 q_groups = quantile(data$trait)
@@ -50,6 +52,7 @@ for (i in 1:length(data1$trait)) {
 
 # d.)
 require(MASS)
+# Musterlösung ohne method = "probit"!
 polr(as.factor(g4) ~ sex, data = data1, method = "probit")
 polr(as.factor(g4) ~ SNP, data = data1, method = "probit")
 polr(as.factor(g4) ~ sex + SNP, data = data1, method = "probit")
