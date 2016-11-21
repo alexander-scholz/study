@@ -29,3 +29,8 @@ t(w1)%*%myCity
 # oder sum(w1*myCity)
 
 # f.)
+w2 = eigA$vectors[,2]
+x = as.numeric(t(w1)%*%X)
+y = as.numeric(t(w2)%*%X)
+plot(x,y,pch=19)
+points(x[67],y[67],pch=21,col="red")
