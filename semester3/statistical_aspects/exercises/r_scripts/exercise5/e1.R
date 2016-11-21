@@ -13,7 +13,7 @@ plot(data$v_adult ~ data$c, main = 'adult')
 lines(y ~ x, col = 'red')
 
 ### embryo ###
-nls(v_embryo ~ vmax*c/(c + km), data = data, start = c('vmax' = 10, 'km' = 5))
+nls(v_embryo ~ vmax*c/(c + km), data = data, start = c('vmax' = 17.1, 'km' = 8.55))
 
 x2 = seq(1,30,1)
 y2 = 19.977*x2/(x2 + 4.988)
