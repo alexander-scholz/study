@@ -1,0 +1,205 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[english,german]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\usepackage{geometry}
+\geometry{
+  left=3cm,
+  right=3cm,
+  top=3cm,
+  bottom=4cm,
+  bindingoffset=5mm
+}
+
+\setlength{\parindent}{0em} 
+\hypersetup{
+    colorlinks=true,
+    linktoc=all,
+    linkcolor=black,
+    urlcolor=black
+}
+
+% Hurenkinder und Schusterjungenregel
+\clubpenalty = 10000
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
+
+%Gummi|065|=)
+\title{\Huge\textbf{fortgeschrittene Methoden der Bioinformatik Prüfungsscript}}
+\author{}
+\date{}
+
+% set title of table of contents
+\renewcommand*\contentsname{Inhalt}
+
+% https://www.sharelatex.com/learn
+% http://www.math.ubc.ca/~cautis/tools/latexmath.html
+% http://www.golatex.de/wiki/Kategorie:Befehlsreferenz
+% https://en.wikibooks.org/wiki/LaTeX/Mathematics
+
+\begin{document}
+
+\begin{titlepage}
+
+\maketitle
+\thispagestyle{empty}
+\end{titlepage}
+\newpage
+
+\begin{titlepage}
+\tableofcontents
+\thispagestyle{empty}
+\end{titlepage}
+
+\section{Grundlagen}
+\textbf{Geg.:}\\
+X von Punkten in $R^3$, $\forall\ x,y \in X$\\
+$d(x,y):$ euklidische Distanz bekannt
+\\\\
+\textbf{Ges.:}\\
+Finde 3D-Repräsentation mit $\Phi: x \rightarrow R^3$ (Abbildung von x in 3D-Raum)\\
+$\underbrace{||\Phi(x)-\Phi(y)||}_{ges} = \underbrace{\sqrt{\sum \limits_{i=1}^{3} (\Phi_{i}(x)-\Phi_{i}(y))^2}}_{geg}$\\
+\\
+\underline{Konkruenztrasformation:}
+\begin{itemize}
+	\item Verschiebung: $\Phi'=\Phi+\tau$
+	\item Rotation: $\Phi'=R\cdot\Phi$ (Spiegelung des Koordinatensystems)
+\end{itemize}
+
+rechnerei...
+
+\begin{itemize}
+	\item mit 7 Eigenwerten genau 7 Dimensionen, bei Eigenwerten = 0 $\rightarrow$ Dimension überflüssigv
+	\item negative Eigenwerten nicht im euklidischen Raum darstellbar
+	\begin{itemize}
+		\item \textbf{Lösung:} Distanz nicht exakt einbettbar $\rightarrow$ negative Eigenwerte weglassen
+	\end{itemize}
+\end{itemize}
+
+\textbf{Was machen wenn nur Teile der Distanzen vorhanden sind?}\\\\
+Qualität prüfen: $\underbrace{\sum \limits_{k,l}}_{ueber\ alle\ bekannten\ Distanzen\ k,l}(\sqrt{(x^k-x^l)^2}-d_{kl})^2 \rightarrow min (=0)$
+\\\\
+\textbf{Wann sind genug Informationen bekannt?}\\\\
+\begin{itemize}
+	\item Graph G(V,E), $|V|=n$, $|E|=m$
+	\item Konfiguration $p:V\rightarrow R^d$ für $d=2$
+	\item Framework (G,p)
+\end{itemize}
+
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Definition:} Ein Framework ist flexibel wenn es eine stetige Deformaton $p \rightarrow p'$ gibt, sodass alle Abstände in G(=Kantenlängen) erhalten bleiben. Andernfalls ist (G,p) rigid.}}
+\newpage
+\underline{minimal rigid:}
+\begin{itemize}
+	\item rigid
+	\item entfernen einer Kante führt zu einem Teilgraphen der flexibel ist
+\end{itemize}
+
+\textbf{Gibt es eine mögliche Bewegungsfreiheit?}\\
+$(p^i-p^j)(p^i-p^j)=d_{ij}^2$ in Abhängigkeit der Zeit darstellen:\\
+$2\cdot \underbrace{(v^i-v^j)}_{*}(p^i-p^j)=\frac{\partial}{\partial t}d_{ij}^2=0\ \forall i,j \in E$\\\\
+* wenn Verschiebung bzw. Bewegungsfreiheit existiert, dann existiert hier einen Lösung
+
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Definition:} G mit Präsentation p ist "\ infinitesimal flexibel" wenn es eine Lösung $(v^1,v^2,v^3,…,v^n) \neq \overrightarrow{0}$ von $(p^i-p^j)(v_i-v_j)=0$ gibt ($\forall \{i,j\} \in E$)}}
+
+\section{generische Repräsentation}
+\underline{Eigenschaften:} rigid $\Leftrightarrow$ infinitezimal rigid $\Rightarrow$ generisch rigid
+\\\\
+\textbf{Benötigte Eigenschaften für rigid:}
+\begin{itemize}
+	\item pro Vertex 2 Verbindungen
+	\item m=2n-3 (externe FG)
+	\begin{itemize}
+		\item m = Anzahl der Kanten
+		\item n = interne Freiheitsgrade pro Konten
+		\item externe FG: 2 Translation + 1 Rotation
+	\end{itemize}
+\end{itemize}
+
+2 Punkte fix = 4 Freiheitsgrade\\
+- 1 Distanz = 3 Freiheitsgrade übrig\\
+
+\fcolorbox{red}{white}{\parbox{\linewidth}{$ \left. \begin{array}{c} rigid < 2n-3\\minimal\ rigid = 2n-3 \end{array} \right\} + $ sinnvolle Verteilung der Kanten}}
+\\\\
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Laman Theorem 1:} G ist generisch minimal rigid in 2D $\Leftrightarrow$
+\begin{itemize}
+	\item m = 2n-3
+	\item Laman-Bedingung: G enthält keine Teilgraphen mit k Knoten und m'$>$2k-3 Kanten (unabhängiges System von Kanten)
+\end{itemize}
+}}
+\\\\
+Graphen, die diese Bedingungen erfüllen, heißen Laman-Graphen
+\\\\
+Beispiel Henneberg-Konstruktion:
+\begin{itemize}
+	\item
+	\item
+\end{itemize}
+
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Laman Theorem 1:} Die Kanten von G sind unabhängig in 2D $\Leftrightarrow$\\
+Für jede Kante (a,b) in G hat der Multigraph $G_{4l}$ defr durch Vervierfachung von (a,b) entsteht, keinen induzierten Teilgraphen mit m'$>$2n' Kanten und n' Knoten
+}}
+
+\section{Pebble Game}
+
+\section{Rigidity in 3D}
+
+jetzt Laman-Bedingungen analog?\\
+\textbf{2D:}
+\begin{itemize}
+	\item m=2n-3 (Vollständigkeit)
+	\item $\forall$ Teilgraphen m'$\leq$ 2n'-3 (Unabhängigkeit)
+	\begin{itemize}
+		\item 2n Freiheitsgrade für n Punkte (2 Translationen)
+		\item 3 Freiheitsgrade eines allgemeinen starren Körpers in 2D (Dimensionen der Symetriegruppe)
+	\end{itemize}	
+\end{itemize}
+
+\textbf{jetzt 3D:}
+\begin{itemize}
+	\item 3 Freiheitsgrade pro Punkt (3 Translationen)
+	\item 6 Freiheitsgrade eines allgemeinen starren Körpers in 3D (3 Translation + 3 Rotation)
+\end{itemize}
+
+\underline{Hoffnung das gilt:}
+\begin{itemize}
+	\item m=3n-6
+	\item $\forall$ Teilgraphen m'$\leq$ 3n'-6 für n'$\geq$3 (notwendige Bedingung)
+\end{itemize}
+
+jedoch weitere Bedingungen notwendig!!! (siehe Beispiel Doppelbanane)
+\\\\
+\textbf{bei Molekülen:}
+\begin{itemize}
+	\item body-hinge-framework
+	\item Interpretation: 1 hinge = 5 joints $\rightarrow$ so bleibt 1 Freiheitsgrad offen
+\end{itemize}
+
+\textbf{Multigraph:}
+\begin{itemize}
+	\item V $\leftrightarrow$ Bodies
+	\item E $\leftrightarrow$ hinges $\leftrightarrow$ chemische Einfachbindung $\leftrightarrow$ 5-fach Kanten = joints
+\end{itemize}
+
+Beschreibung der rigidity von body-joint-frameworks\\
+bei Doppelbindungen werden zusätzliche Kanten eingefügt, da in der Ebene fixiert werden muss
+\\\\
+\textbf{(k,l)-sparse graphs:} Verallgemeinerung der Laman-Graphen ((2,3)-sparse-graphs (rigid graph))\\\\
+
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Ein Graph (V,E) ist (k,l)-sparse wenn:}
+\begin{enumerate}
+	\item Unabhängigkeitsbedingung: jede Teilmenge V' von V spannt höchstens $|E'|\leq k\cdot|V'|-l$ Kanten auf (benötigt für genügend nicht redundante Kanten)
+	\item Vollständigkeitsbedingung: $|E|=k\cdot|V|-l$ (benötigt für Verbrauch aller entsprechend für rigidity nicht gebrauchten Freiheitsgrade)
+\end{enumerate}
+}}
+\\\\\\
+\fcolorbox{red}{white}{\parbox{\linewidth}{Ein Graph H ist (k,l)=(V,F) steif, genau dann wenn er einen spannenden (k,l)-sparse Teilgraphen G=(V,E) E$\leq$F enthält (spannend: alle Knoten, nicht alle Kanten)
+}}
+
+\end{document}
