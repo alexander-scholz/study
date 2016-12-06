@@ -201,5 +201,128 @@ bei Doppelbindungen werden zusätzliche Kanten eingefügt, da in der Ebene fixie
 \\\\\\
 \fcolorbox{red}{white}{\parbox{\linewidth}{Ein Graph H ist (k,l)=(V,F) steif, genau dann wenn er einen spannenden (k,l)-sparse Teilgraphen G=(V,E) E$\leq$F enthält (spannend: alle Knoten, nicht alle Kanten)
 }}
+\\\\
+Die Kanten F\textbackslash E sind "redundant"\\\\
+Gegeben ein beliebiger Graph G, nennen wir eine Kantenmenge E (k,l)-sparsity-unabhängig wenn für jede Teilmenge gilt:\\
+$|B|\leq k |V(B)| - l$ mit $|V(B)|$=Knotenmenge die von B aufgespannt wird
+\\\\
+\fcolorbox{red}{white}{\parbox{\linewidth}{(k,l)-sparsity-Unabhängigkeit für $1\leq l \leq 2k$ definiert einen Matroiden\\
+Einschränkung: mindestens 2 Knoten da sonst keine Kante aufgespannt werden kann
+}}
+\\\\
+\underline{Maxwell-Unabhängigkeit:}\\
+ähnlich sparsity-Definition: $(d,\binom{d+1}{2})$\\
+$|E'|\leq d|V(E')|-\frac{d(d+1)}{2}$ für alle E' mit $|V(E')|\geq d$\\
+$\rightarrow$ macht Matroideigenschaft kaputt\\
+$\rightarrow$ Bar-Joint nicht in 3D mit Pebble-Game lösbar!
+\\\\
+\textbf{Matroid:} Grundmenge X und unabhängige Menge I, wenn Teilmenge $A\subseteq X$ auch $A \in I$ $\rightarrow$ A unabhängig
+
+\underline{Eigenschaften:}
+\begin{enumerate}
+	\item $\emptyset \in I$
+	\item $A \in I$ und $B \subseteq A \Rightarrow B \in I$
+	\item wenn $A,B \in I, |A| < |B|$ dann existiert $x \in B | A \cup \{x\} \in I$
+\end{enumerate}
+
+\underline{Greedy:} …
+\\\\
+Wegen 2. haben alle Lösungen B die gleiche Anzahl von Elementen unabhängig von der Reihenfolge in der X durchlaufen wird
+\\\\
+\textbf{nochmal Pebble Game}
+Funktionen:
+\begin{itemize}
+	\item peb(v): Anzahl der Pebbles an Knoten v
+	\item span(v'): Anzahl der Kanten, die von v' aufgespannt sind in D (directed graph), inklusive Loops
+	\item span(v): Anzahl loops an v
+	\item out(v'): Anzahl der Kanten die von v' nach v\textbackslash v' zeigen
+	\item out(v): outdegree exklusive Loops
+\end{itemize}
+
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Lemma:} Invarianten des Pebble Games
+\begin{enumerate}
+	\item peb(v) + span(v) + out(v) = k
+	\item peb(v') + span(v') + out(v') = $k \cdot |$v'$|$
+	\item peb(v') + out(v') $\geq$ l (am Ende des Spiels bleiben mind. l Pebbles im Spielfeld)
+	\item span(v')$\leq$k$|$v'$|$-l
+\end{enumerate}
+}}
+
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Definition Block:} ein Teilgraph G' mit $|E'|=k|V'|-l$ und E(G') ist (k,l)-sparsity-independent (k,l)-sparsity-rigid\\
+V' ist ein Block $\Leftrightarrow$ peb(v') + out(v')=l
+}}
+
+\begin{itemize}
+	\item l Pebbles am Ende $\Rightarrow$ steif
+	\item Kanten zurückgewiesen, $|E|>|E(D)| \Rightarrow$ überbestimmt bzw. Redundanzen enthalten
+\end{itemize}
+
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Lemma*:} wenn e(u,v) $\cup E(D)$ unabhängig, peb(u) + peb(v) $<$ l+1 $\Rightarrow$ dann gibt es ein Pebble in Reach(u) $\cup$ Reach(v) das nach u oder v transportiert werden kann
+}}
+\\\\\\
+\underline{Zusammenfassung:}
+Eine Kante e wird in D eingesetzt $\Leftrightarrow$ e $\cup$ E(D) unabhängig
+
+Beweis: Lemma* anwenden bis genug Pebbles in u,v gesammelt $\Rightarrow$ unabhängig $\Rightarrow$ kann eingesetzt werden\\
+Invariante 4 $\Leftarrow$ eingesetzt $\Rightarrow$ unabhängig
+
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Theorem:} Das (k,l) pebble game erkennt korrekt (k,l)-sparsity Unabhängigkeit
+}}
+
+\subsection{Computation Complexity:}
+Laufzeit: $\mathcal{O}(k\cdot l\cdot |V|\cdot |E|)$\\
+Speicher: $\mathcal{O}(|V| + |E|)$
+
+\subsection{Zusammenfassung sparse graphs}
+(k,l)-sparse graphs: $|E'|\leq k|V'|-l$\\
+(k,l)-tight/rigid $\Leftrightarrow$ (k,l)-sparse und $|E'|=k|V'|-l$\\\\
+blocks:\\
+(k,l)-sparsity-block: Teilgraph G'(V',E') eines (k,l)-sparse graphs $|E'|=k|V'|-l$ $\Leftrightarrow$ (k,l)-pebble game\\
+
+\begin{itemize}
+	\item Konstruktion eines DiGraphen D' mit orientierten unabhängigen Kanten\\
+  $\forall v \in V$: peb(v)
+	\item genau \underline{l} Pebbles in D $\Leftrightarrow$ steif
+	\item minimal steif $\Rightarrow$ keine Kanten wurden als redundant verworfen
+\end{itemize}
+
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Definition sparse Block:}\\
+V' $\subseteq$ V ist eine (k,l)-sparsity componente von G wenn
+\begin{enumerate}
+	\item V' ein Block ist
+	\item V' maximal bezüglich Knotenmenge
+\end{enumerate}
+}}
+\\\\
+\underline{Eigenschaften von sparse-blocks:}\\\\
+B$_1$(V$_1$, E$_1$), B$_2$(V$_2$, E$_2$) zwei (k,l)-sparse blocks
+\begin{itemize}
+	\item für 0$\leq$l$\leq$k und V$_1 \cap$V$_2 \neq$0 gilt: V$_1 \cup$V$_2$ und V$_1 \cap$V$_2$ sind ebenfalls Blocks
+	\item für k$<$l$<$2k und $|V_1\cap V_2|\geq 2$ gilt: V$_1 \cup$V$_2$ und V$_1 \cap$V$_2$ sind ebenfalls Blocks
+\end{itemize}
+
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Lemma:} Für l$>$0: jede (k,l)-sparsity component ist zusammenhängend\\
+V' ist eine (k,l)-sparsity-component $\Rightarrow$ in V' gibt es genau l pebbles (peb(u) + peb(v)=l) nach einsetzen von e\\
+}}
+\\\\
+Nach dem Einsetzen von e=(u,v) gibt es in der component, die von u und v aufgespannt wird, keine weiteren pebbles
+\\\\
+\section{von 2D zu 3D}
+bisher 2D bar+joint frameworks:
+\begin{itemize}
+	\item $\Leftrightarrow$ Laman graphs
+	\item $\Leftrightarrow$ (2,3)-sparse graphs
+\end{itemize}
+
+jetzt in 3D: (3,6)-sparse graphs\\
+\underline{2 Probleme:}
+\begin{enumerate}
+	\item (3,6)-sparsity ist kein Matroid $\rightarrow$ pebble game verwendbar um unabhängige Mengen von Kanten zu bekommen \underline{aber} maximal unabhängige Menge nicht eindeutig
+	\item rigid in 3D $\Rightarrow$ (3,6)-sparse $\rightarrow$ Umkehr ist aber falsch (siehe Maxwell: Gegenbeispiel Doppelbanane)
+\end{enumerate}
+
+\textbf{Daher nun body + bar frameworks}
+\\\\
+\underline{Übersetzung in Multigraphen}
 
 \end{document}
