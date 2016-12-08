@@ -433,9 +433,9 @@ $\rightarrow$ $\mathcal{O}(n^P)$: lange Laufzeit, daher optimieren
 	\item 2 Chunks teilen sich 4 Knoten $\rightarrow$ dadurch nur eine Variante zur Vereinigung (Knoten 1…4 vereinen)
 	\item 1 Knoten mit 4 Kanten in Chunk $\rightarrow$ verbinden
 	\item 1 Knote mit nur 3 Kanten (valent) in Chunk $\rightarrow$ Spiegelung möglich $\rightarrow$ ausprobieren welche die bessere Variante ist (Heuristik verwenden)
-	\item 2 valente Knoten (teilen 3 Kanten) zu Chunk + 1 Kante zwischen v und w $\rightarrow$ kann verbunden werden
-	\item 
-	\item
+	\item 2 valente Knoten zu Chunk + 1 Kante zwischen v und w $\rightarrow$ kann verbunden werden (valent: 3 Kanten zum Basechunk)
+	\item 2 valente Chunks zum Basechunk verbinden/hinzufügen
+	\item 1 valenter Chunk und 1 valenter Knoten zum Basechunk verbinden/verbinden
 \end{enumerate}
 }
 
