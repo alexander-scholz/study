@@ -151,10 +151,10 @@ Für jede Kante (a,b) in G hat der Multigraph $G_{4l}$ der durch Vervierfachung 
 \section{Pebble Game}
 4 Endresultate:
 \begin{itemize}
-	\item tight (minimal rigid): Anzahl pebbles=l, alle Kanten eingesetzt
+	\item wellconstraint (minimal rigid): Anzahl pebbles=l, alle Kanten eingesetzt
+	\item overcontraint (redundant): Anzahl pebbles=l, nicht alle Kanten eingesetzt
 	\item underconstraint (flexible): Anzahl pebbles$>$l, alle Kanten eingesetzt
-	\item overcontraint (redundant): Anzahl pebbles$<$l, Kanten nicht eingesetzt
-	\item other: Anzahl pebbles$>$l, Kanten nicht eingesetzt
+	\item other: Anzahl pebbles$>$l, nicht alle Kanten eingesetzt
 \end{itemize}
 
 \section{Rigidity in 3D}
@@ -271,7 +271,7 @@ Funktionen:
 }}
 \\\\
 \fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Definition Block:} ein Teilgraph G' mit $|E'|=k|V'|-l$ und E(G') ist (k,l)-sparsity-independent (k,l)-sparsity-rigid\\
-V' ist ein Block $\Leftrightarrow$ peb(v') + out(v')=l
+V' ist ein Block $\Leftrightarrow$ peb(V') + out(V')=l
 }}
 
 \begin{itemize}
@@ -348,7 +348,7 @@ jetzt in 3D: (3,6)-sparse graphs\\
 }
 \textbf{Daher nun body + bar frameworks}
 \\\\
-\underline{Übersetzung in Multigraphen:} Verwandschaft zu body +  hinge framework
+\underline{Übersetzung in Multigraphen:} Verwandschaft zu body +  hinge framework\\
  - 5 generische bars = 1 hinge\\
 \\
 Moleküle: bond bending frameworks (Molekülgraphen)
