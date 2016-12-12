@@ -11,8 +11,8 @@ estccc
 summary(estccc)
 
 # exercise data
-new_data = cbind(rel_data$id, rel_data$trait_1, rep(1,100))
-tmp_data = cbind(rel_data$id, rel_data$trait_2, rep(2,100))
+new_data = cbind(rel_data$id, scale(rel_data$trait_1), rep(1,100))
+tmp_data = cbind(rel_data$id, scale(rel_data$trait_2), rep(2,100))
 e1a_data = rbind(new_data, tmp_data)
 colnames(e1a_data) = c('id', 'trait', 'method')
 ccc_ea1 = cccvc(e1a_data, 'trait', 'id', 'method')
@@ -34,3 +34,7 @@ text('-1.96SD', x = 5, y = m_diffs - sd_diffs + 0.1, col = 'red', cex = 0.75)
 text(m_diffs - sd_diffs, x = 5, y = m_diffs - sd_diffs - 0.1, col = 'red', cex = 0.75)
 
 # b.)
+
+# c.)
+# create new columns for trait1 and 2 with same conditions like trait3
+
