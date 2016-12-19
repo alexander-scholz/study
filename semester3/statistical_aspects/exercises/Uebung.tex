@@ -6,7 +6,7 @@
 \usepackage{mathtools}
 \usepackage{amsmath}
 \usepackage{graphicx}
-% \usepackage{enumitem}
+\usepackage{tabularx}
 \usepackage{amsfonts}
 
 \usepackage{geometry}
@@ -274,6 +274,44 @@ siehe R-Script
 
 \subsection{Aufgabe 3}
 siehe R-Script
+
+\newpage
+\section{Übung 8}
+\subsection{Aufgabe 1}
+
+\subsection{Aufgabe 2}
+\begin{tabularx}{\textwidth}{|p{0.11\textwidth}|p{0.40\textwidth}|p{0.40\textwidth}|}
+\hline
+& LIFE-Adult (N=10000) & LIFE-Heart (N=7000) \\
+\hline
+Design & Zunächst Querschnittstudie & Kohortenstudie \\
+\hline
+Frage (konkret) & Identifizierung molekulargenetischer und umweltbedingter Faktoren für komplexer Erkankungen $\rightarrow$ Volkskrankheit & Identifizierung von Lebensstil- und molekulargenetischer Modifikatorebn des Atherosklerose-Risiko und verwandter Phänotypen (z.B. Lipidmetabolismus) \\
+\hline
+Frage (generell) & Wie gesund oder Krank ist die Bevölkerung? & Was haben die Kranken gemeinsam, sodass sich krankheiten entwickeln? \\
+\hline
+Vorteil & Billig, einfach durchführbar & Erfassung der Inzidenz eines Endpunktes und zeitlichen Zusammenhang zwischen Risikofaktor und Endpunkt \\
+\hline
+Nachteil & Ursache-Wirkung schlecht abbildbar & Teuer, seltene Endpunkte können nicht erfasst werden, selection bias\\
+\hline
+\end{tabularx}
+
+
+\subsection{Aufgabe 3}
+Sie haben in der Vorlesung den Begriff Coverage kennengelernt.\\
+\begin{enumerate}
+	\item Von was hängt die Coverage einer Microarrays ab?
+	\begin{itemize}
+		\item „Qualität meines Arrays“, wie viel Prozent des Array-SNPs sind in hinreichend hohem LD mit den Refernz-SNPs.
+		\item Nimm Array-SNP und prüfe, ob dieser in der Referenz vorkommt bzw. in LD mit der Referenz-SNPs ist. Coverage ist der Anteil der in der Referenz vorkommenden SNPs
+		\item Abhängig von Referenz, Ethnien, LD-Niveau, cutt-off für seltene Varianten
+	\end{itemize}
+	\item Was sind die üblichen Referenz-Panels und wie unterscheiden diese sich? 
+international HapMap Project, 1000 Genomes Project
+	\item Beschreiben Sie stichpunktartig den Workflow der Affymetrix Axiom Plattform!
+\end{enumerate}
+
+\subsection{Aufgabe 4}
 
 \newpage
 \section{Übung 9}
