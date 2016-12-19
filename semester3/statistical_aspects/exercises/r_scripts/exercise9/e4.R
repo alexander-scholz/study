@@ -23,5 +23,8 @@ all_ethnie_data = rbind(afr_data, asn_data, eur_data)
 write.table(all_ethnie_data, 'exercise9/MSc_Bioinf/ethnie_filter_data.txt', quote = F, row.names = F, col.names = F)
 
 # 3.)
+# using plink
+# install on debian-based unix: apt-get install plink
+# installs binary to /usr/lib/plink/plink
 system("plink --bfile exercise9/MSc_Bioinf/B9A4_1KG_PCA --extract exercise9/MSc_Bioinf/B9A4_mySnps.txt --keep exercise9/MSc_Bioinf/ethnie_filter_data.txt --indep-pairwphase 50 5 0.2 --out 3_pruned_data")
 system('plink --bfile exercise9/MSc_Bioinf/B9A4_1KG_PCA --extract 3_prunde_data.prune.in --keep exercise9/MSc_Bioinf/ethnie_filter_data.txt --make-bed --out 4_pruned_data')
