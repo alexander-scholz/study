@@ -7,7 +7,7 @@ Iteration:
 	\item ersetze $\{u,v\} \rightarrow$ no (neuer Knoten)
 	\item brechne $d_{wz}$ für $z \neq u,v \rightarrow$ Schritt 1
 \end{enumerate}
-%insert pic 1
+\includegraphics[width=0.2\textwidth]{lectures/161221/pix/1.jpg}\\
 $\tilde d$ Transformation von d\\
 F:$d \mapsto \tilde d$\\
 $d_{wz}=\phi(d_{uz}, d_{vz}, d_{uz})$
@@ -19,11 +19,11 @@ Beispiel:\\
 $\tilde d = d$\\
 $d_{wz}=\frac{1}{2} \cdot d_{uz} + \frac{1}{2} \cdot d_{vz}$ (WPGMA)\\
 $d_{wz}=\frac{|u|}{|u| + |v|} \cdot d_{uz} + \frac{|u|}{|u| + |v|} \cdot d_{vz}$ (UPGMA)\\
-% insert pic 2
+\includegraphics[width=0.4\textwidth]{lectures/161221/pix/2.jpg}\\
 Ist der zugehörige Alogrithmus konsistent?\\
 Gegenbeispiel:\\
 $l_a,l_b,q << l_c,l_d \Rightarrow argmin_{x,y} \tilde d_{xy}=\{a,b\}$\\
-%insert pic 3
+\includegraphics[width=0.7\textwidth]{lectures/161221/pix/3.jpg}\\
 (Problem: LBA - long branch attraction)\\\\
 Lösung:\\
 Abstand eines Punktes von allen anderen Punkten berechnen:$r(u)=\displaystyle \sum_{x \neq u}d(x,u)$\\
@@ -62,7 +62,7 @@ für Punkte in $x_i \in C_i$* und $x_j \in C_j$*\\
 $\hat Q(x_i,x_j)=(\hat m -2) \cdot d(x_i,x_j) - \displaystyle \sum_{k} d(x_i,C_k) - \displaystyle \sum_{k} d(x_j,C_k)$\\
 $\hat m = m - \underbrace{2}_{i*,j*} + |C_{i*}| + |C_{j*}|$\\
 Erkläre x*,y* mit $x* \in C_{i*}, y* \in C_{j*}$ (mit jedem Schritt eine Kante mehr)
-%insert pic 4
+\includegraphics[width=0.5\textwidth]{lectures/161221/pix/4.jpg}\\
 y hat 2 (verschiedene) Nachbarn x,z\\
 a$\neq$x,y,z,u,v\\
 $d(u,a)=\alpha \cdot d(x,a) + \beta \cdot d(y,a)$\\
