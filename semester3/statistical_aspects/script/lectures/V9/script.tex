@@ -8,3 +8,20 @@
 \subsection{ROH: Definition und Interpretation}
 
 \subsection{Aufgaben zur Übung 9}
+\subsubsection{Aufgabe 1}
+\textbf{a.)} Was sind Batch-Effekte?\\
+eine technische Quelle für Variation in den Daten durch die Verarbeitung\footnote{\url{http://www.molmine.com/magma/global_analysis/batch_effect.html}}
+\\\\
+\textbf{b.)} Durch was können sie entstehen, wie kann man sie vermeiden?\\
+mögliche Quellen:
+\begin{itemize}
+	\item \textbf{Spotting:} Die Menge der Probe in den Nadeln des Roboters, der damit das Array behandelt, kann leicht variieren.
+	\item \textbf{PCR Amplikation:} Proben, die durch die Polymerase-Kettenreaktion(PCR) erzeugt werden, enthalten oft nicht die gleichen Vielfachen einer Sequenz, da die Amplikation der unterschiedlichen Nukleotidstränge mit unterschiedlicher Geschwindikeit verlaufen kann.
+	\item \textbf{Probenaufbereitung:} bei der Vorbereitung der Proben ist eine Vielzahl komplexer biochemischer Reaktionen, wie zum Beispiel die reverse Transkription, durchzuführen. Diese können von Labor zu Labor und innerhalb eines Experiments Unterschiede aufweisen.
+	\item \textbf{RNA-Abbau:} Unterschiedliche RNA-Stränge haben aufgrund ihrer Sekundärstruktur eine unterschiedliche Halbwertszeit. Um sie zu stabilisieren, werden eine Vielzahl von Gegenmaßnahmen angewendet, die auch Nebeneffekte nach sich ziehen können.
+	\item \textbf{Array-Beschichtung:} Sowohl die Effizienz der Probenfixierung auf dem Array, als auch die Intensität des Hintergrundrauschens hängt stark von der Array-Beschichtung mit der Probe ab.
+\end{itemize}
+Diese Probleme sollten beim Design eines Mircoarray-Experiments beachtet werden. Kann man trotz allem einen Fehler nicht verhindern, so sollten die experimentellen Bedingungen so gewählt werden, dass die biologische Fragestellung nicht beeinflusst wird. Falls zum Beispiel ein Vergleich zwischen zwei Tumorprob en durchgeführt werden soll, so ist es ratsam, beide Prob en nicht in verschiedenen Labors aufbereiten zu lassen.\footnote{\url{http://www-stud.rbi.informatik.uni-frankfurt.de/~linhi/SeminarSS04/Ausarbeitungen/03ausarbeitung_evgenji_yusuf.pdf}}
+\\\\
+\textbf{c.)} Erinnern Sie sich an Aufgabe 4 von Blatt 6. Statt verschiedener Populationen nehmen wir nun an, dass der SNP auf verschiedenen Platten gemessen wurde. Führen Sie einen Chi-Quadrat-Test durch, ob sich die Allelhäufigkeiten zwischen den Platten signifikant unterscheidet!\\\\
+Ergebnisse siehe R-Skript
