@@ -1,12 +1,87 @@
 \section{V12}
 \subsection{Calling von SNP-Daten}
+Intensitäten lassen sich mittels bioinformatischer Methoden übersetzen in „Genotyp einer Person an einem SNP“ $\rightarrow$ „Calling“
+\subsubsection{Calling-Algorithmen}
+Bei der Genotypisierung mittels Micro-Arrays werden Hybridisierungsintensitäten gemessen, die i.d.R. mittels Clusteranalysen in Genotypen umgerechnet werden\\
+Clusterplots$\rightarrow$Genotypen\\
+\textbf{Wichtige Algorithmen:}
+\begin{itemize}
+	\item DM (dynamic model)
+	\begin{itemize}
+		\item Calling-Algorithmus auf Basis \underline{einzelner} Proben/Messungen
+	\end{itemize}
+	\item BRLMM (Bayesian robust linear model)
+	\begin{itemize}
+		\item benötigt die Information \underline{mehrerer} Proben/Messungen
+	\end{itemize}
+\end{itemize}
+
+\underline{Genotypisierung ist immer fehlerbehaftet}\\
+Ziel: Eliminierung/Verringerung der Fehler(quellen) durch geeignete Filter
 
 \subsection{Clusterplots + Interpretation}
+\begin{itemize}
+	\item nach Genotypisierung erhält man Intensitätswerte (A und B) für die beiden Allele eines SNPs (bezeichnet mit a und b)
+	\item man plottet nun für festen SNP und jede Person
+	\begin{itemize}
+		\item auf der x-Achse: log 2 ( A / B )
+		\item auf der y-Achse: (log 2 ( A * B )) / 2
+	\end{itemize}
+	\item Ergebnis: Clusterplot
+	\item für qualitativ hochwertige SNPs sollten sich die Punktwolken gut trennen (in die Genotypen aa, ab und bb)
+\end{itemize}
 
 \subsection{Maße zur Bewertung der Clusterplotirregularität}
+\subsubsection{Typische SNP-QC Maße}
+\begin{itemize}
+	\item Fishers Linear Discriminant (FLD)
+	\begin{itemize}
+		\item Problem: 
+		\item Man bildet für die drei Gruppen (aa, ab und bb) jeweils die Mittelwerte der Einträge auf der x-Achse
+		\item Filterkriterium: FLD $<3.6$
+	\end{itemize}
+	\item Homozygote Ratio Offset (HomRO)
+	\begin{itemize}
+		\item Problem: Homozygotencluster sollte ungefähr symmetrisch liegen
+		\item Filterkriterium:
+		\begin{itemize}
+			\item 3 Cluster: HomRO $<-0.9$
+			\item 2 Cluster: HomRO $<0.3$
+			\item 1 Cluster: HomRO $<0.6$
+		\end{itemize}
+	\end{itemize}
+	\item Heterozygous Cluster Strength Offset (HetSO)
+	\begin{itemize}
+		\item Problem: Der AB-Cluster sollte höhere Intensität haben als von den AA / BB-Intensitäten zu erwarten wäre
+		\item HetSO ist der vertikale Abstand vom Mittelpunkt des AB-Clusters zur Verbindungslinie zwischen den Mittelpunkten des AA- und BB-Clusters
+		\item Filterkriterium: HetSO $<-0.1$
+	\end{itemize}
+\end{itemize}
 
-\subsection{Typische SNP-QC Maße}
-
-\subsection{Typische Sample-QC Maße}
+\subsubsection{Typische Sample-QC Maße}
+\begin{itemize}
+	\item Callrate
+	\begin{itemize}
+		\item Problem: 
+		\item SNP-Call-Rate = $\frac{\#Calls\ f\ddot{u}r\ SNP}{\#Individuen}$
+		\item Filterkriterium: SNP-Call-Rate $<97\%$
+	\end{itemize}
+	\item Hardy-Weinberg Gleichgewicht
+	\begin{itemize}
+		\item Problem: Verletzung des Hardy-Weinberg Gleichgewicht
+		\item Filterkriterium: $p<10^{-6}$
+	\end{itemize}
+	\item Minor allele frequency (MAF)
+	\begin{itemize}
+		\item Problem: SNPs mit sehr geringer MAF sind aufgrund kleiner Cluster schlecht zu callen und haben außerdem nur geringen Informationsgehalt für Einzel-SNP-Assoziationen
+		\item Filterkriterium: MAF $<$ 2
+	\end{itemize}
+	\item Platten-Assoziation
+	\begin{itemize}
+		\item Problem: Batcheffekte
+		\item mit Chi-Quadrat-Tests kann überprüft werden ob sich die Allelfrequenzen zwischen Platten unterscheiden
+		\item Filterkriterium: $p<10^{-7}$
+	\end{itemize}
+\end{itemize}
 
 \subsection{Aufgaben zur Übung 12}
