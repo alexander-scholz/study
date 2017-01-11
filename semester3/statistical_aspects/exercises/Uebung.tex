@@ -343,7 +343,6 @@ Nachteil & Ursache-Wirkung schlecht abbildbar & Teuer, seltene Endpunkte können
 \hline
 \end{tabularx}
 
-
 \subsection{Aufgabe 3}
 Sie haben in der Vorlesung den Begriff Coverage kennengelernt.\\
 \begin{enumerate}
@@ -380,23 +379,27 @@ Diese Probleme sollten beim Design eines Mircoarray-Experiments beachtet werden.
 \textbf{c.)} Erinnern Sie sich an Aufgabe 4 von Blatt 6. Statt verschiedener Populationen nehmen wir nun an, dass der SNP auf verschiedenen Platten gemessen wurde. Führen Sie einen Chi-Quadrat-Test durch, ob sich die Allelhäufigkeiten zwischen den Platten signifikant unterscheidet!\\\\
 Ergebnisse siehe R-Skript
 
-\section{Aufgabe 2}
-siehe R-Skript
+\subsection{Aufgabe 2}
+siehe R-Script (prüfungsrelevant: Plots und Inhalte bewerten)
 
-\section{Aufgabe 3}
-\textbf{a.)}
-
-\textbf{b.)}
-
-\textbf{c.)}
-
-\section{Aufgabe 4}
-siehe R-Skript
+\subsection{Aufgabe 3}
+\textbf{a.)}\\
+siehe vorherige Aufgabe, Outlier außerhalb von Clustern\\\\
+\textbf{b.)}\\
+Callrate ausrechnen, wenn Callrate $<$ 97\% $\rightarrow$ Missings entfernen\\\\
+\textbf{c.)}\\
+Imputation:
+\begin{enumerate}
+	\item \underline{Referenzabgleich:} Welche Array-SNPs sind in der Referenz und sind sie gleich codiert? (ID, Chromosom, Position, Strang, Allel A, Allel B)
+	\item Phasierung: Schätzung der Haplotypen
+\end{enumerate}
 
 \newpage
 \section{Übung 10}
 \subsection{Aufgabe 1}
-siehe R-Skript
+siehe R-Skript (Prüfungsrelevant: QQ-Plot bewerten (Grenze beachten), Manhatten-Plot (Signifikanzgrenzen beachten))\\
+signifikante Assoziation zwischen betrachteten SNP und phenotypischen Merkmal\\
+so viele grüne übereinander da in einem Block (ohne Korrektur durch LD)
 
 \subsection{Aufgabe 2}
 \textbf{a.)}
@@ -408,18 +411,29 @@ siehe R-Skript
 
 \includegraphics[width=0.5\textwidth]{pix/exercise10/Haplotyp.PNG}\\
 Haplotypen aus SNPs von Chromosomenabschnitten des gleichen Chromosoms von vier haploiden Individuen
-
+\\\\
 \textbf{b.)}\\
 862 weitere SNPs auf Gen ABO\footnote{Vorgehen siehe \url{https://www.ncbi.nlm.nih.gov/guide/howto/view-all-snps/}}
 
-\textbf{c.)}
+Aus snpedia: 36
 
-\textbf{d.)}
+\textbf{c.)}\\
+Durch die drei bekannten SNPs sind die relevanten Haploblöcke vollständig beschrieben\\
+\textbf{d.)}\\
+wenige SNPs reichen aus, um den Genotyp der restlichen SNPs im Block zu bestimmen
 
 \subsection{Aufgabe 3}
-\textbf{a.)}
-
-\textbf{b.)}
+\textbf{a.)}\\
+Mischen von fixed- und random-Effects\\
+\textbf{b.)}\\
+y$_{ijk}=\mu+\beta_{j}+b_{j}+\epsilon_{ijk}$\\
+Proband: i=1-6\\
+Ergometer: j=1-3
+Wiederholung: k=1-3\\
+$\beta_j$: Effekt des Ergometers j (fixer Effekt)\\
+$b_{i}$: Effekt des Probanden i (zufälliger Effekt, Variation innerhalb der Probanden)\\
+jeder Proband hat seine eigenen Intercept, aber alle haben die gleiche Steigung\\
+Beispiel oben: Random Intercept Modell == fixed effect meta analyse, denn Studien haben eigenen Intercept\\
 
 \textbf{c.)}
 

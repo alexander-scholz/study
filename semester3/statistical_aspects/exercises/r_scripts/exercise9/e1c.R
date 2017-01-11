@@ -2,6 +2,12 @@ data = data.frame(c(125,50,100), c(250,30,500), c(125,20,400))
 row.names(data) = c('array1', 'array2', 'array3')
 colnames(data) = c('AA', 'AB', 'BB')
 
+# todo: Tabelle mit Allelhäufigkeiten erzeugen und diese dann mit chiq.test()
+#a=matrix(data=NA,ncol=2,nrow=3)
+#for (i in 1:3) {
+#  a[i,]=c(2*myTab[i,1]+myTab[i,2])
+#}
+
 library(MASS)
 # Nullhypothese: Arrays sind statistisch unabhängig
 chisq.test(data[1:2,])    # X-squared = 25.862, df = 2, p-value = 2.422e-06
