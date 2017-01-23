@@ -1,0 +1,203 @@
+\section{DS6}
+\underline{\textbf{Functional Eveness}}\\
+Wie bei der Artendiversität reduziert eine Ungleichverteilung der Abundanzen auch die funktionelle Vielfalt\\
+3 Schritte zur Berechnung:
+\begin{enumerate}
+	\item Minimum Spanning Tree ausrechnen
+	\item Normieren mit Gesamtlänge
+	\item Index (0 bis 1) = Vergleich mit dem Idealszenario: $PEW_l$ bei ungleichen $EW_l$ immer kleiner als $\frac{1}{(S-1)}$
+	\item Beispiel siehe Vorlesung
+\end{enumerate}
+
+\underline{\textbf{Functional Dispersion}}
+\begin{itemize}
+	\item \textbf{Muss:}
+	\begin{itemize}
+		\item Muss mit mehreren Merkmalen funktionieren
+		\item Darf nicht kleiner werden, wenn eine Art dazu kommt (monotonicity)
+		\item Darf nicht größer werden, wenn eine Art gedoppelt wird (twinning principle)
+	\end{itemize}
+	\item \textbf{Soll:}
+	\begin{itemize}
+		\item Unabhängig von Artenzahl
+		\item Unabhängig von Functional Richness
+		\item Sollte Abundanzverteilungen berücksichtigen
+	\end{itemize}
+	\item \textbf{Wäre schön:}
+	\begin{itemize}
+		\item Kann alle Datentypen nutzen
+		\item Funktioniert mit fehlenden Daten
+	\end{itemize}
+\end{itemize}
+
+\newpage
+\underline{\textbf{Rao‘s Q}}
+\begin{itemize}
+	\item „Rao‘s Quadratic Entropy“, „Varianz der Distanzen zwischen Arten“
+	\item mittlere funktionelle Ungleichheit zwischen zwei zufällig ausgewählten Individuen
+	\item \textbf{Vorteile:}
+	\begin{itemize}
+		\item Berücksichtigt Abundanz
+		\item arbeitet mit multiplen traits (multivariat)
+	\end{itemize}
+	\item \textbf{Nachteile:}
+	\begin{itemize}
+		\item Wenn alle Arten gleich abundant sind (unwahrscheinlich), dann ist FD Q beeinflusst durch die Merkmalsverteilungen und die Kovarianz zwischen den Merkmalen
+		\item wenn viele traits zum gleichen Merkmalssyndrom gehören (z. B. tradeoffs), dann wird diese Funktion	überbewertet.
+	\end{itemize}
+\end{itemize}
+
+\underline{\textbf{FDiv}}
+\begin{enumerate}
+	\item Auswahl aller Vortex-Arten V
+	\item Berechnung des Zentroids (Schwerpunkts) nur (!) der Vortex-Arten
+	\item Koordinaten des Zentroids: ($g_1$, $g_2$, $g_3$,..., $g_k$)
+	\item Ausrechnen der euklidischen Distanz zwischen jeder Art und dem Zentroid
+	\item Ausrechnen der mittleren Distanz
+	\item Abweichungen vom Ring mit Radius dG nach innen und nach außen. Abundanz gewichtet
+\end{enumerate}
+
+\underline{\textbf{FDis von Laliberté und Legendre}}
+\begin{enumerate}
+	\item Zentroid aller Arten ausrechnen 1
+	\item Distanz zum Zentroid für jede Art ausrechnen
+	\item FDis ist der Mittelwert dieser Distanzen
+\end{enumerate}
+
+Die Auswirkung der Abundanzen ist:
+\begin{itemize}
+	\item dass sich das Zentroid zu den häufigen Arten hin verschiebt
+	\item dass die Abstände zu häufigen Arten ein höheres Gewicht bekommen
+\end{itemize}
+
+\newpage
+\textbf{Wo ist die Biologie? Ein Wort der Vorsicht!}\\
+Man sollte die Merkmale verstehen, die man benutzt und Fragen stellen:
+\begin{itemize}
+	\item Welche Rolle spielen sie in Bezug auf Nischendifferenzierung?
+	\item Welchen Mechanismus repräsentieren Sie? (z. B. Licht-, Wasser-, Nährstoffakquise?)
+	\item Habe ich irgendeine Hypothese, warum Diversität oder Eveness bezüglich der Merkmale für meinen Prozess (Koexistenz, Produktivität, etc.) relevant sein könnte?
+\end{itemize}
+
+\subsubsection{Wie komme ich von BD zu EF?}
+„Y“ = Ökosystemfunktionen (*=„Ökosystem-Dienstleistungen“)
+\begin{itemize}
+	\item Biomasse produzieren *
+	\item Feuergefahr hervorrufen
+	\item Stabilität gewährleisten *
+	\item Kohlenstoff festlegen *
+	\item Erosion verhindern *
+	\item Luftstickstoff fixieren *
+	\item Wasser verdunsten
+\end{itemize}
+
+\textbf{Was ist das „X“ genau?}\\
+\begin{itemize}
+	\item Ein Artname
+	\item Ein Liste von Arten die gemeinsam vorkommen
+	\item manchmal mit relativen Häufigkeiten
+\end{itemize}
+
+\underline{\textbf{Arten versus Arteigenschaften?}}\\
+\textbf{Was passiert?}\\
+Ökosystemfunktion = f(Name$_i$)\\
+Ökosystemfunktion = f($\Sigma$Namen$_i$)
+\\\\
+\textbf{Warum passiert es?}\\
+Ökosystemfunktion = f(Wachstumsrate$_i$)\\
+Ökosystemfunktion = f(D Wurzeltiefe$_{ij}$)\\
+
+\newpage
+\underline{\textbf{Biodiversität (X) \& Ökosystemfunktionen (Y)}}
+\begin{itemize}
+	\item Auch kurz „BD-EF“ oder „BEF“ genannt
+	\item Was hat das mit Merkmalen zu tun?
+	\begin{itemize}
+		\item Funktionelle Merkmale spielen eine wichtige Rolle bei der Übersetzung von Information (BD) in ökologische Prozesse (EF)
+		\item Oder anders: Die Merkmale bestimmen im Wesentlichen, wie sich die Anwesenheit einer Art auf die Prozesse im Ökosystem auswirkt
+		\item Zugespitzt:
+		\begin{itemize}
+			\item Wüsste man alle relevanten Merkmale bräuchte man die Artzugehörigkeit nicht wissen.
+			\item Kennt man sie nicht alle, wird es immer residuale „Arteffekte“ geben.
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+
+\underline{\textbf{Facetten von FD und deren Bedeutung}}\\\\
+Vorhersagekraft für Ökosystemfunktionen gibt Hinweis auf Mechanismus\\
+\begin{tabularx}{\textwidth}{p{0.33\textwidth}p{0.33\textwidth}p{0.33\textwidth}}
+	$\rightarrow$ & Merkmalswert & $\rightarrow$\\
+	\hline
+	Mittelwert & Verteilung & Spanne\\
+	\hline
+	Functional \textbf{Identity} & Functional \textbf{Dispersion} & Functional \textbf{Richness}\\
+	\hline
+	Mittlere Merkmalsausprägung bestimmt EF & Varianz bestimmt EF & Extreme sind wichtig\\
+	Mass ratio hypothesis, Selection effect & Komplementarität, Insurance-Hypothese & Functionelles Potential ist wichtig\\
+	Art der wichtigen Merkmal geben Hinweis auf Mechanismus& & \\
+\end{tabularx}
+
+\begin{itemize}
+	\item Abundanzverteilungen sind wichtig
+	\item Funktioniert mit vielen Merkmalen (multivariat)
+\end{itemize}
+
+\subsubsection{Funktionelle Merkmale bei Pflanzen}
+\begin{itemize}
+	\item Physiologie
+	\item Morphologie
+	\item Demographie
+	\item Ökosystem
+\end{itemize}
+
+\newpage
+\textbf{Auf welche Merkmale trifft man?}
+\begin{itemize}
+	\item Angaben aus der \textbf{taxonomischen Literatur}
+	\begin{itemize}
+		\item z. B. Blattlänge, maximale Höhe, Samengröße, ...
+		\item ursprünglich nur zu Unterscheidungszwecken ausgewählt
+	\end{itemize}
+	\item Einfache ökologische \textbf{Gruppierungsmerkmale}
+	\begin{itemize}
+		\item z. B. Winderverbreitung: ja/nein, Schattentoleranzklasse: 1-5, ...
+		\item Oft sind Gruppen nur eine Vereinfachung, weil die Erfassung eines quantitativen Masses viel zu aufwendig wäre
+	\end{itemize}
+	\item \textbf{Gezielte vergleichende Studien} der funktionellen Ökologie
+	\begin{itemize}
+		\item z. B. SLA, Gefäßdurchmesser , N-Gehalte, Blattlebensdauer,
+		\item Funktionelle Bedeutung a priori relativ klar (nicht immer), oft vergleichender Natur
+	\end{itemize}
+	\item \textbf{Diverse Prozessstudien} aus der Botanik, Pflanzenphysiologie, Agrarwissenschaften, usw.
+	\begin{itemize}
+		\item Sehr pezifische Merkmale: Quantum-Use-Efficiency, Ammoniumaufnahmekinetik, ...
+		\item I.d.R nur wenige Arten, oft Nutzpflanzen
+	\end{itemize}
+\end{itemize}
+
+\textbf{Dateneigenschaften}
+\begin{itemize}
+	\item \textbf{Beschreibung}
+	\begin{itemize}
+		\item Beispiel: „Art bildet auf nassen Standorten häufig ein Flachwurzelsystem aus“
+	\end{itemize}
+	\item \textbf{Kategoriale Variablen (Kategorien)}
+	\begin{itemize}
+		\item Feuertoleranz (ja/nein oder 1/0, Blütenfarbe (grün, gelb, rot, blau,...)
+	\end{itemize}
+	\item \textbf{Ordinale Variablen}
+	\begin{itemize}
+		\item Beispiele: Überflutungstoleranz (1-5), Wachstumsrate (gering, mittel, hoch oder 1,2,3)
+		\item Eigenschaft: 2 ist mehr als 1, aber nicht doppelt so viel; nie negativ
+	\end{itemize}
+	\item \textbf{Ganzzahlige Variablen}
+	\begin{itemize}
+		\item Anzahlen: Chromosomen, Griffel, Samen pro Kapsel
+		\item Eigenschaften: nie negativ, keine Dezimalstelle
+	\end{itemize}
+	\item \textbf{Kontinuierliche Variablen}
+	\begin{itemize}
+		\item SLA (97.5 cm$^2$ g$_dw^{-1}$ )
+		\item Eigenschaft: 2 ist doppelt so viel wie 1, kann positiv oder negativ sein
+	\end{itemize}
+\end{itemize}
