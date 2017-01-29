@@ -4,11 +4,11 @@ colnames(data) = c('dist')
 View(data)
 
 # a.) callrate
-data$callrate = data$dist/sum(data$dist)
+(callrate = (data['AA','dist'] + data['AB','dist'] + data['BB','dist'])/sum(data$dist))
 
 # b.) Allelhäufigkeit
-p_a = (2*data['AA','dist'] + data['AB','dist']) / (2*sum(data[-4,'dist']))
-p_b = (2*data['BB','dist'] + data['AB','dist']) / (2*sum(data[-4,'dist']))
+(p_a = (2*data['AA','dist'] + data['AB','dist']) / (2*sum(data[-4,'dist'])))
+(p_b = (2*data['BB','dist'] + data['AB','dist']) / (2*sum(data[-4,'dist'])))
 
 1 == p_a + p_b
 
