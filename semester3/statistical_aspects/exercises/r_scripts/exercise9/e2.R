@@ -73,12 +73,14 @@ which(aim_matrix$mean_snpY[interest]>950)
 interest[10]
 
 # d.)
+# X-Intensität - Y-Intensität
 plot(aim_matrix$mean_snpX, aim_matrix$mean_snpY)
 points(aim_matrix$mean_snpX[aim_matrix$sex_computed == "unknown"], aim_matrix$mean_snpY[aim_matrix$sex_computed == "unknown"], col = "red")
 
+# X-Intensität - X-Heterozygosität
 plot(aim_matrix$mean_snpX, aim_matrix$`freq_geno[, 2]`)
 points(aim_matrix$mean_snpX[aim_matrix$sex_computed == "unknown"], aim_matrix$`freq_geno[, 2]`[aim_matrix$sex_computed == "unknown"], col = "red")
 
-
+# Y-Intensität - X-Heterozygosität
 plot(aim_matrix$mean_snpY, aim_matrix$`freq_geno[, 2]`)
 points(aim_matrix$mean_snpY[aim_matrix$sex_computed == "unknown"], aim_matrix$`freq_geno[, 2]`[aim_matrix$sex_computed == "unknown"], col = "red")
