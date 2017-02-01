@@ -1,1 +1,86 @@
 \section{V18}
+\subsection{Fixed-effects Modell}
+Schätzung (Fixed-effect Modell):\\
+Angenommen die wahren Effekte sind zwischen den Studien homogen:\\
+$\theta_1=\theta_2=...=\theta_k$\\
+Dann ist $\hat{\theta}=\frac{\displaystyle \sum_{i=1}^{k} \hat{\theta_i} \cdot w_i}{\displaystyle \sum_{i=1}^{k}w_i}$ ein Schätzer des gemeinsamen Effekts $\theta$.
+Ein 95\%-Konfidenzintervall kann abgeleitet werden: $\hat{\theta} \pm 1.96\cdot \sqrt{\frac{1}{\displaystyle \sum_{i=1}^{k}w_i}}$
+
+\subsection{Random-effects Modell}
+Schätzung (Random-effects Modell):\\
+Angenommen die Effekte sind zwischen den Studien heterogen. Nehmen hierarchisches Modell an, um die Effekte zu kombinieren. Hierzu wird angenommen, dass die wahren Effekte der Studien $\theta_i$ normalverteilt sind mit Mittelwert $\theta$:\\
+\\
+Das heisst $\theta_i \sim N(\theta, \tau^2)$ mit Varianz $\tau^2$ welche die Heterogenität der Studien quantifiziert. \textcolor{red}{Warum $\tau^2$???}\\
+\\
+In jeder einzelnen Studie hat man $\theta_i \sim N(\theta, w^{-1}_i)$ mit den Gewichten aus dem Fixed-effect Modell.\\
+\\
+Für die Randverteilung von $\theta_i$ gilt: $\theta_i \sim N(\theta, w^{-1}_i + \tau^2)$\\
+\\
+Deshalb hat unter einem Random-effects Modell der Fixed-effect
+Schätzer $\hat{\theta}$ immer noch die Erwartung $\theta$ aber eine größere Varianz\\
+$var(\hat{\theta})=\frac{\displaystyle \sum w_i^2 \cdot var(\hat{\theta_i})}{(\displaystyle \sum w_i)^2}=\frac{\displaystyle \sum w_i \cdot (w_i^{-1} + \tau^2)}{(\displaystyle \sum w_i)^2}= \frac{\displaystyle 1}{(\displaystyle \sum w_i)} + \frac{\displaystyle \tau^2 \sum w_i^2}{(\displaystyle \sum w_i)^2}$\\\\
+entsprechend hat das Random-effects Modell den selben Schätzer des Meta-Effekts aber eine größere Varianz (und folglich größeres Konfidenzintervall, größere p-Werte usw.).
+
+\newpage
+\subsection{Fixed effect versus Random effects Modell}
+\begin{tabular}{p{0.5\textwidth}p{0.5\textwidth}}
+	Fixed effect & Random effects\\
+	\begin{itemize}
+	\item Konsistent mit der globalen Nullhypothese
+	\item Homogenitätsannahme könnte unrealistisch sein
+	\item Vorliegende Heterogenität muss erklärt werden
+	\item Äquivalent zu einem „random intercept“- Regressionsmodell
+\end{itemize} & 
+\begin{itemize}
+	\item Inkonsistent mit der globalen Nullhypothese
+	\item Formale Berücksichtigung der Heterogenität
+	\item Annahme Normalverteilung der Studieneffekte könnte auch unrealistisch sein
+	\item Äquivalent zu einem „random slope-random-intercept“ Regressionsmodell
+\end{itemize}\\
+\end{tabular}
+
+\subsection{Forest plot}
+zeigt:
+\begin{itemize}
+	\item Effekte der einzelnen Studien + Konfidenzintervall
+	\item Gewichte der Studien
+	\item Meta-Effekte und qualitative Bewertung der Heterogenität
+\end{itemize}
+
+\newpage
+\subsection{Permutationstest}
+\begin{itemize}
+	\item Dilemma:
+	\begin{itemize}
+		\item Fixed Effect Modell berücksichtigt mögliche Heterogenität nicht
+		\item Random Effects Modell ist genomweit überkonservativ ($\lambda$
+typischerweise deutlich kleiner 1)
+	\end{itemize}
+	\item Idee: Man testet auf Heterogenität und entscheidet sich dann für das “richtige” Modell
+	\item Problem: Dieser Sequentialtest hält das Irrtumsniveau nicht ein, ein Aspekt der selbst in einigen hochrangigen Publikationen nicht ausreichend berücksichtigt wurde
+	\item \textbf{Lösung: Permutationstest}
+\end{itemize}
+
+Permutationstests gehören zu den so genannten nichtparametrischen Verfahren und beruhen auf “Resampling” (Analogie zu Jackknife/Bootstrap)
+
+\begin{itemize}
+	\item Idee:
+	\begin{itemize}
+		\item Bei Tests werden i.d.R. zwei (oder mehr) Größen miteinander in Beziehung gesetzt
+		\item Unter der Nullhypothese “kein Zusammenhang” sollte die Verbindung zwischen den Größen egal sein
+		\item Betrachte alle möglichen Verbindungen (oder eine Zufallsziehung daraus) und überprüfe, ob der vorliegende Zusammenhang extrem ist (z.B. in weniger als 5\% der möglichen Fälle auftritt)
+	\end{itemize}
+\end{itemize}
+
+Dieses Prinzip läßt sich auf viele komplexe Situationen anwenden, ist aber auch sehr rechenintensiv
+
+\begin{itemize}
+	\item Beispiel: Mittelwertsvergleich zwischen zwei Gruppen (\textcolor{red}{Varianzgleichheit erforderlich!})
+	\item Gruppen: 0, 1, Fallzahlen: n$_0$, n$_1$ , Werte: x$_{0i}$, x$_{1j}$ mit i=1,...,n$_0$, j=1,...,n$_1$
+	\item Berechne die Differenz der Mittelwerte $\mu_0$ und $\mu_1$ der zwei Gruppen: $d=\mu_0-\mu_1$
+	\item Lege eine Reihenfolge der Messwerte fest und permutiere die zugehörigen Gruppenlabels
+	\item Berechne erneut die o.g. Differenz
+	\item Wiederhole das Verfahren für alle Permutationen (exakter Test) oder für eine zufällige hinreichend große Auswahl an Permutationen
+	\item Die so erhaltenen Differenzen liefern die Nullverteilung
+	\item Die ursprüngliche Differenz wird mit dieser Nullverteilung verglichen (Man kann z.B. bestimmen, wieviel Prozent der Differenzen betragsmäßig größer sind als d. Dies liefert einen (empirischen) zweiseitigen Permutationstest p-Wert bezüglich der Hypothese d=0)
+\end{itemize}
