@@ -1,11 +1,110 @@
 \section{V9}
 \subsection{Interpretation der Fixationsindices F$_{st}$ und F$_{is}$}
+Fixationsindizes (F-Statistiken) sind Maße der genetischen Variabilität (Varianzkomponenten).\\
+
+\textbf{Verursacht durch evolutionäre Prozesse:}
+\begin{itemize}
+	\item Inzucht
+	\item Migration
+	\item Mutation
+	\item Selektion
+	\item Wahlund Effekt\footnote{Die Vereinigung von zwei Populationen mit unterschiedlicher Allelfrequenz verringert die Heterozygosität im Vergleich zur HWE Erwartung.\url{https://de.wikipedia.org/wiki/Wahlund-Effekt}}
+\end{itemize}
+
+Fortpflanzung zwischen Verwandten Individuen führt zu einer Reduktion der Heterozygosität (im Vergleich zu HWE) und wird gemessen durch den Inzuchtskoeffizienten F\\
+Zusammenhang zwischen F und Genotyp-Häufigkeiten für zwei Allele:\\
+$p(A)=p(AA) + \frac{p(AB)}{2}$, $p(B)=1-p(A)$\\
+$p(AA)=p(A)^2(1-F) + p(A)F$\\
+$p(AB)=2p(A)p(B)(1-f)$\\
+$p(BB)=p(B)^2(1-F) + p(B)F$\\\\
+$\Rightarrow$ $\displaystyle F=1-\frac{O(AB)}{E(AB)}=1-\frac{p(AB)}{2p(A)p(B)}$\\
+F hängt offenbar von der Allelfrequenz einer Bezugs-Population ab
+\\\\
+$F_{IS}$ = Inzuchtkoeffizient eines Individuums I relativ zu Subpopulation S\\
+$F_{ST}$ = Maß für den genetischen Abstand einer Subpopulation S zur Gesamtpopulation T\\
+$F_{IT}$ = Inzuchtkoeffizient eines Individuums I relativ zur Gesamtpopulation T
+
+\newpage
+Man kann die Fixationsindizes auch als Varianzkomponenten
+modellieren:
+\begin{itemize}
+	\item $F_{IS}$:
+	\begin{itemize}
+		\item entspricht der Varianzkomponente des Innersubjektfaktors innerhalb einer Subpopulation
+		\item $\displaystyle F_{IS}=1-\frac{\text{observed heterocygosity}}{heterocygosity under HWE}$
+	\end{itemize}
+	\item $F_{ST}$
+	\begin{itemize}
+		\item entspricht der Varianzkomponente der Populationssubstruktur innerhalb der Gesamtpopulation
+		\item $\displaystyle F_{ST}=1-\frac{\sigma^2_{\text{within populations}}}{\sigma^2_{\text{between populations}}}$
+	\end{itemize}
+	\item $F_{IT}=F_{IS} + F_{ST} - F_{IS}F_{ST}$
+\end{itemize}
 
 \subsection{Bootstrap, Jackknife als Schätzverfahren für Standardfehler}
+\textbf{Bootstrap}\\
+\begin{itemize}
+	\item Sei X eine Zufallsstichprobe, S eine interessierende Statistik auf X
+	\item Betrachte die empirische Verteilung auf X
+	\item Ziehe n=\#X Zufallsstichproben aus X (mit Zurücklegen)
+	\item Berechne S für diese Zufallsstichproben
+	\item Wiederhole Ziehung der Zufallsstichproben und Berechnung von S
+	\item Bestimme die Standardabweichung für diese Ergebnisse
+	\item Diese Standardabweichung ist ein Schätzer des Standardfehlers
+von S auf X
+\end{itemize}
+
+\textbf{Jackknife}
+\begin{itemize}
+	\item Sei X eine Zufallsstichprobe, S eine interessierende Statistik auf X
+	\item Betrachte die n=\#X Teilstichproben $X_i$ die man erhält, wenn man einzelne Elemente wegläßt
+	\item Berechne S für diese Zufallsstichproben $\rightarrow$ $S_i$
+	\item Berechne $\displaystyle \hat{\mu}=\frac{\sum_{i}^{n}S_i}{n}$ und $\hat{\sigma} = \sqrt{\frac{n-1}{n} \sum_{i}^{n} (S_i-\hat{\mu})^2}$
+	\item Dies ist ein Schätzer des Standardfehlers von S auf X
+\end{itemize}
 
 \subsection{Hauptkomponentenanalyse in der Genetik (Interpretation)}
+\begin{itemize}
+	\item “Structure” erkennt nur grobe genetische Unterschiede zwischen Populationen
+	\item Hauptkomponentenanalyse vieler SNPs ist (viel) sensitiver
+	\item Hauptkomponenten erlauben es, Genetische Assoziationen auf Populationsstruktur zu korrigieren
+\end{itemize}
 
+Vorgang:
+\begin{enumerate}
+	\item Markermatrix normalisieren: $M(i,j)=\frac{C(i,j) - \mu(j)}{\sqrt{p(j)(1-p(,)}}$ \textcolor{red}{???}
+	\item Wishart-Matrix aufstellen: $X=\frac{1}{n}MM'$
+	\item Eigenwerte berechnen und ordnen: $\lambda_1 > \lambda_2 > ... > \lambda_m$
+\end{enumerate}
+
+Die hohe Empfindlichkeit der Methode erfordert eine sorgfältige Analyse:
+\begin{itemize}
+	\item Angleichung der Fallzahlen der Cluster
+	\item Sorgfältiger Umgang mit Ausreißern
+	\item Strenge SNP-Qualitätskriterien
+	\item SNPs vor Analyse entkorrelieren (pruning)
+	\item Bekannte, kritische genomische Bereiche (konservierte Bereiche oder stark mit Abstammung assoziierte Bereiche) eliminieren
+	\item Mit PCs assoziierte SNPs + Regionen eliminieren
+	\item Funktioniert nicht ohne weiteres mit verwandten Individuen (Lösung: „Drop-one-in“ Prozedur, Alternative: „swap-one-in“)
+\end{itemize}
+
+\newpage
 \subsection{ROH: Definition und Interpretation}
+\textbf{Idee:} Längere homozygote Bereiche im Genom weisen auf (ent-
+fernte) Verwandtschaft zwischen den Eltern hin (inbreeding).
+\\\\
+Tritt das Phänomen in einer Population gehäuft auf, so spricht dies
+für einen kleinen Genpool (kleine Gründerpopulation = founder),
+bzw. geringen Austausch mit der Umgebung = Isolation\\
+
+Praktische Probleme mit der Definition (SNP-Arrays):
+\begin{itemize}
+	\item Genotypisierungsprobleme: einzelne, möglicherweise falsche heterozygote oder fehlende Genotypen in einem Bereich
+	\item Wo beginnt, wo endet ein homozygoter Bereich?
+	\item Die Chance auf Homozygotie hängt von der Anzahl der SNPs in einem Bereich bzw. der SNP-Dichte und den Allelfrequenzen ab
+	\item Ab welcher Entfernung „teilt“ man homozygote Bereiche?
+	\item Lösung: Hidden Markov Modelle
+\end{itemize}
 
 \subsection{Aufgaben zur Übung 9}
 \subsubsection{Aufgabe 1}
