@@ -3,12 +3,19 @@
 Wie bei der Artendiversität reduziert eine Ungleichverteilung der Abundanzen auch die funktionelle Vielfalt\\
 3 Schritte zur Berechnung:
 \begin{enumerate}
-	\item Minimum Spanning Tree ausrechnen
-	\item Normieren mit Gesamtlänge
-	\item Index (0 bis 1) = Vergleich mit dem Idealszenario: $PEW_l$ bei ungleichen $EW_l$ immer kleiner als $\frac{1}{(S-1)}$
-	\item Beispiel siehe Vorlesung
+	\item Minimum Spanning Tree ausrechnen: $EW_l=\displaystyle \frac{dist(i,j)}{A_i + A_j}$ mit \\
+	dist(i,j) = Distanz zwischen Art i und j\\
+	$A_i$ = Abundanz von Art i
+	\item Normieren mit Gesamtlänge: $PEW_l=\displaystyle \frac{EW_l}{\displaystyle \sum_{l=1}^{S-1} EW_l}$ mit\\
+	S = Artenzahl\\
+	p = relative Abundanz / Deckung / Biomasse\\
+	dist = Euklidische Distanz im Merkmalsraum\\
+	\item Index (0 bis 1) = Vergleich mit dem Idealszenario: $PEW_l$ bei ungleichen $EW_l$ immer kleiner als $\frac{1}{(S-1)}$\\
+	$FEve=\displaystyle \frac{\displaystyle \sum_{l=1}^{S-1} min(PEW_l,\frac{1}{S-1}) - \frac{1}{S-1}}{1-\frac{1}{S-1}}$
 \end{enumerate}
 
+Beispiel siehe Vorlesung
+\\\\
 \underline{\textbf{Functional Dispersion}}
 \begin{itemize}
 	\item \textbf{Muss:}
@@ -34,6 +41,7 @@ Wie bei der Artendiversität reduziert eine Ungleichverteilung der Abundanzen au
 \underline{\textbf{Rao‘s Q}}
 \begin{itemize}
 	\item „Rao‘s Quadratic Entropy“, „Varianz der Distanzen zwischen Arten“
+	\item $FD_Q=\displaystyle \sum_{i=1}^{S-1}\sum_{j=i+1}^{S} dist_{ij}(p_i,p_j)$
 	\item mittlere funktionelle Ungleichheit zwischen zwei zufällig ausgewählten Individuen
 	\item \textbf{Vorteile:}
 	\begin{itemize}
@@ -55,6 +63,8 @@ Wie bei der Artendiversität reduziert eine Ungleichverteilung der Abundanzen au
 	\item Ausrechnen der euklidischen Distanz zwischen jeder Art und dem Zentroid
 	\item Ausrechnen der mittleren Distanz
 	\item Abweichungen vom Ring mit Radius dG nach innen und nach außen. Abundanz gewichtet
+	\item Index: $FDiv=\displaystyle \frac{\Delta d + d\bar{G}}{\Delta |d| + d\bar{G}}$
+	\item kann nur Werte zwischen 0 und 1 annehmen
 \end{enumerate}
 
 \underline{\textbf{FDis von Laliberté und Legendre}}

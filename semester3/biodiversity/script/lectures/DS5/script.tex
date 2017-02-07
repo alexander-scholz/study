@@ -6,6 +6,12 @@
 	\item Die Gesamtartenzahl in der Probe wird extrapoliert
 \end{itemize}
 
+$\displaystyle S_{est}=S_{obs} + \frac{a^2}{sb}$ mit\\
+$S_{est}$: geschätzte „wahre“ Artenzahl\\
+$S_{obs}$: beobachtete Artenzahl\\
+a: Anzahl der Arten die nur einmal gefunden wurden\\
+b: Anzahl der Arten, die zweimal gefunden wurden\\
+
 \textbf{Überlegung zur Artenvielfalt:} Welche Gemeinschaft ist diverser? Warum?
 \\\\
 \textbf{Shannon-Wiener Diversität}
@@ -14,9 +20,17 @@
 	\item Shannon-Wiener-Diversität (H oder D Shannon ): Diversität abh. von Artenzahl und deren Häufigkeit (Rechenbeispiel siehe Vorlesung)
 \end{itemize}
 
+$D_{Shannon}=\displaystyle -\sum_{i=1}^{S} p_i ln(p_i)$\\
+$p_i$: relative Häufigkeit der Art i bezogen auf Anzahl, Deckung, Biomasse...
+\\\\
 \textbf{Gini-Simpson's Diversitäts-Index D:} beschreibt die Wahrscheinlichkeit, mit der zwei zufällig ausgewählte Organismen der gleichen Art angehören (= Varianzmaß)\\
+
+$D_{\text{Gini-Simpson}}=\displaystyle 1-\sum_{i=1}^{S} p_i^2$\\
+$p_i$: relative Häufigkeit der Art i bezogen auf Anzahl, Deckung, Biomasse...
+\\
 \textcolor{red}{Zwischen welchen Werten schwankt der Simpson-Index?}
 
+\newpage
 \textbf{Was das Maß können sollte}
 \begin{enumerate}
 	\item Bei konstanter Artenzahl, Abundanz und Gleichverteilung (Eveness) aber variabler Anteile einzelner Arten, soll das Maß auch konstant bleiben
@@ -105,6 +119,12 @@ Kontinuierliche Maße der funktionellen Diversität basieren auf Ähnlichkeit de
 	\item Besser: Mittelwert über alle Arten gewichtet mit deren Bedeutung in der Gemeinschaft (Abundanz, Biomasse, Deckung,...)
 \end{itemize}
 
+$\bar{X_c}=\displaystyle \frac{1}{S} \sum_{i=1}^{S}A_i X_i$ mit\\
+X = Merkmalswert\\
+A = Abundanz (relativ)\\
+S = Anzahl der Arten\\
+i = Zählvariable für die Arten\\
+\\\\
 \underline{\textbf{Functional richness (FR)}}\\
 \begin{itemize}
 	\item Merkmalsraum, den die Gemeinschaft einnimmt
