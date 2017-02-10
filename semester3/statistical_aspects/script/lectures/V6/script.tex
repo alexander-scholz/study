@@ -7,7 +7,7 @@ Schätzen mit Kleinste Quadrate Methode: Regressionsgerade minimiert die Summe d
 \subsubsection{Schätzen der Betas („Intercept“ und „Slope“)}
 Ableiten der Residuenquadratsumme nach den Betas und Nullsetzen.\\
 $\hat{\beta_1}=\frac{\displaystyle \sum_{i=1}^{n} (x_i - \bar{x}_n)(y_i - \bar{y}_n)}{\displaystyle \sum_{i=1}^{n} (x_i - \bar{x}_n)^2}$\\\\
-$\hat{\beta_0}= \bar{y}_n - \hat{\beta_1} \cdot x_n$\\\\
+$\hat{\beta_0}= \bar{y}_n - \hat{\beta_1} \cdot \bar{x_n}$\\\\
 
 Mean square error (MSE) = $\frac{1}{n} \cdot RSS$\\
 residual sum of squares (RSS) = $\displaystyle \sum_{i=1}^{n} (y_i - f(x_i))^2$
@@ -17,8 +17,8 @@ $\displaystyle \underbrace{\sum_{i=1}^{n} (y_i - \bar{y})^2}_{\text{Gesamtvarian
 
 \newpage
 \textbf{Erklärte Varianz (= Bestimmtheitsmaß $R^2$)}\\\\
-$R^2= 1 - \displaystyle \frac{\text{Varianz der Residuen}}{\text{Gesamzvarianz}} =1- \frac{\displaystyle\sum_{i=1}^{n} (y_i - \hat{y_i})^2}{\displaystyle \sum_{i=1}^{n} (y_i - \bar{y})^2}$\\\\
-$\displaystyle R^2= 1 - \frac{\text{Varianz der Regresswerte}}{\text{Gesamzvarianz}} = 1 - \frac{\displaystyle \sum_{i=1}^{n} (\hat{y_i} - \bar{y})^2}{\displaystyle \sum_{i=1}^{n} (y_i - \bar{y})^2}$
+$R^2= 1 - \displaystyle \frac{\text{Varianz der Residuen}}{\text{Gesamtvarianz}} =1- \frac{\displaystyle\sum_{i=1}^{n} (y_i - \hat{y_i})^2}{\displaystyle \sum_{i=1}^{n} (y_i - \bar{y})^2}$\\\\
+$\displaystyle R^2= 1 - \frac{\text{Varianz der Regresswerte}}{\text{Gesamtvarianz}} = 1 - \frac{\displaystyle \sum_{i=1}^{n} (\hat{y_i} - \bar{y})^2}{\displaystyle \sum_{i=1}^{n} (y_i - \bar{y})^2}$
 \\\\
 Problem: Steigt die Anzahl der Parameter m im Modell, so steigt R2 unabhängig vom Einfluss der Variablen, deshalb Korrektur\\\\
 \textbf{korrigiertes Bestimmtheitsmaß:}\\
