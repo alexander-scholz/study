@@ -10,7 +10,7 @@ X = scale(cdata)
 colnames(X) = NULL
 row.names(X) = NULL
 X_t = t(X)
-# A soll Covarianzmatrix sein, dafür fehlt aber noch A/n-1
+# A soll Covarianzmatrix sein, dafür fehlt aber noch A/n
 # warum transponiert*normal?
 A = X_t %*% X
 det(A)
