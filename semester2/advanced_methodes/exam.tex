@@ -1,0 +1,457 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[english,german]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\usepackage{geometry}
+\geometry{
+  left=3cm,
+  right=3cm,
+  top=3cm,
+  bottom=4cm,
+  bindingoffset=5mm
+}
+
+\setlength{\parindent}{0em} 
+\hypersetup{
+    colorlinks=true,
+    linktoc=all,
+    linkcolor=black,
+    urlcolor=black
+}
+
+% Hurenkinder und Schusterjungenregel
+\clubpenalty = 10000
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
+
+%Gummi|065|=)
+\title{\Huge\textbf{fortgeschrittene Methoden der Bioinformatik Prüfungsscript}}
+\author{}
+\date{}
+
+% set title of table of contents
+\renewcommand*\contentsname{Inhalt}
+
+% https://www.sharelatex.com/learn
+% http://www.math.ubc.ca/~cautis/tools/latexmath.html
+% http://www.golatex.de/wiki/Kategorie:Befehlsreferenz
+% https://en.wikibooks.org/wiki/LaTeX/Mathematics
+
+\begin{document}
+
+\begin{titlepage}
+
+\maketitle
+\thispagestyle{empty}
+\end{titlepage}
+\newpage
+
+\begin{titlepage}
+\tableofcontents
+\thispagestyle{empty}
+\end{titlepage}
+
+\section{Grundlagen}
+\textbf{Geg.:}\\
+X von Punkten in $R^3$, $\forall\ x,y \in X$\\
+$d(x,y):$ euklidische Distanz bekannt
+\\\\
+\textbf{Ges.:}\\
+Finde 3D-Repräsentation mit $\Phi: x \rightarrow R^3$ (Abbildung von x in 3D-Raum)\\
+$\underbrace{||\Phi(x)-\Phi(y)||}_{ges} = \underbrace{\sqrt{\sum \limits_{i=1}^{3} (\Phi_{i}(x)-\Phi_{i}(y))^2}}_{geg}$\\
+\\
+\underline{Konkruenztransformation:}
+\begin{itemize}
+	\item Verschiebung: $\Phi'=\Phi+\tau$
+	\item Rotation: $\Phi'=R\cdot\Phi$ (Spiegelung des Koordinatensystems)
+\end{itemize}
+
+rechnerei...
+
+\begin{itemize}
+	\item mit 7 Eigenwerten genau 7 Dimensionen, bei Eigenwerten = 0 $\rightarrow$ Dimension überflüssig
+	\item negative Eigenwerten nicht im euklidischen Raum darstellbar
+	\begin{itemize}
+		\item \textbf{Lösung:} Distanz nicht exakt einbettbar $\rightarrow$ negative Eigenwerte weglassen
+	\end{itemize}
+\end{itemize}
+
+\textbf{Was machen wenn nur Teile der Distanzen vorhanden sind?}\\\\
+Qualität prüfen: $\underbrace{\sum \limits_{k,l}}_{ueber\ alle\ bekannten\ Distanzen\ k,l}(\sqrt{(x^k-x^l)^2}-d_{kl})^2 \rightarrow min (=0)$
+\\\\
+\textbf{Wann sind genug Informationen bekannt?}\\\\
+\begin{itemize}
+	\item Graph G(V,E), $|V|=n$, $|E|=m$
+	\item Konfiguration $p:V\rightarrow R^d$ für $d=2$
+	\item Framework (G,p)
+\end{itemize}
+
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Definition:} Ein Framework ist flexibel wenn es eine stetige Deformaton $p \rightarrow p'$ gibt, sodass alle Abstände in G(=Kantenlängen) erhalten bleiben. Andernfalls ist (G,p) rigid.}}
+\newpage
+\underline{minimal rigid:}
+\begin{itemize}
+	\item rigid
+	\item entfernen einer Kante führt zu einem Teilgraphen der flexibel ist
+\end{itemize}
+
+\textbf{Gibt es eine mögliche Bewegungsfreiheit?}\\
+$(p^i-p^j)(p^i-p^j)=d_{ij}^2$ in Abhängigkeit der Zeit darstellen:\\
+$2\cdot \underbrace{(v^i-v^j)}_{*}(p^i-p^j)=\frac{\partial}{\partial t}d_{ij}^2=0\ \forall i,j \in E$\\\\
+* wenn Verschiebung bzw. Bewegungsfreiheit existiert, dann existiert hier einen Lösung
+
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Definition:} G mit Präsentation p ist "\ infinitesimal flexibel" wenn es eine Lösung $(v^1,v^2,v^3,…,v^n) \neq \overrightarrow{0}$ von $(p^i-p^j)(v_i-v_j)=0$ gibt ($\forall \{i,j\} \in E$)}}
+
+\section{generische Repräsentation}
+\underline{Eigenschaften:} rigid $\Leftrightarrow$ infinitezimal rigid $\Rightarrow$ generisch rigid
+\\\\
+\textbf{Benötigte Eigenschaften für rigid:}
+\begin{itemize}
+	\item pro Vertex 2 Verbindungen
+	\item m=2n-3 (externe FG)
+	\begin{itemize}
+		\item m = Anzahl der Kanten
+		\item n = interne Freiheitsgrade pro Konten
+		\item externe FG: 2 Translation + 1 Rotation
+	\end{itemize}
+\end{itemize}
+
+2 Punkte fix = 4 Freiheitsgrade\\
+- 1 Distanz = 3 Freiheitsgrade übrig\\
+
+\fcolorbox{red}{white}{\parbox{\linewidth}{$ \left. \begin{array}{c} rigid < 2n-3\\minimal\ rigid = 2n-3 \end{array} \right\} + $ sinnvolle Verteilung der Kanten}}
+\\\\
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Laman Theorem 1:} G ist generisch minimal rigid in 2D $\Leftrightarrow$
+\begin{itemize}
+	\item m = 2n-3
+	\item Laman-Bedingung: G enthält keine Teilgraphen mit k Knoten und m'$>$2k-3 Kanten (unabhängiges System von Kanten)
+\end{itemize}
+}}
+\\\\
+Graphen, die diese Bedingungen erfüllen, heißen Laman-Graphen
+\\\\
+\parbox{\linewidth}{\textbf{Beispiel Henneberg-Konstruktion}\\
+Start mit einer Kante, dann Iteration: Addition von 1 Knoten x
+\begin{itemize}
+	\item Typ 1: verbinde x mit  vorhandenen Knoten mittels zwei neuer Kanten
+	\item Typ 2: finde 3 Knoten u, v, w mit mindestens 1 Kante in G(u, v, w) induziert ist. Verbinde x mit u, v, w, lösche eine Kante aus G(u, v, w)
+\end{itemize}
+}
+\\\\
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Laman Theorem 2:} Die Kanten von G sind unabhängig in 2D $\Leftrightarrow$\\
+Für jede Kante (a,b) in G hat der Multigraph $G_{4l}$ der durch Vervierfachung von (a,b) entsteht, keinen induzierten Teilgraphen mit m'$>$2n' Kanten und n' Knoten
+}}
+
+\section{Pebble Game}
+4 Endresultate:
+\begin{itemize}
+	\item wellconstraint (minimal rigid): Anzahl pebbles=l, alle Kanten eingesetzt
+	\item overcontraint (redundant): Anzahl pebbles=l, nicht alle Kanten eingesetzt
+	\item underconstraint (flexible): Anzahl pebbles$>$l, alle Kanten eingesetzt
+	\item other: Anzahl pebbles$>$l, nicht alle Kanten eingesetzt
+\end{itemize}
+
+\section{Rigidity in 3D}
+
+jetzt Laman-Bedingungen analog?\\
+\textbf{2D:}
+\begin{itemize}
+	\item m=2n-3 (Vollständigkeit)
+	\item $\forall$ Teilgraphen m'$\leq$ 2n'-3 (Unabhängigkeit)
+	\begin{itemize}
+		\item 2n Freiheitsgrade für n Punkte (2 Translationen)
+		\item 3 Freiheitsgrade eines allgemeinen starren Körpers in 2D (Dimensionen der Symetriegruppe)
+	\end{itemize}	
+\end{itemize}
+
+\textbf{jetzt 3D:}
+\begin{itemize}
+	\item 3 Freiheitsgrade pro Punkt (3 Translationen)
+	\item 6 Freiheitsgrade eines allgemeinen starren Körpers in 3D (3 Translation + 3 Rotation)
+\end{itemize}
+
+\underline{Hoffnung das gilt:}
+\begin{itemize}
+	\item m=3n-6
+	\item $\forall$ Teilgraphen m'$\leq$ 3n'-6 für n'$\geq$3 (notwendige Bedingung)
+\end{itemize}
+
+jedoch weitere Bedingungen notwendig!!! (siehe Beispiel Doppelbanane)
+\\\\
+\textbf{bei Molekülen:}
+\begin{itemize}
+	\item body-hinge-framework
+	\item Interpretation: 1 hinge = 5 joints $\rightarrow$ so bleibt 1 Freiheitsgrad offen
+\end{itemize}
+
+\parbox{\linewidth}{
+\textbf{Multigraph:}
+\begin{itemize}
+	\item V $\leftrightarrow$ Bodies
+	\item E $\leftrightarrow$ hinges $\leftrightarrow$ chemische Einfachbindung $\leftrightarrow$ 5-fach Kanten = joints
+\end{itemize}
+}
+
+Beschreibung der rigidity von body-joint-frameworks\\
+bei Doppelbindungen werden zusätzliche Kanten eingefügt, da in der Ebene fixiert werden muss
+\\\\
+\textbf{(k,l)-sparse graphs:} Verallgemeinerung der Laman-Graphen ((2,3)-sparse-graphs (rigid graph))\\\\
+
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Ein Graph (V,E) ist (k,l)-sparse wenn:}
+\begin{enumerate}
+	\item Unabhängigkeitsbedingung: jede Teilmenge V' von V spannt höchstens $|E'|\leq k\cdot|V'|-l$ Kanten auf (benötigt für genügend nicht redundante Kanten)
+\end{enumerate}
+\textbf{Ein Graph (V,E) ist (k,l)-tight wenn:}
+\begin{enumerate}
+	\item Unabhängigkeitsbedingung \textbf{UND}
+	\item Vollständigkeitsbedingung: $|E|=k\cdot|V|-l$ (benötigt für Verbrauch aller entsprechend für rigidity nicht gebrauchten Freiheitsgrade)
+\end{enumerate}
+}}
+\\\\\\
+\fcolorbox{red}{white}{\parbox{\linewidth}{Ein Graph H ist (k,l)=(V,F) steif, genau dann wenn er einen spannenden (k,l)-sparse Teilgraphen G=(V,E) E$\leq$F enthält (spannend: alle Knoten, nicht alle Kanten)
+}}
+\\\\
+Die Kanten F\textbackslash E sind ``redundant"\\\\
+Gegeben ein beliebiger Graph G, nennen wir eine Kantenmenge E (k,l)-sparsity-unabhängig wenn für jede Teilmenge gilt:\\
+$|B|\leq k |V(B)| - l$ mit $|V(B)|$=Knotenmenge die von B aufgespannt wird
+\\\\
+\fcolorbox{red}{white}{\parbox{\linewidth}{(k,l)-sparsity-Unabhängigkeit für $1\leq l \leq 2k$ definiert einen Matroiden\\
+Einschränkung: mindestens 2 Knoten da sonst keine Kante aufgespannt werden kann
+}}
+\\\\
+\parbox{\linewidth}{
+\underline{Maxwell-Unabhängigkeit:}\\
+Definition $(\underbrace{d}_{k},\underbrace{\binom{d+1}{2}}_{l})$ ähnlich sparsity-Definition: $(\underbrace{\binom{d+1}{2})}_{k},\underbrace{\binom{d+1}{2}}_{l})$\\
+mit k=Anzahl Raumdimensionen, l=Anzahl Freiheitsgrade im R$^d$\\
+$|E'|\leq d|V(E')|-\frac{d(d+1)}{2}$ für alle E' mit $|V(E')|\geq d$\\
+$\rightarrow$ macht Matroideigenschaft kaputt\\
+$\rightarrow$ Bar-Joint nicht in 3D mit Pebble-Game lösbar!
+}
+\\\\\\
+\parbox{\linewidth}{
+\textbf{Matroid M=(X,I):} Grundmenge X und unabhängige Menge I, wenn Teilmenge $A\subseteq X$ auch $A \in I$ $\rightarrow$ A unabhängig
+
+\underline{Eigenschaften:}
+\begin{enumerate}
+	\item $\emptyset \in I$
+	\item $A \in I$ und $B \subseteq A \Rightarrow B \in I$
+	\item Austauschaxiom: $A,B \in I, |A| < |B|,\ \exists\ x \in B \backslash A\ |\ A \cup \{x\} \in I$
+\end{enumerate}
+}
+\underline{Greedy:} …
+\\\\
+Wegen 2. haben alle Lösungen B die gleiche Anzahl von Elementen unabhängig von der Reihenfolge in der X durchlaufen wird
+\\\\
+\textbf{nochmal Pebble Game}\\
+gerichteter Graph D, Knotenmenge V, Knoten v, Teilgraph V'$\subset$V\\
+Funktionen:
+\begin{itemize}
+	\item peb(v): Anzahl der Pebbles an Knoten v
+	\item span(v): Anzahl loops an v
+	\item out(v): outdegree exklusive Loops
+	\item peb(V'): Anzahl der Knoten in Teilgraphen V'
+	\item span(V'): Anzahl der Kanten, die von V' aufgespannt sind, inklusive Loops
+	\item out(v'): Anzahl der Kanten die von V' nach V\textbackslash V' zeigen
+\end{itemize}
+
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Lemma:} Invarianten des Pebble Games mit Graph G, Knoten v, Teilgraph V'$\subset$V\\
+(Invarianten: Eigenschaften die über das Spiel gleich bleiben)
+\begin{enumerate}
+	\item peb(v) + span(v) + out(v) = k
+	\item peb(V') + span(V') + out(V') = $k \cdot |$V'$|$
+	\item peb(V') + out(V') $\geq$ l (am Ende des Spiels bleiben mind. l Pebbles im Spielfeld)
+	\item span(V')$\leq$k$|$V'$|$-l
+\end{enumerate}
+}}
+\\\\
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Definition Block:} ein Teilgraph G' mit $|E'|=k|V'|-l$ und E(G') ist (k,l)-sparsity-independent (k,l)-sparsity-rigid\\
+V' ist ein Block $\Leftrightarrow$ peb(V') + out(V')=l
+}}
+
+\begin{itemize}
+	\item l Pebbles am Ende $\Rightarrow$ steif
+	\item Kanten zurückgewiesen, $|E|>|E(D)| \Rightarrow$ überbestimmt bzw. Redundanzen enthalten
+\end{itemize}
+
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Lemma*:} wenn e(u,v) $\cup E(D)$ unabhängig, peb(u) + peb(v) $<$ l+1 $\Rightarrow$ dann gibt es ein Pebble in Reach(u) $\cup$ Reach(v) das nach u oder v transportiert werden kann
+}}
+\\\\\\
+\underline{Zusammenfassung:}
+Eine Kante e wird in D eingesetzt $\Leftrightarrow$ e $\cup$ E(D) unabhängig
+
+Beweis: Lemma* anwenden bis genug Pebbles in u,v gesammelt $\Rightarrow$ unabhängig $\Rightarrow$ kann eingesetzt werden\\
+Invariante 4 $\Leftarrow$ eingesetzt $\Rightarrow$ unabhängig
+
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Theorem:} Das (k,l) pebble game erkennt korrekt (k,l)-sparsity Unabhängigkeit
+}}
+
+\subsection{Computation Complexity:}
+Laufzeit: $\mathcal{O}(k\cdot l\cdot |V|\cdot |E|)$\\
+Speicher: $\mathcal{O}(|V| + |E|)$
+
+\subsection{Zusammenfassung sparse graphs}
+(k,l)-sparse graphs: $|E'|\leq k|V'|-l$\\
+(k,l)-tight/rigid $\Leftrightarrow$ (k,l)-sparse und $|E'|=k|V'|-l$\\\\
+blocks:\\
+(k,l)-sparsity-block: Teilgraph G'(V',E') eines (k,l)-sparse graphs $|E'|=k|V'|-l$ $\Leftrightarrow$ (k,l)-pebble game\\
+
+\begin{itemize}
+	\item Konstruktion eines DiGraphen D' mit orientierten unabhängigen Kanten\\
+  $\forall v \in V$: peb(v)
+	\item genau \underline{l} Pebbles in D $\Leftrightarrow$ steif
+	\item minimal steif $\Rightarrow$ keine Kanten wurden als redundant verworfen
+\end{itemize}
+
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Definition component:}\\
+V' $\subseteq$ V ist eine (k,l)-sparsity componente von G wenn
+\begin{enumerate}
+	\item V' ein Block ist
+	\item V' maximal bezüglich Knotenmenge $\rightarrow$ also maximal erweiterter Block
+\end{enumerate}
+}}
+\\\\
+\underline{Eigenschaften von component:}\\\\
+B$_1$(V$_1$, E$_1$), B$_2$(V$_2$, E$_2$) zwei (k,l)-sparse blocks
+\begin{itemize}
+	\item für 0$\leq$l$\leq$k und V$_1 \cap$V$_2 \neq$0 gilt: V$_1 \cup$V$_2$ und V$_1 \cap$V$_2$ sind ebenfalls Blocks
+	\item für k$<$l$<$2k und $|V_1\cap V_2|\geq 2$ gilt: V$_1 \cup$V$_2$ und V$_1 \cap$V$_2$ sind ebenfalls Blocks
+\end{itemize}
+
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Lemma:} Für l$>$0: jede (k,l)-sparsity component ist zusammenhängend\\
+V' ist eine (k,l)-sparsity-component $\Rightarrow$ in V' gibt es genau l pebbles (peb(u) + peb(v)=l) nach einsetzen von e\\
+}}
+\\\\
+Nach dem Einsetzen von e=(u,v) gibt es in der component, die von u und v aufgespannt wird, keine weiteren pebbles
+\subsection{Pebble Collection}
+zwei grundlegende Möglichkeiten (Algorithmen)
+
+\section{von 2D zu 3D}
+bisher 2D bar+joint frameworks:
+\begin{itemize}
+	\item $\Leftrightarrow$ Laman graphs
+	\item $\Leftrightarrow$ (2,3)-sparse graphs
+\end{itemize}
+
+jetzt in 3D: (3,6)-sparse graphs\\
+\parbox{\linewidth}{
+\underline{2 Probleme:}
+\begin{enumerate}
+	\item (3,6)-sparsity ist kein Matroid $\rightarrow$ pebble game verwendbar um unabhängige Mengen von Kanten zu bekommen \underline{aber} maximal unabhängige Menge nicht eindeutig
+	\item rigid in 3D $\Rightarrow$ (3,6)-sparse $\rightarrow$ Umkehr ist aber falsch (siehe Maxwell: Gegenbeispiel Doppelbanane)
+\end{enumerate}
+}
+\textbf{Daher nun body + bar frameworks}
+\\\\
+\underline{Übersetzung in Multigraphen:} Verwandschaft zu body +  hinge framework\\
+ - 5 generische bars = 1 hinge\\
+\\
+Moleküle: bond bending frameworks (Molekülgraphen)
+\begin{itemize}
+	\item steife Stäbe, fixe Längen
+	\item fixe Bindungswinkel
+\end{itemize}
+
+Für Graph G wenn Graph H existiert sodass G=H$^2$\\
+Quadrat des Graphen: e=(u,v) $\in$ H$^2$ wenn x $\exists$ ux und xv in H oder (u,v) $\in$ H
+
+\underline{Verbindung von rigid-Clustern (components)}
+\begin{enumerate}
+	\item pivot-joint: B$_1\cap$B$_2$=$\{$v$\}$ (zwei Graphen B$_1$ und B$_2$ über genau einen Knoten v verbunden)
+	\item edge-joint: zwei Graphen B$_1$ und B$_2$ über genau eine Kante (u,v) verbunden
+	\item implied-hinge-joint: (u,v) $\in$ E aber (u,v) in Block $\rightarrow$ u,v liegen auf Achse, die jedoch keine Kante ist (siehe Doppelbanane)
+\end{enumerate}
+
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Lemma:} Wenn G=H$^2$ dann gibt es weder pivot-joints noch implied-hinge-joints
+}}
+\\\\
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Theorem:} Die Kanten eines Graphen G=H$^2$ sind unabhängig bzgl. rigidity in 3D $\Leftrightarrow$ für alle Teilgraphen mit $|$V'$|\geq$3 Knoten\\
+$|$E'$|\leq$3$|$V'$|$-6 gilt G=H$^2$ ist minimal generisch steif in 3D $\Leftrightarrow$ die Kanten Maxwell-unabhängig sind und $|$E$|$=3$|$V$|$-6
+}}
+\\\\
+\textbf{dies stimmt für Moleküle! jedoch keine Matroid-Eigenschaften!!!}\\
+$\rightarrow$ keine Garantie, dass durch einsetzen der Kanten rigid-Basis erzeugt wird
+\newpage
+\section{Abbie Algorithmus}
+
+\underline{Positionsproblem lösen:}\\
+set of vertices V und set of edges E, e$_{ij} \in$ E, falls es bekannte Distanz i,j gibt\\
+Realisation: mapping P:(v$\rightarrow$R$^3$)\\
+molecule problem: sei p$_i$=P(v$_i \in$V)\\
+Problem minimieren: $F(P)=\sum \limits_{e_{ij} \in E} (\underbrace{|p_i-p_j|^2}_{Distanzquadrate}-\underbrace{d_{ij}^2}_{bekannte\ Distanz})^2$\\
+$\rightarrow$ $\mathcal{O}(n^P)$: lange Laufzeit, daher optimieren
+
+\textbf{Divide and Conquer Algorithmus}\\
+\underline{Abbie (1)}
+\begin{enumerate}
+	\item finde maximale, einzigartig realisierbare Teilgraphen\\ $\rightarrow$ für jeden Teilgraphen: klein genug für $\mathcal{O}(n^P)$?
+	\item JA: setze Position via globaler Optimierung
+	\item NEIN: zerlege in kleinere Teilprobleme, rufe 1. rekursiv auf
+	\item kombiniere via globaler Optimierung
+\end{enumerate}
+
+\textbf{notwendige Bedingungen für eindeutig einbettbar (siehe 1.):}
+\begin{itemize}
+	\item Vertex (d+1)-connected
+	\item redundant rigid
+\end{itemize}
+
+\underline{max unique (2)}
+\begin{enumerate}
+	\item wenn g=k$_{5,5} \rightarrow$ kein einzigartiger Teilgraph
+	\item wenn g nicht 4-vertex-connected $\rightarrow$ rekursiv 4-vertex-connected Teilgraphen lösen
+	\item wenn g nicht redundant steif $\rightarrow$ rekursiv auf redundant steifen Teilgraphen lösen
+	\item wenn auf hinreichende Bedingungen positiv getestet $\rightarrow$ g einzigartig
+	\item sonst ??? $\rightarrow$ interessanter Graph
+\end{enumerate}
+
+\textbf{hinreichende Bedingungen für eindeutig einbettbar (siehe 4.):}
+\begin{itemize}
+	\item Stressmatrix mit Nullity $\geq$ d+1
+	\begin{itemize}
+		\item Nullity: Nullity(G) = n - r(A) … mit Graph G mit n Knoten, A=Adjazenzmatrix, r(A): Rang der Adjazenzmatrix
+	\end{itemize}
+\end{itemize}
+
+\parbox{\linewidth}{
+\underline{QR-Faktorisierung: redundant steife Komponenten (3)}\\
+\begin{itemize}
+	\item unabhängiges Set von redundanten Kanten finden (in Q)
+	\item um Basis für verbliebene Flexe zu finden
+	\item $\forall$ 3-Cliquen x,y,z im induzierten Graph $\rightarrow$ $\forall$ v $\neq$ x,y,z falls v induzierte Kante zu x,y,z hat $\rightarrow$ füge v zum wachsenden Teilgraphen von x,y,z hinzu
+\end{itemize}
+}
+
+\parbox{\linewidth}{
+\textbf{kombinatorische Positionierung}
+\begin{enumerate}
+	\item 2 Chunks teilen sich 4 Knoten $\rightarrow$ dadurch nur eine Variante zur Vereinigung (Knoten 1…4 vereinen)
+	\item 1 Knoten mit 4 Kanten in Chunk $\rightarrow$ verbinden
+	\item 1 Knote mit nur 3 Kanten (valent) in Chunk $\rightarrow$ Spiegelung möglich $\rightarrow$ ausprobieren welche die bessere Variante ist (Heuristik verwenden)
+	\item 2 valente Knoten zu Chunk + 1 Kante zwischen v und w $\rightarrow$ kann verbunden werden (valent: 3 Kanten zum Basechunk)
+	\item 2 valente Chunks zum Basechunk verbinden/hinzufügen
+	\item 1 valenter Chunk und 1 valenter Knoten zum Basechunk verbinden/verbinden
+\end{enumerate}
+}
+
+\underline{Optimierung von F' als Minimierungsfunktion}
+\begin{itemize}
+	\item vertex: 3 Freiheitsgrade (Position)
+	\item chunk: 6 Freiheitsgrade (Position, Rotation)
+	\item für alle Spiegelungen S: 2$^{S-1}$ Möglichkeiten
+	\item einen chunk fixieren als "base"
+	\item gemeinsame Knoten mit "base"
+	\begin{itemize}
+		\item (3): nur Spiegelung
+		\item (2): Rotation (Hinge)
+		\item (1): 3 Rotationsmöglichkeiten
+		\item (0): alle 6 Freiheitsgrade
+	\end{itemize}
+\end{itemize}
+
+\end{document}

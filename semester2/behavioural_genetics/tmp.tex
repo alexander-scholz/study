@@ -31,7 +31,7 @@
 \displaywidowpenalty = 10000
 
 %Gummi|065|=)
-\title{Verhaltensneurogenetik}
+\title{Einsprechthema}
 \author{}
 \date{}
 
@@ -52,105 +52,119 @@
 \end{titlepage}
 \newpage
 
-\begin{titlepage}
-\tableofcontents
-\thispagestyle{empty}
-\end{titlepage}
-\newpage
+\section{Aufbau Neuron}
+\includegraphics[width=0.6\textwidth]{tmp_pix/neuron.png}
 
-\section{Vorlesung 20.04.2016}
+\section{Arten}
+\includegraphics[width=0.5\textwidth]{tmp_pix/kinds_of_neuron.png}\\
+1. unipolare Nervenzelle, 2. bipolare Nervenzelle, 3. multipolare Nervenzelle, 4. pseudounipolare Nervenzelle\\
 
-\subsection{Mechanorezeptoren von C. elegans}
+\subsection{genauere Erklärung Axon}
+\begin{enumerate}
+	\item Axonhügel: pyramidenförmige Vorwölbung
+	\item Initialsegement: anschließende kurze Segment des Fortsatzes und stets ohne Hülle
+	\item Hauptverlaufsstrecke:
+	\item Endverzweigung: präsynaptischen Teil einer Synapse
+\end{enumerate}
+
+Myelinscheide, Schwann-Zelle, Ranvier-Schnürring
+
+\subsection{neuronale Wegfindung}
 \begin{itemize}
-	\item 302 Neurone + 56 gliaähnlihce Zellen + 601 übrige Zellen = 959 Zellen gesamt + Keimbahn
-	\item 6 Mechanorezeptoren (3 AVM, 3 PVM - Posterior ventral microtubule cell). PVM nicht funktionell. AVM hat Synapsen zu Motorneuronen. Bei Verschiebung an andere Position wird PVM funktionelle bzw. AVM nicht funktionell -$>$ keine rein zellautonome Entwicklung
-	\item Fluchtreaktion nach mechanischem Stimulus (nach Mutagenese nicht mehr) -$>$ aber Kontrollversuch „Bewegung nach nicht-mechanischem Stimulus“ notwendig
-	\item 350 Mutanten. Mutation in 18 Genen. Ca. 20 Allele / Gen. Keine Genkomplexe. Mutation betrifft immer alle 6 Zellen.
+	\item Wachstumskegel bilden ständig sehr bewegliche Filopodien (bis 50 $\mu$m), die auch wieder zurückgebildet werden können
+	\item die Beweglichkeit beruht auf der Polymerisation und Depolymerisation von Actin-Mikrofilamenten, was mit einem Membran-Turn-over (Endo-Exocytose von Membranvesikeln) verbunden ist
 \end{itemize}
 
-\textbf{Klassifikation der Mutationen:}
+\textbf{Chemoaffinitätstheorie:} Erkennung der Zielzellen durch chem. Markierung\\\\
+4 Mechanismen der Wegfindung:
 \begin{itemize}
-	\item Zellstammbaumdefekte
-	\item Determinationsdefekte
-	\item Störung des sensorischen Transduktionsprozesses
-	\item Spezifischer Zelltod
-	\item Konnektivitätsdefekte
+	\item Klassische Chemotaxis = gerichtetes Wachstum nach Stoffgradienten: anziehend bzw. abstoßend
+	\item Kontaktführung (contact guidance) = Präferenz für spezielle Substrate (selektive Ahhäsion): anziehend (Polyornithrin) bzw. abstoßend (Palladium)
 \end{itemize}
 
-\subsection{Entwicklung von Nervensystemen (Neurogenese)}
-Neuronale Stammzelle (Neuroblast) -$>$ Ganglienmutterzelle -$>$ Differenzierte Zelle (Neuron)\\
-Kein Exponentielles Wachstum. Inäquale Teilung der Ganglienmutterzellen, so dass Neuronen unterschiedliche Komponenten bekommen\\
-\\
-Das \underline{Neuroektoderm} ist eine in der Embryonalentwicklung aus dem äußeren Keimblatt (Ektoderm) hervorgehende Bildung. Aus ihm entwickelt sich über das Neuroepithel des Neuralrohrs das zentrale, und über die Neuralleisten auch das periphere Nervensystem.\\
+\textbf{Wachstumsgeschwindigkeit:} bis 1mm / Tag
 
-\underline{Oogenese}, auch Ovogenese, von lat. ovum, das Ei, ist die Entwicklung einer befruchtungsfähigen Eizelle (Ovum) aus einer Zelle der Keimbahn bei mehrzelligen Tieren.
+\section{Signale und Verarbeitung}
 
-Entdeckt wurden diese Gene anhand der Antennapedia-Mutation eines \underline{homeotische Gens} bei dem Modellorganismus Drosophila melanogaster, bei der am Fliegenkopf anstelle von Antennen Beine wachsen. Es handelt sich dabei um Gene, die regulatorische Proteine codieren.
-
-\subsection{Neurogenese in der Entwicklung von Drosophila}
-\underline{Positionsinformation:}
+\subsection{EPSP und IPSP}
+Ob ein NT erregend (exzitatorisch) oder hemmend (inhibitorisch) wirkt, hängt ausschließlich von der Art der postsynaptischen Rezeptormolekülen ab:
 \begin{itemize}
-	\item anterior-posterior/ ventral-dorsal -Gradienten, (z.B. bicoid)
-	\item Segmentierung; hierachisches System von Transkriptionsfaktoren
-	\item Homeotische Gene
+	\item erregend: Bildung eines EPSPs (exzitatorisches postsynaptisches Potential)
+	\item hemmend: Bildung eines IPSPs (inhibitorisches postsynaptisches
+Potential)
 \end{itemize}
 
-\underline{Neuroectoderm}
+\subsection{Summation zeitlich und räumlich}
+\includegraphics[width=0.6\textwidth]{tmp_pix/calculation.png}
+
+\underline{räumliche Summation:} EPSPs/IPSPs verschiedener Synapsen, die z.B. an einem Dendritenbaum ansetzen, werden in der postsynaptischen Zelle zu jedem Zeitpunkt addiert\\
+
+\underline{zeitliche Summation:} Die in einer Präsynapse zeitlich kurz aufeinanderfolgenden Aktionspotentiale lösen in der postsynaptischen Zeller EPSPs/IPSPs aus, welche addiert werden.
+Für die Integration sind die passiven elektrischen Eigenschaften (Kabeleigenschaften) des postsynaptischen Neurons sehr wichtig.
+
+%\subsection{Prinzipien der Verschaltung}
+
+\section{Aktionspotential}
+	\begin{itemize}
+		\item Ausgangslage: Ruhemembranpotential (-70mV; gleichstarker Ein- und Ausstrom von K+)
+		\item Initiationsphase: Zunahme des Potentials bis mind. Schwellwert (-50mV) (vorher nur unterschellige Reize)
+		\item Depolarisierung: Einströmen von Na+
+		\item Overshot: bei ca. -60mV beginnen Na+-Kanäle sich zu öffenen, wodurch sehr viel Natrium in sehr kurzer Zeit einstömen kann $\rightarrow$ OVERSHOT (Membranpotential positiv, ca. 30mV)
+		\item Repolarisierung: nach der maximalen Öffnung der Natriumkanäle werden diese wieder geschlossen, zusätzlich verzögerter K+ Ausstrom $\rightarrow$ Potential sinkt, Rückkehr zur Ausgangslage
+		\item Hyperpolarisierung: durch eine noch anhaltende erhöhte Kaliumleitfähigkeit kommt es zum unterschreiten der Ausgangslage (bis ca. 90mV) $\rightarrow$ Gleichgewicht der Leitfähigkeiten stellt sich dann ein $\rightarrow$ entgültige Rückkehr zum Ruhemembranpotential (-70mV), Dauer des Aktionspotentials ca. 2ms
+		\item Refraktärzeit: Na+-Kanäle brauchen Zeit für eine Wiederaktivierung $\rightarrow$ kein sofortiges Reizen möglich; kurz nach dem Overshot Schwellwert "unendlich" -> absolute Refraktärzeit von ca. 0,5ms; danach folgt relative Refraktärzeit von ca.3,5ms $\rightarrow$ hier Reizung durch erhöhtes Aktionspotential möglich
+	\end{itemize}
+
+\section{Zusätzlich werden Ca2+-Kanäle geöffnet}
+Vesikel können Neurotransmitter an synaptischen Spalt freigeben\\\\
+\includegraphics[width=0.6\textwidth]{tmp_pix/vesikel.png}
+
+\textbf{Kreislauf in 9 Schritten:}
+\begin{enumerate}
+	\item Docking an Membran
+	\item Priming: Vorbereitung für Exozytose (Verbrauch von ATP)
+	\item Fusion/Exozytose: bei Aufnahme von Ca$^{2+}$ über kalziumabhängigen Ionenkanal wird die Exozytose eingeleitet und die Neurotransmitter werden in den synaptischen Spalt abgegeben
+	\item Endozytose
+	\item Translocation: H$^+$-Ionen werden in Visikel aufgenommen und reservieren Platz für neue Neurotransmitter
+	\item endosome Fusion: Visikel geht in Reservepool über
+	\item Budding: Abspaltung eines neuen Visikels
+	\item NT uptake: Aufnahe von Neurotransmittern
+	\item Translokation: Bewegung innerhalb der Synapse (Plasma) in Richtung Membran
+\end{enumerate}
+
+\textbf{SNARE-Proteinkomplexe und Toxine}\\
+spalten SNARE-Proteine, wodurch die Vesikelfusion und somit die
+Transmitterfreisetzung verhindert wird
 \begin{itemize}
-	\item Procephale Region: Hemisphere des larvalen Gehirns
-	\item Ventrale neurogene Region: Segmentierter Teil des ZNS. Nicht streng zellautonom (Ablation einzelner Zellen führt nicht zum Verlust von Neuroblasten). Primäres Entwicklungsziel: Neuroblast
+	\item Botulinum Toxine $\rightarrow$ Fleischvergiftung, Tod durch Lähmung der Atmung
+	\item Tetanus Toxin
 \end{itemize}
 
-\underline{Segregation ins Innere des Embryos}
+\section{Welche Neurotransmitter gibt es?}
+\textbf{\underline{Acetylcholin}}\footnote{\url{https://de.wikipedia.org/wiki/Acetylcholin}} als wichtigster Neurotransmitter\\\\
+weitere:
 \begin{itemize}
-	\item Segregation über 3h in Wellen
-	\item Beginn: morphologische Veränderung der Zelle erkennbar (groß, rund)
-	\item Neuroblasten teile sich dann ca. 8-9x
-	\item Im 1. Larvenstadium Größenzunahme und Bildung der Neuronen.
+	\item biogene Amine: Adrenalin, Serotonin
+	\item Aminosäuren: GABA (Gamma-Amino-Butteracid), Glycin, Glutamat
+	\item Peptide: Opioide, Substanz P, Insulin
+	\item gasförmige Transmitter: Stickoxid, Kohlenmonoxid
 \end{itemize}
 
-Determination und Differenzierung durch zwei Gruppen von Genen gesteuert: proneurale und neurogene Gene\\
-
-\underline{Proneurale Gene} (verleihen den Zellen das primäre neuronale Entwicklungspotential):
+\underline{zu Substanz P:}
 \begin{itemize}
-	\item Determination der Zellen der neurogenen Regionen; Verlust der Gene bewirkt den Verlust je nach Gen unterschiedlicher Teile des Nervensystems (Hypoplasie).
-	\item Beispiele:
-		\begin{itemize}
-			\item Achaete-scute-Komplex: 25\% Verlust an Neuroblasten
-			\item Daughterless: nicht ausschliesslich proneurale 				\item Funktion sondern auch maternale und zygotische Expression
-		\end{itemize}
+	\item Neurotransmitter bei Schmerzrezeptoren, stärkere Erregung $\rightarrow$ setzt Substanz P frei, spielt auch als Modulator bei Entzündungen eine Rolle
+	\item Capsaicin $\rightarrow$ aktiviert die Hitzerezeptoren in der Mundschleimhaut $\rightarrow$ Ausschüttung von Substanz P ins Gewebe $\rightarrow$ schmerzartigen Empfindungen, bei regelmäßiger Verwendung von Capsaicin gewöhnt sich der Körper daran und die Menge an ausgeschütteter Substanz P wird geringer.
+	\item Innerhalb der Säugetiere fehlt Substanz P beim Nacktmull, der damit vermutlich eine gewisse Schmerzresistenz aufweist.
 \end{itemize}
 
-\underline{Neurogene Gene} (1800 Zellen, aber nur 450 werden zu Neuroblasten; Rest epidermale Sturkturen -$>$ Funktion besteht darin sicherzustellen, dass keine übermäßige Neuronenbildung):
-\begin{itemize}
-	\item Mutationen dieser Gene führen zur Neuralisierung des Embryos (Hypertrophie des NS auf Kosten epidermaler Strukturen)
-	\item Epistatische (wenn ein Gen die Unterdrückung der phänotypischen Ausprägung eines anderen Gens bewirken kann) Wechselwirkungen demonstrieren die funktionelle Hierarchie der neurogenen Gene
-	\item Laterale Inhibition durch Notch-vermittelte Signaltransduktion (erst bilden beide Zellen Notch-Rezeptor und DSL-Liganden; dann wird bei einer DSL-Ligandenexpression (Delta) und bei der anderen Produktion Notch-Rezeptor herabgesetzt). Oder auch Signal Delta und Notch-Rezeptor
-	\item Notch ist ein Universalempfänger für Zellkommunikation (nicht spezifisch für neurogene Region). Notch-Gen: 40kb, komplex reguliert, 10.5kb mRNA, posttranslationale Modifikation
-	\item Notch ist Transmembranprotein mit einer extrazellulären und einer intrazellulären Domäne
-	\item Nachweis Notch-Delta-Wechselwirkung: Zellaggregation in Zellkulturen
-	\item Notchregulierung durch Membranprotein Numb
-	\item Delta auf Seite der Neuroblasten und Notch auf Seite der Epidermoblasten; Zelle ohne Notch -> Epidermoblasten; ohne extrazellurlären Notchteil -$>$ Neuroblasten
-	\item Bindung der DLS Liganden an Notch Auslöser für proteolytische Signalkaskade
-\end{itemize}
+\textcolor{red}{\textbf{$\Rightarrow$ erste Wandlung: AD $\rightarrow$ von kontinuierlichem Signal (Potential) zu diskretem Signal (Anzahl Neurotransmitter)}}
 
-MUTANTEN: Notch, Delta, Achaete-scute-Komplex (proneural), big brain, hairless\\
+\section{NTs strömen in Richtung Postsynapse, Aufnahme der Neurotransmitter über Rezeptormoleküle:}
+	\begin{enumerate}
+		\item Ionotrope Rezeptoren (ATPasen, Ionenkanäle) $\rightarrow$ führt zur Änderung des Membranpotentials
+		\item Metabotrope Rezeptoren: Ionenstrom wird indirekt vermittel $\rightarrow$ G-Protein-gekoppelte Rezeptoren (second messenger Prinzip erklären) $\rightarrow$ führt zu einem An- und Ausschalten (Interkonversation) von Enzymen (Beispiel cAMP-System ausarbeiten, 	Was kann hier so schief gehen?)
+	\end{enumerate}
 
-Neuroblasten teilen sich inäqual in einen Neuroblasten und eine Ganglienmutterzelle. Ganglienmutterzelle kann sich noch einmal teilen und produziert Neurone oder Gliazellen. Wenn numb-Protein, dann Neuron. Neuroblaten geben jedesmal andere Transkriptionsfaktoren an die Ganglienmutterzellen.\\
-
-\textbf{Struktur – Funktionsbeziehung am Beispiel des Central Complex von Drosophila
-}\\
-
-Protocerebral bridge / Fan shaped body / Ellipsoid body / Noduli
-
-\underline{Buridians Paradigma:}\\
-Auch in diesem Experiment läuft die Fliege zunächst auf einen der beiden Balken zu. Auf dem Weg dorthin hält sie jedoch der Wassergraben auf, den die Fliegen vermeiden. Da dieser Balken unerreichbar ist, entscheidet sich die Fliege um und läuft stattdessen auf den zweiten Balken zu, doch auch dort kommt die Fliege dem Balken nicht näher als beim ersten Versuch am anderen Ende der Plattform. Also dreht sie wieder um und versucht erneut den ersten Balken zu erreichen. Dort angekommen spielt sich wiederum das gleiche Spiel ab und so fort. In Anlehnung an Buridans Esel nennen Neurobiologen dieses Experiment „Buridan Paradigma“. Zuerst 1982 beschrieben, war dieses Experiment vor allem dazu gedacht, etwas über das optische System der Fliegen zu lernen und herauszufinden wie sie dieses zur Kurskontrolle verwenden.
-\\\\
-\underline{Alternativ: Modifizierter Detour-Aufbau}\\
-Anderer Versuch: Flugsimulator\\
-rut: rutabaga, codiert Ca/Calmodulin-abhängige Adenylatcyclase, „klass.“ Lernmutante\\
-rut2080: Protein notwendig für wildtypischesLernverhalten\\
-hier: rutabaga-Protein in spez. Zellen hinreichend für Lernverhalten\\
-Mutante hat Störung des Kurzzeitgedächtnis, aber auf erniedrigtem Niveau gute Persistenz des Langzeitgedächtnis -> hervorgerufen durch Störung des cAMP Stoffwechsel (Cyclisches Adenosinmonophosphat)
+\textcolor{red}{\textbf{$\Rightarrow$ zweite Wandlung: DA $\rightarrow$ von diskretem Signal (Anzahl Neurotransmitter) zu kontinuierlichem Signal (Potential)}}
 
 \end{document}

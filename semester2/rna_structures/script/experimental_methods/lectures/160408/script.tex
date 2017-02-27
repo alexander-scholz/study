@@ -8,7 +8,7 @@ Motifsuche:\\
 \section{ChIP-Chip und ChIP-Seq}
 ChIP: \textbf{Ch}romatin-\textbf{I}mmuno\textbf{P}recipitation\\
 Kein Single Cell Protocol -> es werden Zellpopulationen benötigt\\
-Ziel: Man will feststellen an welcher Stelle Proteine binden\\
+Ziel: Man will feststellen an welcher Stelle Proteine binden (\textbf{DNA-Protein-Interaktion\footnote{\url{https://de.wikipedia.org/wiki/Protein-DNA-Interaktion}}})\\
 Quellen für Fehler / Ungenauigkeiten: Messung des Populationsmittelwerts\\
 ChIP-Chip: Chromatin-Immunoprecipitation Chip\\
 ChIP-Seq: Chromatin-Immunoprecipitation DNA-Sequencing
@@ -16,80 +16,101 @@ ChIP-Seq: Chromatin-Immunoprecipitation DNA-Sequencing
 \subsection{Ablauf}
 \subsubsection{Crosslinking}
 Stabilisierung der Bindungen zwischen DNA und Protein\\
-Geschieht reversibel zwischen DNA (\textbf{Chromatin}) und rekombinanten Proteinen\\
-\hspace*{10mm}- Formaldehyd (CH2O) vernetzt Base (B) mit Proteinen (P-NH2) quer\\
-\hspace*{10mm}- P-NH2+CH2O $\rightleftharpoons$ PN=CH2+NH2-B $\rightleftharpoons$ PNH-CH2-NH-B\\
-\hspace*{10mm}- Rekombinant: Biotechnologisch hergestellte Proteine aus genetisch\\
-\hspace*{10mm}veraenderten Organismen\\
+Geschieht reversibel zwischen DNA (\textbf{Chromatin}) und rekombinanten Proteinen
+\begin{itemize}
+	\item Formaldehyd (CH2O) vernetzt Base (B) mit Proteinen (P-NH2) quer
+	\item P-NH2+CH2O $\rightleftharpoons$ PN=CH2+NH2-B $\rightleftharpoons$ PNH-CH2-NH-B
+	\item Rekombinant: Biotechnologisch hergestellte Proteine aus genetisch 
+veraenderten Organismen
+\end{itemize}
 
 \subsubsection{Sonication}
 Zerstören und Zerkleinern (fragmentieren) der Zellen, Zellbestandteile und DNA durch Ultraschall\\
-(Vorher: Waschen der Zellen mit Protease Inhibitor, Lyse + homogenisieren)\\
-\hspace*{10mm}- zeitkritisch $\rightarrow$ Länge bestimmt Grad der Zerkleinerung\\
-\hspace*{10mm}- 200-1000 BP Fragmente im Idealfall\\
-Ergebnis sind DNA Fragmente mit gebundenen Proteinen\\
+(Vorher: Waschen der Zellen mit Protease Inhibitor, Lyse + homogenisieren)
+\begin{itemize}
+	\item zeitkritisch $\rightarrow$ Länge bestimmt Grad der Zerkleinerung
+	\item 200-1000 BP Fragmente im Idealfall
+\end{itemize}
+Ergebnis sind DNA Fragmente mit gebundenen Proteinen
 
 \subsubsection{Immunoprezipitation (Selektion mittels Antikörper)}
-\hspace*{10mm}- Antikörper (binden an Beads oder Membranen, Chip/in Gel) binden an rekombinante Proteine\\
-\hspace*{13mm}oder Protein-TAG (kurze Aminosäuresequenz, markieren Protein)\\
-\hspace*{10mm}-	Aufreinigung:\\
-\hspace*{15mm}$\rightarrow$ Zentrifugation des Prezipitats: Beads+(Protein-DNA) am Boden,\\
-\hspace*{21mm}Zellfragmente/Rest in Lösung\\
-\hspace*{15mm}$\rightarrow$ Abkippen der Lösung\\
-\hspace*{15mm}$\rightarrow$ Aufnehmen des Beadspellets in Puffer, erneut zentrifugieren (x-Mal)\\ 
-\hspace*{15mm}Manchmal noch\\
-\hspace*{15mm}$\rightarrow$ DNase Verdau der DNA in Lösung\\
-\hspace*{15mm}$\rightarrow$ Aufheben der DNA in Lösung, als total-Chromatin-Probe
+- Antikörper (binden an Beads oder Membranen, Chip/in Gel) binden an rekombinante Proteine oder Protein-TAG (kurze Aminosäuresequenz, markieren Protein)\\
+\underline{Aufreinigung:}
+\begin{itemize}
+	\item Zentrifugation des Prezipitats: Beads+(Protein-DNA) am Boden, Zellfragmente/Rest in Lösung
+	\item Abkippen der Lösung
+	\item Aufnehmen des Beadspellets in Puffer, erneut zentrifugieren (x-Mal)
+	\item Manchmal noch:
+	\begin{itemize}
+		\item DNase Verdau der DNA in Lösung
+		\item Aufheben der DNA in Lösung, als total-Chromatin-Probe
+	\end{itemize}
+\end{itemize}
 
 \subsubsection{Reverse Immunoprezipitation}
 Durch Aufreinigungsschritte sind Beads/Gel/Chip idealerweise frei von Zellfragmenten/ungebundener DNA.\\Umkehren der IP mit Elutionspuffer$\rightarrow$ Antikörper von DNA+Proteine trennen\\
 $\rightarrow$Salzgehalt und PH-Wert an Rückreaktion angepasst
 
 \subsubsection{Reverse Cross Linking}
-\hspace*{10mm}-	Thermische Zerstörung der Bindung zw. Protein und DNA\\
-\hspace*{10mm}- Salzgehalt des Buffer angepasst auf Rückreaktion
-\hspace*{10mm}-	Proteinase K und RNase bauen Proteine und RNA ab(zur Aufreinigung)\\
-\hspace*{10mm}-	Extraktion der übrig gebliebenen DNA durch Zentrifuge\\
+\begin{itemize}
+	\item Thermische Zerstörung der Bindung zw. Protein und DNA
+	\item Salzgehalt des Buffer angepasst auf Rückreaktion
+	\item Proteinase K und RNase bauen Proteine und RNA ab(zur Aufreinigung)
+	\item Extraktion der übrig gebliebenen DNA durch Zentrifuge
+\end{itemize}
 
 \subsubsection{Auswertung}
-\hspace*{10mm}\textbf{Chiphybridisierung}\\
-\hspace*{20mm}- Hybridisierung der DNA an Microarray\\
-\hspace*{20mm}- Färbung der DNA\\
-\hspace*{20mm}- Messung der Farbintensität\\
-$\rightarrow$\textit{\textbf{mit dem ChIP Background kann ich nichts anfangen...}}$\leftarrow$\\
-\hspace*{10mm}\textbf{Sequencing}\\
-\hspace*{20mm}Hochdurchsatzsequenzierung der aufgereinigten DNA.\\
-\hspace*{20mm}$\rightarrow$DNA extrahieren$\rightarrow$DNA fragmentieren$\rightarrow$Primer an Fragmente$\rightarrow$Sequenzierung\\
-\hspace*{20mm}$\rightarrow$Herausrechnen der Primer (idealerweise kennt man sie)$\rightarrow$\\
-\hspace*{20mm}Quality control$\rightarrow$Phred-score Berechnung (Güte der erkannten\\
-\hspace*{20mm}Nukleobase)$\rightarrow$Cutoff bei zu niedrigem Phred-score$\rightarrow$Mapping des\\
-\hspace*{20mm}sequenzierten Teilstücks auf Genom
+\begin{itemize}
+	\item \textbf{Chiphybridisierung:}
+		\begin{itemize}
+			\item Hybridisierung der DNA an Microarray
+			\item Färbung der DNA
+			\item Messung der Farbintensität
+			\item \underline{mit dem ChIP Background kann ich nichts anfangen...}
+		\end{itemize}
+	\item \textbf{Sequencing:}
+		\begin{itemize}
+			\item Hochdurchsatzsequenzierung der aufgereinigten DNA
+			\item DNA extrahieren$\rightarrow$DNA fragmentieren$\rightarrow$Primer an Fragmente$\rightarrow$Sequenzierung
+			\item Herausrechnen der Primer (idealerweise kennt man sie)
+			\item Quality control$\rightarrow$Phred-score Berechnung (Güte der erkannten Nukleobase)$\rightarrow$Cutoff bei zu niedrigem Phred-score
+			\item Mapping des sequenzierten Teilstücks auf Genom
+		\end{itemize}
+\end{itemize}
 
 \subsection{Probleme/Fehler}
-\textbf{Cross-Linking}\\
-\hspace*{10mm}\textbf{FN:} Protein an DNA gebunden, aber kein Cross-Linking\\
-\hspace*{10mm}\textbf{FP:} Proteine, die sehr nahe an der DNA sind, aber ungebunden, werden\\ \hspace*{19mm}auch cross linked\\
-\\
-\textbf{Sonication}\\
-\hspace*{10mm}- Größe der Fragmente abhängig von Ultraschalleinsatz – zeitkritisch!\\
-\hspace*{10mm}- Kürzere und längere Fragmente können Informationen enthalten\\
-\\
-\textbf{Immunoprecipitation}\\
-\hspace*{10mm}\textbf{FP:} Mangelnde Reinheit der rekombinanten Proteine; Spezifität der\\
-\hspace*{19mm}heterophilen Antikörper zu gering\\
-\hspace*{19mm}Aufreinigung führt zu \textbf{FP} und \textbf{FN}\\
-\\
-\textbf{Chip}\\
-\hspace*{10mm}\textbf{FN:} Hybridisierung nicht effektiv genug
+\textbf{Cross-Linking}
+\begin{itemize}
+	\item \textbf{FN:} Protein an DNA gebunden, aber kein Cross-Linking
+	\item \textbf{FP:} Proteine, die sehr nahe an der DNA sind, aber ungebunden, werden auch cross linked
+\end{itemize}
+
+\textbf{Sonication}
+\begin{itemize}
+	\item Größe der Fragmente abhängig von Ultraschalleinsatz - zeitkritisch!
+	\item Kürzere und längere Fragmente können Informationen enthalten
+\end{itemize}
+
+\textbf{Immunoprecipitation}
+\begin{itemize}
+	\item \textbf{FP:} Mangelnde Reinheit der rekombinanten Proteine; Spezifität der heterophilen Antikörper zu gering
+	\item Aufreinigung führt zu \textbf{FP} und \textbf{FN}
+\end{itemize}
+
+\textbf{Chip:} \textbf{FN:} Hybridisierung nicht effektiv genug
 
 \subsection{Antikörper}
-- Antikörper bindet spezifisch und sensitiv \\
-- Antikörper sind fixiert an:\\
-\hspace*{15mm} - Beads\\
-\hspace*{15mm} - Chip (kein Microarray)\\
-\hspace*{15mm} - Gel\\
-- Antikörper werden im Experiment erzeugt\\
-\\
+\begin{itemize}
+	\item Antikörper bindet spezifisch und sensitiv
+	\item Antikörper sind fixiert an:
+	\begin{itemize}
+		\item Beads
+		\item Chip (kein Microarray)
+		\item Gel
+	\end{itemize}
+	\item Antikörper werden im Experiment erzeugt
+\end{itemize}
+
 \begin{tabular}{cc}
   \textbf{polyclonal} & \textbf{monoclonal}\\
   Aufbrechen der Proteine in kurze\\ 
@@ -99,13 +120,15 @@ $\rightarrow$\textit{\textbf{mit dem ChIP Background kann ich nichts anfangen...
   $\Downarrow$ & $\Downarrow$\\
   extrahieren der B-Lymphozyten aus Serum & extrahieren der B-Lymphozyten aus Milz\\
   $\Downarrow$ & $\Downarrow$\\
-  Extrahieren der Antikörper &Fusionierung der B-Lymphozyten mit\\ 
+  Extrahieren der Antikörper & Fusionierung der B-Lymphozyten mit\\ 
    aus den Lymphozyten & Plasmazellen aus Myelom\\
    & (Krebszelle - 'unsterblich')\\
   $\Downarrow$ & $\Downarrow$\\
-  Antikörper & Hybrid erzeugt (unsterblich + Antikörper)\\
-  & $\Downarrow$\\
+  & Hybrid erzeugt (unsterblich + Antikörper)\\
+  $\Downarrow$ & $\Downarrow$\\
   & Testen der Hybride auf Antigene\\
-  & $\Downarrow$\\
-  & ernten spezifischer Antikörper
+  $\Downarrow$ & $\Downarrow$\\
+  ernten verschiedenen Antikörper & ernten identischer Antikörper\\
+  $\Downarrow$ & $\Downarrow$\\
+  billig & teuer
 \end{tabular}

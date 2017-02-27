@@ -1,0 +1,176 @@
+\section{V10}
+\subsection{Heritabilität, Definition + Möglichkeiten zur Schätzung}
+Erklärte Varianz eines Merkmals durch Genetik.\\
+Schätzung der Vererbbarkeit:
+\begin{enumerate}
+	\item Zwillingsstudien: Vergleich der Merkmalskonkordanz zwischen ein- (MZ) und zweieiigen Zwillingen (DZ), r=Korrelationskoeffizient\\
+	\textbf{Falconers Gleichung: $H^2=2r(MZ)-2r(DZ)$}
+	\item Familienstudien: Gemischte Modelle, Verwandtschaft = Kovarianz
+\end{enumerate}
+
+\textbf{Schätzen der Heritabilität aus genomweiten Daten}\
+gemischtes Modell: $y_i=\mu+G_i+e_i$ mit \\
+$y_i$: Phänoptyp Induviduum i\\
+$\mu$: Mittelwert\\
+$G_i \sim \sigma^{2}_{Genetik}N(0,\Phi)$ (Polygenetischer Effekt)\\
+$\Phi$: Verwandschaftsmatrix\\
+$e_i \sim \sigma^{2}_{Umwelt}N(0,1)$ (Umwelteffekt)\\
+
+\textbf{Heritabilitätsschätzung:} $H^2=\frac{\sigma^{2}_{Genetik}}{\sigma^{2}_{Genetik} + \sigma^{2}_{Umwelt}}$
+
+\subsection{Genetische Assoziation (Prinzip)}
+SNP dient als Stellvertreter (proxy) eines Krankheitslokus. SNP muß nicht selbst kausal sein, sondern es genügt LD mit kausaler Variante.\\\\
+Variante A: direkte Kausalität\\
+Variante B: indirekte Kausalität über LD und proxy
+
+\subsection{Stratifikationsbias bei genetischen Studien}
+Gedankenexperiment:
+\begin{itemize}
+	\item Phänotyp: Fähigkeit mit Stäbchen zu essen
+	\item Studienpopulation: Gemisch aus Europäern und Asiaten
+	\item Alle SNPs mit unterschiedlicher Allelfrequenz zwischen Europäern
+und Asiaten (viele!) sind mit dem Phänotyp assoziiert $\rightarrow$ Inflation der
+Teststatistiken $\rightarrow$ \textbf{Stratifikationsbias}
+\end{itemize}
+
+Andere Möglichkeit der Entstehung: Verwandtschaft zwischen den Individuen
+\\\\
+\textbf{Möglichkeiten der Bekämpfung von Stratifikationsbias (später genauer)}
+\begin{itemize}
+	\item Stratifizierte Analyse: Vorteil: funktioniert am besten, Nachteil: erfordert Kenntnis der Strata
+	\item Adjustierung auf Hauptkomponenten: Vorteil: einfach durchführbar, Nachteil: Erhöht Freiheitsgrade der Assoziationsmodelle, beseitigt Stratifikation nicht immer vollständig, erfordert genomweite Daten (später)
+	\item Local ancestry: Vorteil: Kann mit „Mischlingen“ umgehen, Nachteile wie bei „Adjustierung auf Hauptkomponenten“, erfordert genomweite Daten (später)
+	\item Gemischte Modelle (Assoziation mit Korrelationsstruktur): Vorteil: geeignet bei Verwandtschaft, Nachteil: hohe Rechenbelastung
+	\item Genomic Control: Einfache, phänomenologische Korrektur bei geringer Inflation, erfordert genomweite Daten (später)
+\end{itemize}
+
+\subsection{Genetische Modelle und deren Schätzung}
+Allgemeines genetisches Modell ohne Kovariablen:\\
+$y_i=\mu + \beta_{AB}\chi^i_{AB} + \beta_{BB}\chi^i_{BB} + e_i$ mit\\\\
+$y_i$: Phänoptyp Induviduum i\\
+$\mu$: Mittelwert\\
+$\chi^i_{XX}=$ 1 falls Indiviuum i Genotyp XX hat, 0 sonst\\
+$\beta$: Regressionskoeffizienten\\
+$e_i \sim \sigma^{2}_{Umwelt}N(0,1)$ (Residualvarianz)\\
+\\
+\begin{tabular}{|c|c|c|}
+\hline
+	Modell & Vergleich & Tests\\
+\hline
+	Additiv & AA vs. AB vs. BB & $\beta_{AB}\neq 0, \beta_{BB}=2\beta_{AB}$\\
+\hline
+	Dominant B & AA vs. AB, BB & $\beta_{AB}\neq 0, \beta_{BB}=\beta_{AB}$\\
+\hline
+	Rezessiv B & AA, AB vs. BB & $\beta_{AB}=0, \beta_{BB}\neq 0$\\
+\hline
+	Heterozygotenvorteil & AA, BB vs. AB & $\beta_{AB}\neq 0, \beta_{BB}=0$\\
+\hline
+\end{tabular}
+
+\begin{itemize}
+	\item Additives Modell am flexibelsten
+	\item Dominat B = Rezessiv A
+	\item Heterozygotenvorteil selten (Beispiel Sichelzellanämie / Malaria)
+	\item Problem: Genetisches Modell i.d.R. unbekannt
+\end{itemize}
+
+\newpage
+\textbf{Strategien}
+\begin{enumerate}
+	\item 
+	\begin{itemize}
+		\item Man rechnet (trotz Unsicherheit über das tatsächliche Modell) mit nur einem (meist dem additiven) Modell
+		\item Rationale:
+		\begin{itemize}
+			\item Modelle sind korreliert (Ausnahme Heterozygotenmodell)
+			\item Bsp: liegt tatsächlich eine Assoziation unter dem dominanten/rezessiven Modell vor, wird dies höchstwahrscheinlich auch im additiven Modell sichtbar
+		\end{itemize}
+		\item Diese Strategie wird überwiegend angewendet
+		\item Problem: Powerverlust bei falschem Modell, additives Modell erkennt Heterozygotenvorteil nicht
+	\end{itemize}
+	\item 
+	\begin{itemize}
+		\item Man vergleicht die Paßförmigkeit der Modelle für jede Situation (z.B. AIC), sucht sich das beste heraus und nimmt dessen p-Wert
+		\item Problem: Dieses Verfahren inflationiert den Typ 1 Fehler $\rightarrow$ erfordert Permutationstests, diese sind aufwendig
+	\end{itemize}
+	\item 
+	\begin{itemize}
+		\item Man testet mehrere Modelle und korrigiert nach Bonferroni
+		\item Problem: Überkonservativ, da Korrelation zwischen Modellen nicht berücksichtigt
+	\end{itemize}
+	\item Max-Test: ...
+\end{enumerate}
+
+\subsection{Spezifik gonosomaler Markeranalysen}
+\begin{itemize}
+	\item Die nPAR-Region ist bei Frauen auf einem Chromosom häufig inaktiviert.
+	\item Die Inaktivierung ist wahrscheinlich(?) zufällig.
+	\item Man modelliert die Inaktivierung indem man die Codierung der Genotypen der Männer entsprechend anpaßt:
+\end{itemize}
+$
+\text{Codierung (Frau)} =
+  \begin{cases}
+    0  & \quad \text{für AA}\\
+    1  & \quad \text{für AB}\\
+    2  & \quad \text{für BB}\\
+  \end{cases}
+$
+
+$
+\text{Codierung (Mann)} =
+  \begin{cases}
+    0  & \quad \text{für A}\\
+    c  & \quad \text{für B}\\
+  \end{cases}
+$\\
+mit c=1: Keine Inaktivierung; c=2: Vollständige Inaktivierung; 1$<$c$<$2: Unvollständige Inaktivierung
+
+\begin{itemize}
+	\item Der Grad der Inaktivierung kann mit geschätzt werden (kompliziert)
+	\item Man sollte unbedingt den Haupteffekt des Geschlechts in die Regressionsmodelle des X-Chromosoms einbauen
+	\item Speziell bei Annahme keiner Inaktivierung, sollte die IA von Marker und Geschlecht mit ins Modell gesteckt werden.
+	\item Obwohl Geschlecht ein unabhängiger Risikofaktor vieler Erkrankungen ist, heißt es nicht, dass auf Chr. X besonders viele Assoziationen zu finden sind (Beispiel: KHK)
+\end{itemize}
+
+\subsection{Genomweite Assoziationsstudie}
+\begin{itemize}
+	\item Ziel: Identifikation genetischer Modifikatoren beobachtbarer Phänotypen
+	\item Hinweise für Vererbbarkeit aus z.B. Zwillingsstudien
+	\item „Komplexe Erkrankungen“ $\rightarrow$ Polygenetische Effekte: Häufige Varianten mit geringer Penetranz, seltene Varianten mit höherer (?) Penetranz
+	\item Kandidatengenansätze häufig nicht replizierbar $\rightarrow$ hypothesenfreie Ansätze $\rightarrow$ Screening des Genomes mittels Marker (SNPs)
+	\item Aktuell ca. 2240 publizierte GWAS, mehrere hundert verschiedenen Phänotypen
+\end{itemize}
+
+\subsubsection{Ansatz}
+
+\subsubsection{Replikation vs. kombinierte Analyse und Power}
+\underline{Replikation:}
+\begin{itemize}
+	\item Einzelanalyse der Top-Marker aus der ersten Stufe (GWAS)
+	\item Verwendet nicht die Evidenz aus der ersten Stufe
+
+\end{itemize}
+
+\underline{Kombinierte Analyse:}
+\begin{itemize}
+	\item Kombiniert die Information aus erster und zweiter Stufe
+	\item Achtung! Effektgrößen aus der erster Stufe sind inflationiert („winners curse“) $\Rightarrow$ Korrektur (kompliziert)
+\end{itemize} 
+
+Die Power der kombinierten Analyse ist immer höher als die der
+Replikation, aber Kombinierte Analyse hat nur dann (deutlich) höhere Power wenn:
+\begin{itemize}
+	\item Mehrzahl der Samples in Stufe 1 und
+	\item Viele Marker in der Replikation
+\end{itemize}
+
+\subsubsection{Mehrstufendesign}
+\begin{enumerate}
+	\item GWAS: Genotype full set of SNP's in relatively small population at liberal p value
+	\item Replikationsstufe: Screen second, larger population at more stringent p value
+	\item optional third stage for increased stringency
+\end{enumerate}
+
+\subsubsection{Power}
+
+\subsection{Aufgaben zur Übung 10}

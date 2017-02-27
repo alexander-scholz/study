@@ -1,0 +1,141 @@
+\section{DS5}
+\textbf{Chao‘s Schätzer}
+\begin{itemize}
+	\item Schätzt die „wahre“ Artenvielfalt
+	\item Gleiche Datenstruktur wie vorher
+	\item Die Gesamtartenzahl in der Probe wird extrapoliert
+\end{itemize}
+
+$\displaystyle S_{est}=S_{obs} + \frac{a^2}{sb}$ mit\\
+$S_{est}$: geschätzte „wahre“ Artenzahl\\
+$S_{obs}$: beobachtete Artenzahl\\
+a: Anzahl der Arten die nur einmal gefunden wurden\\
+b: Anzahl der Arten, die zweimal gefunden wurden\\
+
+\textbf{Überlegung zur Artenvielfalt:} Welche Gemeinschaft ist diverser? Warum?
+\\\\
+\textbf{Shannon-Wiener Diversität}
+\begin{itemize}
+	\item Artenzahl S (“species richness”): Gesamtartenzahl, pro Fläche
+	\item Shannon-Wiener-Diversität (H oder D Shannon ): Diversität abh. von Artenzahl und deren Häufigkeit (Rechenbeispiel siehe Vorlesung)
+\end{itemize}
+
+$D_{Shannon}=\displaystyle -\sum_{i=1}^{S} p_i ln(p_i)$\\
+$p_i$: relative Häufigkeit der Art i bezogen auf Anzahl, Deckung, Biomasse...
+\\\\
+\textbf{Gini-Simpson's Diversitäts-Index D:} beschreibt die Wahrscheinlichkeit, mit der zwei zufällig ausgewählte Organismen der gleichen Art angehören (= Varianzmaß)\\
+
+$D_{\text{Gini-Simpson}}=\displaystyle 1-\sum_{i=1}^{S} p_i^2$\\
+$p_i$: relative Häufigkeit der Art i bezogen auf Anzahl, Deckung, Biomasse...
+\\
+\textcolor{red}{Zwischen welchen Werten schwankt der Simpson-Index?}
+
+\newpage
+\textbf{Was das Maß können sollte}
+\begin{enumerate}
+	\item Bei konstanter Artenzahl, Abundanz und Gleichverteilung (Eveness) aber variabler Anteile einzelner Arten, soll das Maß auch konstant bleiben
+	\item Wenn die Gesamtabundanz abnimmt, wird das Maß kleiner
+	\item Wenn nur die Gleichverteilung abnimmt (Abundanz, Artenzahl konstant), wird das Maß kleiner
+	\item Wenn nur die Artenzahl abnimmt (Abundanz, Gleichverteilung konstant), wird das Maß kleiner
+	\item Der Erwartungswert des Maßes sollte unabhängig von der Probenmenge sein
+	\item Der Erwartungswert sollte einfach und präzise quantifizierbar sein
+\end{enumerate}
+
+\textcolor{blue}{Fazit bezüglich Shannon-Wiener und Simpson: Befriedigen alle Kriterien bis auf F2, d.h. wenn alle Arten (Artenzahl und Eveness konstant) in der Abundanz abnehmen, bleiben beide Indizes konstant!}
+
+\newpage
+\textbf{Eveness (= Gleichverteilung)}\\
+Eveness ist ein Maß dafür, wie sich die vorkommenden Arten in ihren Abundanzen unterscheiden
+\\\\
+\textbf{(Shannon-) Eveness}\\
+Wird typischerweise indirekt ausgerechnet:
+\begin{itemize}
+	\item Diversitätsmaß ist eine Mischung ist aus Artenzahl und Gleichverteilung (= Eveness)
+	\item Wenn man die Artenzahl heraus rechnet, isoliert man die Eveness
+\end{itemize}
+
+2 Schritte:
+\begin{enumerate}
+	\item Shannon-Diversität für maximale Gleichverteilung: $D_{Shannon\ max}=ln(S)$
+	\item Verhältnis der gemessenen zur maximalen Diversität = Gleichverteilung: $E=\frac{D_{Shannon}}{D_{Shannon\ max}}$
+\end{enumerate}
+
+\subsubsection{$\alpha$ $\beta$ $\gamma$ Diversität}
+\begin{itemize}
+	\item $\alpha$-Diversität: Diversität innerhalb der einzelnen Untersuchungseinheit (z. B. Plot, eine Falle usw.)
+	\item $\beta$-Diversität: Diversität zwischen den Untersuchungseinheit
+	\item $\gamma$-Diversity: Diversität der Gesamtheit aller Untersuchungseinheiten (oft eine Landschaft)
+\end{itemize}
+
+\textbf{Partitionierung}
+\begin{itemize}
+	\item Bezogen auf Artenreichtum: $\alpha \cdot \beta = \gamma$
+	\item Bezogen auf $D_{Shannon}$: $\alpha + \beta = \gamma$
+	\item Bezogen auf $D_{Gini-Simpson}$: $\alpha + \beta - \alpha \cdot \beta = \gamma$
+\end{itemize}
+
+\textbf{Was damit machen?}
+\begin{itemize}
+	\item Es ist einfach $\alpha$ und $\gamma$ zu berechnen
+	\item $\beta$-Diversität wird aus $\alpha$ und $\gamma$ errechnet, wobei $\alpha_{av}$ der Mittelwert über alle Plots ist: $\beta=\gamma-\alpha_{av}$
+	\item $\beta$-Diversität wird auch als Maß für „species turnover“ verwendet
+\end{itemize}
+
+\newpage
+\textbf{$\beta$-Diversität}
+\begin{itemize}
+	\item ist ein Maß für die Unterschiedlichkeit der Artenausstattung
+	\item Wird häufig auch direkt mit multivariaten Vergleichen über Ähnlichkeitsmaße errechnet (Multiple assemblage overlap measures: Morisita-Horn-Index, $C_{qN}$-Index)
+\end{itemize}
+
+\textcolor{red}{Ihre Einschätzung: Welche Prozesse befördern $\beta$-Diversität? Wo ist welche Diversitätskomponente wie hoch?}
+\begin{itemize}
+	\item Moore?
+	\item Borealer Wald?
+	\item Fynbos (Kapensis)?
+	\item Tropischer Regenwald?
+	\item Inselarchipele?
+\end{itemize}
+
+\newpage
+\subsubsection{Funktionelle Diversität}
+Kontinuierliche Maße der funktionellen Diversität basieren auf Ähnlichkeit der Arten bzgl. Ihrer Eigenschaften
+
+\textbf{Facetten der Funktionellen Diversität}
+\begin{itemize}
+	\item \textbf{Funktionelle Identität:} Wo befindet sich die Gemeinschaft im Merkmalsraum?
+	\item \textbf{Facetten der funktionellen Diversität}
+	\begin{itemize}
+		\item \underline{Functional Richness:} Wie groß ist der Merkmalsraum, der von der Gemeinschaft eingenommen wird?
+		\item F\underline{unctional Diversity/Divergence/Dispersion:} Wie unterschiedlich sind die Arten im Mittel?
+		\item \underline{Functional Eveness:} Wie gleichmäßig sind die Abundanzen der Arten im Merkmalsraum verteilt
+		\item \underline{Functional Distinctiveness:} Wie weit ist eine Art im Merkmalsraum von allen anderen entfernt? (Wie „besonders“ ist sie?)
+	\end{itemize}
+\end{itemize}
+
+\underline{\textbf{Funktionelle Identität (FI)}}
+\begin{itemize}
+	\item Mittelwert der Merkmale über alle Arten
+	\item Besser: Mittelwert über alle Arten gewichtet mit deren Bedeutung in der Gemeinschaft (Abundanz, Biomasse, Deckung,...)
+\end{itemize}
+
+$\bar{X_c}=\displaystyle \frac{1}{S} \sum_{i=1}^{S}A_i X_i$ mit\\
+X = Merkmalswert\\
+A = Abundanz (relativ)\\
+S = Anzahl der Arten\\
+i = Zählvariable für die Arten\\
+\\\\
+\underline{\textbf{Functional richness (FR)}}\\
+\begin{itemize}
+	\item Merkmalsraum, den die Gemeinschaft einnimmt
+	\item FR Masszahlen
+	\begin{itemize}
+		\item Nur ein Merkmal: Spanne zwischen dem kleinsten und dem größten Wert (engl. range)
+		\item Zwei und mehrere Merkmale: Fläche des „Convex hull volume (CVH)“: Fläche, die durch eine umhüllende Linie gebildet wird. Die „Eck“-Arten heißen auch Vortex-Arten. Linie darf nicht „nach innen knicken“.
+	\end{itemize}
+	\item Bemerkung zu FR
+	\begin{itemize}
+		\item Wird sehr stark durch extreme Arten bestimmt
+		\item Für die Vergleichbarkeit wird üblicherweise durch die Gesamtspanne (-fläche, -volumen,...) aller Gemeinschaften geteilt. Dann variieren die Werte'zwischen 0 und 1
+	\end{itemize}
+\end{itemize}

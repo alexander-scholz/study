@@ -1,0 +1,154 @@
+\section{V7}
+\subsection{Motivation und Ansatz für gemischte Modelle}
+Das lineare Modell stößt bei machen Analysen an seine Grenzen, z.B wegen:
+\begin{itemize}
+	\item Fehlen der Linearität in den realen Daten $\rightarrow$ nichtlineare Regression
+	\item Verletzung der Verteilungsannahmen an die zufälligen Fehler
+	\item Stichprobe besteht aus Subgruppen, für die jeweils „eigene“ $\beta$‘s geschätzt werden müssten. D.h. die Grundannahme der Unabhängigkeit der Beobachtungen ist verletzt.
+\end{itemize}
+
+\textbf{Typische Beispielsituationen}
+\begin{itemize}
+	\item Longitudinale Daten (Im Rahmen von Längsschnittstudien werden in zeitlicher Abfolge wiederholte Beobachtungen an denselben Subjekten -unter möglicherweise verschiedenen Bedingungen- erhoben)
+	\item Clusterdaten (Aus Primäreinheiten (Cluster) werden mehrere Individuen ausgewählt und die interessierenden Variablen erhoben: Kinder aus Familien, Schüler auf Schulen)
+	\item Hierarchische Daten (z.B. Kontinent $\rightarrow$ Land $\rightarrow$ Stadt)
+	\item In der Genetik: \textcolor{blue}{Verwandtschaft}
+\end{itemize}
+
+\textbf{Warum hier nicht lineare Regression?}
+Hauptproblem ist hier die Korrelation in den Daten:
+\begin{itemize}
+	\item Fehlerterme in linearer Regression sind nicht mehr unabhängig
+	\item beta-Schätzer in linearer Regression können die Struktur der Daten nicht angemessen berücksichtigen
+\end{itemize}
+
+\underline{Longitudinaldaten:} Im Rahmen von Längsschnittstudien werden in zeitlicher Abfolge wiederholte Beobachtungen an denselben Subjekten (unter möglicherweise verschiedenen Bedingungen) erhoben.
+\\\\
+\underline{Clusterdaten:} Aus Primäreinheiten (Cluster) werden mehrere Individuen ausgewählt und die interessierenden Variablen erhoben.
+\\\\
+Bei Longitudinal- und Clusterdaten lässt sich ein typische Datensatz (Stichprobe) wie folgt notieren: $(y_{i1}, ... , y_{in_i}, x_{i1}, ..., x_{in_i})$, i=1,...,m
+
+\begin{itemize}
+	\item m die Anzahl der Individuen bzw. Cluster
+	\item $n_i$die Anzahl der Messzeitpunkte für Individuum i bzw. die Anzahl der Elemente im Cluster i
+	\item Longitud.Daten: $y_{ij}$ ist der Wert der Zielgröße von Subjekt i zum Zeitpunkt $t_{ij}$
+	\item Cluster: $y_{ij}$ ist der Wert der Zielgröße vom j-ten Element in Cluster i
+\end{itemize}
+
+\underline{Beachte:} Die Daten vom gleichen Subjekt/Cluster neigen oft dazu ähnlicher zu sein als die Daten verschiedener Subjekte/Cluster.
+\\\\
+\textbf{Ziele:}
+\begin{itemize}
+	\item Schätzung der Subjekt- /Clusterspezifischen Effekte
+	\item Schätzung der Populationsspezifischen Effekte
+	\item Schätzung der Korrelationsstruktur
+\end{itemize}
+
+\subsection{Feste und zufällige Effekte}
+\textbf{Variabilitätsquellen}
+\begin{itemize}
+	\item Zwischen den Subjekten/Clustern, d.h. Abweichungen eines Subjekts/Clusters vom Populationsmittel.
+	\item Innerhalb des Subjekts/Clusters, d.h. Abweichungen einer Messung vom Mittelwert des entsprechenden Subjekts/Clusters.
+\end{itemize}
+
+\textbf{\underline{Lösung: Zwei - Stufen - Verfahren oder lineares gemischtes Modell}}
+
+\newpage
+\textbf{Zwei-Stufen-Verfahren:}
+\begin{enumerate}
+	\item Stufe: Das subjektspezifische Modell $Y_i=Z_i\beta_i +  \epsilon_i$
+	\begin{itemize}
+		\item i aus \{1,...,m\} das Individium i
+		\item $n_i$ Anzahl der Messwiederholungen bei Individuum i
+		\item $Y_i=(Y_{i1}, ..., Y_{in_i})^T$ der $n_i$-dimensionale Vektor der Messungen von Individuum i
+		\item $Z_i$ ist die $(n_i \times q)$-Matrix der (evtl. zeitlich abhängigen q Kovariablen $\beta_i$ (später random effects)
+		\item $\beta_i$ ist der (unbekannte) q-dimensionale subjektspezifische Vektor der Effekte der Kovariablen
+		\item $\epsilon_i=(\epsilon_{i1}, ..., \epsilon_{in_i})^T$ Fehlerterm mit $\epsilon_i \sim N(0, \sigma^2I_{n_i})$
+	\end{itemize}
+	\item Stufe: Das Modell $\beta_i=K_i\beta + b_i$ welches die Variabilität \underline{zwischen} den Individuen beschreibt
+	\begin{itemize}
+		\item i aus \{1,...,m\} das Individuum i
+		\item $n_i$ Anzahl der Messwerte bei Individuum i
+		\item $K_i$ eine $(q \times p)$-Matrix bekannter p Kovariaten auf
+Populationsebene (später fixed effects)
+		\item $\beta$ ist der p-dimensionale Vektor der unbekannten
+Regressionskoeffizienten dieser Kovariaten
+		\item $b_i \sim N(0,D)$ Fehlerterm mit Kovarianzmatrix D (also hier im Unterschied zur linearen Regression Fehler nicht mehr i.i.d.[independent and identically distributed])
+	\end{itemize}
+\end{enumerate}
+
+Man will Modelle aus beiden Stufen gleichzeitig fitten $\rightarrow$ \textbf{Idee:} einsetzen der 2. Stufe in die 1. Stufe.
+\\\\
+\textbf{
+Stufe 1: $Y_i=Z_i\beta_i + \epsilon_i$\\
+Stufe 2: $\beta_i=K_i\beta + b_i$\\
+Zusammen: $Y_i=Z_iK_i\beta + Z_ib_i + \epsilon_i$
+}
+
+\newpage
+$\Rightarrow$ Umwandlung des hierachischen Modells in ein \\ \textcolor{blue}{\textbf{lineares gemischtes Modell}} (linear random effects model):
+\\
+$y_i=\underbrace{X_i\beta}_{\text{Feste Effekte}} + \underbrace{U_ib_i}_{\text{Zufällige Effekte}} + \underbrace{\epsilon_i}_{\text{Residuale Fehler}}$, i=1,...,m
+\\\\
+Hierbei sind:
+\begin{itemize}
+	\item Die zufälligen Effekte $b_i$ unabhängig \underline{identisch} normalverteilt (i.i.d.) mit Erwartung 0: $b_i \stackrel{i.i.d}{\sim} N(0,D)$
+	\item D ist eine positiv semi-definite Matrix (Kovarianzmatrix) und beschreibt ggf. Abhängigkeiten zwischen den zufälligen Effekten
+	\item $\epsilon_i$ unabhängig \underline{(aber nicht identisch!)} normalverteilt: $\epsilon_i \sim N(0,\Sigma_i)$
+	\item $\Sigma_1,...,\Sigma_m$ individuelle Kovarianzmatrizen der Zeitreihen
+	\item $b_1,...,b_m,\epsilon_1,...,\epsilon_m$ unabhängig
+\end{itemize}
+
+\textbf{Bemerkungen:}
+\begin{itemize}
+	\item Ein lineares gemischtes Modell (LGM) muss nicht aus einem 2-Stufen-Verfahren abgeleitet werden: Jedes 2 Stufen Verfahren führt zu einem LGM, aber nicht jedes LGM lässt sich aus einem 2-Stufen-Verfahren herleiten.
+	\item Bei Longitudinaldaten können Kovariablen zeitlich variieren;
+	\item Auch bei Clusterdaten können Variablen im gleichen Cluster variieren oder konstant sein
+	\item Bis auf die Definitheit gibt es keine weiteren Annahmen an die Kovarianzmatrizen der zufälligen Effekte D und der Fehlersumme. Zusätzliche Annahmen hinsichtlich der Struktur der Matrizen ergeben Modelle verschiedener Komplexität und Flexibilität
+\end{itemize}
+
+\underline{Spezialfälle:}
+\begin{itemize}
+	\item \textbf{Conditional Independence:} \textcolor{red}{???}
+	\item \textbf{Varianzkomponenten-Modell:} \textcolor{red}{???}
+	\item \textbf{Random Intercept Modell:} Hier wird für jedes Individuum ein eigenes Intercept zugewiesen
+	\item \textbf{Random Intercept – Random Slope Modell:} \textcolor{red}{???}
+\end{itemize}
+
+\newpage
+\textbf{Abschließende Bemerkungen zum LGM: Warum also LGM‘s?}
+\begin{itemize}
+	\item Stichproben mit einer Substruktur verletzen typischerweise die für viele statistische Verfahren erforderliche Unabhängigkeit der Beobachtungen. Nichtbeachten dieser Substruktur führt zu fehlerhafter Ergebnissen (Tests, Konfidenzintervalle, ...)
+	\item Abhängigkeiten zwischen Beobachtungen reduzieren den Informationsgehalt im Vergleich mit unabhängigen Beobachtungen.
+	\item Beachtung individuenspezifischer Informationen kann Schätzgenauigkeit erhöhen
+	\item Schätzer für zufällige Effekte ermöglichen individuelle Prognosen
+	\item Ermöglichen Modelle mit fehlenden Werten
+	\item Bei vielen Meßverfahren können mit Hilfe der LGMs Batch-Effekte berücksichtigt werden.
+	\item In der Genetik sind diese Verfahren notwendig um Verwandtschaftsstrukturen zu berücksichtigen.
+	\item Wichtig für die Kombination von Studien (Metaanalyse)
+\end{itemize}
+
+\newpage
+\subsection{Idee der Hauptkomponentenanalyse}
+\textbf{Ziele:}
+\begin{itemize}
+	\item Exploratives Untersuchen von (hochdimensionalen) Daten
+	\item Visualisierung (hochdimensionaler) Daten
+	\item Dimensionsreduktion
+	\item Denoising (Rauschen der Daten mindern)
+\end{itemize}
+ 
+\underline{Zwischenziel:} Finde im m-dimensionalen Datenraum die Richtung größter Varianz
+\\\\
+\textbf{Pearsons Ansatz:} Welche Gerade passt am besten zu den Daten?
+\begin{itemize}
+	\item Die Gerade w, die das Rauschen minimiert und das Signal maximiert.
+	\item Oder anders gesagt: Die Gerade, die die Varianz in den Daten maximiert
+\end{itemize}
+
+\textcolor{red}{Was hier noch???}
+
+\subsection{Interpretation PCA-Plots und Eigenwerte}
+\textcolor{red}{Und was hier so???}
+
+\subsection{Aufgaben zur Übung 7}

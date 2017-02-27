@@ -44,13 +44,15 @@ Im ersten Schritt wird ein Zustandswechsel i $\rightarrow$ j vorgeschlagen. Übe
 \begin{equation}
 p_{Akzeptanz}(i,j) =
 \begin{cases}
-e^{-\dfrac{\Delta G_j - \Delta G_i}{RT}} \ if \ \Delta G_j > \Delta G_i \\ 1 \ \ else \\
+e^{-\dfrac{G_j - G_i}{RT}} \ if \ G_j > G_i \\ 1 \ \ else \\
 \end{cases}
 \end{equation}
 alternativ Kawasaki-Regel: \\
 \begin{equation}
-K_{ij} = \dfrac{e^{-\dfrac{\Delta G_j - \Delta G_i}{RT}}}{2}
+K_{ij} = e^{-\dfrac{G_j - G_i}{2RT}}
 \end{equation}
+
+Voraussetzung: i und j sind benachbart (?wie auch immer das bei Zuständen gemeint ist?)
 
 \subsubsection{Barrier-Trees}
 \begin{itemize}
@@ -63,7 +65,7 @@ K_{ij} = \dfrac{e^{-\dfrac{\Delta G_j - \Delta G_i}{RT}}}{2}
 Die Abbildung zeigt einen Barriertree, der aus den Minima und den Sattelpunkten der Energielandschaft erzeugt wurde. 
 
 \subsubsection{Baumbau mit Flooding-Algorithmus}
-Erzeugung einer Strukturliste, die nach Energiewerten sortiert ist. Diese wird dann als Hash eingespeichert.\\
+Erzeugung einer Strukturliste, die nach Energiewerten aufsteigend sortiert ist. Diese wird dann als Hash eingespeichert.\\
 besuchte Struktur $\rightarrow$ Niveaunummer
 \begin{itemize}
 \item Beginn bei Struktur 0 mit Niveaunummer 0

@@ -1,0 +1,63 @@
+\section{V13}
+Weitere Sample-Filter beruhen auf:
+\begin{itemize}
+	\item Geschlechts-Analyse
+	\item Verwandtschafts-Analyse
+	\item Hauptkomponenten-Analyse (PCA nach den englischen „principal component analysis“)
+\end{itemize}
+
+\subsection{Interpretation X-Y Intensitätsplots}
+\textbf{Geschlechts-Analyse}\\
+\begin{itemize}
+	\item notwendig da zwei Quellen für das Geschlecht eines Probanden zur Verfügung stehen:
+	\begin{itemize}
+		\item Probandendatenbank
+		\item Geschlechtsbestimmung beim Calling (computed gender)
+		\item Problem: computed gender wird (bei Affymetrix) nur über Heterozygosität des X-Chromosoms bestimmt
+	\end{itemize}
+	\item Regel: DB-Geschlecht $\neq$ calling-Geschlecht $\rightarrow$ Proband filtern (obwohl mitunter auch DB-Eintrag falsch sein kann)
+	\item weiteres Problem: beim Calling gibt es drei Geschlechtseinstufungen: female, male und unknown (für unknown Entscheidung anhand eines X-Y-Intensity-Plots \& DB-Geschlecht)
+\end{itemize}
+
+\textbf{Unregelmäßigkeiten in X-Y-Intensity-Plots}\\
+\begin{itemize}
+	\item YYX-Männer
+	\item Frauen mit höherer Y-Intensität
+	\item Monosomie X
+	\item ungewöhliche X-Heterozygosität (Poly-X-Frauen)
+	\item Geschlechtswidersprüche (gemessen vs. Datenbank)
+\end{itemize}
+
+\subsection{Interpretation PCA}
+\begin{itemize}
+	\item vergleiche Grundlagen
+	\item kann zur Plausibilisierung der Daten genutzt werden (Vergleich mit Referenz-Populationen)
+	\item Identifikation von Ausreißern (ethnisch, schlechte Genotypisierung)
+	\item Plausibilisierung von ethnischen Angaben (DB)
+	\item Achtung - PCA interagiert mit Verwandtschaft!
+	\begin{itemize}
+		\item verwandte Individuen sind i.d.R. PCA – Outlier
+		\item Lösung: „Drop one in procedure“ – sehr aufwendig
+	\end{itemize}
+\end{itemize}
+
+\textbf{kann folgendes darstellen:}
+\begin{itemize}
+	\item Ethnische Ausreißer
+	\item Batch-Effekte
+	\item Plattform-Effekte
+	\item Substrukturen in der Kohorte
+\end{itemize}
+
+\subsection{CNV Detektion mit SNP-Array und Interpretation von R-Ratio und B-Allelfrequency plots}
+\textbf{Problem}
+\begin{itemize}
+	\item CNV-Bestimmung aus Microarrays arbeitet direkt mit den Allel-Intensitäten
+	\item kurze CNVs nur über spezielle CNV-Sonden detektierbar (z.B. Affymetrix SNP 6.0)
+	\item mittellange CNVs i.d.R. auch schlecht detektierbar, Ergebnisse stark von Plattform abhängig
+	\item nur sehr lange CNVs sind gut detektierbar (z.B. Tumor-DNA)
+	\item SNP-Arrays nur bedingt für Keimbahn-CNV-Analyse geeignet (besser Sequenzierung)
+\end{itemize}
+
+\underline{\textbf{R Ratio:}} Beobachtete Intensität / Referenzintensität, bei höherer Intensität Duplikation, bei geringerer Deletion\\\\
+\underline{\textbf{B-Allelhäufigkeit:}} Anzahl der Banden ergeben Ordnung der CNV (z.B. Anzahl Duplikationen)

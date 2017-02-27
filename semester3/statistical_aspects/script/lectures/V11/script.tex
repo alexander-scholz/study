@@ -1,0 +1,107 @@
+\section{V11}
+\subsection{Phänotyp, Genotyp-Phänotyp-Beziehung}
+\textbf{Phänotyp:} Erscheinungsbild/Merkmale eines Organismus (Morphologisch, Physiologisch, Psychisch)
+\begin{itemize}
+	\item ererbt (Genotyp)
+	\item erworben (Umwelt)
+	\item akut (auf einen äußeren Reiz)
+\end{itemize}
+
+\textbf{Phänotyp - Bestimmung:}
+\begin{itemize}
+	\item Messbarkeit
+	\item Reliabilität
+	\item Validität
+	\item Vergleichbarkeit zwischen Studien
+\end{itemize}
+
+\textbf{Intermediärer Phänotyp:} Liegt in der Kausalbeziehung zwischen Genetik und Zielphänotyp; Beispiel: Cholesterin = intermediärer Phänotyp für Arteriosklerose
+\\\\
+\textbf{Genotyp-Phänotyp-Beziehung}\\
+Definition:
+\begin{itemize}
+	\item Eine genetische Veränderung (Mutation) ist ursächlich für den Phänotyp (Kausalität)
+	\item Grad der Abhängigkeit des Phänotyps vom Genotyp wird gemessen durch Heritabilität
+\end{itemize}
+Mögliche Ursachen für Abweichungen von einer strengen Genotyp-Phänotyp Beziehung:
+\begin{itemize}
+	\item Phänokopie: Merkmalsausprägung aus anderer Ursache
+	\item Phänotypische Plastizität: Modulierbarkeit durch Umwelteinflüsse
+	\item Unvollständige Penetranz: Nichtausprägung trotz vorhandener Mutation, Kompensation eines Mechanismus
+	\item Dramatyp: Phänokopie als Reaktion auf akutes Geschehen
+\end{itemize}
+
+\subsection{Reliabilität, Validität}
+\textbf{Reliabilität:}\footnote{\url{https://de.wikipedia.org/wiki/Reliabilit\%C3\%A4t}}
+\begin{itemize}
+	\item Anteil der Varianz von Messwerten, der durch tatsächliche Unterschiede des Merkmals begründet ist
+	\item Hängt eng mit der Reproduzierbarkeit von Messungen zusammen
+	\item Intra-Rater (observer) Reliabilität vs. Inter-Rater (observer) Reliabilität\footnote{\url{https://de.wikipedia.org/wiki/Interrater-Reliabilit\%C3\%A4t}}
+	\item grafische Darstellung mittels Bland-Altman Diagramm\footnote{\url{https://de.wikipedia.org/wiki/Bland-Altman-Diagramm}}
+\end{itemize}
+
+\textbf{Konkordanz-Korrelations-Koeffizient (CCC)}\\
+geeignetes Maß zur Bewertung der Übereinstimmung zweier \textbf{\underline{quantitativer}} Merkmale\\
+$CCC(X,Y)=\frac{2cov(X,Y)}{var(X) + var(Y)+(E(X)-E(Y))^2}$
+\\\\
+\textbf{Cohen‘s Kappa}\\
+geeignetes Maß zur Bewertung der Übereinstimmung zweier \textbf{\underline{binärer}} Merkmale\\
+$\kappa=\frac{p_{00}+p_{11}-p_{0.}p_{.0}-p_{1.}p_{.1}}{1-p_{0.}p_{.0}-p_{1.}p_{.1}}$
+\\\\
+
+\textbf{Validität:}
+\begin{itemize}
+	\item Aussage zur Belastbarkeit einer Messmethode oder Operationalisierung. Wird tatsächlich das gemessen, was gemessen werden soll?
+	\item Vergleich mit Goldstandard
+\end{itemize}
+
+\subsection{(Genetische) Studiendesigns}
+\subsubsection{Querschnittstudien}
+
+\begin{itemize}
+	\item „Cross-Sectional Study“\footnote{\url{https://de.wikipedia.org/wiki/Querschnitt_(empirische_Forschung)}}
+	\item Untersucht gesamte Population oder repräsentative Zufallsstichprobe
+	\item Momentaufnahme zu gegebenem Zeitpunkt: Analysiert Prävalenzen (kann nicht zwischen Effekt auf Inzidenz oder Dauer unterscheiden)
+	\item Ungünstig für seltene Phänotypen
+	\item Besonderheiten der Stichprobenziehung in Analysen berücksichtigen
+	\item „Selective Survival Bias“
+	\item Einfache Durchführbarkeit, sehr häufiger Studientyp
+\end{itemize}
+
+\subsubsection{Kohortenstudien}
+\begin{itemize}
+	\item „Cohort study“\footnote{\url{https://de.wikipedia.org/wiki/Kohortenstudie}}, Längsschnittliche Studie (longitudinal study“)
+	\item Beobachtung des Auftretens eines Zielmerkmals in einer Population über einen gewissen Zeitraum
+	\item Population ist initial frei vom Zielmerkmal
+	\item Exposition wird anfänglich gemessen
+	\item Anreicherung seltener Expositionen möglich
+	\item Analysiert Risikofaktoren für Inzidenzen
+	\item Aufwändig (Zeit und Geld)
+	\item Probleme mit drop-out beim follow-up
+\end{itemize}
+
+\subsubsection{Fall-Kontroll-Studien}\footnote{\url{https://de.wikipedia.org/wiki/Fall-Kontroll-Studie}}
+\begin{itemize}
+	\item Definierte Fälle (mit Merkmal) und Kontrollen (ohne Merkmal)
+	\item Definition einheitlicher Ein- und Ausschlusskriterien sehr wichtig
+	\item Analysiert Expositionseffekte
+	\item Vorsicht mit Confounding und Stratifizierung!
+	\item Selective survival bias, differential recall bias
+	\item Keine direkte Bestimmung des Relativen Risikos
+	\item Fall-Kontroll-Matching kann schwierig sein
+\end{itemize}
+
+\subsection{GxE Interaktion}
+Gene–environment interaction\footnote{\url{https://en.wikipedia.org/wiki/Gene\%E2\%80\%93environment_interaction}}
+
+\subsection{Coverage von Microarrays}
+Maßzahl für die „Qualität“ des Inhalts eines Microarray-Produkts\\
+Anteil der Referenz, die in hinreichend hohem LD ($r^2$) mit SNPs auf dem Microarray sind. Hängt ab von:
+\begin{itemize}
+	\item Referenz (meist HapMap, 1000Genomes, verschiedene Panels)
+	\item Ethnie (z.B. für afrikanische Populationen Coverage i.d.R. viel schlechter)
+	\item gewünschtem LD-Niveau
+	\item cut-off für seltene Varianten
+\end{itemize}
+
+\subsection{Aufgaben zur Übung 11}

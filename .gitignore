@@ -13,3 +13,7 @@ tmp.tex
 *.gz
 *.synctex.gz
 *tex.backup
+*.Rhistory
+*.RData
+*.odg
+*.xcf
