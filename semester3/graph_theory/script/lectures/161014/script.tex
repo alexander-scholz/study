@@ -35,7 +35,7 @@ Funktionen gerichteter Graphen:\\
 $h: E \rightarrow V: e \mapsto head(e)$\\
 $t: E \rightarrow V: e \mapsto tail(e)$\\
 
-Graphen in denen Kanten zwei verschiedenen Endpunkte haben \textbf{UND} zu jeden Paar von Kanten höchstens eine Kante gehört hießen \underline{EINFACH} oder \underline{SIMPLE}
+Graphen in denen Kanten zwei verschiedenen Endpunkte haben \textbf{UND} zu jeden Paar von Knoten höchstens eine Kante gehört heißen \underline{EINFACH} oder \underline{SIMPLE}
 
 im gerichteten Fall:\\
 \includegraphics[width=0.25\textwidth]{lectures/161014/pix/1.jpg}
@@ -80,7 +80,7 @@ Schreibweise: $G \simeq H$ (G ist isomorph zu H) mit
 $G\rightarrow^\pi H, G \leftarrow^{-\pi}H$ sodass $\pi$ isomorph ist
 \\\\
 \underline{Reflexivität:} Ein Graph ist zu sich selbst immer isomorph: $G \simeq G$\\
-\underline{Symmetrie:} $G \simeq H \Leftrightarrow H \simeq G$
+\underline{Symmetrie:} $G \simeq H \Leftrightarrow H \simeq G$\\
 \underline{Transitivität:} $G \simeq H, H \simeq K \Rightarrow G \simeq K$\\
 \includegraphics[width=0.75\textwidth]{lectures/161014/pix/7.jpg}
 \\
@@ -92,7 +92,7 @@ Zusätliche Bedingung benötigt: $\lambda(\pi(x))=\lambda(x) \rightarrow$ Labels
 \textbf{Testen auf Gleichheit}\\
 Gegeben: G$_1$=(V$_1$, E$_1$), G$_2$=(V$_2$, E$_2$)\\
 Frage: Sind die Graphen isomorph?
-\\\\
+\newpage
 Grundbedingungen:
 \begin{enumerate}
 	\item $|V_1| = |V_2| \rightarrow$ gleiche Anzahl von Knoten
@@ -102,14 +102,13 @@ Grundbedingungen:
 \subsection{Eigenschaften von Graphen}
 \includegraphics[width=0.25\textwidth]{lectures/161014/pix/8.jpg}\\
 Nachbarknoten von v: $N(v):=\{y \in V|\{v,y\} \in E\}$\\
-$deg(v):=|N(v)|$\\
-$\delta(G):= \min \limits_{v \in V} deg(v)$\\
-$\Delta(G):= \max \limits_{v \in V} deg(v)$\\
+$deg(v):=|N(v)|$ … Anzahl der Nachbarknoten\\
+$\delta(G):= \min \limits_{v \in V} deg(v)$ … Knoten aus G mit wenigstens Nachbarn\\
+$\Delta(G):= \max \limits_{v \in V} deg(v)$ … Knoten aus G mit meisten Nachbarn\\
 \\
 \underline{Def:} Ein Graph heißt \textbf{REGULÄR} wenn $\Delta(G)=\delta(G)$\\(wenn alle Knoten gleichen Grad haben)
 \\\\
-\underline{Gradfolge von G:}\\\\
-$\mathcal{F}=(n_0,n_1,n_2,…,n_{|V|-1})$ mit $n_k:=|\{x \in V|deg(x)=k\}|$\\\\
+\underline{Gradfolge von G:} aufsteigende Folge der Knotengrade aller Knoten eines Graphen\footnote{\url{https://de.wikipedia.org/wiki/Gradfolge}} $\mathcal{F}=(n_0,n_1,n_2,…,n_{|V|-1})$ mit $n_k:=|\{x \in V|deg(x)=k\}|$\\\\
 $\delta(G) \geq 0$\\
 $\Delta(G) \leq |V|-1$\\\\
 Beispiel:\\
@@ -118,9 +117,8 @@ Beispiel:\\
 \underline{bei Isomorphie:} $\mathcal{F}_1=\mathcal{F}_2 \rightarrow$ Isomorphismus $\pi$ erhält Grad der Knoten!
 
 \subsection{Graph-Invarianten}
-Eigenschaften, die unter Isomorphie erhalten bleiben\\
-$\mathcal{G}$…Menge aller Graphen\\
-F…ist ein Graph invariant wenn\\
+Eigenschaften, die unter Isomorphie erhalten bleiben\footnote{\url{https://en.wikipedia.org/wiki/Category:Graph_invariants}}\\
+$\mathcal{G}$…Menge aller Graphen, F…ist ein Graphinvariant wenn\\
 \begin{equation}
 	F:\mathcal{G} \rightarrow X
 \end{equation}
@@ -134,15 +132,14 @@ Wenn F(G) $\neq$ F(H) für irgendeine Grapheninvariante $\Rightarrow$ G $\neg \s
 
 \subsection{Pfade und Zusammenhänge}
 
-\underline{Kantenzug:} "Folge von Kanten in G"\\
+\underline{Kantenzug:} Folge von Kanten in G\\
 $x_o,e_1,x_1,e_2,x_2,…,e_l,x_l$ sodass $e_i:=\{x_{i-1},x_i\}$\\\\
-\underline{Beispiel:}\\
+\underline{Beispiel:} (4,a,1,b,3,b,1,c,2)\\
 \includegraphics[width=0.25\textwidth]{lectures/161014/pix/10.jpg}\\
 \underline{Weg:} Kantenzug sodass $e_i \neq e_j$ für $i \neq j$ (keine Kante doppelt verwenden)\\\\
 \underline{Pfad:} Kantenzug sodass $x_i \neq x_j$ für $(i,j) \neq (0,l)$ mit 0=Startknoten und l=Endknoten des Pfades (keinen Knoten mehrfach bis auf $x_0$, $x_l$)
-
 \begin{itemize}
-	\item offen: $x_o \neq x_e$ \includegraphics[width=0.2\textwidth]{lectures/161014/pix/11.jpg}\\
+	\item offen: $x_o \neq x_e$ \includegraphics[width=0.2\textwidth]{lectures/161014/pix/11.jpg}
 	\item geschlossen: $x_0=x_e$ (nur hier 1 Knoten doppelt benutzt!)\includegraphics[width=0.2\textwidth]{lectures/161014/pix/12.jpg}
 \end{itemize}
 
