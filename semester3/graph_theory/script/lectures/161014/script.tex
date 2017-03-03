@@ -63,6 +63,8 @@ Durch Unterteilung der Kanten in Multigraphen kann eine Transformation in Graphe
 	\item gerichtet: einfache Unterteilung mittels Knoten
 \end{itemize}
 
+\underline{vollständiger Graph:} jeder Knoten ist mit allen anderen Knoten verbunden $\rightarrow$ Anzahl Kanten=$\binom{n}{2}$
+
 \subsection{Gleichheit von Graphen}
 \includegraphics[width=0.5\textwidth]{lectures/161014/pix/5.jpg}\\
 als labeled graphs: G$_1$=G$_2$=G$_4\neq$G$_3$\\\\
@@ -118,15 +120,8 @@ Beispiel:\\
 
 \subsection{Graph-Invarianten}
 Eigenschaften, die unter Isomorphie erhalten bleiben\footnote{\url{https://en.wikipedia.org/wiki/Category:Graph_invariants}}\\
-$\mathcal{G}$…Menge aller Graphen, F…ist ein Graphinvariant wenn\\
-\begin{equation}
-	F:\mathcal{G} \rightarrow X
-\end{equation}
-die Eigenschaft hat, dass
-\begin{equation}
-	G \simeq H \Rightarrow F(G) = F(H)
-\end{equation}
-
+$\mathcal{G}$…Menge aller Graphen, F…ist ein Graphinvariant und X eine Eigenschaft wenn F: $\mathcal{G}$ $\rightarrow$ X die Eigenschaft hat, dass $G \simeq H \Rightarrow F(G) = F(H)$
+\\\\
 \underline{Invarianten bis jetzt:} $|V|, |E|,$ Gradfolge $\mathcal{F}$\\\\
 Wenn F(G) $\neq$ F(H) für irgendeine Grapheninvariante $\Rightarrow$ G $\neg \simeq$ H
 
@@ -136,7 +131,9 @@ Wenn F(G) $\neq$ F(H) für irgendeine Grapheninvariante $\Rightarrow$ G $\neg \s
 $x_o,e_1,x_1,e_2,x_2,…,e_l,x_l$ sodass $e_i:=\{x_{i-1},x_i\}$\\\\
 \underline{Beispiel:} (4,a,1,b,3,b,1,c,2)\\
 \includegraphics[width=0.25\textwidth]{lectures/161014/pix/10.jpg}\\
-\underline{Weg:} Kantenzug sodass $e_i \neq e_j$ für $i \neq j$ (keine Kante doppelt verwenden)\\\\
+\underline{Weg:} Kantenzug sodass $e_i \neq e_j$ für $i \neq j$ (keine Kante doppelt verwenden)\\
+Beispiel: (1,c,2,d,3,b,1,a,4,e,3))
+\\\\
 \underline{Pfad:} Kantenzug sodass $x_i \neq x_j$ für $(i,j) \neq (0,l)$ mit 0=Startknoten und l=Endknoten des Pfades (keinen Knoten mehrfach bis auf $x_0$, $x_l$)
 \begin{itemize}
 	\item offen: $x_o \neq x_e$ \includegraphics[width=0.2\textwidth]{lectures/161014/pix/11.jpg}

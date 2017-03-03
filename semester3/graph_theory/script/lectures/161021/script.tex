@@ -25,18 +25,15 @@ Jeder Kantenzug von x nach y und zurück zu x muss u wenigstens 2 mal enthalten 
 Kreis $\equiv$ geschlossener Pfad $\Rightarrow$ $\nexists$ Kreis der x und y enthält.
 
 \subsection{Cut-Vertex (Schnittknoten)}
-Sei G ein zusammenhängender Graph. Dann ist v ein Cut vertex wenn G$\backslash$\{v\} [= Graph der entsteht wenn v und alle inzidenten Kanten entfernt werden] in wenigstens Z Zusammenhangs-Komponenten zerfällt.
+Sei G ein zusammenhängender Graph. Dann ist v ein Cut vertex wenn G$\backslash$\{v\} [= Graph der entsteht wenn v und alle inzidenten\footnote{Ein Knoten v und eine Kante e heißen inzident, wenn e den Knoten v mit einem anderen Knoten verbindet} Kanten entfernt werden] in wenigstens Z Zusammenhangs-Komponenten zerfällt.
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=1.00]{lectures/161021/pix/pic3.jpg}
 \end{figure}
 
-\underline{Theorem:} Sei G ein zusammenhängender Graph mit mehr als 2 Knoten, dann seien folgende Aussagen äquivalent:
-\begin{enumerate}
-	\item G ist Kreiszusammenhängen
-	\item G hat keinen cut-vertex
-\end{enumerate}
-
+\underline{Theorem:} Sei G ein zusammenhängender Graph mit mehr als 2 Knoten, dann seien folgende Aussagen äquivalent:\\
+ - G ist Kreiszusammenhängen $\Rightarrow$ G hat keinen cut-vertex
+\\\\
 \underline{Beweis/Idee:}
 cut-vertex $\Rightarrow$ $\neg$ Kreiszusammenhang
 \begin{figure}[htp]
@@ -51,6 +48,7 @@ $|V(G)| \geq 3$
 x in G$_1$, g in G$_2$ $\Rightarrow$ $\nexists$ Kreis durch x und y $\Rightarrow$ $\neg$ Kreiszusammenhang
 \end{figure}
 
+\newpage
 \underline{zu 2.:}\\
 Kreiszusammenhang $\Rightarrow$ $\nexists$ cut-vertex ($|V(G)| \geq 3$)\\
 Kreiszusammenhang $\Rightarrow$ $\exists$ mindestens 2 disjunkte Wege von x nach y, d.h. es gibt keinen Knoten durch den alle Wege von x nach y gehen $\Rightarrow$ es kann keinen cut-vertex geben
@@ -61,7 +59,7 @@ Kreiszusammenhang $\Rightarrow$ $\exists$ mindestens 2 disjunkte Wege von x nach
 	\item $|V(G)| = 2$ (zwei Knoten, eine Kante) $\Rightarrow$ zusammenhängend, $\neg$ Kreiszusammenhängen, kein cut-vertex
 \end{enumerate}
 
-\underline{Def.:} Ein Graph G ist 2-zusammenhängend wenn G$\backslash$v für alle $v \in V(G)$ zusammenhängend und nicht ein einzelner Knoten oder leer ist $\Leftrightarrow$ G$\backslash$v zusammenhängend und enthält wenigstens 1 Kante\\
+\underline{Definition.:} Ein Graph G ist 2-zusammenhängend wenn G$\backslash$v für alle $v \in V(G)$ zusammenhängend und nicht ein einzelner Knoten oder leer ist $\Leftrightarrow$ G$\backslash$v zusammenhängend und enthält wenigstens 1 Kante\\
 
 Spezialfälle 1 und 2 sind zusammenhängend aber nicht 2-zusammenhängend
 \\\\
@@ -120,7 +118,8 @@ $K_n … n=V(K_n)$ Knoten, $\binom{n}{2}$ Kanten
 	\item x,y $\in$ W und \{x,y\} $\in$ E $\Rightarrow$ \{x,y\} $\in$ F
 \end{enumerate}
 
-\underline{spannende Teilgraphen (spanning trees):} Teilgraphen W=V\\\\
+\underline{spannende Teilgraphen (spanning subgraphs):} Teilgraphen W=V
+\\\\
 \underline{Spannbäume (spanning trees):} Teilbaum von G, der alle Knoten enthält\\
 jeder zusammenhängende Graph hat einen Spannbaum
 
@@ -149,12 +148,12 @@ $
 \end{itemize}
 
 \subsubsection{Permutationsmatrix}
-quadratische Matrix P sodass in jeder Zeile und jeder Spalte genau eine 1 steht und sonst 0 (P=(P$_ij$))
+quadratische Matrix P sodass in jeder Zeile und jeder Spalte genau eine 1 steht und sonst 0 (P=(p$_{ij}$))
 \\\\
-\textbf{Satz:} zwei Graphen mit Adjezenz-Matritzen A und B sind isomorph genau dann wenn es eine P gibt sodass AP=P$^T$B
+\textbf{Satz:} zwei Graphen mit Adjezenz-Matritzen A und B sind isomorph genau dann wenn es eine P gibt sodass A$\cdot$P=P$\cdot$B
 \\\\
 PP$^T$=P$^T$P=I ($\widehat{=}$ Einheitsmatrix) [... mit P$^T_{ij}$=P$_{ji}$]\\
-$A \cdot P = P \cdot B$ \textcolor{red}{warum hier untransponiert?}\\
+$A \cdot P = P \cdot B$\\
 $A \cdot \underbrace{PP^T}_{I}=P \cdot B \cdot P^T$
 \\\\
 Zwei quadratische Matrizen A,B heißen ähnlich wenn es einer invertierbare Matrix Q gibt, sodass $A \cdot Q = Q \cdot B$

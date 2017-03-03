@@ -1,6 +1,6 @@
 \section{Vorlesung 28.10.2016}
 \subsection{Inzidenzstrukturen}
-Struktur aus Punktmenge und Menge von Blöcken.\newline\newline
+Struktur aus Punktmenge und Menge von Blöcken.\\
 Tripel: (p,B,I)
 \begin{itemize}
 	\item p $\cap$ B = $\emptyset$
@@ -9,39 +9,54 @@ Tripel: (p,B,I)
 	\item B = Blöcke - z.B. Kanten
 	\item I = Inzidenzmatrix
 \end{itemize}
-Die Punkte p \glqq inzidieren\grqq{} demnach mit den Blöcken B, \glqq liegen auf\grqq{} einem Block. Dieser Block kann, wie in unserem Fall bei Graphen, eine Gerade sein.\newline
+Die Punkte p \glqq inzidieren\grqq{} demnach mit den Blöcken B, \glqq liegen auf\grqq{} einem Block. Dieser Block kann, wie in unserem Fall bei Graphen, eine Gerade sein.
 
 \subsubsection{Inzidenzmatrize - ungerichtete Graphen}
 \begin{itemize}
 	\item n Knoten, m Kanten
 	\item n x m Marix B=b\textsubscript{i,j}
 	\item G=(V,E)
-\hspace*{3mm}V=\{v\textsubscript{1}, \ldots, v\textsubscript{n}\}\newline
-\hspace*{3mm}E=\{e\textsubscript{1}, \ldots, e\textsubscript{m}\}\newline
-\hspace*{3mm}$b\textsubscript{i,j}\begin{cases}1,\>v\textsubscript{i}\in e\textsubscript{j}\\0,\>sonst\end{cases}$\newline
+	\begin{itemize}
+		\item V=\{v$_1$, \ldots, v$_n$\}
+		\item E=\{e$_1$\}, \ldots, e$_m$\}
+		\item $b_{i,j}=
+			\begin{cases}
+				1,\>v_{i}\in e_j\\
+				0,\>sonst
+			\end{cases}$
+	\end{itemize}
 \end{itemize}
 
-\begin{tabular}{cccc}
- & a & b & c \\
-1 & 1 & 0 & 0 \\
-2 & 1 & 1 & 0 \\
-3 & 0 & 1 & 0 \\
+\underline{Beispiel:}
+\begin{figure}[htp]
+\includegraphics[scale=1.00]{lectures/161028/pix/pic1.jpg}
+\end{figure}
+\\
+Inzidenzmatrix: 
+\begin{tabular}{cccccc}
+  & a & b & c & d & e\\
+1 & 1 & 0 & 0 & 0 & 1\\
+2 & 0 & 0 & 1 & 1 & 0\\
+3 & 1 & 1 & 0 & 1 & 0\\
+4 & 0 & 1 & 1 & 0 & 1\\
 \end{tabular}
-\newline\newline
-In dieser Inzidenzmatrize steht Vertex 1 nur auf Kante a, Vertex 2 auf Kante a und b (kann nicht auf c liegen) und Vertex 3 auf Kante b. In Form einer Bildes könnte das so aussehen:\newline
-\includegraphics[width=0.4\textwidth]{lectures/161028/pix/dreieck.png}
 
+Spaltensumme: immer 2 (Start- und Endknoten)
 
 \subsubsection{Inzidenzmatrize - gerichtete Graphen}
 \begin{itemize}
-	\item $b\textsubscript{i,j}\begin{cases}1,\>e\textsubscript{j}=(v\textsubscript{i},x)\\0,\>v\textsubscript{i}\ni e\textsubscript{j}\\-1,\>e\textsubscript{j}=(x,v\textsubscript{i})\end{cases}$\newline
+	\item $b_{i,j}
+	\begin{cases}
+		1,\>e_j=(v_i,x)\\
+		0,\>v_i \notin e_j\\
+		-1,\>e_j=(x,v_i)\end{cases}$
 \end{itemize}
 
 \begin{tabular}{cccc}
- & a & b & c \\
-1 & -1 & 0 & 0 \\
-2 & 1 & 1 & 0 \\
-3 & 0 & -1 & 0 \\
+ & a & b\\
+1 & -1 & 0\\
+2 & 1 & 1\\
+3 & 0 & -1\\
 \end{tabular}\newline\newline
 Hier sind die Kanten gerichtet. Im Gegensatz zur ungerichteten Inzidenzmatrize erhalten \glqq ankommende\grqq{} Kanten hier ein negatives Vorzeichen. Siehe Kante a zu Vertex 1 und Kante b zu Vertex 3.\newline
 \includegraphics[width=0.4\textwidth]{lectures/161028/pix/dreieckge.png}
@@ -59,7 +74,7 @@ Hier sind die Kanten gerichtet. Im Gegensatz zur ungerichteten Inzidenzmatrize e
 $d\textsubscript{i,j}\begin{cases}deg(v\textsubscript{i}),\>i=j\\0,\>sonst\end{cases}$\newline\newline
 
 $a\textsubscript{i,j}\begin{cases}1,\>(i,j)\in E\\0,\>sonst\end{cases}$\newline\newline
-- A ist symmetrisch für ungerade Graphen\newline
+- A ist symmetrisch für Graphen mit ungerade Knotenanzahl\\
 
 $\textit{L}\begin{cases}deg(v\textsubscript{i}),\>i=j\\-1,\>i\neq j, (i,j) \in E \\0,\>sonst\end{cases}$\newline\newline
 - Zusammenhang zur Inzidenzmatrix: \textit{L}=B x B\textsuperscript{T}\newline\newline
@@ -88,12 +103,12 @@ Eigenschaften:\\
 \begin{itemize}
 	\item symmetrisch
 	\item die Zeilen- und Spaltensumme = 0
-	\item Eigenwert $\lambda$\textsubscript{0}=0, v\textsubscript{0}=(1,\ldots,1) $\Rightarrow$ 2 v\textsubscript{0}=$\lambda$\textsubscript{0}
+	\item Eigenwert $\lambda$\textsubscript{0}=0, v\textsubscript{0}=(1,\ldots,1) $\Rightarrow$ L $\cdot$ v\textsubscript{0}=$\lambda$\textsubscript{0}
 	\item Anzahl der 0 Eigenwerte $\Rightarrow$ Anzahl der connected components
-	\item special gap: kleinster Eigenwert $\neq$ 0
+	\item spectral gap: kleinster Eigenwert $\neq$ 0
 	\item algebraische Konnektivität (Fiedler-Wert)
 	\begin{itemize}
-		\item zweit-kleinster Eigenwert - positiv-semidifinit
+		\item zweit-kleinster Eigenwert - positiv-semidefinit
 		\item $\lambda$\textsubscript{i} $\geq$ 0
 	\end{itemize}
 \end{itemize}
@@ -101,21 +116,20 @@ Eigenschaften:\\
 \subsubsection{Algebraische Konnektivität}
 \begin{itemize}
 	\item beschreibt wie gut verbunden der Graph, global gesehen, ist
-	\item algebraische Konnektivität $\leq$ Vertex-Konnektivität
-	\item $\mid$V$\mid$=n, min. Durchmesser von d(längster Pfad)
-	\begin{itemize}
-		\item alg. Konn $\geq$ 4/nd
-	\end{itemize}
+	\item $\frac{4}{n \cdot d} \leq$ algebraische Konnektivität $\leq$ Vertex-Konnektivität
+	\item $|$V$|$=n, min. Durchmesser von d(längster Pfad) (d = längster minimaler Pfad)
 \end{itemize}
 
 Beispiel:
 \includegraphics[width=0.4\textwidth]{lectures/161028/pix/dreieck.png}\newline
 \begin{itemize}
 	\item $\mid$V$\mid$=3
-	\item d=2\newline
+	\item d=2
 	\item vert. conn = 1
 	\item alg. conn = $\lambda$\textsubscript{z} = 0,666 
 \end{itemize}
+
+weiteres Beispiel: \url{https://en.wikipedia.org/wiki/Algebraic_connectivity}
 
 \newpage
 
@@ -128,8 +142,8 @@ Beispiel:
 Beispiel:
 \includegraphics[width=0.4\textwidth]{lectures/161028/pix/fiedler.png}
 \begin{itemize}
-	\item F = $<$0.4, 0.3, 0.1, -0.2, 0.2, -0.8$>$
-	\item \{4,6\},\{1,2,3,5\}\newline
+	\item F = $<$0.4, 0.3, 0.1, -0.2, 0.2, -0.8$>$ entspricht der Knotenreihenfolge: (1,2,3,4,5,6) $\rightarrow$ umso kleiner umso schlechter mit Graphen verbunden
+	\item $\Rightarrow$ Partionierung: \{4,6\},\{1,2,3,5\}\newline
 \end{itemize}
 
 \subsubsection{Interlacing Theorem}
@@ -155,26 +169,29 @@ Beispiel:
 	\end{itemize}
 \end{itemize}
 
-\textbf{Approximation:}\newline
+\newpage
+\textbf{Approximation:}
 \begin{itemize}
 	\item wie viele isomorphe Graphen gibt es für 6?
 	\item Isomorpge-Bijektion $\pi$ V$\rightarrow$V
 	\item Anzahl Permutationen: n!
 	\item Es gib maximal n! isomorphe Graphen auf G\\
 	
-\hspace*{2cm}$\frac{2^\frac{n}{2}}{n!}=\frac{\text{Anzahl Graphen}}{\text{mgl. Bijektion fur einen einzelnen Graphen}}$\\
+\hspace*{2cm}\#Äquivalenzklassen = $\frac{2^\frac{n}{2}}{n!}=\frac{\text{Anzahl Graphen}}{\text{mgl. Bijektion fur einen einzelnen Graphen}}$\\
 	\item wir haben mit $\frac{2^\frac{n}{2}}{n!}$ paarweise nicht-isomorphe Graphen\\
-\hspace*{2cm}n!$\leq$n\textsuperscript{n}\newline
-\hspace*{2cm}$log_2(2^{\begin{pmatrix}n\\2\end{pmatrix}}) = \begin{pmatrix}n\\2\end{pmatrix} = \frac{n^2}{2}(1-\frac{1}{n})$\newline
-$log_2(\frac{2^{\begin{pmatrix}n\\2\end{pmatrix}}}{n!}) = \begin{pmatrix}n\\2\end{pmatrix} - log(n!) \geq \frac{1}{2}n^2-\frac{1}{2}n-n log_2(n)$\newline
-\hspace*{5.2cm}$=\frac{n^2}{2}(1-\frac{1}{n}-\frac{2 log_2(n)}{n})$\newline
-Fehler geht gegen $0 (2^{O(n^2)})$
+	\begin{itemize}
+		\item n!$\leq$n$^n$
+		\item $log_2(2^{\begin{pmatrix}n\\2\end{pmatrix}}) = \begin{pmatrix}n\\2\end{pmatrix} = \frac{n^2}{2}(1-\frac{1}{n})$
+		\item $log_2(\frac{2^{\begin{pmatrix}n\\2\end{pmatrix}}}{n!}) = \begin{pmatrix}n\\2\end{pmatrix} - log(n!) \geq \frac{1}{2}n^2-\frac{1}{2}n-n log_2(n)$
+		\item $=\frac{n^2}{2}(1-\underbrace{\frac{1}{n}}_{n\mapsto \infty=0}-\underbrace{\frac{2 log_2(n)}{n}}_{n\mapsto \infty=0})$ $\Rightarrow$ Fehler gegen 0 $\rightarrow$ Isomorphie selten!
+		\item  Komplexitätsklasse: $(2^{O(n^2)})$
+	\end{itemize}
 \end{itemize}
 
 \subsubsection{Isomorphismus auf Bäumen}
 \begin{itemize}
 	\item das \glqq das ist einfach\grqq{} $\rightarrow$ Programm mit polynomieller Zeit bauen
-	\item Baum codieren via 2n 0en und 1en\\
+	\item Baum codieren via Werten: 0 und 1\\
 \hspace*{2cm}$\hookrightarrow$ das sei der Code von Baum T
 	\item zu beweisen: isomorph Bäume haben gleiche codes
 	\item drei Klassen von Bäumen:
@@ -190,7 +207,8 @@ Beispiel:\\
 \includegraphics[width=0.4\textwidth]{lectures/161028/pix/graph1.png}
 \includegraphics[width=0.4\textwidth]{lectures/161028/pix/graph2.png}\\
 \includegraphics[width=0.4\textwidth]{lectures/161028/pix/graph3.png}\\
-
+Letzes Beispiel gilt als isomorph wenn Geschwisterordnung nicht interessiert!
+\\\\
 \textbf{Algorithmus (gewurzelt, geordnet):}\newline
 \begin{itemize}
 	\item K1: Blätter werden kodiert als 01
@@ -214,4 +232,5 @@ bestimme A\textsubscript{1}: Kleinster 0/1 kann mit gleicher Zahl von 0 und 1\ne
 	\item A\textsubscript{i} ist via Induktion des Codes für dazugehörigen gewurzelten, geordneten Baum T\textsubscript{i}
 \end{itemize}
 
+\underline{Bei nicht gewurzelten Bäumen:}\\
 \glq Kleinste maximale Entfernung zwischen den Blättern als Wurzel wählen \grqq{}
