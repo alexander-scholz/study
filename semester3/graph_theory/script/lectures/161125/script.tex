@@ -33,6 +33,7 @@ Beispiel wäre eine Landkarte auf der mit so wenig wie möglich Farben die Länd
                     \item Falls $|V| \leqslant 5 \rightarrow$ trivial
                     \item Für alle $v \in V(G)$ mit $deg(v) < 5$, färbe $v$ und arbeite mit $G \setminus \{v\}$
                     \item $G$ hat Vertex $v$ mit $deg(v) = 5$
+                        \includegraphics[scale=0.4]{lectures/161125/pix/2.pdf}
                         \begin{itemize}
                             \item betrachte 5-Färbung $\mathcal{C} \colon V(G \setminus \{v\}) \mapsto \{1, \dots, 5\}$, die es nach Rekursion gibt
                             \item betrache $x,y \in V_{xy}$ und sei $V_{xy} \subset V(G)$ die Menge der Knoten mit $\mathcal{C}(x)$- oder $\mathcal{C}(y)$-Färbung
@@ -52,6 +53,7 @@ Beispiel wäre eine Landkarte auf der mit so wenig wie möglich Farben die Länd
                                             ``Tausche Farben auf $V'_{xy}$'' $\Rightarrow \mathcal{C'}(x) = \mathcal{C'}(y) = \mathcal{C}(y)$
                                         \end{itemize}
                                     \item es gibt einen solchen Pfad $x \rightsquigarrow y$ mit allen Knoten in $V_{xy}$
+                                    \includegraphics[scale=0.5]{lectures/161125/pix/3.pdf}
                                         \begin{itemize}
                                             \item $V_{zt}$: alle Knoten in $V(G \setminus \{v\})$, die $\mathcal{C}(t)$ oder $\mathcal{C}(z)$ gefärbt sind
                                             \item $V_{xy} \cup V_{zt} = \emptyset$!
@@ -81,8 +83,15 @@ $\mathbb{P}(\{0_e\})=1-p$\\
 $\Omega_\mathcal{G} = \Pi_{e \in [v]^2} \Omega_e$
 
 \begin{description}
-    \item[Beispiele] Fixiere Graph $H$, $V(H) = V(G)$, ist $H \leqslant G$?
-    \item[\dots]
+    \item[Beispiele] Fixiere Graph $H$, $V(H) = V(G)$, ist $H \leqslant G$? \\
+        Mit $p^l$, $|E(H)| = l$, $|V(H)| = k$, aber falls $H$ induzierter Teilgraph von $G$ sein soll? \\
+         - Nur $p^l (1-p)^{\binom{k}{2} - l}$. \\
+        Und was ist mit Subgraph-Isomorphismus?
+        \includegraphics[scale=0.5]{lectures/161125/pix/4.pdf}
+        \begin{itemize}
+            \item Ereignismengen überlappen
+            \item kompliziert
+        \end{itemize}
 \end{description}
 
 \subsection{Eigenschaften fast aller Graphen}
