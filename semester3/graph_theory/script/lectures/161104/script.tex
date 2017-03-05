@@ -1,6 +1,6 @@
 \section{Vorlesung 04.11.2016}
 \subsection{Kreise}
-Sei G(V,E) ein Graph. Teilgraphen H aus G dann beschreiben wir durch deren Kantenmenge F $\subseteq$ E $\Leftrightarrow$ isolierte Knoten in H werden ignoriert\\
+Sei G(V,E) ein Graph. Teilgraphen H aus G beschreiben wir dann durch deren Kantenmenge F $\subseteq$ E $\Leftrightarrow$ isolierte Knoten in H werden ignoriert\\
 isoliert: deg$_H$(x)=0
 \\\\
 Kreis C - zusammenhängend und deg$_C$(x)=2\\
@@ -35,8 +35,12 @@ $\rightarrow$ sei u ein beliebiger Startpunkt. Konstruiere einen Weg w in H ausg
 w erreicht nach endlich vielen Schritten einen bereits benutzten Knoten y zum zweiten Mal.\\
 Teilweg von der 1. zur 2. Berührung von y ist ein Kreis, weil dieses Wegstück ein Pfad ist. Nennen diesen Kreis C$_y$.\\
 Konstruiere den Graphen H$\backslash$C$_y$=: H'\\
-Für H' gilt: deg$_{H'}$(x)=deg$_H$(x)-2 wenn x nicht auf C$_y$ liegt
-\\\\
+Für H' gilt:
+\begin{itemize}
+	\item deg$_{H'}$(x)=deg$_H$(x) wenn x nicht auf C$_y$ liegt
+	\item deg$_{H'}$(x)=deg$_H$(x)-2 wenn x auf C$_y$ liegt
+\end{itemize}
+
 \underline{Also:} In H gibt es einen Kreis C$_y$
 \begin{itemize}
 	\item H$\backslash$C$_y$ hat wieder nur geraden Knotengrad
@@ -173,7 +177,7 @@ Graph G zusammenhängender Spannbaum T von G\\
 Für jede Kante $e\notin T$ enthält $T \cup \{e\}$ genau einen Kreis $\rightarrow$ C$_{e,T}$\\
 \underline{\textbf{WARUM?}} Seien x,y die Endpunkte von e dann gibt es genau einen Pfad von x nach y in T. Der wird mit e zu genau einem Kreis.
 \\
-$B_T=\{C_{e,T}\backslash e \in T\}$ ist eine Kreisbasis \textcolor{red}{so richtig? oder $|$ statt $\backslash$}
+$B_T=\{C_{e,T}\backslash e \in T\}$ ist eine Kreisbasis
 \\
 \underline{Beweis:} zu zeigen
 \begin{enumerate}
@@ -181,7 +185,7 @@ $B_T=\{C_{e,T}\backslash e \in T\}$ ist eine Kreisbasis \textcolor{red}{so richt
 	\item Die Kreismenge B ist unabhängig
 \end{enumerate}
 
-\underline{zu 1.:} Sei Z ein Kreis, z$\notin$B (Z keine Kreisbasis)\\
+\underline{zu 1.:} Sei Z ein Kreis, Z$\notin$B (Z keine Kreisbasis)\\
 $\Rightarrow$ Z Summe von Baiskreisen. Wenn e $\in$ Z$\backslash$T dann muss C$_{e,T}$ zu Z beitragen. Wenn e $\notin$ Z$\backslash$T dann e$\in$T gibt es keinen zugehörigen Basiskreis\\
 e$\notin$T, e$\notin$Z dann kann C$_{e,T}$ nicht zu Z beitragen\\\\
 Also $\bigoplus\limits_{e \in Z\backslash T} C_{e,T}$
@@ -189,14 +193,14 @@ Also $\bigoplus\limits_{e \in Z\backslash T} C_{e,T}$
 \underline{zu 2.:} $C_{e,T}$ enthält nicht e für e,e'$\in$T, e$\neq$e'\\
 $\Rightarrow$ jeder Basiskreis enthält einen Kante, die in keinem anderen Basiskreis enthalten ist $\Rightarrow$ \underline{Unabhangigkeit}
 \\\\
-Wie viele Kreise einthält B (Kirchhoff-Basen)?\\
+Wie viele Kreise enthält B (Kirchhoff-Basen)?\\
 $|$B$|$ = $|$E$|$-$|$T$|$\\
 Kanten in Spannbaum $|$T$|$=$|$V$|$-1 $\Rightarrow$ $|$B$|$ = $|$E$|$-$|$V$|$+1
 \\\\
 \underline{am Allgemeinen:} $|$B$|$ = $|$E$|$-$|$V$|$+C(G) mit C(G)= Anzahl der Zusammenhangskomponenten\\
  - nicht notwendig zusammenhängend
 \\\\
-\underline{Bemerkung:} Die Kreise aus der "Eulerzerlegung" eines Graphen mit geraden Knotengrad bilden
+\underline{Bemerkung:} Die Kreise aus der Eulerzerlegung eines Graphen mit geraden Knotengrad bilden
 \begin{itemize}
 	\item unabhängige Menge da kantendisjunkt
 	\item aber normalerweise \underline{keine} Basis
@@ -224,4 +228,4 @@ für Dreiecke ja da Kantendisjunkt (wäre eine alternative Eulerzerlegung)
 Viereck kann nicht durch Summe der Dreiecke dargestellt werden $\Rightarrow$ linear unabhängig
 \\\\
 Gibt es einen Spannbaum der für G die Kirchhoffbasis (4 Dreiecke + Viereck) erzeugt?\\
-$\Rightarrow$ nein, da jeder Spannbaum der das Viereck erzeugt kann eines der 3-Ecke nicht erzeugen
+$\Rightarrow$ nein, da jeder Spannbaum der das Viereck erzeugt kann eines der 3-Ecke nicht erzeugen $\Rightarrow$ keine Kreisbasis
