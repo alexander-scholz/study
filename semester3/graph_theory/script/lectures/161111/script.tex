@@ -1,46 +1,61 @@
-\section{Vorlesung 11. und 18.11.2016}
+\section{Vorlesung 11.11.2016}
 \subsection{Ohrenzerlegung}
 
 Es sei nur dann ein Graph \textit{G(V,E)} mit $|E|>=2$, der 2-Vertex-verbunden ist, gegeben, wenn es eine offene Ohrenzerlegung gibt. Jede Ohrenzerlegeung definiere eine Kreisbasis.
 
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1.00]{lectures/161111/pix/pic1.jpg}
+\end{figure}
+
 \begin{itemize}
 	\item \textbf{\textit{Kreisbasis:}} \newline Ein Ohr Sei ein maximaler Pfad P, $|P| >= 1$, so dass P nur an Endpunkten Kanten aus $E\notin P$ berührt. Die Knoten in P, die keine Endknoten sind haben immer Grad $deg = 2$.
-	\item \textbf{\textit{offene Ohrenzerlegung}}\newline Eine Folge von Ohren $P_1, P_2, ..., P_k$ist eine offene Ohrenzerlegung, wenn $P_1$ ein Kreis, $P_k$ und alle anderen $P_i$ Ohren in $G_i = G_{i+1} \setminus P_{i+1}$ 
+	\item \textbf{\textit{offene Ohrenzerlegung}}\newline Eine Folge von Ohren $P_1, P_2, ..., P_k$ ist eine offene Ohrenzerlegung, wenn $P_1$ ein Kreis, $P_k$ und alle anderen $P_i$ Ohren in $G_i = G_{i+1} \setminus P_{i+1}$
 \end{itemize}
+
+\newpage
 \subsubsection{Algorithmus der Ohrenzerlegung}
 \begin{enumerate}
-	\item Finde Spannbaum T für G und wähle eine Wurzel
-	\item Für jede Kante (u,v), die nicht Teil des Spannbaums ist, finde den \textit{common lowest ancestor} der Knoten u und v.
+	\item Finde \textcolor{red}{Spannbaum T} für G und wähle eine Wurzel\\
+		\begin{figure}[htp]
+		\centering
+		\includegraphics[scale=1.00]{lectures/161111/pix/pic2.jpg}
+		\end{figure}
+	\item Für jede Kante (u,v), die nicht Teil des Spannbaums ist (0,1,2a,2b), finde den \textit{\textcolor{green}{common lowest ancestor (lca)}} der Knoten u und v.
 	\item Fuer jede Kante (u,v) soll die Hauptkante (w,x) gefunden werden, wobei (u,v) und (w,x) Teil eines Kreises sind und (w,x) einen \textit{lowest common ancestor} so nah wie moeglich an der Wurzel haben und (w,x) $\notin$ von T ist.
 	\item Für alle (w,x) die nicht aus dem Spannbaum sind, trenne alle Kanten mit gleichem Wert ab. Diese Kanten bilden ein Ohr.
 	\item Ordne die Ohren nach ihrem Gewicht. 
 \end{enumerate}
+
+\newpage
 \subsection{Unabhaengigkeitssysteme und Matroide}
 
 Viele \textit{Greedy Probleme} lassen sich mittels Matroiden beschreiben (insbesondere Graphenprobleme).\newline
 
 \begin{itemize}
-	\item \textbf{\textit{Unabhaengigkeitssystem}} \newline Ein Unabhaengigkeitssystem ist ein Paar $M = (S,l)$ mit endlicher Menge $S$ und $l <= P_S(S)$ (Powerset von S). Es besitzt folgende Eigenschaften:
+	\item \textbf{\textit{Unabhaengigkeitssystem:}} \newline Ein Unabhaengigkeitssystem ist ein Paar $M = (S,l)$ mit endlicher Menge $S$ und $l <= P_S(S)$ (Powerset von S). Es besitzt folgende Eigenschaften:
 	\begin{itemize}
 		\item[1] $\emptyset = {} \in l$ $\rightarrow$ Die leere Menge ist unabhängig
 		\item[2] $x \subseteq Y \in l$ $\rightarrow$ Erblichkeitseigenschaft
 	\end{itemize}
 	Die Elemente $x \in l$ und $y \in P_S(S) \setminus l$ sind unabhängig. \newline
 	$\rightarrow$ Kostenfunktion C: S $\rightarrow \mathbb{R}$ 
+	\item \textbf{\textit{Austauscheigenschaft:}} \newline Falls $A \in l, B \in l, |A| < |B|$, dann $\exists x, x \in B \setminus A: A \cup \{x\} \in l$
 \end{itemize}
-\textit{Austauscheigenschaft:} \newline Falls $A \in l, B \in l, |A| < |B|$, dann $\exists x, x \in B \setminus A: A \cup \{x\} \in l$
+
+\subsubsection{Matroid}
 \begin{itemize}
-	\item[] \textit{Matroid}\newline Ein Unabhängigkeitssystem sei ein Matroidfalls die Eigenschaften eines Unabhängigkeitssystems und die Austauscheigenschaft erfüllt sind.
-	\item[] \textit{grafischer Matroid}\newline Ein graphischer Matroid $M_G = (S_G,l_G) mit S_G = E(G)$
+	\item[] Ein Unabhängigkeitssystem sei ein Matroid falls die Eigenschaften eines Unabhängigkeitssystems und die Austauscheigenschaft erfüllt sind.
+	\item[] \textit{grafischer Matroid}\newline Ein graphischer Matroid $M_G = (S_G,l_G)$ mit $S_G = E(G)$
 	\begin{itemize}
 		\item[$\rightarrow$] für $A \subseteq S_G: \in l_G \leftrightarrow$ A ist kein Kreis
 		\item[$\rightarrow$] Menge an Kanten ist nur dann unabhängig, wenn G' = (V(G),A) einen Wald bilden $\rightarrow$ G' bildet keinen Kreis
 	\end{itemize}
 \end{itemize}
 
-\textit{Extension:} \newline Sei M = (S,l) und x $\notin$ A gegeben, so sei l eine Erweiterung von A, falls $A \cup \{x\}$ unabhängig ist. ($A \cup \{x\}\in l$) \newline  $\rightarrow$ Kante l ist eine Erweiterung, falls $A \cup \{x\}$ keinen Kreis bilden. \newline 
+\underline{\textit{Extension:}} \newline Sei M = (S,l) und x $\notin$ A gegeben, so sei l eine Erweiterung von A, falls $A \cup \{x\}$ unabhängig ist. ($A \cup \{x\}\in l$) \newline  $\rightarrow$ Kante l ist eine Erweiterung, falls $A \cup \{x\}$ keinen Kreis bilden. \newline 
 
-\textit{Maximalität:} \newline $A \in l$ ist maximal, falls es keine Erweiterung für A gibt. \newline
+\underline{\textit{Maximalität:}} \newline $A \in l$ ist maximal, falls es keine Erweiterung für A gibt. \newline
 
 \textbf{Theorem} \newline Alle maximal unabhängigen Teilmengen in einem Matroid haben die selbe Größe.
 
@@ -51,7 +66,6 @@ Viele \textit{Greedy Probleme} lassen sich mittels Matroiden beschreiben (insbes
 	\item \textbf{\textit{gewichtetes Matroid}} \newline Ein Matroid M=(S,l) ist gewichtet, falls es eine Gewichtsfunktion $w(x) > 0 \forall x \in S$ gibt. $\rightarrow$ w(A), $A \subseteq S mit w(A) = \sum_{x \in A} w(x)$.
 \end{itemize}
 
-\newpage
 \subsubsection{Greedy Algorithmen auf Matroiden}
 
 Gegeben sei M(S,l). Finde $A \in l$, sodass w(A) maximal ist.\newline
