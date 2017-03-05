@@ -21,7 +21,7 @@ Beispiel wäre eine Landkarte auf der mit so wenig wie möglich Farben die Länd
             \item[Proof] Annahme: Jeder simple planare Graph mit $|V| = n$ ist $6$-färbbar.
             \begin{itemize}
                 \item Sei $G$ hiermit ein simpler planarer Graph mit $|V| = n+1$
-                \item Vom Lemma wissen wir, dass $w \in V mit d(w) \leqslant 5$ existiert
+                \item Vom Lemma wissen wir, dass $w \in V$ mit $d(w) \leqslant 5$ existiert
                 \item Sei $G' = G \setminus \{w\}$. Via Induktionshypothese ist $G'$ 6-färbbar. Das tun wir dann.
                 \item Färbe $w$ mit der (min.) freien Farbe, um $G$ zu färben
             \end{itemize}
@@ -33,7 +33,7 @@ Beispiel wäre eine Landkarte auf der mit so wenig wie möglich Farben die Länd
                     \item Falls $|V| \leqslant 5 \rightarrow$ trivial
                     \item Für alle $v \in V(G)$ mit $deg(v) < 5$, färbe $v$ und arbeite mit $G \setminus \{v\}$
                     \item $G$ hat Vertex $v$ mit $deg(v) = 5$
-                        \includegraphics[scale=0.4]{lectures/161125/pix/2.pdf}
+                        \includegraphics[scale=0.5]{lectures/161125/pix/2.pdf}
                         \begin{itemize}
                             \item betrachte 5-Färbung $\mathcal{C} \colon V(G \setminus \{v\}) \mapsto \{1, \dots, 5\}$, die es nach Rekursion gibt
                             \item betrache $x,y \in V_{xy}$ und sei $V_{xy} \subset V(G)$ die Menge der Knoten mit $\mathcal{C}(x)$- oder $\mathcal{C}(y)$-Färbung
@@ -56,7 +56,7 @@ Beispiel wäre eine Landkarte auf der mit so wenig wie möglich Farben die Länd
                                     \includegraphics[scale=0.5]{lectures/161125/pix/3.pdf}
                                         \begin{itemize}
                                             \item $V_{zt}$: alle Knoten in $V(G \setminus \{v\})$, die $\mathcal{C}(t)$ oder $\mathcal{C}(z)$ gefärbt sind
-                                            \item $V_{xy} \cup V_{zt} = \emptyset$!
+                                            \item $V_{xy} \cap V_{zt} = \emptyset$!
                                             \item $V'_{zt}$ kann nur via eines $s \in P$ einen Knoten in $V_{zt} \setminus V'_{zt}$ erreichen
                                         \end{itemize}
                                         Damit lassen sich $z,t$ analog zu Fall (a) färben.
@@ -80,7 +80,7 @@ $\mathcal{G} ~ \forall e \in [v]^2$\\
 $\Omega_e=\{0_e, 1_e\}$\\
 $\mathbb{P}(\{1_e\})=p$\\
 $\mathbb{P}(\{0_e\})=1-p$\\
-$\Omega_\mathcal{G} = \Pi_{e \in [v]^2} \Omega_e$
+$\Omega_\mathcal{G} = \prod\limits_{e \in [v]^2} \Omega_e$
 
 \begin{description}
     \item[Beispiele] Fixiere Graph $H$, $V(H) = V(G)$, ist $H \leqslant G$? \\
