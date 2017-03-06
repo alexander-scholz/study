@@ -1,6 +1,5 @@
 \section{Vorlesung 25.11.2016}
 \subsection{Färbung von Graphen}
-\subsubsection{Vertexfärbung}
 Zwei durch eine Kante verbundene Knoten haben unterschiedliche Farben.\\
 Beispiel wäre eine Landkarte auf der mit so wenig wie möglich Farben die Länder ausgemalt werden, ohne zwei benachbarte Länder gleichfarbig zu haben. Hierbei entspricht jede Facette einen Knoten.\\
 \includegraphics[width=0.4\textwidth]{lectures/161125/pix/Vertexfaerbung}
@@ -14,7 +13,7 @@ Beispiel wäre eine Landkarte auf der mit so wenig wie möglich Farben die Länd
         $\chi(G) \geqslant$ Größe der größten Clique
     \item[Lemma] Für jeden einfachen planaren Graphen $G$ ist der Durchschnittsgrad $d(G) < 6$
         \begin{description}
-            \item[Proof] $d(G) = 2 \cdot {|E| \over |V|}$ mit $|V| \leqslant 3$, $|E| \leqslant 3  \cdot |V| - 6$, dann $d(G) \leqslant {2(3 \cdot |V|-6) \over |V|} = 6-{12 \over |V|}$
+            \item[Proof] $d(G) = 2 \cdot {|E| \over |V|}$ mit $|V| \leqslant 3$, $|E| \leqslant 3  \cdot |V| - 6$,\\dann $d(G) \leqslant {2(3 \cdot |V|-6) \over |V|} = 6-{12 \over |V|}$
         \end{description}
     \item[Theorem] Jeder simple planare Graph $G$ hat $\chi(G) \leqslant 6$
         \begin{description}
@@ -99,7 +98,7 @@ Falls die Wahrscheinlichkeit, dass $P(G \in \mathcal{G}) \rightarrow 1$ für $n 
 \begin{description}
     \item[Pro:] Gegeben jedes $H$ als Isomorphie-Klasse, $n \rightarrow \infty$ und $p \in{} ]0,1[{} = (0,1)$, induzierte Kopie von $H$. 
     Dann haben fast alle $G$ in $\mathcal{G}(n,p)$ mindestens eine induzierte Kopie von $H$.
-    \item[Prf:] Sei $H$ gegeben, $K=V(H)$. Sei $K \leqslant n$. $H$ ist (subgraph-) isomorph zu $G$ mit Wahrscheinlichkeit $r < 0$ ($G$ ist zufällig!). 
+    \item[Prf:] Sei $H$ gegeben, $K=V(H)$. Sei $K \leqslant n$. $H$ ist (subgraph-) isomorph zu $G$ mit Wahrscheinlichkeit $r > 0$ ($G$ ist zufällig!).
         Teile $G$ in $\lfloor {n \over k} \rfloor$ Teilgraphen, um genau so viele ``Versuche'' (für $r > 0$) zu haben. 
         $P(H \not \subseteq G$ induziert) $\leqslant (1-r)^{\lfloor {n \over k} \rfloor} \xrightarrow{n \rightarrow \infty} 0$
 \end{description}
