@@ -18,7 +18,7 @@ deg(y)=4
 \textbf{Theorem (Euler):}
 \begin{enumerate}
 	\item H ist verallgemeinerter Kreis $\Leftrightarrow$ jeder Knoten geraden Grad
-	\item Wenn H zudem zusammenhängend dann gibt es einen geschlossenen Weg der Kanten von H (genau 1 mal) enthält.
+	\item Wenn H zudem zusammenhängend, dann gibt es einen geschlossenen Weg, der Kanten von H (genau 1 mal) enthält.
 \end{enumerate}
 
 \underline{Beweisskizze des Euler-Theorems}\\
@@ -171,7 +171,7 @@ M=\{$C_1$, $C_2$,$C_3$\} ist unabhängiges Argument. Jeder Kreis enthält eine K
 	\item minimale erzeugende Menge
 \end{itemize}
 
-\underline{Konstruktion von Kreisbasen:} Kichhoff Basen (strikt fundamental Basen)
+\underline{Konstruktion von Kreisbasen:} Kirchhoff Basen (strikt fundamental Basen)
 \\
 Graph G zusammenhängender Spannbaum T von G\\
 Für jede Kante $e\notin T$ enthält $T \cup \{e\}$ genau einen Kreis $\rightarrow$ C$_{e,T}$\\
@@ -186,7 +186,7 @@ $B_T=\{C_{e,T}\backslash e \in T\}$ ist eine Kreisbasis
 \end{enumerate}
 
 \underline{zu 1.:} Sei Z ein Kreis, Z$\notin$B (Z keine Kreisbasis)\\
-$\Rightarrow$ Z Summe von Baiskreisen. Wenn e $\in$ Z$\backslash$T dann muss C$_{e,T}$ zu Z beitragen. Wenn e $\notin$ Z$\backslash$T dann e$\in$T gibt es keinen zugehörigen Basiskreis\\
+$\Rightarrow$ Z Summe von Basiskreisen. Wenn e $\in$ Z$\backslash$T dann muss C$_{e,T}$ zu Z beitragen. Wenn e $\notin$ Z$\backslash$T dann e$\in$T gibt es keinen zugehörigen Basiskreis\\
 e$\notin$T, e$\notin$Z dann kann C$_{e,T}$ nicht zu Z beitragen\\\\
 Also $\bigoplus\limits_{e \in Z\backslash T} C_{e,T}$
 
@@ -202,7 +202,7 @@ Kanten in Spannbaum $|$T$|$=$|$V$|$-1 $\Rightarrow$ $|$B$|$ = $|$E$|$-$|$V$|$+1
 \\\\
 \underline{Bemerkung:} Die Kreise aus der Eulerzerlegung eines Graphen mit geraden Knotengrad bilden
 \begin{itemize}
-	\item unabhängige Menge da kantendisjunkt
+	\item unabhängige Menge, da kantendisjunkt
 	\item aber normalerweise \underline{keine} Basis
 \end{itemize}
 
@@ -217,7 +217,7 @@ Basis für G: \textcolor{green}{4 Dreiecke} + \textcolor{red}{1 Viereck} = 5
 \end{figure}
 
 \underline{linear unabhängig?}\\
-für Dreiecke ja da Kantendisjunkt (wäre eine alternative Eulerzerlegung)
+für Dreiecke ja, da kantendisjunkt (wäre eine alternative Eulerzerlegung)
 \\\\
 \textbf{bei Viereck?}\\
 \begin{figure}[htp]
@@ -227,5 +227,5 @@ für Dreiecke ja da Kantendisjunkt (wäre eine alternative Eulerzerlegung)
 
 Viereck kann nicht durch Summe der Dreiecke dargestellt werden $\Rightarrow$ linear unabhängig
 \\\\
-Gibt es einen Spannbaum der für G die Kirchhoffbasis (4 Dreiecke + Viereck) erzeugt?\\
-$\Rightarrow$ nein, da jeder Spannbaum der das Viereck erzeugt kann eines der 3-Ecke nicht erzeugen $\Rightarrow$ keine Kreisbasis
+Gibt es einen Spannbaum, der für G die Kirchhoffbasis (4 Dreiecke + Viereck) erzeugt?\\
+$\Rightarrow$ nein, da jeder Spannbaum, der das Viereck erzeugt, eines der 3-Ecke nicht erzeugen kann $\Rightarrow$ keine Kreisbasis
