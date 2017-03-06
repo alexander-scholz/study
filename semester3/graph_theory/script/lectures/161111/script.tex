@@ -30,17 +30,20 @@ Es sei nur dann ein Graph \textit{G(V,E)} mit $|E|>=2$, der 2-Vertex-verbunden i
 \newpage
 \subsection{Unabhaengigkeitssysteme und Matroide}
 
-Viele \textit{Greedy Probleme} lassen sich mittels Matroiden beschreiben (insbesondere Graphenprobleme).\newline
+Viele \textit{Greedy Probleme} lassen sich mittels Matroiden beschreiben (insbesondere Graphenprobleme).
 
 \begin{itemize}
 	\item \textbf{\textit{Unabhaengigkeitssystem:}} \newline Ein Unabhaengigkeitssystem ist ein Paar $M = (S,l)$ mit endlicher Menge $S$ und $l <= P_S(S)$ (Powerset von S). Es besitzt folgende Eigenschaften:
 	\begin{itemize}
-		\item[1] $\emptyset = {} \in l$ $\rightarrow$ Die leere Menge ist unabhängig
-		\item[2] $x \subseteq Y \in l$ $\rightarrow$ Erblichkeitseigenschaft
+		\item[\underline{M1:}] $\emptyset = \{\} \in l$ $\rightarrow$ Die leere Menge ist unabhängig
+		\item[\underline{M2:}] $x \subseteq Y \in l \rightarrow x \in l$ (Erblichkeitseigenschaft)
 	\end{itemize}
-	Die Elemente $x \in l$ und $y \in P_S(S) \setminus l$ sind unabhängig. \newline
+	Die Elemente $x \in l$ heißen unabhängig, die Elemente $y \in P_S(S) \setminus l$ heißen abhängig. \newline
 	$\rightarrow$ Kostenfunktion C: S $\rightarrow \mathbb{R}$ 
-	\item \textbf{\textit{Austauscheigenschaft:}} \newline Falls $A \in l, B \in l, |A| < |B|$, dann $\exists x, x \in B \setminus A: A \cup \{x\} \in l$
+	\item \textbf{\textit{Austauscheigenschaft:}}
+	\begin{itemize}
+		\item [\underline{M3:}] Falls $A \in l, B \in l, |A| < |B|$, dann $\exists x, x \in B \setminus A: A \cup \{x\} \in l$
+	\end{itemize}
 \end{itemize}
 
 \subsubsection{Matroid}
@@ -55,15 +58,15 @@ Viele \textit{Greedy Probleme} lassen sich mittels Matroiden beschreiben (insbes
 
 \underline{\textit{Extension:}} \newline Sei M = (S,l) und x $\notin$ A gegeben, so sei l eine Erweiterung von A, falls $A \cup \{x\}$ unabhängig ist. ($A \cup \{x\}\in l$) \newline  $\rightarrow$ Kante l ist eine Erweiterung, falls $A \cup \{x\}$ keinen Kreis bilden. \newline 
 
-\underline{\textit{Maximalität:}} \newline $A \in l$ ist maximal, falls es keine Erweiterung für A gibt. \newline
+\underline{\textit{Maximalität:}} $A \in l$ ist maximal, falls es keine Erweiterung für A gibt. \newline
 
 \textbf{Theorem} \newline Alle maximal unabhängigen Teilmengen in einem Matroid haben die selbe Größe.
-
-\textbf{Beweis} \newline Wenn das Theorem nicht gilt, so wären die maximal unabhängigen Elemente A und B mit $|A| < |B|$. Damit würde die Austauscheignschaft zeigen, dass x abhängig von A ist: $\exists x: B\setminus A: A \cup \{x\}$. $\rightarrow$ Beweis durch Widerspruch\newline
-
+\\\\
+\textbf{Beweis} \newline Wenn das Theorem nicht gilt, so wären die maximal unabhängigen Elemente A und B mit $|A| < |B|$. Damit würde M3 zeigen, dass x abhängig von A ist: $\exists\ x: B\setminus A: A \cup \{x\}$. $\rightarrow$ \underline{Beweis durch Widerspruch}
+\\\\
 \textbf{Beispiel}\newline Gegeben Graph G gilt, dass alle Spannbäume, die gleiche Anzahl an Kanten haben: $|E| = |V| - 1$. \newline
 \begin{itemize}
-	\item \textbf{\textit{gewichtetes Matroid}} \newline Ein Matroid M=(S,l) ist gewichtet, falls es eine Gewichtsfunktion $w(x) > 0 \forall x \in S$ gibt. $\rightarrow$ w(A), $A \subseteq S mit w(A) = \sum_{x \in A} w(x)$.
+	\item \textbf{\textit{gewichtetes Matroid}} \newline Ein Matroid M=(S,l) ist gewichtet, falls es eine Gewichtsfunktion\\$w(x) > 0\ \forall\ x \in S$ gibt. $\rightarrow$ w(A), A $\subseteq$ S mit w(A) = $\displaystyle \sum_{x \in A} w(x)$.
 \end{itemize}
 
 \subsubsection{Greedy Algorithmen auf Matroiden}

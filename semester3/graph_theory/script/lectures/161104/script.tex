@@ -70,7 +70,7 @@ Seien C$_1$ und C$_2$ zwei Kreise, die wenigstens einen Knoten gemeinsam haben
 	\item folge C$_1$ zurück zum Startpunkt
 \end{itemize}
 
-$\Rightarrow$ diese Vorschrift erzeugt einen geschlossenen Weg (nicht Pfad!) auf C$_1 \cup$ C$_2$ der alle Kanten von C$_1$ und C$_2$ verwendet \textcolor{red}{(wie sind rote Hinweise in Mitschrift zu verstehen???)}\\
+$\Rightarrow$ diese Vorschrift erzeugt einen geschlossenen Weg (nicht Pfad!) auf C$_1 \cup$ C$_2$ der alle Kanten von C$_1$ und C$_2$ verwendet
 
 \underline{wenn mehrere Kreise beteiligt:}\\
 \begin{itemize}
@@ -103,9 +103,9 @@ $\oplus$ heißt auch symmetrische Differenz (XOR)
 \underline{Lemma:} Seien C$_1$ und C$_2$ verallgemeinerte Kreise dann ist C$_1$ $\oplus$ C$_2$ wieder verallgemeinerter Kreis
 \\\\
 \underline{Beweis:}\\
-deg$_{C_1}$(x) = 0 mod 2\\
-deg$_{C_2}$(x) = 0 mod 2\\
-deg$_{C_1 \oplus C_2}$(x) = 0 mod 2
+deg$_{C_1}$(x) mod 2 = 0\\
+deg$_{C_2}$(x) mod 2 = 0\\
+deg$_{C_1 \oplus C_2}$(x) mod 2 = 0
 \\\\
 C$_i$(x) = Menge der Kanten in C$_i$ (i=1,2,1$\cup$2) die x enthalten\\
 C$_{1 \cup 2}$(x) = (C$_1$(x) $\cup$ C$_2$(x)) $\backslash$ (C$_1$(x) $\cap$ C$_2$(x))\\
@@ -124,8 +124,9 @@ $
 \underline{Lemma:} Sei $\mathcal{H}$ die (ungerichtete) Inzidenzmatrix von G\\
 Dann gilt {\large$\mathcal{H}$} $\cdot$ {\Large $\chi$}$_H$=0 $\Leftrightarrow$ H ein verallgemeinerter Kreis in G ist
 \\\\
-$\bigoplus\limits_{e} \mathcal{H}_{x \cdot e} \cdot \chi_{_H}(e)=0$ für alle Knoten x in G\\
-mit $\mathcal{H}_{x \cdot e}$ 1 wenn x Endpunkt von G, 0 sonst
+$\displaystyle \sum \limits_{x \in G} \bigoplus\limits_{e \in G} \mathcal{H}_{x e} \cdot \chi_{_H}(e)=0$\\\\
+mit x alle Knoten in G und e alle Kanten in G (mit $\mathcal{H}_{x \cdot e}$ 1 wenn x Endpunkt von G, 0 sonst)
+
 \newpage
 Beweis: nachrechnen (Achtung Rechenregeln GF(2)\footnote{\url{https://en.wikipedia.org/wiki/GF\%282\%29}})\\
 GF(2)=\{1,0,$\oplus$,\}
@@ -140,18 +141,23 @@ $\mathcal{H} \cdot \chi_{_{H_1}}$=0 und $\mathcal{H} \cdot \chi_{_{H_2}}$=0 weil
 \\\\
 \underline{$\Rightarrow$ verallgemeinerte Kreise bilden einen Vektorraum}
 \\\\
-Deswegen gilt es einen Basis, d.h. eine Menge von Kreisen B=\{C$_1$,C$_1$,…,C$_{\mu}$\} sodass jeder verallgemeinerte Kreis C dargestellt werden kann als\\
-$C=\bigoplus\limits_{i=1}^{\mu} \lambda_i C_i$ mit $\lambda \in \{0,1\}$
+Deswegen gibt es einen Basis, d.h. eine Menge von Kreisen B=\{C$_1$,C$_1$,…,C$_{\mu}$\} sodass jeder verallgemeinerte Kreis C dargestellt werden kann als\\
+$C=\bigoplus\limits_{i=1}^{\mu} \lambda_i C_i$ mit $\lambda \in \{0,1\}$: $
+\begin{cases}
+	1\ C_i \in C\\
+	0\ C_i \notin C
+\end{cases}
+$
 \\
 $\Leftrightarrow$ jeder v.K. C ist die Summe einer eindeutig bestimmten Teilmenge B$_C \subseteq$ B
 \\\\
 \textbf{Basis:} minimale Menge von erzeugenden Kreisen
 \\
 Vektorraum $\Rightarrow$ alle minimal erzeugende Kreismenge sind gleichgroß\\
-Zahl Basiskreis ... Dimension \textcolor{red}{?}
+Anzahl Basiskreis $\widehat{=}$ Dimension des Vektorraums
 \\\\
 Menge M=\{C$_1$, ..., C$_\mu$\} von Kreisen (im allgemeinen Vektorraum) heißt linear unabhängig wenn gilt:\\
-$\bigoplus\limits_{i=1}^{|M|} \lambda_i C_i$ mit $\lambda \in \{0,1\}\Rightarrow$ $\lambda_i=0$ $\forall i=1 ... |M|$ \textcolor{red}{?}
+$\bigoplus\limits_{i=1}^{|M|} \lambda_i C_i$ mit $\lambda \in \{0,1\}\Rightarrow$ $\lambda_i=0$ $\forall i=1 ... |M|$
 \\\\
 Beispiel:
 \begin{figure}[htp]
@@ -160,7 +166,7 @@ Beispiel:
 $\underbrace{C_1 \oplus C_2 \oplus C_3}_{C_4 \oplus C_4 = 0} \oplus C_4=0$
 \end{figure}
 
-M=\{$C_1$, $C_2$,$C_3$,$C_4$\} ist abhängig weil $\lambda_1=\lambda_2=\lambda_3=\lambda_4=1$ die Gleichung\\
+M=\{$C_1$, $C_2$, $C_3$, $C_4$\} ist abhängig weil $\lambda_1=\lambda_2=\lambda_3=\lambda_4=1$ die Gleichung\\
 $\bigoplus\limits_{i=1}^{4} \lambda_i C_i=0$ löst
 \\\\
 M=\{$C_1$, $C_2$,$C_3$\} ist unabhängiges Argument. Jeder Kreis enthält eine Kante, die in keinem anderen Kreis aus M vorkommt und daher nicht in einer Summe anderer Kreise auftreten kann.
@@ -173,8 +179,9 @@ M=\{$C_1$, $C_2$,$C_3$\} ist unabhängiges Argument. Jeder Kreis enthält eine K
 
 \underline{Konstruktion von Kreisbasen:} Kirchhoff Basen (strikt fundamental Basen)
 \\
-Graph G zusammenhängender Spannbaum T von G\\
-Für jede Kante $e\notin T$ enthält $T \cup \{e\}$ genau einen Kreis $\rightarrow$ C$_{e,T}$\\
+Graph G mit zusammenhängendem Spannbaum T von G\\
+Für jede Kante $e\notin T$ enthält $T \cup \{e\}$ genau einen Kreis $\rightarrow$ C$_{e,T}$
+\\\\
 \underline{\textbf{WARUM?}} Seien x,y die Endpunkte von e dann gibt es genau einen Pfad von x nach y in T. Der wird mit e zu genau einem Kreis.
 \\
 $B_T=\{C_{e,T}\backslash e \in T\}$ ist eine Kreisbasis
