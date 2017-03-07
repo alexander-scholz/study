@@ -15,12 +15,13 @@ Beispiel wäre eine Landkarte auf der mit so wenig wie möglich Farben die Länd
         \begin{description}
             \item[Proof] $d(G) = 2 \cdot {|E| \over |V|}$ mit $|V| \leqslant 3$, $|E| \leqslant 3  \cdot |V| - 6$,\\dann $d(G) \leqslant {2(3 \cdot |V|-6) \over |V|} = 6-{12 \over |V|}$
         \end{description}
+    \newpage
     \item[Theorem] Jeder simple planare Graph $G$ hat $\chi(G) \leqslant 6$
         \begin{description}
             \item[Proof] Annahme: Jeder simple planare Graph mit $|V| = n$ ist $6$-färbbar.
             \begin{itemize}
                 \item Sei $G$ hiermit ein simpler planarer Graph mit $|V| = n+1$
-                \item Vom Lemma wissen wir, dass $w \in V$ mit $d(w) \leqslant 5$ existiert
+                \item Vom Lemma wissen wir, dass $w \in V$ mit $deg(w) \leqslant 5$ existiert
                 \item Sei $G' = G \setminus \{w\}$. Via Induktionshypothese ist $G'$ 6-färbbar. Das tun wir dann.
                 \item Färbe $w$ mit der (min.) freien Farbe, um $G$ zu färben
             \end{itemize}
@@ -70,21 +71,18 @@ Beispiel wäre eine Landkarte auf der mit so wenig wie möglich Farben die Länd
         \end{description}
 \end{description}
 
+\newpage
 \subsection{Zufallsgraphen}
-Sei $G=(V,E)$ mit $V=\{1, \dots, n\}$ fixiert. Wir wollen nun Kanten zufällig auswählen auf dieser fixierten Kantenmenge $\{1, \dots, n\}$, um zufällige Graphen zu generieren. 
+Sei $G=(V,E)$ mit $V=\{1, \dots, n\}$ fixiert. Wir wollen nun Kanten zufällig auf dieser fixierten Knotenmenge auswählen, um zufällige Graphen zu generieren. 
 Die Menge dieser Zufallsgraphen nennen wir $\mathcal{G}$. \underline{Jede} Kante wird mit Wahrscheinlichkeit $p \in [0, \dots, 1]$ gewählt. 
-Sei $G_0$ ein bestimmter Graph. Das Ereignis $\{G_0\}$ mit $G_0$ und m Kanten hat die Wahrscheinlichkeit $p^m \cdot (1-p)^{{n \over 2}-m}$. 
-Wahrscheinlichkeitsmaß auf 
-$\mathcal{G} ~ \forall e \in [v]^2$\\
-$\Omega_e=\{0_e, 1_e\}$\\
-$\mathbb{P}(\{1_e\})=p$\\
-$\mathbb{P}(\{0_e\})=1-p$\\
+Sei $G_0$ ein bestimmter Graph. Das Ereignis $\{G_0\}$ mit $G_0$ und m Kanten hat die Wahrscheinlichkeit $p^m \cdot (1-p)^{{\binom{n}{2}}-m}$.\\
+Wahrscheinlichkeitsmaß auf $\mathcal{G} ~ \forall e \in [v]^2$\\
+$\Omega_e=\{0_e, 1_e\}$, $\mathbb{P}(\{1_e\})=p$, $\mathbb{P}(\{0_e\})=1-p$\\
 $\Omega_\mathcal{G} = \prod\limits_{e \in [v]^2} \Omega_e$
 
 \begin{description}
     \item[Beispiele] Fixiere Graph $H$, $V(H) = V(G)$, ist $H \leqslant G$? \\
-        Mit $p^l$, $|E(H)| = l$, $|V(H)| = k$, aber falls $H$ induzierter Teilgraph von $G$ sein soll? \\
-         - Nur $p^l (1-p)^{\binom{k}{2} - l}$. \\
+        Mit $p^l$, $|E(H)| = l$, $|V(H)| = k$, aber falls $H$ induzierter Teilgraph von $G$ sein soll? $\Rightarrow$ Nur $p^l (1-p)^{\binom{k}{2} - l}$. \\
         Und was ist mit Subgraph-Isomorphismus?
         \includegraphics[scale=0.5]{lectures/161125/pix/4.pdf}
         \begin{itemize}

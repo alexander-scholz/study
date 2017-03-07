@@ -19,13 +19,13 @@ Seien $P_1, P_2, P_3$ Polygonzüge mit den Endpunkten x und y, so hat $\mathbb{R
 $\rightarrow$ falls $P_4$ ein Polygonzug zwischen $\dot{P_1}$ und $\dot{P_3}$ mit $\dot{P_4}, \dot{P_2} \subset \mathbb{R}^2 \notin \{ P_1 \cup P_3\}$ ist, so schneiden sich $P_4$ und $P_2 (\dot{P_4} \cap \dot{P_2}) \neq 0$ \newline
 
 \textbf{\textit{Graph in Ebene:}} \newline
-Ein Graph in der Ebene (V,E) hat folgende Eigenschaften
-\begin{itemize}
-	\item[1] $V \subset \mathbb{R}$
-	\item[2] Jede Kante sei ein Polygonzug zwischen zwei Knoten
-	\item[3] unterschiedliche Kanten haben unterschiedliche Mengen von Knoten
-	\item[4] das innere einer Kante enthält keinen Knoten und keinen Punkt einer anderen Kante 
-\end{itemize}
+Ein verbundener Graph in der Ebene hat folgende Eigenschaften:
+\begin{enumerate}
+	\item $V \subset \mathbb{R}^2$
+	\item Jede Kante sei ein Polygonzug zwischen zwei Knoten
+	\item unterschiedliche Kanten haben unterschiedliche Mengen von Knoten
+	\item das innere einer Kante enthält keinen Knoten und keinen Punkt einer anderen Kante 
+\end{enumerate}
 somit ist ein Graph in der Ebene \textit{kreuzungsfrei} (auch siehe oben $\Rightarrow$ Kreuzungszug)
 \\\\
 \textbf{\textit{Facette}}\newline
@@ -101,23 +101,25 @@ G ist planar, wenn G auch eine 2-Basis hat.
 	\item[] es ist nur in einem Kreis $C \in B$ vorhanden, womit $B \notin C$ entsteht.
 	\item[] e ist in zwei Kreisen vorkommend, womit $B \notin \{C_1, C_2\} \cup \{ C_1 \oplus C_2\}$ eine 2-Basis ist \newline $\rightarrow$ somit haben alle Teilgraphen eine 2-Basis. Da die Behauptung belegt ist $\Rightarrow$ \textbf{Widerspruch}
 \end{itemize}
-\textit{\underline{zyklometrische Zahl:}} Die Anzahl der Bassiselemente einer Kreisbasis\\
-$\mu(G)=|E(G)| - |V(G)| + k(G)$\\
-mit k(G) = \#Zusammenhangskomponenten
+\textit{\underline{zyklometrische Zahl:}} Die Anzahl der Basiselemente einer Kreisbasis\\
+$\mu(G)=|E(G)| - |V(G)| + k(G)$ mit k(G) = \#Zusammenhangskomponenten
 \\
 \newline
 \textbf{\textit{Beispiel:} vollständiger Graph $K_5$}
 \begin{itemize}
 	\item $|V| = 5 ; |E| = 10$
-	\item 2-Basis mit 5 inneren und 5 äußeren Kanten
-	\item $\mu(K_5)$ = -5 + 10 +1 = 7
-	\item 2-Basis hat demnach (2n -6)*7 Kanten = 21 Kanten $\rightarrow$ \newline \textbf{falsche Aussage}
+	\item 2-Basis: 5 inneren und 5 äußeren Kanten $\cdot$ 2 = 20
+	\item $\mu(K_5)$ = -5 + 10 + 1 = 6 + 1 (Rand der unbeschränkten Facette) = 7
+	\item 2-Basis hat demnach 20 Kanten = 7 $\cdot$ 3* Kanten $\rightarrow$ \textbf{falsche Aussage}\\
+	zu *: 3 von Graph mit drei Knoten um den $K_5$ einschließen zu können
 \end{itemize}	
 \textbf{\textit{Beispiel:} bipartiter Graph $K_{3,3}$}
 \begin{itemize}
 	\item $|V| = 6 ; |E| = 9$
-	\item $\mu(K_{3,3})$ = -6 + 9 +1 = 4
-	\item 2-Basis hat demnach (2n -6)*4 Kanten = 20 Kanten $\rightarrow$ \newline \textbf{falsche Aussage}
+	\item 2-Basis: 9 Kanten $\cdot$ 2 = 18
+	\item $\mu(K_{3,3})$ = -6 + 9 + 1 = 4 + 1 (Rand der unbeschränkten Facette) = 5
+	\item 2-Basis hat demnach 18 Kanten = 5 $\cdot$ 4* Kanten $\rightarrow$ \textbf{falsche Aussage}\\
+	zu *: 4 von Graph mit vier Knoten um den $K_{3,3}$ einschließen zu können
 \end{itemize}
 \textbf{Planaritätstest}
 \begin{itemize}
