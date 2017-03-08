@@ -1,5 +1,5 @@
 \documentclass[12pt,a4paper]{article}
-\usepackage[english,german]{babel}
+\usepackage[english,ngerman]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{color}
 \usepackage{hyperref}
@@ -32,7 +32,7 @@
 \displaywidowpenalty = 10000
 
 %Gummi|065|=)
-\title{\Huge\textbf{fortgeschrittene Methoden der Bioinformatik Prüfungsscript}}
+\title{\Huge\textbf{Fortgeschrittene Methoden der Bioinformatik - Prüfungsskript}}
 \author{}
 \date{}
 
@@ -67,7 +67,7 @@ $d(x,y):$ euklidische Distanz bekannt
 Finde 3D-Repräsentation mit $\Phi: x \rightarrow R^3$ (Abbildung von x in 3D-Raum)\\
 $\underbrace{||\Phi(x)-\Phi(y)||}_{ges} = \underbrace{\sqrt{\sum \limits_{i=1}^{3} (\Phi_{i}(x)-\Phi_{i}(y))^2}}_{geg}$\\
 \\
-\underline{Konkruenztransformation:}
+\underline{Kongruenztransformation:}
 \begin{itemize}
 	\item Verschiebung: $\Phi'=\Phi+\tau$
 	\item Rotation: $\Phi'=R\cdot\Phi$ (Spiegelung des Koordinatensystems)
@@ -93,7 +93,7 @@ Qualität prüfen: $\underbrace{\sum \limits_{k,l}}_{ueber\ alle\ bekannten\ Dis
 	\item Framework (G,p)
 \end{itemize}
 
-\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Definition:} Ein Framework ist flexibel wenn es eine stetige Deformaton $p \rightarrow p'$ gibt, sodass alle Abstände in G(=Kantenlängen) erhalten bleiben. Andernfalls ist (G,p) rigid.}}
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Definition:} Ein Framework ist flexibel wenn es eine stetige Deformaton $p \rightarrow p'$ gibt, sodass alle Abstände in G (=Kantenlängen) erhalten bleiben. Andernfalls ist (G,p) rigid.}}
 \newpage
 \underline{minimal rigid:}
 \begin{itemize}
@@ -103,13 +103,22 @@ Qualität prüfen: $\underbrace{\sum \limits_{k,l}}_{ueber\ alle\ bekannten\ Dis
 
 \textbf{Gibt es eine mögliche Bewegungsfreiheit?}\\
 $(p^i-p^j)(p^i-p^j)=d_{ij}^2$ in Abhängigkeit der Zeit darstellen:\\
-$2\cdot \underbrace{(v^i-v^j)}_{*}(p^i-p^j)=\frac{\partial}{\partial t}d_{ij}^2=0\ \forall i,j \in E$\\\\
-* wenn Verschiebung bzw. Bewegungsfreiheit existiert, dann existiert hier einen Lösung
+\begin{equation*}
+    \frac{\partial}{\partial t} (p^i-p^j)(p^i-p^j) = (\frac{\partial}{\partial t}p^i - \frac{\partial}{\partial t}p^j)(p^i-p^j) + (\frac{\partial}{\partial t}p^i - \frac{\partial}{\partial t}p^j)(p^i-p^j)\\
+\end{equation*}
+\begin{equation*}
+    \frac{\partial}{\partial t} p^i = v^i, \quad \frac{\partial}{\partial t} p^j = v^j
+\end{equation*}
+\begin{equation*}
+    = 2(v^i-v^j)(p^i-p^j)
+\end{equation*}
+
+$2\cdot \underbrace{(v^i-v^j)}_{*}(p^i-p^j)=\frac{\partial}{\partial t}d_{ij}^2=0 \quad \forall \{i,j\} \in E$\\\\
+* wenn Verschiebung bzw. Bewegungsfreiheit existiert, dann existiert hier eine Lösung
 
 \fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Definition:} G mit Präsentation p ist "\ infinitesimal flexibel" wenn es eine Lösung $(v^1,v^2,v^3,…,v^n) \neq \overrightarrow{0}$ von $(p^i-p^j)(v_i-v_j)=0$ gibt ($\forall \{i,j\} \in E$)}}
-
-\section{generische Repräsentation}
-\underline{Eigenschaften:} rigid $\Leftrightarrow$ infinitezimal rigid $\Rightarrow$ generisch rigid
+\section{Generische Repräsentation}
+\underline{Eigenschaften:} rigid $\Leftrightarrow$ infinitesimal rigid $\Rightarrow$ generisch rigid
 \\\\
 \textbf{Benötigte Eigenschaften für rigid:}
 \begin{itemize}
@@ -125,7 +134,7 @@ $2\cdot \underbrace{(v^i-v^j)}_{*}(p^i-p^j)=\frac{\partial}{\partial t}d_{ij}^2=
 2 Punkte fix = 4 Freiheitsgrade\\
 - 1 Distanz = 3 Freiheitsgrade übrig\\
 
-\fcolorbox{red}{white}{\parbox{\linewidth}{$ \left. \begin{array}{c} rigid < 2n-3\\minimal\ rigid = 2n-3 \end{array} \right\} + $ sinnvolle Verteilung der Kanten}}
+\fcolorbox{red}{white}{\parbox{\linewidth}{$ \left. \begin{array}{c} rigid: |E| \geqslant 2n-3\\minimal\ rigid: |E| = 2n-3\\redundant\ rigid: |E| > 2n-3 \end{array} \right\} + $ sinnvolle Verteilung der Kanten}}
 \\\\
 \fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Laman Theorem 1:} G ist generisch minimal rigid in 2D $\Leftrightarrow$
 \begin{itemize}
@@ -151,10 +160,10 @@ Für jede Kante (a,b) in G hat der Multigraph $G_{4l}$ der durch Vervierfachung 
 \section{Pebble Game}
 4 Endresultate:
 \begin{itemize}
-	\item wellconstraint (minimal rigid): Anzahl pebbles=l, alle Kanten eingesetzt
-	\item overcontraint (redundant): Anzahl pebbles=l, nicht alle Kanten eingesetzt
-	\item underconstraint (flexible): Anzahl pebbles$>$l, alle Kanten eingesetzt
-	\item other: Anzahl pebbles$>$l, nicht alle Kanten eingesetzt
+	\item wellconstraint (minimal rigid): Anzahl pebbles = $l$, alle Kanten eingesetzt
+	\item overcontraint (redundant): Anzahl pebbles = $l$, nicht alle Kanten eingesetzt
+	\item underconstraint (flexible): Anzahl pebbles $>l$, alle Kanten eingesetzt
+	\item other: Anzahl pebbles $>l$, nicht alle Kanten eingesetzt
 \end{itemize}
 
 \section{Rigidity in 3D}
@@ -218,7 +227,7 @@ bei Doppelbindungen werden zusätzliche Kanten eingefügt, da in der Ebene fixie
 }}
 \\\\
 Die Kanten F\textbackslash E sind ``redundant"\\\\
-Gegeben ein beliebiger Graph G, nennen wir eine Kantenmenge E (k,l)-sparsity-unabhängig wenn für jede Teilmenge gilt:\\
+Gegeben ein beliebiger Graph G, nennen wir eine Kantenmenge E (k,l)-sparsity-unabhängig wenn für jede Teilmenge $B \subseteq E$ gilt:\\
 $|B|\leq k |V(B)| - l$ mit $|V(B)|$=Knotenmenge die von B aufgespannt wird
 \\\\
 \fcolorbox{red}{white}{\parbox{\linewidth}{(k,l)-sparsity-Unabhängigkeit für $1\leq l \leq 2k$ definiert einen Matroiden\\
@@ -249,37 +258,45 @@ $\rightarrow$ Bar-Joint nicht in 3D mit Pebble-Game lösbar!
 Wegen 2. haben alle Lösungen B die gleiche Anzahl von Elementen unabhängig von der Reihenfolge in der X durchlaufen wird
 \\\\
 \textbf{nochmal Pebble Game}\\
-gerichteter Graph D, Knotenmenge V, Knoten v, Teilgraph V'$\subset$V\\
+gerichteter Graph $D$, Knotenmenge $V$, Knoten $v$, Teilgraph $V' \subset V$\\
 Funktionen:
 \begin{itemize}
-	\item peb(v): Anzahl der Pebbles an Knoten v
-	\item span(v): Anzahl loops an v
-	\item out(v): outdegree exklusive Loops
-	\item peb(V'): Anzahl der Knoten in Teilgraphen V'
-	\item span(V'): Anzahl der Kanten, die von V' aufgespannt sind, inklusive Loops
-	\item out(v'): Anzahl der Kanten die von V' nach V\textbackslash V' zeigen
+	\item peb($v$): Anzahl der Pebbles an Knoten $v$
+	\item span($v$): Anzahl loops an $v$
+	\item out($v$): outdegree exklusive Loops
+	\item peb($V'$): Anzahl der Knoten in Teilgraphen $V'$
+	\item span($V'$): Anzahl der Kanten, die von $V'$ aufgespannt sind, inklusive Loops
+	\item out($v'$): Anzahl der Kanten die von $V'$ nach $V \setminus V'$ zeigen
 \end{itemize}
 
-\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Lemma:} Invarianten des Pebble Games mit Graph G, Knoten v, Teilgraph V'$\subset$V\\
-(Invarianten: Eigenschaften die über das Spiel gleich bleiben)
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Lemma:} Invarianten des Pebble Games mit Graph $G$, Knoten $v$, Teilgraph $V' \subset V$\\
+(Invarianten: Eigenschaften, die über das Spiel gleich bleiben)
 \begin{enumerate}
-	\item peb(v) + span(v) + out(v) = k
-	\item peb(V') + span(V') + out(V') = $k \cdot |$V'$|$
-	\item peb(V') + out(V') $\geq$ l (am Ende des Spiels bleiben mind. l Pebbles im Spielfeld)
-	\item span(V')$\leq$k$|$V'$|$-l
+	\item peb($v$) + span($v$) + out($v$) $ = k$
+	\item peb($V'$) + span($V'$) + out($V'$) = $k \cdot |V'|$
+	\item peb($V'$) + out($V'$) $\geq l$ (am Ende des Spiels bleiben mind. $l$ Pebbles im Spielfeld)
+    \item span($V'$) $\leq k |V'| - l$
+
 \end{enumerate}
 }}
 \\\\
-\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Definition Block:} ein Teilgraph G' mit $|E'|=k|V'|-l$ und E(G') ist (k,l)-sparsity-independent (k,l)-sparsity-rigid\\
-V' ist ein Block $\Leftrightarrow$ peb(V') + out(V')=l
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Definition Block:} ein Teilgraph $G'$ mit
+\begin{itemize}
+    \item $|E'|=k|V'|-l$
+    \item $E(G')$ ist ($k,l$)-sparsity-independent
+\end{itemize}
+
+$\qquad \Rightarrow (k,l)$-sparsity-rigid Teilgraph \\\\
+Sparsity-Komponente: Ein maximaler Block bzgl. Mengen-Inklusion \\
+$V'$ spannt einen Block auf $\Leftrightarrow$ peb($V'$) + out($V'$)=$l$
 }}
 
 \begin{itemize}
-	\item l Pebbles am Ende $\Rightarrow$ steif
+	\item $l$ Pebbles am Ende $\Rightarrow$ steif
 	\item Kanten zurückgewiesen, $|E|>|E(D)| \Rightarrow$ überbestimmt bzw. Redundanzen enthalten
 \end{itemize}
 
-\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Lemma*:} wenn e(u,v) $\cup E(D)$ unabhängig, peb(u) + peb(v) $<$ l+1 $\Rightarrow$ dann gibt es ein Pebble in Reach(u) $\cup$ Reach(v) das nach u oder v transportiert werden kann
+\fcolorbox{red}{white}{\parbox{\linewidth}{\textbf{Lemma*:} wenn e(u,v) $\cup E(D)$ unabhängig, peb(u) + peb(v) $< l+1 \Rightarrow$ dann gibt es ein Pebble in Reach(u) $\cup$ Reach(v) das nach u oder v transportiert werden kann
 }}
 \\\\\\
 \underline{Zusammenfassung:}
