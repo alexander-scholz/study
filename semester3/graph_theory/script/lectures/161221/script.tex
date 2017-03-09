@@ -3,9 +3,9 @@
 geg: Distanzmatrix (d) auf Menge X von Taxa $\rightarrow$ Baum (ungewurzelt)\\
 Iteration:
 \begin{enumerate}
-	\item suche $argmin_{x,y} \tilde d_{xy}=\{u,v\}$
+	\item suche arg$\min \limits_{x,y} \tilde d_{xy}=\{u,v\}$
 	\item ersetze $\{u,v\} \rightarrow$ no (neuer Knoten)
-	\item brechne $d_{wz}$ für $z \neq u,v \rightarrow$ Schritt 1
+	\item berechne $d_{wz}$ für $z \neq u,v \rightarrow$ Schritt 1
 \end{enumerate}
 \includegraphics[width=0.2\textwidth]{lectures/161221/pix/1.jpg}\\
 $\tilde d$ Transformation von d\\
@@ -22,7 +22,7 @@ $d_{wz}=\frac{|u|}{|u| + |v|} \cdot d_{uz} + \frac{|u|}{|u| + |v|} \cdot d_{vz}$
 \includegraphics[width=0.4\textwidth]{lectures/161221/pix/2.jpg}\\
 Ist der zugehörige Alogrithmus konsistent?\\
 Gegenbeispiel:\\
-$l_a,l_b,q << l_c,l_d \Rightarrow argmin_{x,y} \tilde d_{xy}=\{a,b\}$\\
+$l_a,l_b,q << l_c,l_d \Rightarrow $ arg$\min \limits_{x,y} \tilde d_{xy}=\{a,b\}$\\
 \includegraphics[width=0.7\textwidth]{lectures/161221/pix/3.jpg}\\
 (Problem: LBA - long branch attraction)\\\\
 Lösung:\\
@@ -31,7 +31,7 @@ $\tilde d_{xy}=d_{xy}-\alpha \cdot r(x) - \beta \cdot r(y)$\\
 $\alpha = \beta = \frac{1}{n-2}$ mit n=Zahl der Taxa\\
 
 \fcolorbox{red}{white}{\parbox{\linewidth}{
-\textbf{Lemma:} Wenn d eine additive Baum-Metrik ist und $\{u,v\}=argmin_{x,y} \tilde d_{xy}=\{u,v\} \Rightarrow$ u,v wird cherry genannt.}}
+\textbf{Lemma:} Wenn d eine additive Baum-Metrik ist und $\{u,v\}= $arg$\min \limits_{x,y} \tilde d_{xy}=\{u,v\} \Rightarrow$ u,v wird cherry genannt.}}
 \\\\
 $\{u,v\} \mapsto w$ (u und v mittels Vaterknoten w vereinigen)\\
 $d(u,w)=\frac{1}{2} \cdot d(u,v) + \frac{1}{2} \cdot \frac{1}{n-2}[r(u)-r(v)]$\\

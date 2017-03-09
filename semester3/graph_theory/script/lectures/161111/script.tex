@@ -1,7 +1,7 @@
 \section{Vorlesung 11.11.2016}
 \subsection{Ohrenzerlegung}
 
-Es sei nur dann ein Graph \textit{G(V,E)} mit $|E|>=2$, der 2-Vertex-verbunden ist, gegeben, wenn es eine offene Ohrenzerlegung gibt. Jede Ohrenzerlegeung definiere eine Kreisbasis.
+Es sei nur dann ein Graph \textit{G(V,E)} mit $|E|>=2$, der 2-Vertex-verbunden ist, gegeben, wenn es eine offene Ohrenzerlegung gibt. Jede Ohrenzerlegeung definiere eine Kreisbasis. \textcolor{red}{Kreisbasis oder Ohrenbasis???}
 
 \begin{figure}[htp]
 \centering
@@ -28,17 +28,17 @@ Es sei nur dann ein Graph \textit{G(V,E)} mit $|E|>=2$, der 2-Vertex-verbunden i
 \end{enumerate}
 
 \newpage
-\subsection{Unabhaengigkeitssysteme und Matroide}
+\subsection{Unabhängigkeitssysteme und Matroide}
 
 Viele \textit{Greedy Probleme} lassen sich mittels Matroiden beschreiben (insbesondere Graphenprobleme).
 
 \begin{itemize}
-	\item \textbf{\textit{Unabhaengigkeitssystem:}} \newline Ein Unabhaengigkeitssystem ist ein Paar $M = (S,l)$ mit endlicher Menge $S$ und $l <= P_S(S)$ (Powerset von S). Es besitzt folgende Eigenschaften:
+	\item \textbf{\textit{Unabhängigkeitssystem:}} \newline Ein Unabhängigkeitssystem ist ein Paar $M = (S,l)$ mit endlicher Menge $S$ und $l <= P_S(S)$ (Powerset von S). Es besitzt folgende Eigenschaften:
 	\begin{itemize}
 		\item[\underline{M1:}] $\emptyset = \{\} \in l$ $\rightarrow$ Die leere Menge ist unabhängig
 		\item[\underline{M2:}] $x \subseteq Y \in l \rightarrow x \in l$ (Erblichkeitseigenschaft)
 	\end{itemize}
-	Die Elemente $x \in l$ heißen unabhängig, die Elemente $y \in P_S(S) \setminus l$ heißen abhängig. \newline
+	Die Elemente $x \in l$ heißen unabhängig, die Elemente $z \in P_S(S) \setminus l$ heißen abhängig. \newline
 	$\rightarrow$ Kostenfunktion C: S $\rightarrow \mathbb{R}$ 
 	\item \textbf{\textit{Austauscheigenschaft:}}
 	\begin{itemize}
