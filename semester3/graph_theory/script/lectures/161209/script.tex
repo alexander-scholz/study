@@ -12,7 +12,7 @@ y = \color{red}1 \color{green}1 \color{red}0 \color{green}1 \color{red}1 \color{
 \color{black}$\rightarrow$ Hamming Distanz: $d_h(x,y) = 3$
 
 \begin{center}
-	\includegraphics[scale=0.7]{lectures/161209/pix/evol_distanz}
+	\includegraphics[scale=0.9]{lectures/161209/pix/pic1.jpg}
 \end{center}
 
 Evolutionäre Distanz = Evol. Ereignisse; die x,y trennen	
@@ -41,7 +41,7 @@ Evolutionäre Distanz = Evol. Ereignisse; die x,y trennen
 \end{itemize}
 
 \begin{center}
-	\includegraphics[scale=0.7]{lectures/161209/pix/ungew_baum}		
+	\includegraphics[scale=1]{lectures/161209/pix/pic2.jpg}		
 \end{center}
 
 \begin{align*}
@@ -49,7 +49,7 @@ Evolutionäre Distanz = Evol. Ereignisse; die x,y trennen
 \end{align*}
 
 \begin{center}
-	\includegraphics[scale=0.7]{lectures/161209/pix/gew_baum}
+	\includegraphics[scale=1]{lectures/161209/pix/pic3.jpg}
 \end{center}
 
 \newpage	
@@ -79,7 +79,7 @@ $R = $ Matrix Mutationsmodell
 	\end{pmatrix}
 \end{align*}
 \begin{align*}
-	e^{\mu * \tau * R} &:= I + \tau * \mu * R + \frac{1}{2!} * \tau^2 * \mu^2 * R^2 + \frac{1}{3!} * \tau^3 * \mu^3 * R^3 + ...
+	Taylorreihe: e^{\mu * \tau * R} &:= I + \tau * \mu * R + \frac{1}{2!} * \tau^2 * \mu^2 * R^2 + \frac{1}{3!} * \tau^3 * \mu^3 * R^3 + ...
 \end{align*}
 \begin{align*}
 	P_{a,b}(\tau) &= \delta_{a,b} + \tau * \mu * R_{a,b} + ...
@@ -93,10 +93,10 @@ a $\neq$ b:
 	P_{a,b}(\tau) &= 0 + \tau * \mu * 1 + \sigma (\tau ^2) = \tau * \mu + \sigma (\tau ^2)
 \end{align*}
 
-$\sigma (\tau ^2) = $ Rückmutation
+$\sigma (\tau ^2) = $ Rückmutation, $\tau, \mu$ können nicht getrennt werden $\rightarrow$ Anzahl Ereignisse
  
 \begin{center}
-	\includegraphics[scale=0.7]{lectures/161209/pix/diagramm}
+	\includegraphics[scale=1.2]{lectures/161209/pix/pic4.jpg}
 \end{center}
 
 \begin{align*}
@@ -133,23 +133,19 @@ Distanz heißt metrisch wenn:
 	\item[(i)] $d(x,x) = 0$
 	\item[(ii)] $d(x,y) = 0 \rightarrow x = y$
 	\item[(iii)] $d(x,y) = d(y,x)$
-	\item[(iv)] $d(x,y) + d(y,z) \geq d(x,z)$
-	\item \textcolor{orange}{für alle $x, y, z \in X$}
+	\item[(iv)] $d(x,y) + d(y,z) \geq d(x,z)\ \forall\ x, y, z \in X$ (Dreiecksungleichung)
 \end{itemize}
 
 \newpage
-
-\begin{itemize}
-	\item[-] wann ist eine Distanz additiv?
-\end{itemize}
+\underline{Wann ist eine Distanz additiv?}
 
 Bem.: wenn $l(e) > 0$ für alle Kanten e $\Rightarrow$ additive Distanz ist metrisch
 
 \begin{center}
-	\includegraphics[scale=0.6]{lectures/161209/pix/distanz_metrisch}
+	\includegraphics[scale=1]{lectures/161209/pix/pic5.jpg}
 \end{center}
 
-Kante e induziert eine Partition von T und damit X in genau 2 Teilmengen, nicht leer \color{purple} SPLIT \color{black}
+Kante e induziert eine Partition von T und damit X in genau 2 Teilmengen (A,B), nicht leer $\Rightarrow$ \textcolor{purple}{SPLIT}
 
 \begin{align*}
  	&A \cap B = \emptyset \\
@@ -157,68 +153,69 @@ Kante e induziert eine Partition von T und damit X in genau 2 Teilmengen, nicht 
  	&B \neq 0 \\
  	&A \cup B = X
 \end{align*}
-Sei A | B der Split, der zu e gehört\\
-$x,y \in A$\\
-$u,v \in B$\\
+
+\underline{Was zeichnet Splits, die einer Kante im Baum entsprechen, aus?}\\\\
+Sei A $|$ B der Split, der zu e gehört\\
+$x,y \in A$, $u,v \in B$, a innerer Knoten in A, b innerer Knoten in B:\\
+l(e) = $\min \limits_{a,b} d(a,b)$ für a,b als Knoten für Kante e gewählt
+
 
 \begin{center}
-	\includegraphics[scale=0.6]{lectures/161209/pix/split}
+	\includegraphics[scale=1]{lectures/161209/pix/pic6.jpg}\\
+	$\underbrace{d(x,u) + d(y,v)}_{=Q} - d(x,y) - d(u,v) = 2d(a,b)$
 \end{center}
 
 \newpage
 
+Da es ein Baum ist auch alternativ:
+$\underbrace{d(x,\underline{v}) + d(y,\underline{u})}_{=Q} - d(x,y) - d(u,v) = 2d(a,b)$\\
+$\Rightarrow$ $l(e) = \frac{1}{2} \min \limits_{\substack{x,y \in A\\ u,v \in B}} d(x,u) + d(y,v) - d(x,y) - d(u,v)$\\\\
+oder $l(e) = \frac{1}{2} \min \limits_{\substack{x,y \in A\\ u,v \in B}} d(x,\underline{v}) + d(y,\underline{u}) - d(x,y) - d(u,v)$
+\\\\
+\underline{Was wenn A, B nicht zu einer Kante gehören?}
 \begin{center}
-	\includegraphics[scale=0.6]{lectures/161209/pix/split_two}
+	\includegraphics[scale=1]{lectures/161209/pix/pic7.jpg}
+\end{center}
+$\Rightarrow$ l(e) $<$ 0 da:
+\begin{center}
+	\includegraphics[scale=1]{lectures/161209/pix/pic8.jpg}\\
+	$\Rightarrow$ $\underbrace{d(x,u) + d(y,v)}_{<d(x,y) + d(u,v)} - \underbrace{(d(x,y) + d(u,v))}_{>d(x,u) + d(y,v)}$
 \end{center}
 
-\begin{align*}
- 	d(x,y) + d(y,u) - d(x,y) - d(u,v) = 2 d(a,b)\\
- 	l(e) = min_{x,y \in A; u,v \in B} d(x,u) + d(y,v) - d(x,y) - d(u,v)
-\end{align*} 
-
-\begin{itemize}
-	\item[-] was wenn A, B nicht zu einer Kante gehören?
-\end{itemize}
-
-\begin{center}
-	\includegraphics[scale=0.6]{lectures/161209/pix/kante}
-\end{center}
-
-\begin{center}
-	\includegraphics[scale=0.6]{lectures/161209/pix/split_three.png}
-\end{center}
-
-wenn A | B kein Split von T $\Rightarrow l(A|B) < 0$\\
-wenn A | B Split von T $\Rightarrow l(A|B) = l(e)$ 
-
-\begin{align*}
- 	l(A|B) = \frac{1}{2} min_{x,y \in A; u,v \in B} d(x,u) + d(y,v) - d(x,y) - d(u,v)
-\end{align*}
-
-\newpage
-
+wenn A $|$ B kein Split von T $\Rightarrow l(A|B) < 0$\\
+wenn A $|$ B Split von T $\Rightarrow l(A|B) = l(e)$ 
+\\\\
+\fcolorbox{red}{white}{\parbox{\linewidth}{
+$l(A|B) = \frac{1}{2} \min \limits_{\substack{x,y \in A\\ u,v \in B}} d(x,u) + d(y,v) - d(x,y) - d(u,v)$}}
+\\\\
 für je 4 Blätter betrachte:\\
 \begin{align*}
  	d(x,u) + d(y,v) - d(x,y) - d(u,v)\\
  	d(x,v) + d(y,u) - d(x,y) - d(u,v)\\
  	d(x,y) + d(u,v) - d(x,u) - d(y,v)
 \end{align*}
-2 dieser 3 Summen sind gleich, die 3te ist nicht größer.\\
+2 dieser 3 Terme sind gleich, die 3te ist nicht größer. (da auch 0 zulässig)\\
+$\Rightarrow$ wenn das für alle (x,y),(u,v) gilt, dann ist Metrik aus Baum abgeleitet
 
+\newpage
 \subsubsection{Splitsystem eines Baums}
 
-$\sum (T) = \{$ splits in T, also die, die zu Knoten gehören. $\}$
+$\sum (T) = \{$ splits in T, also die, die zu Knoten gehören.$\}$ \textcolor{red}{oder Kanten?}
 
 \begin{enumerate}
-	\item[1)] $ \{ x \}~|~X \setminus \{ x \} \in \sum (T)$ für alle $x \in X$
+	\item[1)] $ \{ x \}~|~X \setminus \{ x \} \in \sum (T)$ für alle $x \in X$ $\rightarrow$ triviale Splits
 \end{enumerate}
 
+\underline{zwei verschiedene Splitvarianten:}
 \begin{center}
-	\includegraphics[scale=0.6]{lectures/161209/pix/splitsystem}
+	\includegraphics[scale=1.25]{lectures/161209/pix/pic9.jpg}
 \end{center}
+\begin{itemize}
+	\item e und f werden entfernt, es gibt genau eine Pfad zwischen den beiden Splitvarianten
+	\item Weg von A nach D geht genau durch ''zwischen''-Pfad $\Rightarrow$ $A \cap B = \emptyset$
+\end{itemize}
 
-$\sum$ heißt KOMPATIPEL, wenn \\
-für zwei Splits A | B und C | D gilt:\\
-mindestens ein Durchschnitt $A \cap C$, $A \cap D$, $B \cap C$, $B \cap D$ ist leer.\\
+$\sum (T)$ heißt KOMPATIBEL, wenn für zwei Splits A $|$ B und C $|$ D gilt:\\
+mindestens ein Durchschnitt $A \cap C$, $A \cap D$, $B \cap C$, $B \cap D$ ist leer. (Trivialsplits gehören auch dazu)\\
 
 Satz: Wenn $\sum$ kompatibel, gibt es einen Baum T, sodass $\sum = \sum(T)$
