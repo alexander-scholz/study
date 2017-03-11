@@ -51,7 +51,7 @@ wir wissen $\Sigma(T)$ ist kompatible\\
 $A|B,C|D \in \Sigma(T)$ dann mindestens einer der vier Durchschnitte:\\ $A \cap C, A \cap D, B \cap C, B \cap D$ leer\\
 \includegraphics[width=0.7\textwidth]{lectures/161216/pix/3.jpg}\\
 jeder Split-Teil \underline{GENAU} eine der Mengen\\\\
-\textbf{Frage:} Wie können Isolationsindizes, schnell und ohne alle Möglichkeiten durchzuprobieren, erzeugt werden?\\
+\textbf{Frage:} Wie können Isolationsindizes, schnell und ohne alle Möglichkeiten durchzuprobieren, erzeugt werden? (Split-Decomposition)\\
 Lösung: effiziente Berechnung von $\alpha(A|B)>0$\\
 Idee: erweitere X schrittweise\\
 $|A|,|B|=1$\\
@@ -64,7 +64,7 @@ in $X':$\\
 \\\\
 $\beta_{xy|uv}:=\frac{1}{2}max\{d_{xu} + d_{yv}, d_{xv} + d_{yu}\} - (d_{xy} + d_{uv})$\\\\
 erster Fall:\\
-$\alpha(\{x\}|X)=\displaystyle\min_{u,v \in X}\beta_{ww|uv}=\displaystyle\min_{u,v \in X} \frac{1}{2}(d_{wu} + d_{wv} - d_{uv})$\\\\
+$\alpha(\{w\}|X)=\displaystyle\min_{u,v \in X}\beta_{ww|uv}=\displaystyle\min_{u,v \in X} \frac{1}{2}(d_{wu} + d_{wv} - d_{uv})$\\\\
 zweiter Fall:\\
 $\alpha(A|B)=\displaystyle\min_{\substack{x,y \in A \\ u,v \in B}}\beta_{xy|uv}$\\
 
@@ -83,8 +83,8 @@ Sei d eine Peusometrik auf X. Dann gibt es eine Pseudometrik $d^0$ auf X sodaß\
 $d(x,y)=\displaystyle \sum_{A|B}\underbrace{\alpha(A|B)}_{*} \cdot \delta_{A|B}(x,y) + d^0(x,y)$\\
 * $\alpha(A|B)=0$ wenn $\displaystyle\min_{\substack{x,y \in A \\ u,v \in B}}\beta_{xy|uv}<0$}}
 \\\\
-außerdem gilt:
-$\Sigma(d)=\{(A|B)\}\\alpha(A|B)>0$ hat höchstens $\mathcal{O}(|x|^2)$ Elemente\\
+außerdem gilt: $\Sigma(d)=\{(A|B)\}$\\
+$\alpha(A|B)>0$ hat höchstens $\mathcal{O}(|x|^2)$ Elemente\\
 alle $\alpha(A|B)>0$ können in $\mathcal{O}(|x|^6)$ Elemente berechnet werden.\\
 \begin{itemize}
 	\item d additiv $\Rightarrow d^0=0$

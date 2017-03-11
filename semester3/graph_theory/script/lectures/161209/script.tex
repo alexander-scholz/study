@@ -44,9 +44,8 @@ Evolutionäre Distanz = Evol. Ereignisse; die x,y trennen
 	\includegraphics[scale=1]{lectures/161209/pix/pic2.jpg}		
 \end{center}
 
-\begin{align*}
-	d_H (x,y) &\leq d_E (x,y)
-\end{align*}
+Entspricht Hamming-Distanz der evolutionären Distanz: $d_H (x,y) \Leftrightarrow d_E (x,y)$?
+Nein wegen möglichen Rückmutationen, daher: $\underbrace{d_H (x,y)}_{messbar} \leq \underbrace{d_E (x,y)}_{\text{nicht messbar}}$
 
 \begin{center}
 	\includegraphics[scale=1]{lectures/161209/pix/pic3.jpg}
@@ -54,24 +53,25 @@ Evolutionäre Distanz = Evol. Ereignisse; die x,y trennen
 
 \newpage	
 
-\subsubsection{Modell für Sep. Evolution}
+\subsubsection{Modell für Sequenzevolution}
 \textbf{Markov:}
 \begin{align*}
 	P_{a,b}(\tau) &:= P(a | b, \tau) = \biggl[e^{\mu \tau R} \biggr]_{a,b}
 \end{align*}
-
+$P(a | b, \tau)$: die Wahrscheinlichkeit a zu sehen wen ich b gesehen habe nach einer Zeit $\tau$
+\\\\
 $\mu = $ Mutationsrate\\
 $\tau = $ Zeit\\
 $R = $ Matrix Mutationsmodell
 
 \begin{align*}
-	R = \begin{pmatrix}
+	R_1 = \begin{pmatrix}
 		-1 & 1\\
 		 1 &-1
 	\end{pmatrix}
 \end{align*}
 \begin{align*}
-	R = \begin{pmatrix}
+	R_2 = \begin{pmatrix}
 		-3 & 1 & 1 & 1\\
 		 1 &-3 & 1 & 1\\
 		 1 & 1 &-3 & 1\\
@@ -81,18 +81,22 @@ $R = $ Matrix Mutationsmodell
 \begin{align*}
 	Taylorreihe: e^{\mu * \tau * R} &:= I + \tau * \mu * R + \frac{1}{2!} * \tau^2 * \mu^2 * R^2 + \frac{1}{3!} * \tau^3 * \mu^3 * R^3 + ...
 \end{align*}
+mit $I$=Einheitsmatrix
 \begin{align*}
 	P_{a,b}(\tau) &= \delta_{a,b} + \tau * \mu * R_{a,b} + ...
 \end{align*}
-a $=$ b:
-\begin{align*}
-	P_{a,a}(\tau) &= 1 + \tau * \mu * (-1) + \sigma (\tau ^2) = 1 - \tau * \mu + \sigma (\tau ^2)
-\end{align*}
-a $\neq$ b:
-\begin{align*}
-	P_{a,b}(\tau) &= 0 + \tau * \mu * 1 + \sigma (\tau ^2) = \tau * \mu + \sigma (\tau ^2)
-\end{align*}
 
+mit Kronecker-Delta: $\delta_{a,b}
+\begin{cases}
+	0 \text{ wenn } a\neq b\\
+	1 \text{ wenn } a = b\\
+\end{cases}
+$
+\\
+\underline{mit $R_1$-Matrix:}\\
+\textbf{a = b:} $P_{a,a}(\tau) = 1 + \tau * \mu * (-1) + \sigma (\tau ^2) = 1 - \tau * \mu + \sigma (\tau ^2)$\\
+\textbf{a $\neq$ b:} $P_{a,b}(\tau) = 0 + \tau * \mu * 1 + \sigma (\tau ^2) = \tau * \mu + \sigma (\tau ^2)$
+\\\\
 $\sigma (\tau ^2) = $ Rückmutation, $\tau, \mu$ können nicht getrennt werden $\rightarrow$ Anzahl Ereignisse
  
 \begin{center}
@@ -117,7 +121,7 @@ $\tau * \mu =$ \color{orange} $dE$ \color{black}
  	e^{-\tau * \mu} ~&=~ 1 - 2 \frac{dH}{n}\\
  	\tau * \mu ~&=~ -ln (1 - 2 \frac{dH}{n}) = dE
 \end{align*} 
-
+\\Gilt nur für einfachen binären Fall (siehe $R_1$)
 \subsubsection{Evolutionäre Distanzen $\rightarrow$ Baum}
 geg.: Baum T, Kantenlängen l: E(T) $\rightarrow \mathbb {R}_0^+$\\
 
@@ -169,6 +173,7 @@ l(e) = $\min \limits_{a,b} d(a,b)$ für a,b als Knoten für Kante e gewählt
 
 Da es ein Baum ist auch alternativ:
 $\underbrace{d(x,\underline{v}) + d(y,\underline{u})}_{=Q} - d(x,y) - d(u,v) = 2d(a,b)$\\
+$\rightarrow$ Q muss in Baum das Gleiche sein.\\\\
 $\Rightarrow$ $l(e) = \frac{1}{2} \min \limits_{\substack{x,y \in A\\ u,v \in B}} d(x,u) + d(y,v) - d(x,y) - d(u,v)$\\\\
 oder $l(e) = \frac{1}{2} \min \limits_{\substack{x,y \in A\\ u,v \in B}} d(x,\underline{v}) + d(y,\underline{u}) - d(x,y) - d(u,v)$
 \\\\
@@ -200,7 +205,7 @@ $\Rightarrow$ wenn das für alle (x,y),(u,v) gilt, dann ist Metrik aus Baum abge
 \newpage
 \subsubsection{Splitsystem eines Baums}
 
-$\sum (T) = \{$ splits in T, also die, die zu Knoten gehören.$\}$ \textcolor{red}{oder Kanten?}
+$\sum (T) = \{$ splits in T, also die, die zu Kanten gehören.$\}$
 
 \begin{enumerate}
 	\item[1)] $ \{ x \}~|~X \setminus \{ x \} \in \sum (T)$ für alle $x \in X$ $\rightarrow$ triviale Splits
