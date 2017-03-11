@@ -41,7 +41,8 @@ Inzidenzmatrix:
 4 & 0 & 1 & 1 & 0 & 1\\
 \end{tabular}
 
-Spaltensumme: immer 2 (Start- und Endknoten)
+Spaltensumme: immer 2 (Start- und Endknoten)\\
+Zeilensumme entspricht Gradzahl des entsprechenden Knoten
 
 \subsubsection{Inzidenzmatrize - gerichtete Graphen}
 \begin{itemize}
@@ -99,7 +100,7 @@ Laplace-Matrix:\begin{tabular}{ccc}
 0 & -1 & 1 \\
 \end{tabular}
 
-Eigenschaften:\\
+Eigenschaften:
 \begin{itemize}
 	\item symmetrisch
 	\item die Zeilen- und Spaltensumme = 0
@@ -135,7 +136,7 @@ weiteres Beispiel: \url{https://en.wikipedia.org/wiki/Algebraic_connectivity}
 
 \subsubsection{Fiedler Vektor}
 \begin{itemize}
-	\item Eigenvektor zur Alg. Konn.
+	\item Eigenvektor zur algebraischen Konnektivität
 	\item eignet sich zur Graphpartitionierung
 \end{itemize}
 
@@ -209,7 +210,7 @@ Beispiel:\\
 \includegraphics[width=0.4\textwidth]{lectures/161028/pix/graph3.png}\\
 Letzes Beispiel gilt als isomorph wenn Geschwisterordnung nicht interessiert!
 \\\\
-\textbf{Algorithmus (gewurzelt, geordnet):}\newline
+\textbf{Algorithmus (gewurzelt, geordnet):}
 \begin{itemize}
 	\item K1: Blätter werden kodiert als 01
 	\item K2: v $\in$ V mit Kiner c\textsubscript{1},\ldots,c\textsubscript{n} $\in$ V
@@ -224,7 +225,7 @@ Beispiel:\\
 \includegraphics[width=0.4\textwidth]{lectures/161028/pix/isomorph.png}
 \newpage
 
-\textbf{Induktion:}\newline
+\textbf{Induktion:}
 \begin{itemize}
 	\item einzelne Wurzel \glq 01\grqq{}
 	\item Schritt: Code K, Länge 2(n+1) mit Form 0A1, A=A\textsubscript{1}\_\textsubscript{n}\\
