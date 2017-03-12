@@ -97,9 +97,9 @@ Anzahl unabhängigen Distanzen: 6\\
 Baum mit 4 Blättern: 5
 \includegraphics[width=0.15\textwidth]{lectures/161216/pix/4.jpg}\\
 \includegraphics[width=0.75\textwidth]{lectures/161216/pix/5.jpg}\\
-$d_{xu} + d_{xy} - d_{duy}$\\
+$d_{xu} + d_{xy} - d_{uy} = 2l_x$\\
 $(l_x+a+l_u)+(l_x+b+l_y)-l_u-a-b-l_y=2l_x$\\
-$l_x=\frac{1}{2}[\underbrace{d_{xu}+d_{xy}-d_{uy}}_{\geq 0 (Dreiecksungleichung)}]$\\\\
+$\Rightarrow$ $l_x=\frac{1}{2}[\underbrace{d_{xu}+d_{xy}-d_{uy}}_{\geq 0 (Dreiecksungleichung)}]$\\\\
 Split 1:\\
 $d_{xv}+d_{yu}-(d_{xy}+d_{uv})$=\\
 $\cancel{l_x}+a+\cancel{b}+\cancel{l_v}$\\
@@ -147,9 +147,9 @@ d ist Kalmanson $\Leftrightarrow$ das TSP mit Distanz d einen Mastertour hat\\
 Wenn d Kalmanson ist (zirkulär zerlegbar) $\Rightarrow$ d splitzerlegbar (planar darstellbar)\\
 $\nLeftarrow$ (Umkehr falsch)\\
 
-$d=\underbrace{\displaystyle\sum_{A|B}\alpha(A|B) \cdot \delta_{A|B}}_{fast\ immer\ Kalmanson} + \underbrace{\delta^0}_{\substack{Rauschen \\ (split\ Primaeranteil)}}$\\\\\\
+$d=\underbrace{\displaystyle\sum_{A|B}\alpha(A|B) \cdot \delta_{A|B}}_{fast\ immer\ Kalmanson} + \underbrace{d^0}_{\substack{Rauschen \\ (split\ Primaeranteil)}}$\\\\\\
 Anteil der Distanz ohne phylogenetische Information:\\
-$\frac{\displaystyle\sum_{x\neq y} \delta^0(x,y)}{\displaystyle\sum_{x\neq y} \delta(x,y)}$\\
+$\frac{\displaystyle\sum_{x\neq y} d^0(x,y)}{\displaystyle\sum_{x\neq y} d(x,y)}$\\
 (Maß für die Größe des Rauschens $\rightarrow$ keine phylogenetische Information)
 \\\\
 $d_{\text{trivial}}(x,y)=\displaystyle \sum \limits_{u \in X} \alpha(\{u\}|X\setminus \{u\}) \cdot \delta_{\{u\}|X\setminus \{u\}}(x,y)$

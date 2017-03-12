@@ -18,7 +18,7 @@ Falls d ein additive Baum-Metrik mit Baum $\hat T$ ist, dann ist $\mathcal{A}(d)
 Beispiel:\\
 $\tilde d = d$ (keine Transformation)\\
 $d_{wz}=\frac{1}{2} \cdot d_{uz} + \frac{1}{2} \cdot d_{vz}$ (WPGMA)\\
-$d_{wz}=\frac{|u|}{|u| + |v|} \cdot d_{uz} + \frac{|u|}{|u| + |v|} \cdot d_{vz}$ (UPGMA)\\
+$d_{wz}=\frac{|u|}{|u| + |v|} \cdot d_{uz} + \frac{|v|}{|u| + |v|} \cdot d_{vz}$ (UPGMA)\\
 \includegraphics[width=0.4\textwidth]{lectures/161221/pix/2.jpg}\\
 Ist der zugehörige Alogrithmus konsistent?\\
 Gegenbeispiel:\\
@@ -37,7 +37,7 @@ $\{u,v\} \mapsto w$ (u und v mittels Vaterknoten w vereinigen)\\
 $d(u,w)=\frac{1}{2} \cdot d(u,v) + \frac{1}{2} \cdot \frac{1}{n-2}[r(u)-r(v)]$\\
 durch Symmetrie:
 $d(v,w)=\frac{1}{2} \cdot d(u,v) + \frac{1}{2} \cdot \frac{1}{n-2}[r(v)-r(u)]$\\
-$d(w,z)=\frac{1}{2} \cdot [d(u,z) - d(u,w)] + \frac{1}{2} \cdot [d(v,z)-d(u,w)]$\\
+$d(w,z)=\frac{1}{2} \cdot [d(u,z) - d(u,w)] + \frac{1}{2} \cdot [d(v,z)-d(v,w)]$\\
 $=\frac{1}{2} \cdot [d(u,z) + d(v,z)] - d(u,w)$\\
 
 [Paper: Gascuel + Steel, Mol Biol Evol, 23 Seite 1997-2000 (2006)\footnote{\url{http://mbe.oxfordjournals.org/content/23/11/1997.long}}]

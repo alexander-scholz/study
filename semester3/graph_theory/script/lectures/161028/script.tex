@@ -114,7 +114,7 @@ Eigenschaften:
 	\end{itemize}
 \end{itemize}
 
-\subsubsection{Algebraische Konnektivität}
+\subsubsection{Algebraische Konnektivität (Fiedler-Wert)}
 \begin{itemize}
 	\item beschreibt wie gut verbunden der Graph, global gesehen, ist
 	\item $\frac{4}{n \cdot d} \leq$ algebraische Konnektivität $\leq$ Vertex-Konnektivität
@@ -174,12 +174,12 @@ Beispiel:
 \textbf{Approximation:}
 \begin{itemize}
 	\item wie viele isomorphe Graphen gibt es für 6?
-	\item Isomorpge-Bijektion $\pi$ V$\rightarrow$V
+	\item Isomorphe-Bijektion $\pi$ V$\rightarrow$V
 	\item Anzahl Permutationen: n!
 	\item Es gib maximal n! isomorphe Graphen auf G\\
 	
-\hspace*{2cm}\#Äquivalenzklassen = $\frac{2^\frac{n}{2}}{n!}=\frac{\text{Anzahl Graphen}}{\text{mgl. Bijektion fur einen einzelnen Graphen}}$\\
-	\item wir haben mit $\frac{2^\frac{n}{2}}{n!}$ paarweise nicht-isomorphe Graphen\\
+\hspace*{2cm}\#Äquivalenzklassen = $\frac{2^{\binom{n}{2}}}{n!}=\frac{\text{Anzahl Graphen}}{\text{mgl. Bijektion fur einen einzelnen Graphen}}$\\
+	\item wir haben mit $\frac{2^{\binom{n}{2}}}{n!}$ paarweise nicht-isomorphe Graphen\\
 	\begin{itemize}
 		\item n!$\leq$n$^n$
 		\item $log_2(2^{\begin{pmatrix}n\\2\end{pmatrix}}) = \begin{pmatrix}n\\2\end{pmatrix} = \frac{n^2}{2}(1-\frac{1}{n})$
@@ -229,7 +229,7 @@ Beispiel:\\
 \begin{itemize}
 	\item einzelne Wurzel \glq 01\grqq{}
 	\item Schritt: Code K, Länge 2(n+1) mit Form 0A1, A=A\textsubscript{1}\_\textsubscript{n}\\
-bestimme A\textsubscript{1}: Kleinster 0/1 kann mit gleicher Zahl von 0 und 1\newline
+bestimme A\textsubscript{1}: Kleinster 0/1 kann mit gleicher Zahl von 0 und 1
 	\item A\textsubscript{i} ist via Induktion des Codes für dazugehörigen gewurzelten, geordneten Baum T\textsubscript{i}
 \end{itemize}
 
