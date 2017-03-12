@@ -120,8 +120,8 @@ Baum $\Rightarrow$ b=0
 \subsubsection{Messung der Baumartigkeit:}
 $B:=\frac{1}{\binom{n}{4}} \displaystyle\sum_{\substack{i<j<k<l \\ i,j,k,l \in X}} \frac{b_{ijkl}}{a_{ijkl} + b_{ijkl}}$\\
 Mittelwerte von in der Box\\
-B $\approx$ Baumartig\\
-B $\approx \frac{1}{2}$ völlig verrauscht, netzwerk-artig\\
+B $\approx$ 0 $\rightarrow$ Baumartig\\
+B $\approx \frac{1}{2}$ $\rightarrow$ völlig verrauscht, netzwerk-artig\\
 
 \subsubsection{Travelling sales person problem (TSP)}
 geschlossene Tour Voraussetzung\\
@@ -151,3 +151,5 @@ $d=\underbrace{\displaystyle\sum_{A|B}\alpha(A|B) \cdot \delta_{A|B}}_{fast\ imm
 Anteil der Distanz ohne phylogenetische Information:\\
 $\frac{\displaystyle\sum_{x\neq y} \delta^0(x,y)}{\displaystyle\sum_{x\neq y} \delta(x,y)}$\\
 (Maß für die Größe des Rauschens $\rightarrow$ keine phylogenetische Information)
+\\\\
+$d_{\text{trivial}}(x,y)=\displaystyle \sum \limits_{u \in X} \alpha(\{u\}|X\setminus \{u\}) \cdot \delta_{\{u\}|X\setminus \{u\}}(x,y)$
