@@ -33,7 +33,7 @@ Sei G ein zusammenhängender Graph. Dann ist v ein Cut vertex wenn G$\backslash$
 \end{figure}
 
 \underline{Theorem:} Sei G ein zusammenhängender Graph mit mehr als 2 Knoten, dann seien folgende Aussagen äquivalent:\\
- - G ist Kreiszusammenhängen $\Rightarrow$ G hat keinen cut-vertex
+ - G ist kreiszusammenhängend $\Rightarrow$ G hat keinen cut-vertex
 \\\\
 \underline{Beweis/Idee:}
 cut-vertex $\Rightarrow$ $\neg$ Kreiszusammenhang
@@ -56,8 +56,8 @@ Kreiszusammenhang $\Rightarrow$ $\exists$ mindestens 2 disjunkte Wege von x nach
 \\\\
 \underline{Spezialfälle:}\\
 \begin{enumerate}
-	\item $|V(G)| = 1$ (nur ein Knoten) $\Rightarrow$ zusammenhängend, $\neg$ Kreiszusammenhängen, kein cut-vertex
-	\item $|V(G)| = 2$ (zwei Knoten, eine Kante) $\Rightarrow$ zusammenhängend, $\neg$ Kreiszusammenhängen, kein cut-vertex
+	\item $|V(G)| = 1$ (nur ein Knoten) $\Rightarrow$ zusammenhängend, $\neg$ kreiszusammenhängend, kein cut-vertex
+	\item $|V(G)| = 2$ (zwei Knoten, eine Kante) $\Rightarrow$ zusammenhängend, $\neg$ kreiszusammenhängend, kein cut-vertex
 \end{enumerate}
 
 \underline{Definition.:} Ein Graph G ist 2-zusammenhängend wenn G$\backslash$v für alle $v \in V(G)$ zusammenhängend und nicht ein einzelner Knoten oder leer ist $\Leftrightarrow$ G$\backslash$v zusammenhängend und enthält wenigstens 1 Kante\\
@@ -106,14 +106,14 @@ $K_n … n=V(K_n)$ Knoten, $\binom{n}{2}$ Kanten
 
 \underline{Baum:} zusammenhängender Graph der keine Kreise enthält\\
 \underline{Wald:} disjunkte Vereinigung von Bäumen $\Leftrightarrow$ kreisfreier Graph\\
-\underline{Teilgraphen:} H(W,F) ist Teilgraph von G(V,E) wenn
+\underline{Teilgraphen:} H(W,F) ist Teilgraph von G(V,E), wenn
 \begin{enumerate}
 	\item W $\subseteq$ V
 	\item F $\subseteq$ E
 	\item \{x,y\} $\in$ F $\Rightarrow$ x,y $\in$ W
 \end{enumerate}
 
-\underline{Induzierter Teilgraph:} H ist induzierter Teilgraph von wenn
+\underline{Induzierter Teilgraph:} H(W,F) ist induzierter Teilgraph von G(V,E), wenn
 \begin{enumerate}
 	\item H Teilgraph von G
 	\item x,y $\in$ W und \{x,y\} $\in$ E $\Rightarrow$ \{x,y\} $\in$ F
@@ -149,9 +149,9 @@ $
 \end{itemize}
 
 \subsubsection{Permutationsmatrix}
-quadratische Matrix P sodass in jeder Zeile und jeder Spalte genau eine 1 steht und sonst 0 (P=(p$_{ij}$))
+Quadratische Matrix P, sodass in jeder Zeile und jeder Spalte genau eine 1 steht und sonst 0 (P=(p$_{ij}$))
 \\\\
-\textbf{Satz:} zwei Graphen mit Adjazenz-Matritzen A und B sind isomorph genau dann wenn es eine P gibt sodass A$\cdot$P=P$\cdot$B
+\textbf{Satz:} zwei Graphen mit Adjazenz-Matrizen A und B sind isomorph genau dann, wenn es eine Permutationsmatrix P gibt, sodass A$\cdot$P=P$\cdot$B
 \\\\
 PP$^T$=P$^T$P=I ($\widehat{=}$ Einheitsmatrix) [... mit P$^T_{ij}$=P$_{ji}$]\\
 $A \cdot P = P \cdot B$\\
@@ -181,9 +181,9 @@ P$_{i'j}$=0 für i'$\neq$i\\
 - für unsere Fälle quadratisch\\
 - Eigenvektor x und Eigenwerte $\lambda$ von A erfüllen $A \cdot x = \lambda \cdot x$
 \\\\
-Eine nxn-Matrix hat höchstens n verschiedene Eigenwerte
+Eine n$\times$n-Matrix hat höchstens n verschiedene Eigenwerte
 \begin{itemize}
-	\item wenn A symetrisch (A=A$^T$) sind alle Eigenwerte reell
+	\item wenn A symmetrisch (A=A$^T$), sind alle Eigenwerte reell
 	\item es gibt $det(A-\lambda \cdot I)=0$ $\rightarrow$ liefert Gleichung n-ten Grades für $\lambda$
 \end{itemize}
 

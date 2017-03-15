@@ -11,10 +11,10 @@ Tripel: (p,B,I)
 \end{itemize}
 Die Punkte p \glqq inzidieren\grqq{} demnach mit den Blöcken B, \glqq liegen auf\grqq{} einem Block. Dieser Block kann, wie in unserem Fall bei Graphen, eine Gerade sein.
 
-\subsubsection{Inzidenzmatrize - ungerichtete Graphen}
+\subsubsection{Inzidenzmatrix - ungerichtete Graphen}
 \begin{itemize}
 	\item n Knoten, m Kanten
-	\item n x m Marix B=b\textsubscript{i,j}
+	\item n$\times$m Matrix B=b\textsubscript{i,j}
 	\item G=(V,E)
 	\begin{itemize}
 		\item V=\{v$_1$, \ldots, v$_n$\}
@@ -44,7 +44,7 @@ Inzidenzmatrix:
 Spaltensumme: immer 2 (Start- und Endknoten)\\
 Zeilensumme entspricht Gradzahl des entsprechenden Knoten
 
-\subsubsection{Inzidenzmatrize - gerichtete Graphen}
+\subsubsection{Inzidenzmatrix - gerichtete Graphen}
 \begin{itemize}
 	\item $b_{i,j}
 	\begin{cases}
@@ -69,7 +69,7 @@ Hier sind die Kanten gerichtet. Im Gegensatz zur ungerichteten Inzidenzmatrize e
 	\item G =(V,E)
 	\item Gradmatrix D=d\textsubscript{i,j}
 	\item Adjazenzmatrix A=a\textsubscript{i,j}
-	\item Laplace-Mazrix \textit L = D-A = l\textsubscript{i,j}
+	\item Laplace-Matrix \textit L = D-A = l\textsubscript{i,j}
 \end{itemize}
 
 $d\textsubscript{i,j}\begin{cases}deg(v\textsubscript{i}),\>i=j\\0,\>sonst\end{cases}$\newline\newline
@@ -105,7 +105,7 @@ Eigenschaften:
 	\item symmetrisch
 	\item die Zeilen- und Spaltensumme = 0
 	\item Eigenwert $\lambda$\textsubscript{0}=0, v\textsubscript{0}=(1,\ldots,1) $\Rightarrow$ L $\cdot$ v\textsubscript{0}=$\lambda$\textsubscript{0}
-	\item Anzahl der 0 Eigenwerte $\Rightarrow$ Anzahl der connected components
+	\item Anzahl der 0-Eigenwerte $\Rightarrow$ Anzahl der connected components
 	\item spectral gap: kleinster Eigenwert $\neq$ 0
 	\item algebraische Konnektivität (Fiedler-Wert)
 	\begin{itemize}
@@ -150,7 +150,7 @@ Beispiel:
 \subsubsection{Interlacing Theorem}
 \begin{itemize}
 	\item Sei A eine reelle, symmetrische Matrix
-	\item mit Eigenvektoren $\lambda$\textsubscript{1}$\geq$$\lambda$\textsubscript{2}$\geq$\ldots$\geq$$\lambda$\textsubscript{n}
+	\item mit Eigenwerten $\lambda_1 \geq \lambda_2 \geq \ldots \geq \lambda_n$
 	\item sei A\grq{} principal Submatrix von A
 	\item Beispiel: principal Submatrix $\Leftrightarrow$ induzierter Subgraph, ein Vertex weniger (G-\{v\textsubscript{i}\})
 	\begin{itemize}
@@ -173,8 +173,8 @@ Beispiel:
 \newpage
 \textbf{Approximation:}
 \begin{itemize}
-	\item wie viele isomorphe Graphen gibt es für 6?
-	\item Isomorphe-Bijektion $\pi$ V$\rightarrow$V
+	\item wie viele isomorphe Graphen gibt es für G?
+	\item Isomorphie-Bijektion $\pi$ V$\rightarrow$V
 	\item Anzahl Permutationen: n!
 	\item Es gib maximal n! isomorphe Graphen auf G\\
 	
@@ -191,10 +191,10 @@ Beispiel:
 
 \subsubsection{Isomorphismus auf Bäumen}
 \begin{itemize}
-	\item das \glqq das ist einfach\grqq{} $\rightarrow$ Programm mit polynomieller Zeit bauen
-	\item Baum codieren via Werten: 0 und 1\\
+	\item \glqq das ist einfach\grqq{} $\rightarrow$ Programm mit polynomieller Zeit bauen
+	\item Baum codieren via Werte 0 und 1\\
 \hspace*{2cm}$\hookrightarrow$ das sei der Code von Baum T
-	\item zu beweisen: isomorph Bäume haben gleiche codes
+	\item zu beweisen: isomorphe Bäume haben gleiche Codes
 	\item drei Klassen von Bäumen:
 	\begin{itemize}
 		\item Bäume
@@ -227,11 +227,11 @@ Beispiel:\\
 
 \textbf{Induktion:}
 \begin{itemize}
-	\item einzelne Wurzel \glq 01\grqq{}
+	\item einzelne Wurzel \glqq 01\grqq{}
 	\item Schritt: Code K, Länge 2(n+1) mit Form 0A1, A=A\textsubscript{1}\_\textsubscript{n}\\
 bestimme A\textsubscript{1}: Kleinster 0/1 kann mit gleicher Zahl von 0 und 1
-	\item A\textsubscript{i} ist via Induktion des Codes für dazugehörigen gewurzelten, geordneten Baum T\textsubscript{i}
+	\item A\textsubscript{i} ist via Induktion der Code für dazugehörigen gewurzelten, geordneten Baum T\textsubscript{i}
 \end{itemize}
 
 \underline{Bei nicht gewurzelten Bäumen:}\\
-\glq Kleinste maximale Entfernung zwischen den Blättern als Wurzel wählen \grqq{}
+\glqq Kleinste maximale Entfernung zwischen den Blättern als Wurzel wählen\grqq{}

@@ -9,7 +9,7 @@ Es sei nur dann ein Graph \textit{G(V,E)} mit $|E|>=2$, der 2-Vertex-verbunden i
 \end{figure}
 
 \begin{itemize}
-	\item \textbf{\textit{Kreisbasis:}} \newline Ein Ohr Sei ein maximaler Pfad P, $|P| >= 1$, so dass P nur an Endpunkten Kanten aus $E\notin P$ berührt. Die Knoten in P, die keine Endknoten sind haben immer Grad $deg = 2$.
+	\item \textbf{\textit{Kreisbasis:}} \newline Ein Ohr sei ein maximaler Pfad P, $|P| >= 1$, so dass P nur an Endpunkten Kanten aus $E\notin P$ berührt. Die Knoten in P, die keine Endknoten sind haben immer Grad $deg = 2$.
 	\item \textbf{\textit{offene Ohrenzerlegung}}\newline Eine Folge von Ohren $P_1, P_2, ..., P_k$ ist eine offene Ohrenzerlegung, wenn $P_1$ ein Kreis, $P_k$ und alle anderen $P_i$ Ohren in $G_i = G_{i+1} \setminus P_{i+1}$
 \end{itemize}
 
@@ -22,7 +22,7 @@ Es sei nur dann ein Graph \textit{G(V,E)} mit $|E|>=2$, der 2-Vertex-verbunden i
 		\includegraphics[scale=1.00]{lectures/161111/pix/pic2.jpg}
 		\end{figure}
 	\item Für jede Kante (u,v), die nicht Teil des Spannbaums ist (0,1,2a,2b), finde den \textit{\textcolor{green}{lowest common ancestor (lca)}} der Knoten u und v.
-	\item Fuer jede Kante (u,v) soll die Hauptkante (w,x) gefunden werden, wobei (u,v) und (w,x) Teil eines Kreises sind und (w,x) einen \textit{lowest common ancestor} so nah wie moeglich an der Wurzel haben und (w,x) $\notin$ von T ist.
+	\item Für jede Kante (u,v) soll die Hauptkante (w,x) gefunden werden, wobei (u,v) und (w,x) Teil eines Kreises sind und (w,x) einen \textit{lowest common ancestor} so nah wie möglich an der Wurzel haben und (w,x) $\notin$ von T ist.
 	\item Für alle (w,x) die nicht aus dem Spannbaum sind, trenne alle Kanten mit gleichem Wert ab. Diese Kanten bilden ein Ohr.
 	\item Ordne die Ohren nach ihrem Gewicht. 
 \end{enumerate}
@@ -49,14 +49,14 @@ Viele \textit{Greedy Probleme} lassen sich mittels Matroiden beschreiben (insbes
 \subsubsection{Matroid}
 \begin{itemize}
 	\item[] Ein Unabhängigkeitssystem sei ein Matroid falls die Eigenschaften eines Unabhängigkeitssystems und die Austauscheigenschaft erfüllt sind.
-	\item[] \textit{grafischer Matroid}\newline Ein graphischer Matroid $M_G = (S_G,l_G)$ mit $S_G = E(G)$
+	\item[] \textit{graphischer Matroid}\newline Ein graphischer Matroid $M_G = (S_G,l_G)$ mit $S_G = E(G)$
 	\begin{itemize}
 		\item[$\rightarrow$] für $A \subseteq S_G: \in l_G \leftrightarrow$ A ist kein Kreis
 		\item[$\rightarrow$] Menge an Kanten ist nur dann unabhängig, wenn G' = (V(G),A) einen Wald bilden $\rightarrow$ G' bildet keinen Kreis
 	\end{itemize}
 \end{itemize}
 
-\underline{\textit{Extension:}} \newline Sei M = (S,l) und x $\notin$ A gegeben, so sei l eine Erweiterung von A, falls $A \cup \{x\}$ unabhängig ist. ($A \cup \{x\}\in l$) \newline  $\rightarrow$ Kante l ist eine Erweiterung, falls $A \cup \{x\}$ keinen Kreis bilden. \newline 
+\underline{\textit{Extension:}} \newline Sei M = (S,l) und x $\notin$ A gegeben, so sei $x \not \in A$ eine Erweiterung von A, falls $A \cup \{x\}$ unabhängig ist. ($A \cup \{x\}\in l$) \newline  $\rightarrow$ Kante e ist eine Erweiterung, falls $A \cup \{e\}$ keinen Kreis bildet. \newline
 
 \underline{\textit{Maximalität:}} $A \in l$ ist maximal, falls es keine Erweiterung für A gibt. \newline
 
