@@ -1,0 +1,124 @@
+\section{Vorlesung 27.04.2017}
+
+\subsection{Teil 1: Dynamische Systeme}
+
+\begin{itemize}
+	\item \textbf{diskrete Zeit: "Generationen"}\\
+	$X_1, X_2, ...$\\
+	$X_n=F(X_{n-1})=:X_{n-1} + \overbrace{f(X_{n-1})}^{\text{Änderung des Zustandes}}$\\
+	$X_{n+1}=F(X_n)=F(F(X_{n-1}))$\\
+	Beispiel:\\
+	$X_n=(1+\underbrace{a}_{\text{effektive Vermehrungsrate}}) \cdot x_{n-1}=$ Geburtenrate - Sterberate\\
+	Anfangsbedingung: $X_{t_0}=X_0$\\
+	Bedingung: effektive Vermehrungsrate a verändert sich nicht\\
+	Lösung: $X_n=(1+a)^n \cdot x_0$\\
+	im allgemeinen mit zeitlich variablen Vermehrungsraten: $X_n=\prod \limits_{i=0}^{n-1} (1+a_i) \cdot x_0$\\
+	3 verschiedene Resultate:
+	\begin{itemize}
+		\item $+\infty$ für $a > 0$
+		\item $x_0$ für $a=0$
+		\item 0 für $a<0$
+	\end{itemize}
+	$X_n=X_{n-1} + a \cdot \underbrace{X_{n-1}}_{f(X_{n-1})}$\\
+	$f(X_{n-1})=X_{n-1} \cdot r(X_{n-1})$\\
+	mit r(0)=const. entspricht autonomer Wachstumsrate [$ lim (x \rightarrow 0) r(x) \in R_0^+$]
+	\item \textbf{kontinuierliche Zeit}\\
+	$x(t+\Delta t)=x(t) + f(x(t)) \cdot \Delta t$\\\\
+	$\displaystyle \frac{x(t+ \delta t) - x(t)}{\delta t} = f(x(t))$\\
+	$lim (\delta t \rightarrow 0) \displaystyle \frac{x(t+ \delta t) - x(t)}{\delta t} = \frac{\delta x}{\delta t}$ $\widehat{=}$ zeitlicher Ableitung von x\\
+	= $\dot{x}=f(x)$
+\end{itemize}
+
+\textbf{Beispiel:}\\
+$\dot{x}=a \cdot x$, $x(0)=x_0$\\
+$\displaystyle \frac{dx}{dt}=a \cdot x$\\
+$\displaystyle \frac{dx}{a \cdot x} = dt$\\
+$\int \limits_{x_0}^{x(t)} \frac{1}{a \cdot x} \cdot dx = \int \limits_{0}^{1} 1 \cdot dt = 1$\\
+$\dot{x} = f(x) \Rightarrow \int \limits_{x_0}^{x(t)} \frac{1}{f(x)} = \int \limits_{0}^{1} dt = t$\\
+$\frac{1}{a} \int \frac{1}{x} dx = \frac{1}{a} \cdot ln(x)$\\
+$\cancel{\frac{1}{a}} ln(x(t)) - \cancel{\frac{1}{a}} ln(x_0)=a \cdot t$\\
+$ln(x(t))= a t + ln(x_0)$\\
+$x(t)=e^{at} \cdot x_0$
+
+Wie machen wir das Model realistischer?\\
+f(x) und r(x) muss für sehr große x dann $\leq$ 0 werden.
+
+% insert pic 1
+
+$\dot{x}=f(x)=x \cdot (a-bx)$\\
+\\
+\underline{Übungsaufgabe:}
+\begin{enumerate}
+	\item Löse $\dot{x}=x(a-bx)$ mit $x(0)=x_0$
+	\item Löse $x'=x+x(a-bx)$ mit $x(0)=x_0$
+\end{enumerate}
+
+\subsection{Qualitative Analyse von DS}
+\begin{enumerate}
+	\item Fixpunkte: keine zeitliche Veränderung ($x'=x, \dot{x}=0$)\\
+	d.h. diskret und kontinuierlich, f(x)=0\\
+	Welche Fixpunkte gibt es? im Beispiel x(a-bx)=0\\
+	\begin{enumerate}
+		\item x=0 $\rightarrow$ Population ausgestorben
+		\item a-bx=0 $\rightarrow$ $x=\frac{a}{b}$\\
+		% insert pic 2
+	\end{enumerate}
+\end{enumerate}
+
+Störung: $x(0)=\underbrace{\hat{x}}_{Fixpunkt} + \epsilon$ mit sehr kleinem $\epsilon$\\
+$\dot{x}=f(x)=f(\hat{x} + \epsilon)=\dot{\epsilon}$\\
+mit $x=\hat{x}+\epsilon$\\
+$\dot{x}=\frac{\delta \hat{x}}{\delta t} + \dot{\epsilon}$\\
+\underline{$\dot{\epsilon}=f(\hat{x}+\epsilon)$}\\
+mit Taylorreihenentwicklung: $0=f(\hat{x}) + \epsilon \frac{\delta f}{\delta x} (\hat{x}) + O(\epsilon^2)$\\
+
+Für sehr kleine Störungen:\\
+$\dot{\epsilon}=\frac{\delta f}{\delta x} (\hat{x}) \cdot \epsilon + \cancel{O(\epsilon^2)}$\\
+Linearisierung der Differentialgleichung $x=f(x)$ in der Nähe eines Fixpunktes $\hat{x}$:
+$\epsilon(x)=e^{[\frac{\delta f}{\delta x} (\hat{x})] \cdot t}$\\
+$\epsilon_0=x_0 - \hat{x}$\\
+$\epsilon_0 \leftarrow $ initiale Störung\\
+
+\begin{itemize}
+	\item Störung wird gedämpft wenn $\frac{\delta f}{\delta x} (\hat{x}) < 0$ = STABIL
+	\item Störung eskaliert wenn $\frac{\delta f}{\delta x} (\hat{x}) > 0$ = INSTABIL
+\end{itemize}
+
+\underline{im Diskreten Fall?}\\
+$x'=x + f(x)$ mit $x=\hat{x} + \epsilon$\\
+$\cancel{\hat{x}} + \epsilon' = \cancel{\hat{x}} + \epsilon + f(\hat{x} + \epsilon)=f(\hat{x}) + \epsilon \cdot \frac{\delta f}{\delta x} (\hat{x}) + \cancel{Rest(\epsilon)}$\\
+$\epsilon'=\epsilon (1 + \frac{\delta f}{\delta x} (\hat{x}))$
+mit:
+\begin{itemize}
+	\item $\epsilon \rightarrow 0$ wenn $|1+\frac{\delta f}{\delta x} (\hat{x})| < 1$
+	\item $\epsilon \rightarrow \infty$ wenn $|1+\frac{\delta f}{\delta x} (\hat{x})| > 1$
+\end{itemize}
+
+\textbf{jetzt Mehrdimensional:}
+\begin{itemize}
+	\item Räuber x: $f_x(x,y)=x(-a+by-cx)$
+	\item Beute y: $f_y(x,y)=y(+d-ex-gy)$
+\end{itemize}
+
+\underline{Fixpunkte:}
+\begin{itemize}
+	\item $f_x(x,y)=0$
+	\item $f_y(x,y)=0$
+\end{itemize}
+
+\underline{Stabilität:}\\
+gegeben durch 
+\begin{itemize}
+	\item $\frac{\delta f_x}{\delta x}(\hat{x}, \hat{y})$ $\frac{\delta f_x}{\delta y}(\hat{x}, \hat{y})$
+	\item $\frac{\delta f_y}{\delta x}(\hat{x}, \hat{y})$ $\frac{\delta f_y}{\delta y}(\hat{x}, \hat{y})$
+\end{itemize}
+
+\underline{Übungsaufgabe 2:}\\
+Bestimme die Fixpunkte von Räuber-Beute-Modell für a,b,c,d,e,g $>$0\\
+Welche Fixpunkte gibt es immer? Wieviele sind das?
+
+\subsection{Teil 2: Genkonzept}
+
+\begin{itemize}
+	\item Unterschiede und Überscheidungen zwischen den beiden in den Papern vorgestellten Genkonzepten (siehe Vorlseung 13.04.2017) \textcolor{red}{[Prüfungsrelevant]}
+\end{itemize}
