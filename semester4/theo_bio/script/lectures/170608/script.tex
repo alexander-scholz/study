@@ -2,4 +2,113 @@
 
 \subsection{Teil 1: Fitnesslandschaften}
 
+\textbf{evol. Theorie:} Wachstumsrate in Räuber-Beute-Modellen + Reproduktion mit Variation + ''Survival of the fittests" $\rightarrow$ Wachstumsrate einer Population in einer gege. Umgebung
+\\\\
+\underline{Günther Wagner: Messtheorie von Fitness (measurement theorie)}
+\\
+
+X… Suchraum (genotyp|phänotyp), allgemein irgendeine Repräsentation der betrachteten Taxa
+\\
+Ähnlichkeitsstruktur $\sigma$\\
+Fitnessfunktion: $f:x \rightarrow R$\\
+mit R=totale geordnete Menge ($f_1, f_2 \in R: f_1 < f_2, f_1 > f_2, f_1 = f_2$)
+\\
+
+% pic 1
+
+Begründer: Sewall Wright ($\sim$ 1930)\\
+siehe zurückliegendes Bild: Individuum hat höhere Wahrscheinlichkeit Erbgut in nächste Generation zu übertragen (''Verbesserung")\\
+
+\subsubsection{Genetische Algorithmen}
+Idee: benutze künstliche Evolution um Optimierungsprobleme zu lösen
+
+\begin{enumerate}
+	\item Population $A \subseteq X$
+	\item Nachfolgerpopulation von Kandidaten C(A)
+	\item Selektiere die Besten bezüglich Fitnessfunktion $x \in C(A)$
+	\item zurück zu 1.
+\end{enumerate}
+
+genetische Algorithmen, evolutionäre Progammierung (Rechenberg, Schwefel $\sim$ 1960/70)\\
+
+\underline{geg.:} RNA oder Proteinsequenz $\alpha$
+\underline{ges.:} Alle möglichen Strukturen x, die $\alpha$ einnehmen kann $\rightarrow$ Menge x von Konfigurationen\\
+Energiefunktion $f: X \rightarrow R$\\
+z.B. Loop basiertes Energiemodell für RNA Sekundärstrukturen\\
+
+% pic 2
+
+\underline{Lenskis E.Coli Zucht\footnote{\url{https://en.wikipedia.org/wiki/E._coli_long-term_evolution_experiment}}}\\
+X… Menge von Gen oder Genomsequenzen\\
+$\sigma$… Mutationen (hauptsächlich Substitution, Insertion, Deletion)\\
+(X,$\sigma$)… Suchraum $\Leftrightarrow$ Graphen über \{A,G,T,C\}$^n$\\
+mit n=Sequenzlänge\\
+mit Kanten=Hammingdistanz 1 ($|$ Levensteindistanz 1)
+
+\subsubsection{3D-Strukturen}
+Proteinstruktur = ($\overrightarrow{x_1}, \overrightarrow{x_2}, ... , \overrightarrow{x_n}$) mit $\overrightarrow{x_1}$=3D-Koordinaten für Atom 1\\
+\\
+Constraint: Bindungswinkel, Bindungslängen\\
+X… alle möglichen 3D-Einbettungen des Proteins\\
+Nachbar: $||\overrightarrow{x} - \overrightarrow{x}'|| = \sum_{i} |\overrightarrow{x_i} - \overrightarrow{x_i}' | < \epsilon$ für gegebenes $\epsilon > 0$\\\\
+
+Wenn RNA Sekundärstrukturen?\\
+X… Menge aller erlaubten Strukturen [(,),.]\\
+x$\sim$y wenn x und y sich durch ein Basenpaar unterscheiden $\Rightarrow$ Graph\\
+
+\underline{Beispiel:}\\\\
+% pic 3
+
+\subsubsection{Optimierung auf Landschaften}
+$\rightarrow$ max, min finden\\
+%pic 4
+
+\underline{Wie misst man Rauheit?}\\
+Minimum: $\hat{x} \in X$ sodass $\forall y$ Nachbar von $\hat{x}: f\hat{(x)} \leq f(y)$\\
+für metrischen (kontinuierlichen) Raum: $\forall y: |\hat{x} - y| < \epsilon$\\
+Maximum: $f\hat{(x)} \geq f(y)$\\
+
+\textbf{Was möchte man messen?}
+\begin{itemize}
+	\item \# lokale Minima, nur gut bei kleinen Instanzen, daher sampeln! (zufällige x wählen und bestimmen ab Minimum)
+	\item mittlere Länge von \underline{adaptiven walks}\\
+	$x_0,x_1, x_2, …, x_l$ sodass $x_i$ Nachbar von $x_{i-1}$ ist und $\underbrace{f(x_i) > f(x_{i-1})}_{*}$ i=1…l
+	* für Fitness (für Energie $<$)
+	\item Alternative: gradient walks (Weg des stelsten Anstiegs), Distanz zum ''nächstgelegenen" lokalen Min/Max
+\end{itemize}
+
+\subsubsection{Autokorrelationsfunktionen}
+$x_0,x_1, x_2, …, x_l$ sodass $x_i$ Nachbar von $x_{i-1}$\\
+betrachte Folge der Funktionswerte $f(x_0), f(x_1), …$
+betrachte das als Signal (Zeitserie)\\
+$\varrho(\tau)=\displaystyle \frac{<f(x_t) \cdot f(x_{t+\tau})>_t - <f>^2_t}{<f^2>_t - <f>^2_t}$\\
+$<f_t>$ … Mittelwert über die $f(x)$\\
+$<f_t> := \lim\limits_{T \rightarrow \infty} \frac{1}{T} \sum_{t=0}^{T-1} f(x_t)$\\
+$<f(x_t) \cdot f(x_{t+\tau})> := \lim\limits_{T \rightarrow \infty} \frac{1}{T} \sum_{t=0}^{T-1} f(x_t)f(x_{t-\tau})$\\\\
+X… Menge von Gen oder Genomsequenzen\\
+$\sigma$… Graph, regulär (jedes x hat gleich viele Nachbarn D)\\
+A… Adjazenz von (X,$\sigma$)\\
+
+$\varrho(\tau)=\displaystyle \frac{(f(\frac{1}{D} \cdot A)^{\tau} \cdot f) - (f)^2}{(f^2) - (f)^2}$\\
+$\Rightarrow$ leichter so auf Graphen als direkt auf Fitness (Funktion)\\
+
+\underline{Korellationslänge:}\\
+%pic 5
+
+Funktion in Abhängigkeit der Verschiebung von $\tau$\\
+$L_c=\displaystyle \sum_{\tau=0}^{\infty} \varrho(\tau)$\\
+$(f) = \frac{1}{|X|} \sum_{x\in X} f(x)$\\
+$(f^2) = \sum_{x \in X} f(x)^2$\\
+$(f, \frac{1}{D}\cdot A \cdot f) := \sum_{x \in X} \sum_{y \in X} \frac{1}{D} f(y) \cdot A_{yx} \cdot f(x)$\\
+wenn $(f)=0$ folgt vereinfachte Gleichung\\
+$(f^2)=1 \rightarrow \varrho(\tau)= <f(x_t), f(x_{x_t - \tau})> = (f, \underbrace{\frac{1}{D} \cdot A \cdot f}_{\text{Graphstruktur}})$ 
+
+\underline{Beispiel:}\\
+%pic 6
+
+Kostenfunktion in Fall 1 ändert sich stärker als in Falls 2\\
+$\Rightarrow$ $L_R \simeq 2 L_T$\\\\
+
+?(Länge Korrelationslängen $\rightarrow$ Lange Wege zum nächsten Minimum $\rightarrow$ gut!)
+
 \subsection{Übung farbliche Ausprägung Katzenfell und beteiligte Gene}
