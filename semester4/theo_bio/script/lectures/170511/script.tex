@@ -82,12 +82,12 @@ $x_i$ … Wachstum proportional zur Populationsgröße\\
 \underline{\textbf{Status um Fixpunkte?}}\\
 $\epsilon=x-\hat{x}, \epsilon_i=x_i-\hat{x_i}$\\
 $\dot{\epsilon_i}=\dot{x_i}=f_i(x_1,…,x_n)=f_i(\hat{x}+\epsilon)=f_i(\hat{x_1}+\epsilon_1, … , \hat{x_n}+\epsilon_n)$\\
-Taylorreihenentwicklung: $=f_i(\hat{x_1}, … , \hat{x_n}) + \displaystyle  \sum_{k} \frac{\delta f_i(\hat{x})}{\delta x_k} + \text{Rest}(\epsilon^2)$\\
+Taylorreihenentwicklung: $=f_i(\hat{x_1}, … , \hat{x_n}) + \displaystyle  \sum_{k} \frac{\delta f_i(\hat{x})}{\delta x_k} \cdot \epsilon_k + \text{Rest}(\epsilon^2)$\\
 für $|\epsilon|$ sehr klein folgt:\\\\
 \underline{Jacobimatrix} $J_{ik}:=\displaystyle \sum_{k} \frac{\delta f_i(\hat{x})}{\delta x_k}$\\\\
 $\epsilon_i=(J_{\epsilon})_i$ zeitliche Entwicklung der Störung $\epsilon \Rightarrow \dot{\epsilon}=J(\hat{x}) \cdot \epsilon$\\
 
-Das Verhalten von $\dot{x}f(x)$ wird in der Nähe einer Fixpunktes $\hat{x}$ durch die ''Linearisierung" $\dot{\epsilon}J(\hat{x}) \cdot \epsilon$ beschrieben.\\
+Das Verhalten von $\dot{x} = f(x)$ wird in der Nähe einer Fixpunktes $\hat{x}$ durch die Linearisierung $\dot{\epsilon} = J(\hat{x}) \cdot \epsilon$ beschrieben.\\
 
 $\Rightarrow$ müssen verstehen, wie die Lösung von linearen DGL-Systemen aussehen\\
 $\dot{x}=Ax, x \in R^n, A \in R^{n,n}$\\\\
@@ -110,7 +110,7 @@ $x(t)=exp(t \cdot A) \cdot x_0$\\
 $\dot{x}(t)=A \underbrace{\cdot exp(t \cdot A) \cdot x_0}_{x(t)}$\\
 $\Rightarrow x(t)=exp(t \cdot A) \cdot x_0$ löst tatsächlich die lineare DGL\\\\
 
-\underline{Spezialfall:} Jacobimatrix A ist eine Diagonalmatrix\\
+\underline{Spezialfall:} Matrix A ist eine Diagonalmatrix\\
 
 $A = 
 \begin{pmatrix}
@@ -175,7 +175,7 @@ $A \underbrace{[u^{(1)}, … , u^{(n)}]}_{*} = [\lambda_1 u^{(1)}, … , \lambda
 
 $A \cdot U = U \cdot A$ vorausgesetzt es gibt n linear unabhängige Eigenwerte von A\\
 $U^{-1} exp(tA) U = U^{-1} \sum_{k=0}^{\infty} \frac{t^k}{k!} A^k U = U^{-1} \sum_{k=0}^{\infty} \frac{t^k}{k!} U A^k = \underbrace{U^{-1} U}_{I} \sum_{k=0}^{\infty} \frac{t^k}{k!} A^k$\\
-$= exp(tA)$
+$= exp(tA)=e^{tA}$
 \\\\
 
 $x(t)=exp(tA) \cdot x_0 = U exp(tA) U^{-1} \cdot x_0$\\

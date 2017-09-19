@@ -5,25 +5,28 @@
 \begin{itemize}
 	\item \textbf{diskrete Zeit: "Generationen"}\\
 	$X_1, X_2, ...$\\
-	$X_n=F(X_{n-1})=:X_{n-1} + \overbrace{f(X_{n-1})}^{\text{Änderung des Zustandes}}$\\
+	aktueller Zustand $X_n=F(X_{n-1}):=\overbrace{X_{n-1}}^{\text{Zustand vorher}} + \overbrace{f(X_{n-1})}^{\text{Änderung des Zustandes}}$\\
 	$X_{n+1}=F(X_n)=F(F(X_{n-1}))$\\
 	Beispiel:\\
-	$X_n=(1+\underbrace{a}_{\text{effektive Vermehrungsrate}}) \cdot x_{n-1}=$ Geburtenrate - Sterberate\\
+	$X_n=(1+a) \cdot x_{n-1}$\\
+	a = effektive Vermehrungsrate = Geburtenrate - Sterberate\\
 	Anfangsbedingung: $X_{t_0}=X_0$\\
-	Bedingung: effektive Vermehrungsrate a verändert sich nicht\\
+	\underline{Bedingung:} effektive Vermehrungsrate a verändert sich nicht\\
 	Lösung: $X_n=(1+a)^n \cdot x_0$\\
-	im allgemeinen mit zeitlich variablen Vermehrungsraten: $X_n=\prod \limits_{i=0}^{n-1} (1+a_i) \cdot x_0$\\
+	\textbf{im allgemeinen:} mit zeitlich variablen Vermehrungsraten:\\
+	$$X_n=\prod \limits_{i=0}^{n-1} (1+a_i) \cdot x_0$$\\
 	3 verschiedene Resultate:
 	\begin{itemize}
 		\item $+\infty$ für $a > 0$
 		\item $x_0$ für $a=0$
 		\item 0 für $a<0$
 	\end{itemize}
-	$X_n=X_{n-1} + a \cdot \underbrace{X_{n-1}}_{f(X_{n-1})}$\\
+	$X_n=X_{n-1} + \underbrace{a \cdot X_{n-1}}_{f(X_{n-1})}$\\
 	$f(X_{n-1})=X_{n-1} \cdot r(X_{n-1})$\\
 	mit r(0)=const. entspricht autonomer Wachstumsrate [$ lim (x \rightarrow 0) r(x) \in R_0^+$]
 	\item \textbf{kontinuierliche Zeit}\\
-	$x(t+\Delta t)=x(t) + f(x(t)) \cdot \Delta t$\\\\
+	$x(t+\Delta t)=x(t) + \underbrace{f(x(t)) \cdot \Delta t}_{\text{Änderung}}$\\\\
+	t=aktuelle Zeit, $\Delta t$=zeitliche Änderung
 	$\displaystyle \frac{x(t+ \delta t) - x(t)}{\delta t} = f(x(t))$\\
 	$lim (\delta t \rightarrow 0) \displaystyle \frac{x(t+ \delta t) - x(t)}{\delta t} = \frac{\delta x}{\delta t}$ $\widehat{=}$ zeitlicher Ableitung von x\\
 	= $\dot{x}=f(x)$
@@ -33,12 +36,19 @@
 $\dot{x}=a \cdot x$, $x(0)=x_0$\\
 $\displaystyle \frac{dx}{dt}=a \cdot x$\\
 $\displaystyle \frac{dx}{a \cdot x} = dt$\\
-$\int \limits_{x_0}^{x(t)} \frac{1}{a \cdot x} \cdot dx = \int \limits_{0}^{1} 1 \cdot dt = 1$\\
+$\int \limits_{x_0}^{x(t)} \frac{1}{a \cdot x} \cdot dx = \int \limits_{0}^{1} 1 \cdot dt$\\
 $\dot{x} = f(x) \Rightarrow \int \limits_{x_0}^{x(t)} \frac{1}{f(x)} = \int \limits_{0}^{1} dt = t$\\
-$\frac{1}{a} \int \frac{1}{x} dx = \frac{1}{a} \cdot ln(x)$\\
+$\frac{1}{a} \int \frac{1}{x} dx = \frac{1}{a} \cdot ln(x) \text{  }/ \cdot$ a \\
 $\cancel{\frac{1}{a}} ln(x(t)) - \cancel{\frac{1}{a}} ln(x_0)=a \cdot t$\\
 $ln(x(t))= a t + ln(x_0)$\\
 $x(t)=e^{at} \cdot x_0$
+
+Grenzen für a wieder wie vorher, 3 verschiedene Resultate:
+\begin{itemize}
+	\item $+\infty$ für $a > 0$
+	\item $x_0$ für $a=0$
+	\item 0 für $a<0$
+\end{itemize}
 
 Wie machen wir das Model realistischer?\\
 f(x) und r(x) muss für sehr große x dann $\leq$ 0 werden.
@@ -66,16 +76,16 @@ $\dot{x}=f(x)=x \cdot (a-bx)$\\
 \end{enumerate}
 
 Störung: $x(0)=\underbrace{\hat{x}}_{Fixpunkt} + \epsilon$ mit sehr kleinem $\epsilon$\\
-$\dot{x}=f(x)=f(\hat{x} + \epsilon)=\dot{\epsilon}$\\
+$\dot{x}=f(x) \rightarrow f(\hat{x} + \epsilon) = \dot{\epsilon}$\\
 mit $x=\hat{x}+\epsilon$\\
 $\dot{x}=\frac{\delta \hat{x}}{\delta t} + \dot{\epsilon}$\\
 \underline{$\dot{\epsilon}=f(\hat{x}+\epsilon)$}\\
-mit Taylorreihenentwicklung: $0=f(\hat{x}) + \epsilon \frac{\delta f}{\delta x} (\hat{x}) + O(\epsilon^2)$\\
+mit Taylorreihenentwicklung: $0=\underbrace{f(\hat{x})}_{=0} + \epsilon \frac{\delta f}{\delta x} (\hat{x}) + O(\epsilon^2)$\\
 
 Für sehr kleine Störungen:\\
 $\dot{\epsilon}=\frac{\delta f}{\delta x} (\hat{x}) \cdot \epsilon + \cancel{O(\epsilon^2)}$\\
 Linearisierung der Differentialgleichung $x=f(x)$ in der Nähe eines Fixpunktes $\hat{x}$:
-$\epsilon(x)=e^{[\frac{\delta f}{\delta x} (\hat{x})] \cdot t}$\\
+$\epsilon(t)=e^{[\frac{\delta f}{\delta x} (\hat{x})] \cdot t} \cdot \epsilon_0$\\
 $\epsilon_0=x_0 - \hat{x}$\\
 $\epsilon_0 \leftarrow $ initiale Störung\\
 
@@ -90,8 +100,8 @@ $\cancel{\hat{x}} + \epsilon' = \cancel{\hat{x}} + \epsilon + f(\hat{x} + \epsil
 $\epsilon'=\epsilon (1 + \frac{\delta f}{\delta x} (\hat{x}))$
 mit:
 \begin{itemize}
-	\item $\epsilon \rightarrow 0$ wenn $|1+\frac{\delta f}{\delta x} (\hat{x})| < 1$
-	\item $\epsilon \rightarrow \infty$ wenn $|1+\frac{\delta f}{\delta x} (\hat{x})| > 1$
+	\item $\epsilon \rightarrow 0$ wenn $|1+\frac{\delta f}{\delta x} (\hat{x})| < 1 \hat{=}$ stabil ($1 > |\frac{df}{dx} (\hat{x})|$)
+	\item $\epsilon \rightarrow \infty$ wenn $|1+\frac{\delta f}{\delta x} (\hat{x})| > 1 \hat{=}$ instabil ($1 < |\frac{df}{dx} (\hat{x})|$)
 \end{itemize}
 
 \textbf{jetzt Mehrdimensional:}
@@ -100,14 +110,21 @@ mit:
 	\item Beute y: $f_y(x,y)=y(+d-ex-gy)$
 \end{itemize}
 
-\underline{Fixpunkte:}
-\begin{itemize}
-	\item $f_x(x,y)=0$
-	\item $f_y(x,y)=0$
-\end{itemize}
+a,d $\rightarrow$ Wachstumsraten\\
+c,g $\rightarrow$ intraspezifische Konkurrenz\\
+be, $\rightarrow$ interspezifische Beeinflussung\\
 
-\underline{Stabilität:}\\
-gegeben durch 
+\underline{4 Fixpunkte möglich:}
+\begin{enumerate}
+	\item Fall: x=0, y=0 (trivialer Fall)
+	\item Fall: x$\neq$0, y=0
+	\item Fall: x=0, y$\neq$0
+	\item Fall: x$\neq$0, y$\neq$0
+\end{enumerate}
+
+Nicht alle Fälle müssen biologisch relevant sein, es können sich zum Beispiel auch Fixpunkte im negativem befinden $\rightarrow$ wird nicht betrachtet
+\newpage
+\underline{Stabilität:} gegeben durch 
 \begin{itemize}
 	\item $\frac{\delta f_x}{\delta x}(\hat{x}, \hat{y})$ $\frac{\delta f_x}{\delta y}(\hat{x}, \hat{y})$
 	\item $\frac{\delta f_y}{\delta x}(\hat{x}, \hat{y})$ $\frac{\delta f_y}{\delta y}(\hat{x}, \hat{y})$
