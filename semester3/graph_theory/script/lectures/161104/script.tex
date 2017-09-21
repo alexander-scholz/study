@@ -18,7 +18,7 @@ deg(y)=4
 \textbf{Theorem (Euler):}
 \begin{enumerate}
 	\item H ist verallgemeinerter Kreis $\Leftrightarrow$ jeder Knoten geraden Grad
-	\item Wenn H zudem zusammenhängend, dann gibt es einen geschlossenen Weg, der Kanten von H (genau 1 mal) enthält.
+	\item Wenn H zudem zusammenhängend, dann gibt es einen geschlossenen Weg, der alle Kanten von H (genau 1 mal) enthält.
 \end{enumerate}
 
 \underline{Beweisskizze des Euler-Theorems}\\
@@ -132,7 +132,7 @@ Beweis: nachrechnen (Achtung Rechenregeln GF(2)\footnote{\url{https://en.wikiped
 GF(2)=\{1,0,$\oplus$,\}
 \begin{itemize}
 	\item 1 $\oplus$ 1 = 0
-	\item 1 $\oplus$ 0 = 0 $\oplus$ 1 = 1
+	\item 1 $\oplus$ 0 = 0 $\oplus$ 1 = 1 \qquad STIMMT DAS? Oder eher: 1 $\oplus$ 0 = 1 $\oplus$ 1 = 0
 	\item 0 $\oplus$ 0 = 0
 \end{itemize}
 
@@ -153,11 +153,11 @@ $\Leftrightarrow$ jeder v.K. C ist die Summe einer eindeutig bestimmten Teilmeng
 \\\\
 \textbf{Basis:} minimale Menge von erzeugenden Kreisen
 \\
-Vektorraum $\Rightarrow$ alle minimal erzeugende Kreismenge sind gleichgroß\\
+Vektorraum $\Rightarrow$ alle minimalen erzeugenden Kreismengen sind gleich groß\\
 Anzahl Basiskreis $\widehat{=}$ Dimension des Vektorraums
 \\\\
-Menge M=\{C$_1$, ..., C$_\mu$\} von Kreisen (im allgemeinen Vektorraum) heißt linear unabhängig wenn gilt:\\
-$\bigoplus\limits_{i=1}^{|M|} \lambda_i C_i$ mit $\lambda \in \{0,1\}\Rightarrow$ $\lambda_i=0$ $\forall i=1 ... |M|$
+Menge M=\{C$_1$, ..., C$_\mu$\} von Kreisen (im allgemeinen Vektorraum) heißt linear unabhängig, wenn gilt:\\
+$\bigoplus\limits_{i=1}^{|M|} \lambda_i C_i$ mit $\lambda \in \{0,1\}\Rightarrow$ $\lambda_i=0$ $\forall \, i=1 ... |M|$
 \\\\
 Beispiel:
 \begin{figure}[htp]
@@ -166,10 +166,10 @@ Beispiel:
 $\underbrace{C_1 \oplus C_2 \oplus C_3}_{C_4 \oplus C_4 = 0} \oplus C_4=0$
 \end{figure}
 
-M=\{$C_1$, $C_2$, $C_3$, $C_4$\} ist abhängig weil $\lambda_1=\lambda_2=\lambda_3=\lambda_4=1$ die Gleichung\\
+M=\{$C_1$, $C_2$, $C_3$, $C_4$\} ist abhängig, weil $\lambda_1=\lambda_2=\lambda_3=\lambda_4=1$ die Gleichung\\
 $\bigoplus\limits_{i=1}^{4} \lambda_i C_i=0$ löst
 \\\\
-M=\{$C_1$, $C_2$,$C_3$\} ist unabhängiges Argument. Jeder Kreis enthält eine Kante, die in keinem anderen Kreis aus M vorkommt und daher nicht in einer Summe anderer Kreise auftreten kann.
+M=\{$C_1$, $C_2$,$C_3$\} ist unabhängig. Argument: Jeder Kreis enthält eine Kante, die in keinem anderen Kreis aus M vorkommt und daher nicht in einer Summe anderer Kreise auftreten kann.
 \\\\
 \underline{daher nochmal Basis:}
 \begin{itemize}
@@ -177,14 +177,14 @@ M=\{$C_1$, $C_2$,$C_3$\} ist unabhängiges Argument. Jeder Kreis enthält eine K
 	\item minimale erzeugende Menge
 \end{itemize}
 
-\underline{Konstruktion von Kreisbasen:} Kirchhoff Basen (strikt fundamental Basen)
+\underline{Konstruktion von Kreisbasen:} Kirchhoff-Basen (strikt fundamentale Basen)
 \\
 Graph G mit zusammenhängendem Spannbaum T von G\\
 Für jede Kante $e\notin T$ enthält $T \cup \{e\}$ genau einen Kreis $\rightarrow$ C$_{e,T}$
 \\\\
-\underline{\textbf{WARUM?}} Seien x,y die Endpunkte von e dann gibt es genau einen Pfad von x nach y in T. Der wird mit e zu genau einem Kreis.
+\underline{\textbf{WARUM?}} Seien x,y die Endpunkte von e, dann gibt es genau einen Pfad von x nach y in T. Der wird mit e zu genau einem Kreis.
 \\
-$B_T=\{C_{e,T}\ |\ e \in T\}$ ist eine Kreisbasis
+$B_T=\{C_{e,T}\ |\ e \not \in T\}$ ist eine Kreisbasis % TODO: \not eingefügt, bitte prüfen!
 \\
 \underline{Beweis:} zu zeigen
 \begin{enumerate}
@@ -192,13 +192,13 @@ $B_T=\{C_{e,T}\ |\ e \in T\}$ ist eine Kreisbasis
 	\item Die Kreismenge B ist unabhängig
 \end{enumerate}
 
-\underline{zu 1.:} Sei Z ein Kreis, Z$\notin$B (Z keine Kreisbasis)\\
+\underline{zu 1.:} Sei Z ein Kreis, Z$\notin$B (Z kein Basiskreis)\\
 $\Rightarrow$ Z Summe von Basiskreisen. Wenn e $\in$ Z$\backslash$T dann muss C$_{e,T}$ zu Z beitragen. Wenn e $\notin$ Z$\backslash$T dann e$\in$T gibt es keinen zugehörigen Basiskreis\\
 e$\notin$T, e$\notin$Z dann kann C$_{e,T}$ nicht zu Z beitragen\\\\
 Also $\bigoplus\limits_{e \in Z\backslash T} C_{e,T}$
 
 \underline{zu 2.:} $C_{e,T}$ enthält nicht e für e,e'$\in$T, e$\neq$e'\\
-$\Rightarrow$ jeder Basiskreis enthält einen Kante, die in keinem anderen Basiskreis enthalten ist $\Rightarrow$ \underline{Unabhangigkeit}
+$\Rightarrow$ jeder Basiskreis enthält eine Kante, die in keinem anderen Basiskreis enthalten ist $\Rightarrow$ \underline{Unabhängigkeit}
 \\\\
 Wie viele Kreise enthält B (Kirchhoff-Basen)?\\
 $|$B$|$ = $|$E$|$-$|$T$|$\\

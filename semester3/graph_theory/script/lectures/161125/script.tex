@@ -4,9 +4,10 @@ Zwei durch eine Kante verbundene Knoten haben unterschiedliche Farben.\\
 Beispiel wäre eine Landkarte auf der mit so wenig wie möglich Farben die Länder ausgemalt werden, ohne zwei benachbarte Länder gleichfarbig zu haben. Hierbei entspricht jede Facette einen Knoten.\\
 \includegraphics[width=0.4\textwidth]{lectures/161125/pix/Vertexfaerbung}
 \begin{description}
-    \item[Vertexfärbung] Eine Vertexfärbung eines Graphen $G=(V,E)$ ist eine Abbildung $\mathcal{C} \colon V \mapsto \mathcal{S}$, mit $\mathcal{S}=$ Menge der Farben. Es gilt, dass $\mathcal{C}(v) \neq \mathcal{C}(w)$, mit $w,v \in \mathcal{S}$, wenn $v$ und $w$ adjazent ($\{v,w\} \in E$) sind. Die Elemente von $\mathcal{S}$ heißen \emph{Farben}.
+    \item[Vertexfärbung] Eine Vertexfärbung eines Graphen $G=(V,E)$ ist eine Abbildung $\mathcal{C} \colon V \mapsto \mathcal{S}$, mit $\mathcal{S}=$ Menge der Farben. Es gilt, dass $\mathcal{C}(v) \neq \mathcal{C}(w)$, mit $v,w \in V$, wenn $v$ und $w$ adjazent ($\{v,w\} \in E$) sind. Die Elemente von $\mathcal{S}$ heißen \emph{Farben}.
     \item[k-Färbung] Ein Graph $G$ ist $k$-färbbar, wenn es für eine Abbildung $\mathcal{C}$ eine Menge $\mathcal{S}=\{1,\dots,k\}$ gibt.
-    \item[Chromatische Zahl] Eine chromatische Zahl $\chi(G)$ ist die kleinste natürliche Zahl $k$, sodass G $k$-färbbar ist. $\chi(G) \leqslant \Delta(G) + 1$, mit $\Delta(G) = $ maximaler Grad von $G$
+    \item[Chromatische Zahl] Eine chromatische Zahl $\chi(G)$ ist die kleinste natürliche Zahl $k$, sodass G $k$-färbbar ist. \\\\
+        $\chi(G) \leqslant \Delta(G) + 1$, mit $\Delta(G) = $ maximaler Grad von $G$
         \begin{description}
             \item[Proof (greedy)] Färbe $v_i$ der Vertices $v_1 \dots v_n$ mit der kleinsten Farbe, die nicht von einem Nachbarn von $v_i$ benutzt wird. Da wir max. $\Delta(G)$ viele Nachbarn für $v_i$ haben, gibt es immer eine freie Farbe.
         \end{description}
