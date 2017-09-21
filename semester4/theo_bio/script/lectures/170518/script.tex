@@ -43,7 +43,7 @@
 
 \begin{description}
     \item[Heterokliner Orbit] besteht aus Sattelpunkten und deren Verbindungen
-    \item[w-Limit] einer Trajektorie $ x(t, x_0) $ ist die Menge aller Punkte, deren
+    \item[$\omega$-Limit] einer Trajektorie $ x(t, x_0) $ ist die Menge aller Punkte, deren
         $ x(t, x_0) $ unendlich oft beliebig nahe kommt
         $ y \in w(x_0) \Leftrightarrow \exists \text{ Folge } t_k, t_{k+1} \leqslant t_k + 1, 
         \text{ sodass für alle } \epsilon > 0 \text{ ein } k_{\epsilon} 
@@ -52,7 +52,7 @@
 \end{description}
 
 \subsection{Für dynamische Systeme in der Ebene}
-Eine ODE in der Ebene mit stetig differenzierbare Vektor-feld? $ f $ hat nur folgende Typen von w-Limits:
+Eine ODE in der Ebene mit stetig differenzierbare Vektorfeld $f$ hat nur folgende Typen von $\omega$-Limits:
 \begin{itemize}
     \item Fixpunkte
     \item Zyklen (periodische Orbits)
@@ -98,33 +98,33 @@ Fehler in Bestimmung der Anfangsbedingung wird exponentiell verstärkt $\rightar
 \paragraph{Chaotische Attraktoren}
 Mengen $A$, die anziehend, im Sinn \\
 \begin{itemize}
-    \item jede Trajektorie aus der Nähe von $A$ hat ihren w-Limes in $A$ (ATTRAKTOR)
+    \item jede Trajektorie aus der Nähe von $A$ hat ihren $\omega$-Limes in $A$ (ATTRAKTOR)
     \item Für fast alle Ausgangsbedingungen $x_0, x_0'$ gilt die Chaos-Bedingung
     \item[2D] für brave DGL: kein Chaos
     \item[3D] Chaos existiert
 \end{itemize}
 
 \subsection{Musterbildung}
-$ x(t) \rightarrow u(t) \qquad \dots \qquad u(\underbrace{x}_{\text{Raum}}, \underbrace{t}_{\text{Zeit}}) $ \\  % FIXME: Arrow muss kurvig sein
+$ x(t) \rightsquigarrow u(t) \qquad \dots \qquad u(\underbrace{x}_{\text{Raum}}, \underbrace{t}_{\text{Zeit}}) $ \\
 Räumlich homogen $\Leftrightarrow$ unabhängig von der Raum-Koordinate $x$ \\
 $ \dot{u} := \frac{\delta u}{\delta t} = \underbrace{f}_{\text{Vektorfeld}}(u) $
 
 \subsection{Diffusion}
 Teilchenstrom $J$ \\
-$ \frac{\delta c}{\delta t} = \frac{\delta J}{\delta hier fehlt was -D } \frac{\delta^2}{\delta x^2 c} $ \qquad Kontinuitätsgleichung \\  % FIXME
-$ J = -D \frac{\delta c}{\delta x} $ \qquad Fick'sches Gesetz \\
-$ \frac{\delta u}{\delta t} = - D \frac{\delta^2}{\delta x^2} u + f(u) $ \qquad in einer R.-Dim. \\
-$ \frac{\delta}{\delta t} u = -D \cdot \underbrace{\Delta}_{\text{Laplace-Diff.-Operator}} u  + f(u) \qquad \Delta u = \sum\limits_{i=1}^{\text{Dim.}} \frac{\delta^2}{\delta x_i^2} u $
+$ \frac{\partial c}{\partial t} = \frac{\partial J}{\partial x} = -D \frac{\partial^2}{\partial x^2} c $ \qquad Kontinuitätsgleichung \\  % FIXME
+$ J = -D \frac{\partial c}{\partial x} $ \qquad Fick'sches Gesetz \\
+$ \frac{\partial u}{\partial t} = - D \frac{\partial^2}{\partial x^2} u + f(u) $ \qquad in einer R.-Dim. \\
+$ \frac{\partial}{\partial t} u = -D \cdot \underbrace{\Delta}_{\text{Laplace-Diff.-Operator}} u  + f(u) \qquad \Delta u = \sum\limits_{i=1}^{\text{Dim.}} \frac{\partial^2}{\partial x_i^2} u $
 
 \subsubsection{Einschub: Simulation von Reaktions-Diffusionsgleichungen}
-$ \frac{\delta u}{\delta t} = \frac{u(t + \delta t) - u(t)}{\delta t} $ \\
-Bild \\
+$ \frac{\partial u}{\partial t} = \frac{u(t + \delta t) - u(t)}{\delta t} $ \\\\
+--- BILD vom Gitter ---\\
 $ (\hat{x}_1 + \delta_{x_1}, \hat{x}_2) $ \\
-$ \hat{x} = (\hat{x}_1, \hat{x}_2) $ \\
-$ \frac{\delta u}{\delta x_1}(\tilde{x}) = \frac{u(\hat{x}_1 + \delta \overbrace{x_1}^{x_2 \text{ fix}}) - u(\overbrace{\hat{x}_1}^{\hat{x}_2 \text{ fix}})}{\delta x_1} $ \\
-$ \frac{\delta u}{\delta x_1}(\tilde{\tilde{x}}) = \frac{u(\hat{x}_1, \hat{x}_2) -,u(\hat{x}_1 - \delta \hat{x}_1, \hat{x}_2)}{\delta x_1} $ \\
+$ \hat{x} = (\hat{x}_1, \hat{x}_2) $ \\\\
+$ \frac{\partial u}{\partial x_1}(\tilde{x}) = \frac{u(\hat{x}_1 + \delta \overbrace{x_1}^{\hat{x}_2 \text{ fix}}) - u(\overbrace{\hat{x}_1}^{\hat{x}_2 \text{ fix}})}{\delta x_1} $ \\
+$ \frac{\partial u}{\partial x_1}(\tilde{\tilde{x}}) = \frac{u(\hat{x}_1, \hat{x}_2) - u(\hat{x}_1 - \delta \hat{x}_1, \hat{x}_2)}{\delta x_1} $ \\\\
 $ \frac{u(\hat{x}_1 + \delta x_1, \hat{x}_2)}{\delta x_1} - \frac{u(\hat{x}_1, \hat{x}_2) - u(\hat{x}_1 - \delta x_1, \hat{x}_2)}{\delta x_1} $ \\
-$ \frac{u(\hat{x}_1 + \delta x_1, \hat{x}_2) + u(\hat{x}_1 - \delta x_1, \hat{x}_2) - 2u(\hat{x}_1, \hat{x}_2)}{(\delta x_1)^2} $ \\
+$ \frac{u(\hat{x}_1 + \delta x_1, \hat{x}_2) + u(\hat{x}_1 - \delta x_1, \hat{x}_2) - 2u(\hat{x}_1, \hat{x}_2)}{(\delta x_1)^2} $ \\\\
 $ \Delta u = \frac{1}{(\delta x)^2} \cdot \sum\limits_{\text{Nachbarn } \hat{y} \text{ von }x}(u(\hat{y}) - u(\hat{x})) $ \\
 Ersetze den kontinuierlichen Raum durch ein $d$-dimensionales Gitter mit Abständen $l$ \\
 $ \Delta u(x) \rightarrow \frac{1}{l^2} \cdot \overbrace{\sum\limits_{y \in N(x)}(u(y, t) - u(x, t))}^{\hat{\Delta}} $ \\
