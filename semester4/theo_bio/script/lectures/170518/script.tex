@@ -62,7 +62,7 @@ Eine ODE in der Ebene mit stetig differenzierbare Vektorfeld $f$ hat nur folgend
 DAS STIMMT FÜR DIE DISKRETEN MODELLE NICHT!
 
 \subsection{Bifurkation}
-$ \dot{x} = f(x, \underbrace{\mu}_{\text{Parameter}}) $ \qquad 
+$ \dot{x} = f(x, \underbrace{\mu}_{\mathclap{\text{Parameter}}}) $ \qquad 
 alles hängt nun explizit von $  \mu $ ab \\
 $ \Rightarrow $ Fixpunkte $ \hat{x}(\mu) $ \\
 Stabilität der Fixpunkte $ J(\hat{x}, \mu) $ \\\\
@@ -85,7 +85,7 @@ stabiler Fixpunkt $\rightarrow$ 1 stabiler, 2 instabile FP
 \paragraph{Transkriptische Bifurkation}
 2 Fixpunkte tauschen Stabilität aus
 \paragraph{Hopf-Bifurkation}
-\paragraph{Kein spezieller Name (teilweise "heterokline Bifurkation")}
+\paragraph{Kein spezieller Name (teilweise "`heterokline Bifurkation"')}
 
 \subsection{Deterministisches Chaos}
 Idee: De-facto Unvorhersagbarkeit des Langzeitverhaltens
@@ -93,11 +93,11 @@ $ x_0 \cdot \rightarrow x(t, x_0) = y(t) $ \\
 $ x_0' \cdot \rightarrow x(t, x_0') = y'(t) $ \\
 $ | y(x) - y'(x) | > \epsilon \cdot \exp(\alpha t) \quad \text{ für } \alpha > 0 $ \\
 $ | x_0 - x_0' | = \epsilon $ \\
-"driftet exponentiell auseinander" \\
+"`driftet exponentiell auseinander"' \\
 Fehler in Bestimmung der Anfangsbedingung wird exponentiell verstärkt $\rightarrow$ genaue Vorhersagen nur für kurze Zeiten möglich
 \paragraph{Chaotische Attraktoren}
 Mengen $A$, die anziehend, im Sinn \\
-\begin{itemize}
+\begin{itemize}  % FIXME
     \item jede Trajektorie aus der Nähe von $A$ hat ihren $\omega$-Limes in $A$ (ATTRAKTOR)
     \item Für fast alle Ausgangsbedingungen $x_0, x_0'$ gilt die Chaos-Bedingung
     \item[2D] für brave DGL: kein Chaos
@@ -107,26 +107,32 @@ Mengen $A$, die anziehend, im Sinn \\
 \subsection{Musterbildung}
 $ x(t) \rightsquigarrow u(t) \qquad \dots \qquad u(\underbrace{x}_{\text{Raum}}, \underbrace{t}_{\text{Zeit}}) $ \\
 Räumlich homogen $\Leftrightarrow$ unabhängig von der Raum-Koordinate $x$ \\
-$ \dot{u} := \frac{\delta u}{\delta t} = \underbrace{f}_{\text{Vektorfeld}}(u) $
+$ \dot{u} := \frac{\partial u}{\partial t} = \underbrace{f}_{\mathclap{\text{Vektorfeld}}}(u) $
 
 \subsection{Diffusion}
 Teilchenstrom $J$ \\
-$ \frac{\partial c}{\partial t} = \frac{\partial J}{\partial x} = -D \frac{\partial^2}{\partial x^2} c $ \qquad Kontinuitätsgleichung \\  % FIXME
+$ \frac{\partial c}{\partial t} = \frac{\partial J}{\partial x} = -D \frac{\partial^2}{\partial x^2} c $ \qquad Kontinuitätsgleichung \\
 $ J = -D \frac{\partial c}{\partial x} $ \qquad Fick'sches Gesetz \\
 $ \frac{\partial u}{\partial t} = - D \frac{\partial^2}{\partial x^2} u + f(u) $ \qquad in einer R.-Dim. \\
-$ \frac{\partial}{\partial t} u = -D \cdot \underbrace{\Delta}_{\text{Laplace-Diff.-Operator}} u  + f(u) \qquad \Delta u = \sum\limits_{i=1}^{\text{Dim.}} \frac{\partial^2}{\partial x_i^2} u $
+$ \frac{\partial}{\partial t} u = -D \cdot \underbrace{\Delta}_{\mathclap{\text{Laplace-Diff.-Operator}}} u 
++ f(u) \qquad \Delta u = \sum\limits_{i=1}^{\text{Dim.}} \frac{\partial^2}{\partial x_i^2} u $
 
 \subsubsection{Einschub: Simulation von Reaktions-Diffusionsgleichungen}
-$ \frac{\partial u}{\partial t} = \frac{u(t + \delta t) - u(t)}{\delta t} $ \\\\
+$ \frac{\partial u}{\partial t} = \frac{u(t + \delta t) - u(t)}{\delta t} $ \\
+
 --- BILD vom Gitter ---\\
 $ (\hat{x}_1 + \delta_{x_1}, \hat{x}_2) $ \\
-$ \hat{x} = (\hat{x}_1, \hat{x}_2) $ \\\\
-$ \frac{\partial u}{\partial x_1}(\tilde{x}) = \frac{u(\hat{x}_1 + \delta \overbrace{x_1}^{\hat{x}_2 \text{ fix}}) - u(\overbrace{\hat{x}_1}^{\hat{x}_2 \text{ fix}})}{\delta x_1} $ \\
-$ \frac{\partial u}{\partial x_1}(\tilde{\tilde{x}}) = \frac{u(\hat{x}_1, \hat{x}_2) - u(\hat{x}_1 - \delta \hat{x}_1, \hat{x}_2)}{\delta x_1} $ \\\\
+$ \hat{x} = (\hat{x}_1, \hat{x}_2) $ \\
+
+$ \frac{\partial u}{\partial x_1}(\tilde{x}) = \frac{u(\hat{x}_1 + \delta \overbrace{\hat{x}_1}^{\mathclap{\hat{x}_2 \text{ fix}}}) - 
+u(\overbrace{\hat{x}_1}^{\mathclap{\hat{x}_2 \text{ fix}}})}{\delta x_1} $ \\
+$ \frac{\partial u}{\partial x_1}(\tilde{\tilde{x}}) = \frac{u(\hat{x}_1, \hat{x}_2) - u(\hat{x}_1 - \delta \hat{x}_1, \hat{x}_2)}{\delta x_1} $ \\
+
 $ \frac{u(\hat{x}_1 + \delta x_1, \hat{x}_2)}{\delta x_1} - \frac{u(\hat{x}_1, \hat{x}_2) - u(\hat{x}_1 - \delta x_1, \hat{x}_2)}{\delta x_1} $ \\
-$ \frac{u(\hat{x}_1 + \delta x_1, \hat{x}_2) + u(\hat{x}_1 - \delta x_1, \hat{x}_2) - 2u(\hat{x}_1, \hat{x}_2)}{(\delta x_1)^2} $ \\\\
-$ \Delta u = \frac{1}{(\delta x)^2} \cdot \sum\limits_{\text{Nachbarn } \hat{y} \text{ von }x}(u(\hat{y}) - u(\hat{x})) $ \\
+$ \frac{u(\hat{x}_1 + \delta x_1, \hat{x}_2) + u(\hat{x}_1 - \delta x_1, \hat{x}_2) - 2u(\hat{x}_1, \hat{x}_2)}{(\delta x_1)^2} $ \\
+
+$ \Delta u = \frac{1}{(\delta x)^2} \quad \cdot \quad \sum\limits_{\mathclap{\text{Nachbarn } \hat{y} \text{ von }x}}(u(\hat{y}) - u(\hat{x})) $ \\
 Ersetze den kontinuierlichen Raum durch ein $d$-dimensionales Gitter mit Abständen $l$ \\
-$ \Delta u(x) \rightarrow \frac{1}{l^2} \cdot \overbrace{\sum\limits_{y \in N(x)}(u(y, t) - u(x, t))}^{\hat{\Delta}} $ \\
+$ \Delta u(x) \rightarrow \frac{1}{l^2} \cdot \overbrace{\sum\limits_{\mathclap{y \in N(x)}}(u(y, t) - u(x, t))}^{\hat{\Delta}} $ \\
 $ \frac{u(t - \delta t) - u(t)}{\delta t} = -D \cdot \frac{1}{l^2} \cdot \hat{\Delta} u + f(u) $ \\
 $ u(x, t + \delta t) = u(x, t) -D \frac{1}{l^2} \hat{\Delta} u(x, t) + f(u(x, t)) $ \\
