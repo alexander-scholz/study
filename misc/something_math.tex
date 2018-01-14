@@ -1,0 +1,56 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[english,german]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{mathtools}
+%\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{cancel}
+\usepackage{geometry}
+\geometry{
+  left=3cm,
+  right=3cm,
+  top=3cm,
+  bottom=4cm,
+  bindingoffset=5mm
+}
+
+\setlength{\parindent}{0em} 
+\hypersetup{
+    colorlinks=true,
+    linktoc=all,
+    linkcolor=black,
+    urlcolor=black
+}
+%Gummi|065|=)
+%\title{\Huge\textbf{Praktikum Verhaltensneurogenetik}}
+\title{\Huge\textbf{$<$Titel$>$}}
+\author{Alexander Scholz}
+\date{$<$Datum$>$}
+
+% set title of table of contents
+\renewcommand*\contentsname{Inhalt}
+
+% https://www.sharelatex.com/learn
+% http://www.math.ubc.ca/~cautis/tools/latexmath.html
+% http://www.golatex.de/wiki/Kategorie:Befehlsreferenz
+% https://en.wikibooks.org/wiki/LaTeX/Mathematics
+
+\begin{document}
+
+\begin{titlepage}
+
+\maketitle
+\thispagestyle{empty}
+\end{titlepage}
+
+$|\sum \limits_{i=1}^{k}i - \sum \limits_{i=k+1}^{n}i|$ …mit n=2k, $k\in N$\\
+$$= \sum \limits_{i=k+1}^{n}i - \sum \limits_{i=1}^{k}i = \sum \limits_{i=1}^{k+1}i+k+1 - \sum \limits_{i=1}^{k}i = \sum \limits_{i=1}^{k}i+k - \sum \limits_{i=1}^{k}i = \sum \limits_{i=1}^{k} (i+k) -1$$
+$$= \sum \limits_{i=1}^{k} k = k \cdot k = k^2$$
+
+Beispiel:\\
+$$k=2 : \sum \limits_{i=3}^{4} i - \sum \limits_{i=1}^{2} i= 2^2 = 4$$
+$$k=2 : \sum \limits_{i=4}^{6} i - \sum \limits_{i=1}^{3} i= 3^2 = 9$$
+
+\end{document}
